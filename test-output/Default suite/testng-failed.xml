@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="PurchaseFile.BasicTabObject.Basic_InformationTest">
+      <class name="loginPage.LoginPageTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_Basic_Information_Tab" invocation-numbers="0"/>
+          <include name="Verify_Login_Page_Working_Proper_Or_Not"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- PurchaseFile.BasicTabObject.Basic_InformationTest -->
+      </class> <!-- loginPage.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

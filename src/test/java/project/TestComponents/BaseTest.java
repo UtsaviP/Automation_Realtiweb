@@ -55,6 +55,7 @@ public class BaseTest {
 			if (browserName.contains("headless")) {
 				options.addArguments("headless");
 			}
+			options.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(options);
 			driver.manage().window().setSize(new Dimension(1440, 900));// to run application in full screen
 		} else if (browserName.equalsIgnoreCase("firefox")) {

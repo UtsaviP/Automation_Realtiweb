@@ -46,15 +46,19 @@ public class AbstractComponent {
 		} else if (ProvincesName.contains("Alberta")) {
 			Select Province = new Select(driver.findElement(By.id("ProductProvince")));
 			Province.selectByVisibleText("Alberta");
+			
 		} else if (ProvincesName.contains("British Columbia")) {
 			Select Province = new Select(driver.findElement(By.id("ProductProvince")));
 			Province.selectByVisibleText("British Columbia");
+			
 		} else if (ProvincesName.contains("Manitoba")) {
 			Select Province = new Select(driver.findElement(By.id("ProductProvince")));
 			Province.selectByVisibleText("Manitoba");
+			
 		} else if (ProvincesName.contains("Nova Scotia")) {
 			Select Province = new Select(driver.findElement(By.id("ProductProvince")));
 			Province.selectByVisibleText("Nova Scotia");
+			
 		} else if (ProvincesName.contains("Saskatchewan")) {
 			Select Province = new Select(driver.findElement(By.id("ProductProvince")));
 			Province.selectByVisibleText("Saskatchewan");
@@ -76,11 +80,17 @@ public class AbstractComponent {
 	}
 
 	// Explicit wait
+	public void waitForElementToAppear1(WebElement ele  ) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.visibilityOfElementLocated((By) ele));
+	}
+	
 	public void waitForElementToAppear(By findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
-
+	
+	
 	// Explicit wait
 	public void waitForWebElementToAppear(WebElement findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));

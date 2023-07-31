@@ -1,71 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-01-30T16:57:31 EST" name="Default suite" finished-at="2023-01-30T16:57:50 EST" duration-ms="19572">
+  <suite started-at="2023-07-31T15:04:17 EDT" name="Suite" finished-at="2023-07-31T15:04:42 EDT" duration-ms="24731">
     <groups>
     </groups>
-    <test started-at="2023-01-30T16:57:31 EST" name="Default test" finished-at="2023-01-30T16:57:50 EST" duration-ms="19572">
-      <class name="PurchaseFile.BasicTabObject.Basic_InformationTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:PurchaseFile.BasicTabObject.Basic_InformationTest@729d991e]" started-at="2023-01-30T16:57:31 EST" name="launchApplication" finished-at="2023-01-30T16:57:33 EST" duration-ms="2450" status="PASS">
+    <test started-at="2023-07-31T15:04:17 EDT" name="Login" finished-at="2023-07-31T15:04:42 EDT" duration-ms="24731">
+      <class name="loginPage.LoginPageTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:17 EDT" name="launchApplication" finished-at="2023-07-31T15:04:22 EDT" duration-ms="5211" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Basic_Information_Tab(java.util.HashMap)[pri:0, instance:PurchaseFile.BasicTabObject.Basic_InformationTest@729d991e]" started-at="2023-01-30T16:57:33 EST" name="Verify_Basic_Information_Tab" data-provider="getData" finished-at="2023-01-30T16:57:50 EST" duration-ms="16501" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{Account=LDDTesting, LawyerName=Balu Kiri, User=Automation, FileName=AutomationFile_[Do not Delete], Password=Automation}]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.ClassCastException">
-            <message>
-              <![CDATA[class org.openqa.selenium.remote.RemoteWebElement cannot be cast to class java.util.List (org.openqa.selenium.remote.RemoteWebElement is in unnamed module of loader 'app'; java.util.List is in module java.base of loader 'bootstrap')]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.ClassCastException: class org.openqa.selenium.remote.RemoteWebElement cannot be cast to class java.util.List (org.openqa.selenium.remote.RemoteWebElement is in unnamed module of loader 'app'; java.util.List is in module java.base of loader 'bootstrap')
-at PurchaseFile.BasicTabObject.Basic_Information.getLawyerList(Basic_Information.java:42)
-at PurchaseFile.BasicTabObject.Basic_InformationTest.Verify_Basic_Information_Tab(Basic_InformationTest.java:29)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.ClassCastException -->
+        <test-method signature="Verify_Login_Page_Working_Proper_Or_Not()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:22 EDT" name="Verify_Login_Page_Working_Proper_Or_Not" finished-at="2023-07-31T15:04:25 EDT" duration-ms="2432" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_Basic_Information_Tab -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:PurchaseFile.BasicTabObject.Basic_InformationTest@729d991e]" started-at="2023-01-30T16:57:50 EST" name="tearDown" finished-at="2023-01-30T16:57:50 EST" duration-ms="299" status="PASS">
+        </test-method> <!-- Verify_Login_Page_Working_Proper_Or_Not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:25 EDT" name="tearDown" finished-at="2023-07-31T15:04:25 EDT" duration-ms="217" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- PurchaseFile.BasicTabObject.Basic_InformationTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:25 EDT" name="launchApplication" finished-at="2023-07-31T15:04:29 EDT" duration-ms="3533" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_validation_when_AccountName_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:29 EDT" name="Verify_validation_when_AccountName_is_wrong" finished-at="2023-07-31T15:04:31 EDT" duration-ms="1952" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_validation_when_AccountName_is_wrong -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:31 EDT" name="tearDown" finished-at="2023-07-31T15:04:31 EDT" duration-ms="168" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:31 EDT" name="launchApplication" finished-at="2023-07-31T15:04:35 EDT" duration-ms="3867" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_validation_when_password_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:35 EDT" name="Verify_validation_when_password_is_wrong" finished-at="2023-07-31T15:04:36 EDT" duration-ms="1359" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_validation_when_password_is_wrong -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:36 EDT" name="tearDown" finished-at="2023-07-31T15:04:36 EDT" duration-ms="223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:36 EDT" name="launchApplication" finished-at="2023-07-31T15:04:41 EDT" duration-ms="4414" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_validation_when_username_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:41 EDT" name="Verify_validation_when_username_is_wrong" finished-at="2023-07-31T15:04:42 EDT" duration-ms="1097" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_validation_when_username_is_wrong -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:42 EDT" name="tearDown" finished-at="2023-07-31T15:04:42 EDT" duration-ms="216" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- loginPage.LoginPageTest -->
+    </test> <!-- Login -->
+  </suite> <!-- Suite -->
 </testng-results>

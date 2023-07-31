@@ -7,8 +7,8 @@ import login.pageobject.LoginPage;
 import project.TestComponents.BaseTest;
 
 public class LoginPageTest extends BaseTest { // inherit
-
-	String Accountname = "LDDTesting";
+    
+	String Accountname = "Automation";
 	String WrongPass = "Wrong Password";
 	String WrongUsername = "Invalid Account, Username or Password";
 	String WrongAccountName = "Invalid Account, Username or Password";
@@ -30,7 +30,7 @@ public class LoginPageTest extends BaseTest { // inherit
 		Assert.assertEquals(Login, WrongPass);
 
 	}
-
+	
 	@Test
 	public void Verify_validation_when_username_is_wrong() {
 
