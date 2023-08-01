@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="loginPage.LoginPageTest">
+      <class name="home.CreateNewFileTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_Login_Page_Working_Proper_Or_Not"/>
           <include name="tearDown"/>
+          <include name="Verify_Create_File_button_is_disable_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- loginPage.LoginPageTest -->
+      </class> <!-- home.CreateNewFileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

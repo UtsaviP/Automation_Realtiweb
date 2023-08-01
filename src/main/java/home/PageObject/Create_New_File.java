@@ -1,4 +1,5 @@
-package menubar_File.PageObject;
+package home.PageObject;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,10 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import io.netty.util.internal.ThreadLocalRandom;
-import menubar_Main.PageObject.MainPage;
 import project.AbstractComponents.AbstractComponent;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -22,32 +20,35 @@ public class Create_New_File extends AbstractComponent {
 		PageFactory.initElements(driver, this);
 	}
 
-	// File->Create New File PageFactory
-	@FindBy(id = "tdMenuBarItemFile")
-	public WebElement ToolsOption_File;
-	
+	// FileList->Create New File PageFactory
+	@FindBy(xpath = "//button[@class='dropdown-toggle btn btn-primary' and @aria-expanded='false']")
+	public WebElement PlusButton;
+
 	@FindBy(xpath = "(//select[@title='Select the type of transaction for this deal'])[1]")
 	public WebElement DealType;
-	
+
 	@FindBy(xpath = "(//input[@class='input input-long'])[1]")
 	public WebElement FileName;
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Create File')])[2]")
 	public WebElement CreateFile_Button;
-	
+
 	@FindBy(xpath = "(//td[text()='File Details'])[1]")
 	public WebElement required_text;
-	
-	@FindBy(xpath = "//tr[@class='file-header']//td/b")
-	public WebElement HeaderFileName;
-	
-	@FindBy(xpath = "//i[@class='fa active ldd-ellipsis solid']")
+
+	@FindBy(xpath = "//div[i[@class='fa-light fa-file fa-indicator']]/b")
+	public WebElement BoldFilename;
+
+	@FindBy(xpath = "//div[@class='options dropstart']/i[@class='fa-solid fa-ellipsis-vertical']")
 	public WebElement ActionMenu;
-	
-	@FindBy(xpath = "(//span[@class='status-fail'][text()='Delete File'])[2]")
+
+	@FindBy(xpath = "//a[contains(text(),'Delete File')]")
 	public WebElement DeleteFile;
 
-	@FindBy(xpath = "(//span[@class='btn btn-inactive'][normalize-space()='Create File'])[1]")
+	@FindBy(xpath = "//button[contains(text(),'Delete') and @class='btn btn-primary']")
+	public WebElement DeleteButton;
+
+	@FindBy(xpath = "//td[@valign='middle']/span[@class='btn btn-inactive' and text()='Create File']")
 	public WebElement Inactive_Button;
 
 	@FindBy(xpath = "(//span[@class='btn btn-primary'][normalize-space()='Create File'])[1]")
@@ -56,14 +57,16 @@ public class Create_New_File extends AbstractComponent {
 	@FindBy(xpath = "//li[text()='Create New File']")
 	public WebElement CreateNewFile1;
 
-	By Create_New_File = By.xpath("//body[@class='bg ldd_main_body menu']//li[text()='Create New File']");
+	By Create_New_File = By.xpath("//a[text()='New File']");
 	By FileNameBy = By.xpath("//tr[@name='OpeningInfo']//input[@class='input input-long']");
+	By Frame = By.xpath("//body/div[@id='root']/main[1]/div[1]/div[1]/div[1]/iframe[1]");
 
-	public MainPage CreateNewPurchaseFile() throws InterruptedException {
-		ToolsOption_File.click();
+	// Verify Purchase File created Successfully or not
+	public FileList CreateNewPurchaseFile() throws InterruptedException {
+		PlusButton.click();
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
-		Thread.sleep(2000);
+		frame();
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Purchase");
 		int int_random = ThreadLocalRandom.current().nextInt();
@@ -72,27 +75,30 @@ public class Create_New_File extends AbstractComponent {
 		String GetFileName = a.getAttribute("value");
 		required_text.click();
 		CreateFile_Button.click();
-		waitForWebElementToAppear(HeaderFileName);
-		String GetFileName1 = HeaderFileName.getText();
+
+		waitForWebElementToAppear(BoldFilename);
+		String GetFileName1 = BoldFilename.getText();
 		Thread.sleep(3000);
 		boolean flag = false;
 		if (GetFileName.equalsIgnoreCase(GetFileName1)) {
 			flag = true;
 			ActionMenu.click();
 			DeleteFile.click();
-			driver.switchTo().alert().accept();
+			DeleteButton.click();
+			waitForWebElementToAppear(PlusButton);
 			System.out.println(" Purchase File Created and deleted Successfully:PASS");
-			
 		}
 		Assert.assertTrue(flag, "Purchase File not Created Successfully");
-		return new MainPage(driver);
+		return new FileList(driver);
 	}
 
-	public MainPage CreateNewSaleFile() throws InterruptedException {
-		ToolsOption_File.click();
+	// Verify Sale File created Successfully or not
+	public FileList CreateNewSaleFile() throws InterruptedException {
+		PlusButton.click();
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
-		Thread.sleep(2000);
+		frame();
+		Thread.sleep(3000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Sale");
 		int int_random = ThreadLocalRandom.current().nextInt();
@@ -101,27 +107,30 @@ public class Create_New_File extends AbstractComponent {
 		String GetFileName = a.getAttribute("value");
 		required_text.click();
 		CreateFile_Button.click();
-		waitForWebElementToAppear(HeaderFileName);
-		String GetFileName1 = HeaderFileName.getText();
-
+		waitForWebElementToAppear(BoldFilename);
+		String GetFileName1 = BoldFilename.getText();
+		Thread.sleep(3000);
 		boolean flag = false;
 		if (GetFileName.equalsIgnoreCase(GetFileName1)) {
 			flag = true;
 			waitForWebElementToAppear(ActionMenu);
 			ActionMenu.click();
 			DeleteFile.click();
-			driver.switchTo().alert().accept();
+			DeleteButton.click();
+			waitForWebElementToAppear(PlusButton);
 			System.out.println(" Sale File Created and deleted Successfully:PASS");
-			
+
 		}
 		Assert.assertTrue(flag, "Sale File not Created Successfully");
-		return new MainPage(driver);
+		return new FileList(driver);
 	}
 
-	public MainPage CreateNewMortgageFile() throws InterruptedException {
-		ToolsOption_File.click();
+	// Verify Mortgage File created Successfully or not
+	public FileList CreateNewMortgageFile() throws InterruptedException {
+		PlusButton.click();
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
+		frame();
 		Thread.sleep(2000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Mortgage");
@@ -131,8 +140,8 @@ public class Create_New_File extends AbstractComponent {
 		String GetFileName = a.getAttribute("value");
 		required_text.click();
 		CreateFile_Button.click();
-		waitForWebElementToAppear(HeaderFileName);
-		String GetFileName1 = HeaderFileName.getText();
+		waitForWebElementToAppear(BoldFilename);
+		String GetFileName1 = BoldFilename.getText();
 		Thread.sleep(3000);
 		boolean flag = false;
 		if (GetFileName.equalsIgnoreCase(GetFileName1)) {
@@ -140,22 +149,24 @@ public class Create_New_File extends AbstractComponent {
 			waitForWebElementToAppear(ActionMenu);
 			ActionMenu.click();
 			DeleteFile.click();
-			driver.switchTo().alert().accept();
+			DeleteButton.click();
+			waitForWebElementToAppear(PlusButton);
 			System.out.println(" Mortgage File Created and deleted Successfully:PASS");
 
 		}
 		Assert.assertTrue(flag, "Mortgage File not Created Successfully");
-		return new MainPage(driver);
+		return new FileList(driver);
 	}
 
+	// Create button should be Disable if file types and File name not provide
 	public void DisableCreateFileButton() {
-		ToolsOption_File.click();
+		PlusButton.click();
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
+		frame();
 		waitForWebElementToAppear(Inactive_Button);
 		boolean flag = false;
 		if (Inactive_Button.isEnabled());
-			
 
 		{
 			flag = true;
@@ -167,18 +178,16 @@ public class Create_New_File extends AbstractComponent {
 
 	}
 
-	public void EnableCreateFileButton() {
-		ToolsOption_File.click();
-		// waitForElementToAppear(CreateNewFile1);
-		CreateNewFile1.click();
-		waitForWebElementToAppear(Inactive_Button);
+	// Create button should be Enable if file types and File name are provide
+	public void EnableCreateFileButton() throws InterruptedException {
+		Thread.sleep(2000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Purchase");
 		FileName.sendKeys("Purchase");
 		required_text.click();
 
 		boolean flag1 = false;
-		if (Active_Button.isEnabled());			
+		if (Active_Button.isEnabled());
 
 		{
 			flag1 = true;
@@ -188,4 +197,11 @@ public class Create_New_File extends AbstractComponent {
 		Assert.assertTrue(flag1, "Create button Disabled even filename is available");
 
 	}
+	
+   //Switch to frame
+	public void frame() {
+		WebElement iframe = driver.findElement(Frame);
+		driver.switchTo().frame(iframe);
+	}
+
 }

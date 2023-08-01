@@ -17,8 +17,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
 
+import home.PageObject.FileList;
 import login.pageobject.LoginPage;
-import menubar_Main.PageObject.MainPage;
 
 public class AbstractComponent {
 	WebDriver driver;
@@ -68,15 +68,16 @@ public class AbstractComponent {
 	}
 
 	// Login Page
-	public MainPage Login(String Account, String User, String Password) throws InterruptedException, IOException {
+	public FileList Login(String Account, String User, String Password) throws InterruptedException, IOException {
 		LoginPage PageObject = new LoginPage(driver);
 		PageObject.AccountName.sendKeys(Account);
 		PageObject.UserName.sendKeys(User);
-		PageObject.Password.sendKeys(Password);
+		PageObject.Password.sendKeys(Password);		
+		PageObject.Checked_site.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver = initializeDriver();
 		PageObject.LoginButton.click();
-		return new MainPage(driver);
+		return new FileList(driver);
 	}
 
 	// Explicit wait

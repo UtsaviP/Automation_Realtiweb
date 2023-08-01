@@ -1,4 +1,4 @@
-package menubar_Main.PageObject;
+package home.PageObject;
 
 import java.util.List;
 
@@ -11,16 +11,16 @@ import org.openqa.selenium.support.PageFactory;
 import PurchaseFile.BasicTabObject.Basic_Information;
 import project.AbstractComponents.AbstractComponent;
 
-public class MainPage extends AbstractComponent {
+public class FileList extends AbstractComponent {
 	WebDriver driver;
 
-	public MainPage(WebDriver driver) {// constructor
+	public FileList(WebDriver driver) {// constructor
 		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	// File->MainPage PageFactory
+	// File->FileList PageFactory
 	@FindBy(xpath = "//span[text()='New']")
 	public WebElement NewOption;
 

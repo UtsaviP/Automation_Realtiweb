@@ -1,7 +1,6 @@
 package loginPage;
 
 import org.testng.Assert;
-
 import org.testng.annotations.Test;
 import login.pageobject.LoginPage;
 import project.TestComponents.BaseTest;

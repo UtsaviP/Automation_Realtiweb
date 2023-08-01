@@ -13,5 +13,11 @@
     </classes>
   </test> <!-- Test -->
   
+  <test thread-count="5" name="CreateNewFile">
+    <classes>
+      <class name="home.CreateNewFileTest"/>
+    </classes>
+  </test> <!-- Test -->
+  
 </suite> <!-- Suite -->
 

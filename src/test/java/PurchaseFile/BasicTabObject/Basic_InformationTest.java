@@ -10,8 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import PurchaseFile.BasicTabObject.Basic_Information;
-import menubar_File.PageObject.Create_New_File;
-import menubar_Main.PageObject.MainPage;
+import home.PageObject.Create_New_File;
+import home.PageObject.FileList;
 import project.TestComponents.BaseTest;
 
 public class Basic_InformationTest extends BaseTest {
@@ -20,7 +20,7 @@ public class Basic_InformationTest extends BaseTest {
 
 	@Test(dataProvider = "getData")
 	public void Verify_Basic_Information_Tab(HashMap<String, String> input) throws InterruptedException, IOException {
-		MainPage MainPageObject = landingPage.Login(input.get("Account"), input.get("User"), input.get("Password"));
+		FileList MainPageObject = landingPage.Login(input.get("Account"), input.get("User"), input.get("Password"));
 		MainPageObject.ActiveRadio();
 		List<WebElement> FileList = MainPageObject.getFileList();
 		Basic_Information Basic_Information = MainPageObject.OpenPurchaseFile(input.get("FileName"));

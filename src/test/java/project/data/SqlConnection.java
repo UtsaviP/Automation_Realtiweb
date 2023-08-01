@@ -5,8 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-import menubar_File.PageObject.Create_New_File;
-import menubar_Main.PageObject.MainPage;
+import home.PageObject.Create_New_File;
+import home.PageObject.FileList;
 
 
 public class SqlConnection {

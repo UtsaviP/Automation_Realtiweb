@@ -76,6 +76,8 @@ public class Basic_Information extends AbstractComponent {
 		driver.findElement(By.xpath("//button[text()='Select Another']")).click();
 		driver.findElement(By.xpath("//a[text()='+ Add']")).click();
 		driver.findElement(By.xpath("//tr[@title='Enter the name of the Staff member.']//td//input")).click();
+		
+		
 		int int_random = ThreadLocalRandom.current().nextInt();
 		WebElement a = driver.findElement(Staff_Member_Name);
 		a.sendKeys("FirmContact_" + int_random);

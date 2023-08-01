@@ -1,61 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-07-31T15:04:17 EDT" name="Suite" finished-at="2023-07-31T15:04:42 EDT" duration-ms="24731">
+  <suite started-at="2023-08-01T16:16:31 EDT" name="Suite" finished-at="2023-08-01T16:17:38 EDT" duration-ms="67247">
     <groups>
     </groups>
-    <test started-at="2023-07-31T15:04:17 EDT" name="Login" finished-at="2023-07-31T15:04:42 EDT" duration-ms="24731">
+    <test started-at="2023-08-01T16:16:31 EDT" name="Login" finished-at="2023-08-01T16:16:45 EDT" duration-ms="14348">
       <class name="loginPage.LoginPageTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:17 EDT" name="launchApplication" finished-at="2023-07-31T15:04:22 EDT" duration-ms="5211" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:31 EDT" name="launchApplication" finished-at="2023-08-01T16:16:34 EDT" duration-ms="3325" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Login_Page_Working_Proper_Or_Not()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:22 EDT" name="Verify_Login_Page_Working_Proper_Or_Not" finished-at="2023-07-31T15:04:25 EDT" duration-ms="2432" status="PASS">
+        <test-method signature="Verify_Login_Page_Working_Proper_Or_Not()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:34 EDT" name="Verify_Login_Page_Working_Proper_Or_Not" finished-at="2023-08-01T16:16:36 EDT" duration-ms="1537" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_Login_Page_Working_Proper_Or_Not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:25 EDT" name="tearDown" finished-at="2023-07-31T15:04:25 EDT" duration-ms="217" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:36 EDT" name="tearDown" finished-at="2023-08-01T16:16:36 EDT" duration-ms="216" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:25 EDT" name="launchApplication" finished-at="2023-07-31T15:04:29 EDT" duration-ms="3533" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:36 EDT" name="launchApplication" finished-at="2023-08-01T16:16:38 EDT" duration-ms="1884" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_validation_when_AccountName_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:29 EDT" name="Verify_validation_when_AccountName_is_wrong" finished-at="2023-07-31T15:04:31 EDT" duration-ms="1952" status="PASS">
+        <test-method signature="Verify_validation_when_AccountName_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:38 EDT" name="Verify_validation_when_AccountName_is_wrong" finished-at="2023-08-01T16:16:39 EDT" duration-ms="864" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_validation_when_AccountName_is_wrong -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:31 EDT" name="tearDown" finished-at="2023-07-31T15:04:31 EDT" duration-ms="168" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:39 EDT" name="tearDown" finished-at="2023-08-01T16:16:39 EDT" duration-ms="219" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:31 EDT" name="launchApplication" finished-at="2023-07-31T15:04:35 EDT" duration-ms="3867" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:39 EDT" name="launchApplication" finished-at="2023-08-01T16:16:41 EDT" duration-ms="1909" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_validation_when_password_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:35 EDT" name="Verify_validation_when_password_is_wrong" finished-at="2023-07-31T15:04:36 EDT" duration-ms="1359" status="PASS">
+        <test-method signature="Verify_validation_when_password_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:41 EDT" name="Verify_validation_when_password_is_wrong" finished-at="2023-08-01T16:16:42 EDT" duration-ms="1016" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_validation_when_password_is_wrong -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:36 EDT" name="tearDown" finished-at="2023-07-31T15:04:36 EDT" duration-ms="223" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:42 EDT" name="tearDown" finished-at="2023-08-01T16:16:42 EDT" duration-ms="226" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:36 EDT" name="launchApplication" finished-at="2023-07-31T15:04:41 EDT" duration-ms="4414" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:42 EDT" name="launchApplication" finished-at="2023-08-01T16:16:44 EDT" duration-ms="1855" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_validation_when_username_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:41 EDT" name="Verify_validation_when_username_is_wrong" finished-at="2023-07-31T15:04:42 EDT" duration-ms="1097" status="PASS">
+        <test-method signature="Verify_validation_when_username_is_wrong()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:44 EDT" name="Verify_validation_when_username_is_wrong" finished-at="2023-08-01T16:16:45 EDT" duration-ms="1029" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_validation_when_username_is_wrong -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-07-31T15:04:42 EDT" name="tearDown" finished-at="2023-07-31T15:04:42 EDT" duration-ms="216" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:loginPage.LoginPageTest@4716be8b]" started-at="2023-08-01T16:16:45 EDT" name="tearDown" finished-at="2023-08-01T16:16:45 EDT" duration-ms="223" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- loginPage.LoginPageTest -->
     </test> <!-- Login -->
+    <test started-at="2023-08-01T16:16:46 EDT" name="CreateNewFile" finished-at="2023-08-01T16:17:38 EDT" duration-ms="52555">
+      <class name="home.CreateNewFileTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:16:46 EDT" name="launchApplication" finished-at="2023-08-01T16:16:48 EDT" duration-ms="1900" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_Create_File_button_is_disable_or_not(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:16:48 EDT" name="Verify_Create_File_button_is_disable_or_not" data-provider="getData" finished-at="2023-08-01T16:16:53 EDT" duration-ms="5140" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Account=LDDTesting, LawyerName=DAVID RUSH, User=Automation, FirmContact=, FileName=AutomationFile_[Do not Delete], Password=Automation}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Create_File_button_is_disable_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:16:53 EDT" name="tearDown" finished-at="2023-08-01T16:16:53 EDT" duration-ms="209" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:16:53 EDT" name="launchApplication" finished-at="2023-08-01T16:16:55 EDT" duration-ms="1870" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_Create_New_Mortgage_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:16:55 EDT" name="Verify_Create_New_Mortgage_File" data-provider="getData" finished-at="2023-08-01T16:17:07 EDT" duration-ms="11485" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Account=LDDTesting, LawyerName=DAVID RUSH, User=Automation, FirmContact=, FileName=AutomationFile_[Do not Delete], Password=Automation}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Create_New_Mortgage_File -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:07 EDT" name="tearDown" finished-at="2023-08-01T16:17:07 EDT" duration-ms="247" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:07 EDT" name="launchApplication" finished-at="2023-08-01T16:17:09 EDT" duration-ms="1905" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_Create_New_Purchase_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:09 EDT" name="Verify_Create_New_Purchase_File" data-provider="getData" finished-at="2023-08-01T16:17:21 EDT" duration-ms="12502" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Account=LDDTesting, LawyerName=DAVID RUSH, User=Automation, FirmContact=, FileName=AutomationFile_[Do not Delete], Password=Automation}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Create_New_Purchase_File -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:21 EDT" name="tearDown" finished-at="2023-08-01T16:17:21 EDT" duration-ms="225" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:21 EDT" name="launchApplication" finished-at="2023-08-01T16:17:23 EDT" duration-ms="1854" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_Create_New_Sale_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:23 EDT" name="Verify_Create_New_Sale_File" data-provider="getData" finished-at="2023-08-01T16:17:38 EDT" duration-ms="14750" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Account=LDDTesting, LawyerName=DAVID RUSH, User=Automation, FirmContact=, FileName=AutomationFile_[Do not Delete], Password=Automation}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Create_New_Sale_File -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@4b79ac84]" started-at="2023-08-01T16:17:38 EDT" name="tearDown" finished-at="2023-08-01T16:17:38 EDT" duration-ms="235" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- home.CreateNewFileTest -->
+    </test> <!-- CreateNewFile -->
   </suite> <!-- Suite -->
 </testng-results>
