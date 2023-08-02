@@ -1,14 +1,19 @@
 package home.PageObject;
 
-
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import io.netty.handler.timeout.TimeoutException;
 import io.netty.util.internal.ThreadLocalRandom;
 import project.AbstractComponents.AbstractComponent;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Create_New_File extends AbstractComponent {
@@ -57,9 +62,17 @@ public class Create_New_File extends AbstractComponent {
 	@FindBy(xpath = "//li[text()='Create New File']")
 	public WebElement CreateNewFile1;
 
+	@FindBy(xpath = "//table[@id='create_SectionTable']/tbody/tr[4]/td[2]/input")
+	public WebElement MatterNumber;
+
 	By Create_New_File = By.xpath("//a[text()='New File']");
 	By FileNameBy = By.xpath("//tr[@name='OpeningInfo']//input[@class='input input-long']");
 	By Frame = By.xpath("//body/div[@id='root']/main[1]/div[1]/div[1]/div[1]/iframe[1]");
+	By P_TitleInsuranceTitle = By
+			.xpath("//h2[contains(text(),'Select Title Insurance Provider') and @subnodestatus=0]");
+	By S_FileConfigurationcaption = By
+			.xpath("//tr[@name='NewHomeNonTPLine'][2]/td/span[contains(text(),'New Home Sold by a Builder')]");
+	By M_MortgagorTitle = By.xpath("//span[contains(text(),'Mortgagor(s)')]");
 
 	// Verify Purchase File created Successfully or not
 	public FileList CreateNewPurchaseFile() throws InterruptedException {
@@ -166,7 +179,8 @@ public class Create_New_File extends AbstractComponent {
 		frame();
 		waitForWebElementToAppear(Inactive_Button);
 		boolean flag = false;
-		if (Inactive_Button.isEnabled());
+		if (Inactive_Button.isEnabled())
+			;
 
 		{
 			flag = true;
@@ -187,7 +201,8 @@ public class Create_New_File extends AbstractComponent {
 		required_text.click();
 
 		boolean flag1 = false;
-		if (Active_Button.isEnabled());
+		if (Active_Button.isEnabled())
+			;
 
 		{
 			flag1 = true;
@@ -197,8 +212,72 @@ public class Create_New_File extends AbstractComponent {
 		Assert.assertTrue(flag1, "Create button Disabled even filename is available");
 
 	}
+
+	// verify warning message while provide same name that already exist in database
+	public boolean existFilenameMessage(String FileName) throws InterruptedException {
+		PlusButton.click();
+		waitForElementToAppear(Create_New_File);
+		driver.findElement(Create_New_File).click();
+		frame();
+		Thread.sleep(2000);
+		Select DealType_select = new Select(DealType);
+		DealType_select.selectByVisibleText("Purchase");
+		MatterNumber.sendKeys(FileName);
+		CreateFile_Button.click();
+		Thread.sleep(2000);
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
+		boolean isWarningMessageDisplayed = true;
+		return isWarningMessageDisplayed;
+	}
+
+	// Fields should be reflect based on File types
+	public void DropdownVerificationTest() throws InterruptedException {
+		 boolean isVerificationSuccessful = true;
+		try {
+	        PlusButton.click();
+	        waitForElementToAppear(Create_New_File);
+	        driver.findElement(Create_New_File).click();
+	        frame();
+	        Thread.sleep(2000);
+	        // Create a Select object for the dropdown
+	        Select DealType_select = new Select(DealType);
+
+	        // Verify Purchase dropdown
+	        DealType_select.selectByVisibleText("Purchase");
+	        if (!isElementDisplayed(P_TitleInsuranceTitle)) {
+	            System.out.println("Failed to show Purchase related fields.");
+	            isVerificationSuccessful = false;
+	        }
+
+	        // Verify Sale dropdown
+	        DealType_select.selectByVisibleText("Sale");
+	        if (!isElementDisplayed(S_FileConfigurationcaption)) {
+	            System.out.println("Failed to show Sale related fields.");
+	            isVerificationSuccessful = false;
+	        }
+
+	        // Verify Mortgage dropdown
+	        DealType_select.selectByVisibleText("Mortgage");
+	        if (!isElementDisplayed(M_MortgagorTitle)) {
+	            System.out.println("Failed to show Mortgage related fields.");
+	            isVerificationSuccessful = false;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        isVerificationSuccessful = false;
+	    }
+
+	    if (isVerificationSuccessful) {
+	        System.out.println("Dropdown verification test passed.");
+	    } else {
+	        System.out.println("Dropdown verification test failed.");
+	    }
+	}
+
 	
-   //Switch to frame
+
+	// Switch to frame
 	public void frame() {
 		WebElement iframe = driver.findElement(Frame);
 		driver.switchTo().frame(iframe);

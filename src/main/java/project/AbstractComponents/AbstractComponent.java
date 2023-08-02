@@ -109,5 +109,15 @@ public class AbstractComponent {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", ite);
 	}
-
+	
+	// Utility method to check if an element is displayed using WebDriverWait
+	public boolean isElementDisplayed(By locator) {
+	    try {
+	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	        return element.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
 }
