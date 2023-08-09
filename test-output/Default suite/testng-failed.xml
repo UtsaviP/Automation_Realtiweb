@@ -3,14 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="home.FileListTest">
+      <class name="home.CreateNewFileTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_Purchase_File_is_open_or_not"/>
-          <include name="Verify_Create_New__File_Option" invocation-numbers="0"/>
+          <include name="verify_warning_message_while_provide_same_name_that_already_exist_in_database"/>
+          <include name="Verify_Create_New_Mortgage_File"/>
+          <include name="Verify_Create_button_should_be_Enable_or_Disable_based_on_condition"/>
+          <include name="Verify_Create_New_Sale_File"/>
+          <include name="Verify_Create_New_Purchase_File"/>
           <include name="tearDown"/>
+          <include name="verify_Fields_should_be_reflect_based_on_File_types"/>
         </methods>
-      </class> <!-- home.FileListTest -->
+      </class> <!-- home.CreateNewFileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
