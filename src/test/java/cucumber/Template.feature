@@ -9,5 +9,4 @@ Feature: Template validation
   Then "Incorrect email or password." message is displayed
 
   Examples:
-  |name           |password |
-  |sadik@gmail.com|Pass2020 |
+  |Automation     |Automation |
