@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -86,6 +87,7 @@ public class AbstractComponent {
 		wait.until(ExpectedConditions.visibilityOfElementLocated((By) ele));
 	}
 	
+	// Explicit wait
 	public void waitForElementToAppear(By findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
@@ -109,6 +111,21 @@ public class AbstractComponent {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", ite);
 	}
+	
+	// Unexpected alert
+		public void unexpectedAlert(WebElement alr) {
+			try {
+				(alr).click();
+	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	            wait.until(ExpectedConditions.alertIsPresent());
+	            Alert simpleAlert = driver.switchTo().alert();
+	            simpleAlert.accept();
+	            System.out.println("Unexpected alert accepted");
+	        } catch (Exception e) {
+	            System.out.println("unexpected alert not present");
+	        }
+
+		}
 	
 	// Utility method to check if an element is displayed using WebDriverWait
 	public boolean isElementDisplayed(By locator) {
