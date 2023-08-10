@@ -72,7 +72,7 @@ public class BaseTest {
 		return driver;
 	}
 
-	// DataProvider
+	// DataReader
 	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
 
 		// Read Json to string
