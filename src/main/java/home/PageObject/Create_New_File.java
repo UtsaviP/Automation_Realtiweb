@@ -68,10 +68,8 @@ public class Create_New_File extends AbstractComponent {
 	By Create_New_File = By.xpath("//a[text()='New File']");
 	By FileNameBy = By.xpath("//tr[@name='OpeningInfo']//input[@class='input input-long']");
 	By Frame = By.xpath("//body/div[@id='root']/main[1]/div[1]/div[1]/div[1]/iframe[1]");
-	By P_TitleInsuranceTitle = By
-			.xpath("//h2[contains(text(),'Select Title Insurance Provider') and @subnodestatus=0]");
-	By S_FileConfigurationcaption = By
-			.xpath("//tr[@name='NewHomeNonTPLine'][2]/td/span[contains(text(),'New Home Sold by a Builder')]");
+	By P_TitleInsuranceTitle = By.xpath("//h2[contains(text(),'Select Title Insurance Provider') and @subnodestatus=0]");
+	By S_FileConfigurationcaption = By.xpath("//tr[@name='NewHomeNonTPLine'][2]/td/span[contains(text(),'New Home Sold by a Builder')]");
 	By M_MortgagorTitle = By.xpath("//span[contains(text(),'Mortgagor(s)')]");
 
 	// Verify Purchase File created Successfully or not
@@ -179,8 +177,7 @@ public class Create_New_File extends AbstractComponent {
 		frame();
 		waitForWebElementToAppear(Inactive_Button);
 		boolean flag = false;
-		if (Inactive_Button.isEnabled())
-			;
+		if (Inactive_Button.isEnabled());
 
 		{
 			flag = true;
@@ -201,8 +198,7 @@ public class Create_New_File extends AbstractComponent {
 		required_text.click();
 
 		boolean flag1 = false;
-		if (Active_Button.isEnabled())
-			;
+		if (Active_Button.isEnabled());
 
 		{
 			flag1 = true;

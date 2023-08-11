@@ -120,4 +120,14 @@ public class AbstractComponent {
 	        return false;
 	    }
 	}
+	
+	
+	public static boolean isElementNotPresent(WebDriver driver, By locator) {
+        try {
+            driver.findElement(locator);
+            return false; // Element is present
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return true; // Element is not present
+        }
+    }
 }
