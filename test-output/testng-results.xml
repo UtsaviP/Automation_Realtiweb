@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="6" passed="5" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-15T15:27:39 EDT" name="Default suite" finished-at="2023-08-15T15:28:34 EDT" duration-ms="54710">
+  <suite started-at="2023-08-15T15:58:04 EDT" name="Default suite" finished-at="2023-08-15T15:59:00 EDT" duration-ms="55789">
     <groups>
     </groups>
-    <test started-at="2023-08-15T15:27:39 EDT" name="Default test" finished-at="2023-08-15T15:28:34 EDT" duration-ms="54710">
+    <test started-at="2023-08-15T15:58:04 EDT" name="Default test" finished-at="2023-08-15T15:59:00 EDT" duration-ms="55789">
       <class name="home.CreateNewFileTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:39 EDT" name="launchApplication" finished-at="2023-08-15T15:27:42 EDT" duration-ms="2715" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:04 EDT" name="launchApplication" finished-at="2023-08-15T15:58:07 EDT" duration-ms="2872" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Create_New_Mortgage_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:42 EDT" name="Verify_Create_New_Mortgage_File" data-provider="getData" finished-at="2023-08-15T15:27:54 EDT" duration-ms="12110" status="PASS">
+        <test-method signature="Verify_Create_New_Mortgage_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:07 EDT" name="Verify_Create_New_Mortgage_File" data-provider="getData" finished-at="2023-08-15T15:58:19 EDT" duration-ms="11538" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,15 +22,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_Create_New_Mortgage_File -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:54 EDT" name="tearDown" finished-at="2023-08-15T15:27:54 EDT" duration-ms="274" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:19 EDT" name="tearDown" finished-at="2023-08-15T15:58:19 EDT" duration-ms="215" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:54 EDT" name="launchApplication" finished-at="2023-08-15T15:27:56 EDT" duration-ms="1497" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:19 EDT" name="launchApplication" finished-at="2023-08-15T15:58:21 EDT" duration-ms="1576" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Create_New_Purchase_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:56 EDT" name="Verify_Create_New_Purchase_File" data-provider="getData" finished-at="2023-08-15T15:27:58 EDT" duration-ms="2579" status="FAIL">
+        <test-method signature="Verify_Create_New_Purchase_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:21 EDT" name="Verify_Create_New_Purchase_File" data-provider="getData" finished-at="2023-08-15T15:58:23 EDT" duration-ms="2217" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -45,10 +45,10 @@
 Build info: version: '4.8.3', revision: 'e5e76298c3'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0f90d707a9cef28069c074120a997ee3, clickElement {id=B5EAF2F96020A8C841D6C12224AA4CF4_element_60}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.171, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\sadik\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:53688}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53688/devtoo..., se:cdpVersion: 115.0.5790.171, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[[[ChromeDriver: chrome on WINDOWS (0f90d707a9cef28069c074120a997ee3)] -> xpath: (//select[@title='Select the type of transaction for this deal'])[1]]] -> xpath: .//option[normalize-space(.) = "Purchase"]]
-Session ID: 0f90d707a9cef28069c074120a997ee3]]>
+Command: [37563394a4f51e64a3772219bcd60729, clickElement {id=D1E499072E992A37673159B57697D52D_element_64}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.171, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\sadik\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:54183}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54183/devtoo..., se:cdpVersion: 115.0.5790.171, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[[[ChromeDriver: chrome on WINDOWS (37563394a4f51e64a3772219bcd60729)] -> xpath: (//select[@title='Select the type of transaction for this deal'])[1]]] -> xpath: .//option[normalize-space(.) = "Purchase"]]
+Session ID: 37563394a4f51e64a3772219bcd60729]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable: Element is not currently visible and may not be manipulated
@@ -56,10 +56,10 @@ Session ID: 0f90d707a9cef28069c074120a997ee3]]>
 Build info: version: '4.8.3', revision: 'e5e76298c3'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0f90d707a9cef28069c074120a997ee3, clickElement {id=B5EAF2F96020A8C841D6C12224AA4CF4_element_60}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.171, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\sadik\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:53688}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53688/devtoo..., se:cdpVersion: 115.0.5790.171, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[[[ChromeDriver: chrome on WINDOWS (0f90d707a9cef28069c074120a997ee3)] -> xpath: (//select[@title='Select the type of transaction for this deal'])[1]]] -> xpath: .//option[normalize-space(.) = "Purchase"]]
-Session ID: 0f90d707a9cef28069c074120a997ee3
+Command: [37563394a4f51e64a3772219bcd60729, clickElement {id=D1E499072E992A37673159B57697D52D_element_64}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.171, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\sadik\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:54183}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54183/devtoo..., se:cdpVersion: 115.0.5790.171, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[[[ChromeDriver: chrome on WINDOWS (37563394a4f51e64a3772219bcd60729)] -> xpath: (//select[@title='Select the type of transaction for this deal'])[1]]] -> xpath: .//option[normalize-space(.) = "Purchase"]]
+Session ID: 37563394a4f51e64a3772219bcd60729
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -112,15 +112,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_Create_New_Purchase_File -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:58 EDT" name="tearDown" finished-at="2023-08-15T15:27:59 EDT" duration-ms="156" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:23 EDT" name="tearDown" finished-at="2023-08-15T15:58:23 EDT" duration-ms="495" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:27:59 EDT" name="launchApplication" finished-at="2023-08-15T15:28:00 EDT" duration-ms="1541" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:23 EDT" name="launchApplication" finished-at="2023-08-15T15:58:25 EDT" duration-ms="2012" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Create_New_Sale_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:00 EDT" name="Verify_Create_New_Sale_File" data-provider="getData" finished-at="2023-08-15T15:28:13 EDT" duration-ms="12642" status="PASS">
+        <test-method signature="Verify_Create_New_Sale_File(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:25 EDT" name="Verify_Create_New_Sale_File" data-provider="getData" finished-at="2023-08-15T15:58:38 EDT" duration-ms="12804" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -131,15 +131,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_Create_New_Sale_File -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:13 EDT" name="tearDown" finished-at="2023-08-15T15:28:13 EDT" duration-ms="207" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:38 EDT" name="tearDown" finished-at="2023-08-15T15:58:38 EDT" duration-ms="187" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:13 EDT" name="launchApplication" finished-at="2023-08-15T15:28:14 EDT" duration-ms="1518" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:38 EDT" name="launchApplication" finished-at="2023-08-15T15:58:40 EDT" duration-ms="1609" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="Verify_Create_button_should_be_Enable_or_Disable_based_on_condition(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:14 EDT" name="Verify_Create_button_should_be_Enable_or_Disable_based_on_condition" data-provider="getData" finished-at="2023-08-15T15:28:19 EDT" duration-ms="4884" status="PASS">
+        <test-method signature="Verify_Create_button_should_be_Enable_or_Disable_based_on_condition(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:40 EDT" name="Verify_Create_button_should_be_Enable_or_Disable_based_on_condition" data-provider="getData" finished-at="2023-08-15T15:58:45 EDT" duration-ms="5115" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -150,15 +150,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_Create_button_should_be_Enable_or_Disable_based_on_condition -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:19 EDT" name="tearDown" finished-at="2023-08-15T15:28:20 EDT" duration-ms="229" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:45 EDT" name="tearDown" finished-at="2023-08-15T15:58:45 EDT" duration-ms="188" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:20 EDT" name="launchApplication" finished-at="2023-08-15T15:28:21 EDT" duration-ms="1607" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:45 EDT" name="launchApplication" finished-at="2023-08-15T15:58:47 EDT" duration-ms="1626" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verify_Fields_should_be_reflect_based_on_File_types(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:21 EDT" name="verify_Fields_should_be_reflect_based_on_File_types" data-provider="getData" finished-at="2023-08-15T15:28:25 EDT" duration-ms="4196" status="PASS">
+        <test-method signature="verify_Fields_should_be_reflect_based_on_File_types(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:47 EDT" name="verify_Fields_should_be_reflect_based_on_File_types" data-provider="getData" finished-at="2023-08-15T15:58:52 EDT" duration-ms="4606" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -169,15 +169,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verify_Fields_should_be_reflect_based_on_File_types -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:25 EDT" name="tearDown" finished-at="2023-08-15T15:28:26 EDT" duration-ms="184" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:52 EDT" name="tearDown" finished-at="2023-08-15T15:58:52 EDT" duration-ms="152" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:26 EDT" name="launchApplication" finished-at="2023-08-15T15:28:27 EDT" duration-ms="1480" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:52 EDT" name="launchApplication" finished-at="2023-08-15T15:58:53 EDT" duration-ms="1675" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verify_warning_message_while_provide_same_name_that_already_exist_in_database(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:27 EDT" name="verify_warning_message_while_provide_same_name_that_already_exist_in_database" data-provider="getData" finished-at="2023-08-15T15:28:33 EDT" duration-ms="6471" status="PASS">
+        <test-method signature="verify_warning_message_while_provide_same_name_that_already_exist_in_database(java.util.HashMap)[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:58:53 EDT" name="verify_warning_message_while_provide_same_name_that_already_exist_in_database" data-provider="getData" finished-at="2023-08-15T15:59:00 EDT" duration-ms="6375" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -188,7 +188,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verify_warning_message_while_provide_same_name_that_already_exist_in_database -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:28:33 EDT" name="tearDown" finished-at="2023-08-15T15:28:34 EDT" duration-ms="179" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.CreateNewFileTest@21282ed8]" started-at="2023-08-15T15:59:00 EDT" name="tearDown" finished-at="2023-08-15T15:59:00 EDT" duration-ms="210" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeTest;
 
 import home.PageObject.FileList;
 import login.pageobject.LoginPage;
+import project.pageobject.LandingPageObject;
 
 public class AbstractComponent {
 	WebDriver driver;
@@ -81,6 +82,20 @@ public class AbstractComponent {
 		return new FileList(driver);
 	}
 
+	// AnotherTest Login Page
+	public LandingPageObject Login(String userEmail, String userPassword) throws InterruptedException, IOException {
+		LandingPageObject PageObject = new LandingPageObject(driver);
+		PageObject.userEmail.sendKeys(userEmail);
+		PageObject.userPassword.sendKeys(userPassword);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//driver = initializeDriver();
+		PageObject.submit.click();
+		return new LandingPageObject(driver);
+	}
+	
+	
+	
+	
 	// Explicit wait
 	public void waitForElementToAppear1(WebElement ele  ) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
