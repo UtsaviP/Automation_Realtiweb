@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="home.CreateNewFileTest">
+      <class name="PurchaseFile.BasicTabObject.Basic_InformationTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_Create_New_Purchase_File" invocation-numbers="0"/>
+          <include name="Verify_Basic_Information_Tab" invocation-numbers="0"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- home.CreateNewFileTest -->
+      </class> <!-- PurchaseFile.BasicTabObject.Basic_InformationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
