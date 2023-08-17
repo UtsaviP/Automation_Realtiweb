@@ -83,7 +83,7 @@ public class AbstractComponent {
 		return new FileList(driver);
 	}
 
-	// Login Page2
+	// AnotherTest Login Page
 	public LandingPageObject Login(String userEmail, String userPassword) throws InterruptedException, IOException {
 		LandingPageObject PageObject = new LandingPageObject(driver);
 		PageObject.userEmail.sendKeys(userEmail);
@@ -93,19 +93,27 @@ public class AbstractComponent {
 		PageObject.submit.click();
 		return new LandingPageObject(driver);
 	}
-	
-	// Login Page2
+
+    // Login- user, pass
 	public LoginPageObject Login1(String Account, String User, String Password) throws InterruptedException, IOException {
 		LoginPageObject PageObject = new LoginPageObject(driver);
 		PageObject.AccountName.sendKeys(Account);
 		PageObject.UserName.sendKeys(User);
 		PageObject.Password.sendKeys(Password);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver = initializeDriver();
+		return new LoginPageObject(driver);
+	}		
+
+	// Login - province, view
+	public LoginPageObject Login1(String Provinces) throws InterruptedException, IOException {
+		LoginPageObject PageObject = new LoginPageObject(driver);
+		Select Province = new Select(driver.findElement(By.id("ProductProvince"))); // id = ProductProvince
+		Province.selectByVisibleText(Provinces);
 		PageObject.EnhancedView.click();
 		PageObject.LoginButton.click();
 		return new LoginPageObject(driver);
-	}
+	}	
+
 	
 	// Explicit wait
 	public void waitForElementToAppear1(WebElement ele  ) {

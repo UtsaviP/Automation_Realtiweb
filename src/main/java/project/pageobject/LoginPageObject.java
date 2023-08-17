@@ -19,37 +19,44 @@ public class LoginPageObject extends AbstractComponent { //inherit
 	
 	
 	// Login Page PageFactory
-		@FindBy(id = "userID")
-		public WebElement AccountName;
+	@FindBy(id = "userID")
+	public WebElement AccountName;
 
-		@FindBy(id = "subID")
-		public WebElement UserName;
+	@FindBy(id = "subID")
+	public WebElement UserName;
 
-		@FindBy(id = "passEntry")
-		public WebElement Password;
+	@FindBy(id = "passEntry")
+	public WebElement Password;
 
-		@FindBy(id = "tologin")
-		public WebElement LoginButton;
+	@FindBy(id = "tologin")
+	public WebElement LoginButton;
 
-		@FindBy(id = "ProductProvince")
-		public WebElement ProductProvince;
+	@FindBy(xpath = "//input[@value='1']")
+	public WebElement EnhancedView;
+	
+	@FindBy(id = "intitials")
+	public WebElement AccountInitials;
+	
+	@FindBy(id = "ProductProvince")
+	public WebElement ProductProvince;
+	
+	
+	
+	
+	public String getAccountInitials()
+	{
+		waitForWebElementToAppear(AccountInitials);
+		return AccountInitials.getText();
+	}
 
-		@FindBy(xpath = "//input[@value='1']")
-		public WebElement EnhancedView;
+/*
+	public void getProductProvince(String province) {			
+		Select Province = new Select(ProductProvince);
+		Province.selectByVisibleText(province);
 		
-		@FindBy(id = "intitials")
-		public WebElement AccountInitials;
-		
+	}
+*/
 
-		public String getAccountInitials()
-		{
-			waitForWebElementToAppear(AccountInitials);
-			return AccountInitials.getText();
-		}
-	
-	
-	
-	
 	
 	
 	

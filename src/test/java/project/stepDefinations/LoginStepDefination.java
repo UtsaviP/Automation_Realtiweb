@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 import project.AbstractComponents.AbstractComponent;
 import project.TestComponents.BaseTest;
+import project.pageobject.LoginPageObject;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,30 +16,33 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class LoginStepDefination {
+public class LoginStepDefination extends BaseTest {
 
 	@Given("Enter Website for Login")
-	public void enter_website_for_login() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void enter_website_for_login() throws IOException 
+	{
+		landingPage=launchApplication();
 	}
-	@When("Enter Automation and {int} for Login")
-	public void enter_automation_and_for_login(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	
+	
+	@When("^Enter Account (.+) username (.+) and password (.+) for Login")
+	public void Enter_username_and_password_for_Login(String Account,String username,String password) throws InterruptedException, IOException
+	{
+		LoginPageObject MainPageObject = landingPage.Login1(Account,username,password);
+		
 	}
-	@When("Enter <povince>")
-	public void enter_povince() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	
+	@When("^Enter province (.+)")
+	public void Enter_province(String Provinces) throws InterruptedException, IOException
+	{
+		LoginPageObject MainPageObject = landingPage.Login1(Provinces);
 	}
+	
 	@Then("Verify the Login fail")
-	public void verify_the_login_fail() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void verify_the_login_fail() 
+	{
+		//
 	}
-	
-	
 	
 	
 	

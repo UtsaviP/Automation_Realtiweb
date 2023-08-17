@@ -16,23 +16,21 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @tag
 Feature: Login to RealtiWeb
 
   @Regression
   Scenario Outline: Verify Login
 		Given Enter Website for Login
-		When Enter <username> and <password> for Login
-		And Enter <povince>
+		When Enter Account <Account> username <username> and password <password> for Login
+		And Enter province <Provinces>
 		Then Verify the Login <status>
 
     Examples: 
-      |Account    | username     | password    |  province  | status  |
-      |LDDTesting | Automation   | Automation  | Ontario    | success |
-      |LDDTesting | Automation   |     7       | Ontario    | fail    |
+      |Account    | username     | password      |  Provinces | status  |
+      |LDDTesting | Automation   | Automation    | Alberta    | success |
+    ##|LDDTesting | Automation   | Automation    | Alberta    | fail    |
+    ##|LDDTesting | wrongUserName| Automation    | Ontario    | fail    |
+	  ##|LDDTesting | Automation   | wrongPassword | Ontario    | fail    |
 
-      
-      
-      
       
