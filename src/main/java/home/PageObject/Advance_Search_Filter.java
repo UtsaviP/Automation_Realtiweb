@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import home.PageObject.*;
 import project.AbstractComponents.AbstractComponent;
@@ -39,11 +40,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By AdvanceSearchbutton = By.xpath("//i[@id='searchOptionBtn2']");
 	By Filelist = By.xpath("//table[@class='table table-striped table-hover']//thead//tr/th");
 	By ClearSearch = By.xpath("//button[@id='clearSearchBtn']");
-	By SelectLawyer1 = By.xpath("//div[@id='adSearchContainer']//div[1]//select[1]");
 	By FileLawyerName = By.xpath("//tr[@title='Lawyer responsible for this file']/td[2]/span");
 	By FileFirmName = By.xpath("//tr[@xmlbase='Staff']//span[@class='input-inactive input-long']/span[1]");
 	By Filelistname = By.xpath("//div[@id='ListSection']//table//tbody//td[1]/span");
-	By Filelist11 = By.xpath("//div[@id='ListSection']");
+	By HomepageFilelist = By.xpath("//div[@id='ListSection']");
 	By HomeButton = By.xpath("//div[@id='root']//div[1]//a[1]");
 	By ClientNameField = By.xpath("//body/div[@id='root']/main[1]//div[3]/input[@class='form-control']");
 	By Reline_IncludeField = By.xpath("(//input[@class='form-control'])[2]");
@@ -54,14 +54,20 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By Closing_Before = By.xpath("//body/div[@id='root']/main[1]//div[3]/div[4]/div[1]/div[1]/div[1]/input[1]");
 	By Propertyaddress = By.xpath("//div[@class='col-6 col']/input");
 	By Propertytype = By.xpath("//div[@class='mb-5 row']/div[2]/label[text()='Property Type']/following-sibling::*");
-	By menu_property=By.xpath("(//div[@class='me-auto'])[4]");
-	
-	
+	By menu_property = By.xpath("//span[@class='item-name' and contains(text(),'Property')]");
+	By FilePropertyType = By.cssSelector("select[required='1'][requiredstatus='1'][attrname='PropertyType']");
+	By LawyerName = By.xpath("//div[@class='row']//div[1]//input[1]");
+	By FileLawyername = By
+			.cssSelector("tr[xmlbase='Solicitor'] span[class='input-inactive input-long'] span[attrname='Name']");
+	By Filenumber = By.xpath("//div[@class='row']//div[2]//input[1]");
+	By Noresult = By.xpath("//i[normalize-space()='- No Search Results Found -']");
+	By OtherFileno=By.xpath("//input[@attrname='OtherSideMatterNumber']");
+			
 	@FindBy(xpath = "//label[contains(text(),'Purchase')]")
 	public WebElement PurchaseCheckbox;
 
 	@FindBy(xpath = "//iframe[@class='clsCompatHost']")
-	public WebElement frametest;
+	public WebElement InsidefileFrame;
 
 	@FindBy(xpath = "//label[contains(text(),'Sale')]")
 	public WebElement SaleCheckbox;
@@ -101,17 +107,12 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	@FindBy(xpath = "//div[@id='adSearchContainer']//div[1]//select[1]")
 	public WebElement SelectLawyer;
-	
-	@FindBy(xpath = "//tr[@title=\"If not a standard condominium plan description, click on 'Input text below' in 'Input Legal Description details' and complete.\"]//td//select")
-	public WebElement PropertyType;
-	
-	
-	
+
 	@FindBy(xpath = "(//select[@class='form-select'])[2]")
 	public WebElement SelectFirmContact;
 
 	@FindBy(xpath = "//div[@id='ListSection']//table//tbody//td[1]/span")
-	List<WebElement> Filelist1;
+	List<WebElement> WebFilelist;
 
 	// Verify Cancel Button working proper or not
 	public FileList CancelButton() throws InterruptedException {
@@ -122,18 +123,20 @@ public class Advance_Search_Filter extends AbstractComponent {
 		boolean isPopupClosed = isElementNotPresent(driver, By.id("//div[@id='adSearchContainer']"));
 
 		if (isPopupClosed) {
-			System.out.println("Cancel button works: Pop-up is closed.");
+			System.out.println("*****Pass : Cancel button works: Pop-up is closed.*****");
 		} else {
-			System.out.println("Cancel button does not work: Pop-up is still open.");
+			Assert.fail("*****Fail : Cancel button does not work: Pop-up is still open.*****");
+			
 		}
 
 		return new FileList(driver);
 	}
 
-	// Verify Search with File Types Purchase and Sale
+	// Verify File Types Criteria working or not
 	public FileList AdvanceSearchFileTypes() throws InterruptedException {
+		ClearAndHome();
 		AdvanceSearchButton();
-		Thread.sleep(3000);
+		Filelistwait(); // explicit wait
 
 		if (PurchaseCheckbox.isSelected()) {
 			PurchaseCheckbox.click();
@@ -145,42 +148,48 @@ public class Advance_Search_Filter extends AbstractComponent {
 			MortgageCheckbox.click();
 		}
 		SearchButton.click();
-		Thread.sleep(4000);
-		List<WebElement> getFileList = ListFileType;
-		List<WebElement> getFileList1 = ListFileName;
-		boolean allFilesArePurchaseOrSale = true;
-		for (int i = 0; i < getFileList.size(); i++) {
-			WebElement fileTypeElement = getFileList.get(i);
-			WebElement fileNameElement = getFileList1.get(i);
 
-			String filetype = fileTypeElement.getText();
-			String fileName = fileNameElement.getText();
-			if (filetype.contains("Purchase") || filetype.contains("Sale")) {
-				System.out.println("Expected file: " + fileName + ":" + filetype);
-			} else {
-				System.out.println("UnExpected file: " + fileName + ":" + filetype);
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+
+		waitForFileListUpdate(initialFileList);
+		Thread.sleep(3000);
+		if (!isElementDisplayed(Noresult)) {
+			List<WebElement> getFileList = ListFileType;
+
+			boolean allFilesArePurchaseOrSale = false;
+			for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
+				WebElement fileTypeElement = getFileList.get(i);
+				WebElement fileNameElement = initialFileList.get(i);
+
+				String filetype = fileTypeElement.getText();
+				String fileName = fileNameElement.getText();
+				System.out.println("File: " + fileName + " | Type: " + filetype);
+
+				if (filetype.contains("Purchase") || filetype.contains("Sale")) {
+					System.out.println("Expected file: " + fileName + ":" + filetype);
+					allFilesArePurchaseOrSale = true;
+				} else {
+					System.out.println("Unexpected file: " + fileName + ":" + filetype);
+				}
 			}
-		}
 
-		if (allFilesArePurchaseOrSale) {
-			System.out.println("Verification successful: Only 'Purchase' and 'Sale' files are displayed.");
+			if (allFilesArePurchaseOrSale) {
+				System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
+			} else {
+				Assert.fail("*****Fail : Other file types are also displayed.*****");
+				
+			}
 		} else {
-			allFilesArePurchaseOrSale = false;
-			System.out.println("Verification failed: Other file types are also displayed.");
+			System.out.println("***No Search result found for FileTypes criteria***");
 		}
-
 		return new FileList(driver);
-
 	}
 
-	// Verify File Status Active and Archives working or not
 	public FileList AdvanceSearchFileStatus() throws InterruptedException {
-
-		if (isElementDisplayed(ClearSearch)) {
-			waitForElementToAppear(ClearSearch);
-			driver.findElement(ClearSearch).click();
-		}
+		ClearAndHome();
 		AdvanceSearchButton();
+
+		Filelistwait(); // explicit wait
 
 		if (!ActiveCheckbox.isSelected()) {
 			ActiveCheckbox.click();
@@ -189,102 +198,109 @@ public class Advance_Search_Filter extends AbstractComponent {
 			ArchivedCheckbox.click();
 		}
 		SearchButton.click();
-		waitForElementToAppear(Filelist);
-		List<WebElement> getFileList = ListFileStatus;
-		List<WebElement> getFileList1 = ListFileName;
-		boolean allFilesAreArchived = true;
 
-		for (int i = 0; i < getFileList.size(); i++) {
-			WebElement fileStatusElement = getFileList.get(i);
-			WebElement fileNameElement = getFileList1.get(i);
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+		Thread.sleep(3000);
 
-			String fileStatus = fileStatusElement.getText();
-			String fileName = fileNameElement.getText();
+		if (!isElementDisplayed(Noresult)) {
+			List<WebElement> getFileList = ListFileStatus;
+			boolean allFilesAreArchived = false;
 
-			if (fileStatus.contains("Archived")) {
-				System.out.println("Expected file: " + fileName + ":" + fileStatus);
-			} else {
-				allFilesAreArchived = false; // Update the flag to false if any non-archived file is found
-				System.out.println("Unexpected file: " + fileName + ":" + fileStatus);
+			for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
+
+				initialFileList = driver.findElements(Filelistname);
+
+				WebElement fileStatusElement = getFileList.get(i);
+				WebElement fileNameElement = initialFileList.get(i);
+
+				String fileStatus = fileStatusElement.getText();
+				String fileName = fileNameElement.getText();
+
+				if (fileStatus.contains("Archived")) {
+					System.out.println("Expected file: " + fileName + ":" + fileStatus);
+					allFilesAreArchived = true;
+				} else {
+
+					System.out.println("Unexpected file: " + fileName + ":" + fileStatus);
+				}
 			}
-		}
 
-		if (allFilesAreArchived) {
-			System.out.println("Verification successful: Only 'Archived' files are displayed.");
+			if (allFilesAreArchived) {
+				System.out.println("*****Pass : Only 'Archived' files are displayed.*****");
+			} else {
+				allFilesAreArchived = false;
+				Assert.fail("*****Fail : Other file statuses are also displayed.*****");
+			}
 		} else {
-			allFilesAreArchived = false;
-			System.out.println("Verification failed: Other file statuses are also displayed.");
+			System.out.println("***No Search result found for File Status Criteria***");
 		}
-
 		return new FileList(driver);
-
 	}
 
 	// Verify Responsible Lawyer working proper or not
 	public FileList AdvanceSearchResponsibleLawyer(String LawyerName) throws InterruptedException {
-
-		ClearSearch();
+		ClearAndHome();
 		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
 
 		Select selectLawyer = new Select(SelectLawyer);
 		selectLawyer.selectByValue(LawyerName);
-
 		SearchButton.click();
 
-		waitForElementToAppear(Filelist11);
-		Thread.sleep(3000);
-		List<WebElement> fileList1 = driver.findElements(Filelistname);
-		boolean lawyerNameMatch = false;
-		if (fileList1 != null && !fileList1.isEmpty()) {
-			fileList1.get(0).click();
-			waitForWebElementToAppear(frametest);
-			driver.switchTo().frame(frametest);
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+
+		if (!isElementDisplayed(Noresult)) {
+			clickOnFirstFile();
+			waitForWebElementToAppear(InsidefileFrame);
+			driver.switchTo().frame(InsidefileFrame);
 			waitForElementToAppear(FileLawyerName);
 			String fileContentText = driver.findElement(FileLawyerName).getText();
-			lawyerNameMatch = fileContentText.equals(LawyerName);
+
+			boolean lawyerNameMatch = fileContentText.equals(LawyerName);
+
 			if (lawyerNameMatch) {
-				System.out.println("Pass: Lawyer name match found in the file content.");
+				System.out.println("*****Pass: Lawyer name match found in the file content.*****");
 			} else {
-				System.out.println("Fail: Lawyer name match not found in the file content.");
+				Assert.fail("****Fail: Lawyer name match not found in the file content.*****");
 			}
 			driver.switchTo().defaultContent();
 		} else {
-			System.out.println("No Search result found");
+			System.out.println("*****No Search result found for Responsible Lawyer criteira*****");
 		}
 		return new FileList(driver);
 	}
 
 	// Verify Firm contact working proper or not
 	public FileList AdvanceSearchFirmContact(String FirmContact) throws InterruptedException {
-
-		Homebutton();
-		ClearSearch();
+		ClearAndHome();
 		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
 
 		Select selectLawyer = new Select(SelectFirmContact);
 		selectLawyer.selectByValue(FirmContact);
 
 		SearchButton.click();
 
-		waitForElementToAppear(Filelist11);
-		Thread.sleep(3000);
-		List<WebElement> fileList1 = driver.findElements(Filelistname);
-		boolean FirmNameMatch = false;
-		if (fileList1 != null && !fileList1.isEmpty()) {
-			fileList1.get(0).click();
-			waitForWebElementToAppear(frametest);
-			driver.switchTo().frame(frametest);
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+
+		if (!isElementDisplayed(Noresult)) {
+			clickOnFirstFile();
+			waitForWebElementToAppear(InsidefileFrame);
+			driver.switchTo().frame(InsidefileFrame);
 			waitForElementToAppear(FileFirmName);
 			String fileContentText = driver.findElement(FileFirmName).getText();
-			FirmNameMatch = fileContentText.equals(FirmContact);
+			boolean FirmNameMatch = fileContentText.equals(FirmContact);
 			if (FirmNameMatch) {
-				System.out.println("Pass: Firm name match found in the file content.");
+				System.out.println("*****Pass: Firm name match found in the file content.*****");
 			} else {
-				System.out.println("Fail: Firm name match not found in the file content.");
+				Assert.fail("*****Fail: Firm name match not found in the file content.*****");
 			}
 			driver.switchTo().defaultContent();
 		} else {
-			System.out.println("No Search result found");
+			System.out.println("****No Search result found for Firm Contact criteria****");
 		}
 		return new FileList(driver);
 	}
@@ -292,13 +308,12 @@ public class Advance_Search_Filter extends AbstractComponent {
 	// Verify ClientName working or not with different criteria
 	public FileList AdvanceSearchClientname(String AdvanceSearch_Client1, String AdvanceSearch_Client2,
 			String AdvanceSearch_Client3) throws InterruptedException {
-
-		Homebutton();
-
 		String[] clientNames = { AdvanceSearch_Client1, AdvanceSearch_Client2, AdvanceSearch_Client3 };
 		for (String clientName : clientNames) {
-			ClearSearch();
+			ClearAndHome();
 			AdvanceSearchButton();
+			Filelistwait(); // explicit wait
+
 			waitForElementToAppear(ClientNameField);
 			driver.findElement(ClientNameField).clear();
 			driver.findElement(ClientNameField).sendKeys(clientName);
@@ -306,91 +321,106 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 			List<WebElement> initialFileList = driver.findElements(Filelistname);
 			waitForFileListUpdate(initialFileList);
-			List<WebElement> getFileList = ListClientName;
 
-			boolean allClientname = true;
-			for (int i = 0; i < getFileList.size(); i++) {
+			if (!isElementDisplayed(Noresult)) {
+				List<WebElement> getFileList = ListClientName;
+				boolean allClientname = false;
 
 				// Re-find the elements after waiting
 				initialFileList = driver.findElements(Filelistname);
 				getFileList = ListClientName;
-				WebElement clientnameElement = getFileList.get(i);
-				WebElement fileNameElement = initialFileList.get(i);
 
-				String clientname = clientnameElement.getText();
-				String fileName = fileNameElement.getText();
-				if (clientname.contains(clientName)) {
-					System.out.println("Expected file: " + fileName + ":" + clientname);
-				} else {
-					allClientname = false;
-					System.out.println("UnExpected file: " + fileName + ":" + clientname);
-				}
-			}
+				for (int i = 0; i < getFileList.size(); i++) {
+					WebElement clientnameElement = getFileList.get(i);
+					WebElement fileNameElement = initialFileList.get(i);
 
-		}
-
-		return new FileList(driver);
-	}
-
-	// Verify Reline Criteria working proper or not
-	@SuppressWarnings("unlikely-arg-type")
-	public FileList AdvanceSearchReline(String[] AdvanceSearch_Reline) throws InterruptedException {
-
-		Homebutton();
-		for (String includeCriteria : AdvanceSearch_Reline) {
-			performSearch(includeCriteria, true);
-
-			// Click on the first file in the list
-			boolean RelineMatch = false;
-			clickOnFirstFile();
-			waitForElementToAppear(InsideFileName);
-			String fileContentText = driver.findElement(Reline_InsideFile).getText();
-			boolean anyRelineMatch = false;
-			for (String reline : AdvanceSearch_Reline) {
-				if (fileContentText.contains(reline)) {
-					anyRelineMatch = true;
-					System.out.println("Pass: Reline name match found in the file content.");
-					break; // Exit the loop once a match is found
-				}
-			}
-
-			if (!anyRelineMatch) {
-				System.out.println("Fail: Reline name match not found in the file content.");
-			}
-
-			Homebutton();
-			for (String excludeCriteria : AdvanceSearch_Reline) {
-				performSearch(excludeCriteria, false);
-				boolean noRelinematch = true;
-				clickOnFirstFile();
-				waitForElementToAppear(InsideFileName);
-				String fileContentText1 = driver.findElement(Reline_InsideFile).getText();
-
-				for (String reline : AdvanceSearch_Reline) {
-					if (fileContentText1.contains(reline)) {
-						noRelinematch = false;
-
-						System.out.println("Fail: Reline name match found in the file content.");
-						break; // Exit the loop once a match is found
+					String clientname = clientnameElement.getText();
+					String fileName = fileNameElement.getText();
+					if (clientname.contains(clientName)) {
+						System.out.println("Expected file: " + fileName + ":" + clientname);
+						allClientname = true;
+					} else {
+						System.out.println("UnExpected file: " + fileName + ":" + clientname);
 					}
 				}
 
-				if (noRelinematch) {
-					System.out.println("Pass: Reline name match not found in the file content.");
+				if (allClientname) {
+					System.out.println("*****Pass : Client name criteria working fine with different Scenario*****");
+				} else {
+					Assert.fail("*****Fail : Client name criteria not working fine with different Scenario*****");
+				}
+			} else {
+				System.out.println("***No Search result found for Client name criteria***");
+			}
+		}
+		return new FileList(driver);
+	}
+
+	// Verify Reline[include & Doesn't include] Criteria working proper or not
+	@SuppressWarnings("unlikely-arg-type")
+	public FileList AdvanceSearchReline(String[] AdvanceSearch_Reline) throws InterruptedException {
+
+		for (String isCriteria : AdvanceSearch_Reline) {
+			performSearchforReline(isCriteria, true);
+
+			if (!isElementDisplayed(Noresult)) {
+
+				clickOnFirstFile();
+				waitForElementToAppear(InsideFileName);
+				String fileContentText = driver.findElement(Reline_InsideFile).getText();
+				boolean anyRelineMatch = false;
+				for (String reline : AdvanceSearch_Reline) {
+					if (fileContentText.contains(reline)) {
+						anyRelineMatch = true;
+						System.out.println("******Pass: Reline[include] Criteria working fine*****");
+						break;
+					}
 				}
 
+				if (!anyRelineMatch) {
+					Assert.fail("*****Fail: Reline[include] Criteria not  working fine*****");
+				}
+			} else {
+				System.out.println("***No Search result found for Reline[include]***");
+			}
+
+			for (String excludeCriteria : AdvanceSearch_Reline) {
+				performSearchforReline(excludeCriteria, false);
+
+				if (!isElementDisplayed(Noresult)) {
+
+					boolean noRelinematch = true;
+					clickOnFirstFile();
+					waitForElementToAppear(InsideFileName);
+					String fileContentText1 = driver.findElement(Reline_InsideFile).getText();
+
+					for (String reline : AdvanceSearch_Reline) {
+						if (fileContentText1.contains(reline)) {
+							noRelinematch = false;
+
+							Assert.fail("****Fail: Reline[Doesn't include] Criteria not  working fine.*****");
+							break;
+						}
+					}
+
+					if (noRelinematch) {
+						System.out.println("******Pass: Reline[Doesn't include] Criteria working fine*****");
+					}
+				} else {
+					System.out.println("***No Search result found for Reline[Doesn't include]***");
+				}
 			}
 		}
 		return new FileList(driver);
 
 	}
 
-	// Method to perform search in the Advance Search page
-	private void performSearch(String AdvanceSearch_Reline, boolean isIncludeCriteria) {
-		ClearSearch();
+	// Method to perform Reline search in the Advance Search page
+	private void performSearchforReline(String AdvanceSearch_Reline, boolean isCriteria) {
+		ClearAndHome();
 		AdvanceSearchButton();
-
-		By searchLocator = isIncludeCriteria ? Reline_IncludeField : Reline_ExcludeField;
+		Filelistwait(); // explicit wait
+		By searchLocator = isCriteria ? Reline_IncludeField : Reline_ExcludeField;
 
 		WebElement searchField = driver.findElement(searchLocator);
 
@@ -399,214 +429,56 @@ public class Advance_Search_Filter extends AbstractComponent {
 		searchField.sendKeys(AdvanceSearch_Reline);
 		SearchButton.click();
 
-		// Wait for file list update
 		List<WebElement> initialFileList = driver.findElements(Filelistname);
+
 		waitForFileListUpdate(initialFileList);
 
-		// Check if any files were found
-		if (initialFileList != null && !initialFileList.isEmpty()) {
-
-			// You can add any additional action or verification here
-		} else {
-			System.out.println("No Search Result found");
-			// You can add any additional action or verification here
-		}
-	}
-
-	// Method to click on the first file in the list
-	private void clickOnFirstFile() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-		waitForElementToAppear(Filelist11);
-
-		List<WebElement> fileList1 = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(Filelistname));
-
-		if (fileList1 != null && !fileList1.isEmpty()) {
-			wait.until(ExpectedConditions.elementToBeClickable(fileList1.get(0))).click();
-		} else {
-			System.out.println("No Search result found");
-		}
-	}
-
-	public void waitForFileListUpdate(List<WebElement> initialFileList) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-		try {
-			// Create a wait condition for staleness of the initial file list
-			ExpectedCondition<Boolean> staleCondition = ExpectedConditions.stalenessOf(initialFileList.get(0));
-
-			// Wait until the condition is met
-			wait.until(staleCondition);
-
-			// Wait for the updated file list to appear
-			List<WebElement> updatedFileList = wait
-					.until(ExpectedConditions.presenceOfAllElementsLocatedBy(Filelistname));
-
-			// Perform an initial check to get the size of the file list
-			int initialSize = initialFileList.size();
-
-			// Check if the updated file list size has changed
-			if (updatedFileList.size() != initialSize) {
-				return; // File list has been updated
-			} else {
-				throw new TimeoutException("File list update was not detected.");
-			}
-		} catch (TimeoutException ex) {
-			// Handle the timeout exception
-			System.out.println("File list update was not detected within the specified timeout.");
-		} catch (StaleElementReferenceException ex) {
-			// Handle the stale element reference exception
-			System.out.println("Stale element reference exception occurred.");
-		}
 	}
 
 	// verify closing date After and before working proper or not
 	public FileList AdvanceSearchClosingDate(String ClosingDate_After, String ClosingDate_Before)
 			throws InterruptedException {
-		String beforeClosingDate = ClosingDate_After;
-		String afterClosingDate = ClosingDate_Before;
-		Homebutton();
-		ClearSearch();
+
+		ClearAndHome();
 		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
 		waitForElementToAppear(Closing_After);
-		driver.findElement(Closing_After).sendKeys(beforeClosingDate);
+		driver.findElement(Closing_After).sendKeys(ClosingDate_After);
 		waitForElementToAppear(Closing_Before);
-		driver.findElement(Closing_Before).sendKeys(afterClosingDate);
+		driver.findElement(Closing_Before).sendKeys(ClosingDate_Before);
 		SearchButton.click();
 
 		List<WebElement> initialFileList = driver.findElements(Filelistname);
 		waitForFileListUpdate(initialFileList);
 
-		String inputValue = driver.findElement(By.xpath("//input[@id='fileSearchInput']")).getAttribute("value");
+		if (!isElementDisplayed(Noresult)) {
+			String inputValue = driver.findElement(By.xpath("//input[@id='fileSearchInput']")).getAttribute("value");
 
-		Pattern pattern = Pattern.compile("from:\\((.*?)\\)\\s*to:\\((.*?)\\)");
-		Matcher matcher = pattern.matcher(inputValue);
+			Pattern pattern = Pattern.compile("from:\\((.*?)\\)\\s*to:\\((.*?)\\)");
+			Matcher matcher = pattern.matcher(inputValue);
 
-		if (matcher.find()) {
+			if (matcher.find()) {
+				String fromDate = matcher.group(1);
+				String toDate = matcher.group(2);
 
-			String fromDate = matcher.group(1);
-			String toDate = matcher.group(2);
+				for (WebElement file : ListClosingDate) {
+					String closingdate = file.getText();
 
-			for (WebElement file : ListClosingDate) {
-				String closingdate = file.getText();
-
-				if (isDateInRange(closingdate, fromDate, toDate)) {
-
-					System.out.println("Pass :File is within the specified date range.");
-				} else {
-
-					System.out.println("Fail :File is not within the specified date range.");
-				}
-			}
-		}
-		return new FileList(driver);
-
-	}
-
-	// verify property address working proper or not
-	public FileList AdvanceSearchAddress(String Advancesearch_Address1, String Advancesearch_Address2)
-			throws InterruptedException {
-
-		Homebutton();
-
-		String[] Addresses = { Advancesearch_Address1, Advancesearch_Address2 };
-		for (String AddressName : Addresses) {
-			ClearSearch();
-			AdvanceSearchButton();
-			waitForElementToAppear(Propertyaddress);
-			driver.findElement(Propertyaddress).clear();
-			driver.findElement(Propertyaddress).sendKeys(AddressName);
-			SearchButton.click();
-
-			List<WebElement> initialFileList = driver.findElements(Filelistname);
-			waitForFileListUpdate(initialFileList);
-			List<WebElement> getAddressList = ListAddress;
-
-			boolean allAddressname = true;
-			for (int i = 0; i < getAddressList.size(); i++) {
-
-				// Re-find the elements after waiting
-				initialFileList = driver.findElements(Filelistname);
-				getAddressList = ListAddress;
-				WebElement addressElement = getAddressList.get(i);
-				WebElement fileNameElement = initialFileList.get(i);
-
-				String Address = addressElement.getText();
-				String fileName = fileNameElement.getText();
-				if (Address.contains(AddressName)) {
-					{
-						System.out.println("Expected file: " + fileName + ":" + Address);
-					}
-				} else {
-					allAddressname = false;
-					System.out.println("UnExpected file: " + fileName + ":" + Address);
-				}
-			}
-
-		}
-
-		return new FileList(driver);
-	}
-
-	
-	//verify property type working proper or not
-	@SuppressWarnings("unlikely-arg-type")
-	public FileList AdvanceSearchPropertyType(String[] AdvanceSearch_Reline) throws InterruptedException {
-
-		Homebutton();
-		for (String includeCriteria : AdvanceSearch_Reline) {
-			performSearch(includeCriteria, true);
-
-			// Click on the first file in the list
-			boolean RelineMatch = false;
-			clickOnFirstFile();
-			waitForElementToAppear(InsideFileName);
-			String fileContentText = driver.findElement(Reline_InsideFile).getText();
-			boolean anyRelineMatch = false;
-			for (String reline : AdvanceSearch_Reline) {
-				if (fileContentText.contains(reline)) {
-					anyRelineMatch = true;
-					System.out.println("Pass: Reline name match found in the file content.");
-					break; // Exit the loop once a match is found
-				}
-			}
-
-			if (!anyRelineMatch) {
-				System.out.println("Fail: Reline name match not found in the file content.");
-			}
-
-			Homebutton();
-			for (String excludeCriteria : AdvanceSearch_Reline) {
-				performSearch(excludeCriteria, false);
-				boolean noRelinematch = true;
-				clickOnFirstFile();
-				waitForElementToAppear(InsideFileName);
-				String fileContentText1 = driver.findElement(Reline_InsideFile).getText();
-
-				for (String reline : AdvanceSearch_Reline) {
-					if (fileContentText1.contains(reline)) {
-						noRelinematch = false;
-
-						System.out.println("Fail: Reline name match found in the file content.");
-						break; // Exit the loop once a match is found
+					if (isDateInRange(closingdate, fromDate, toDate)) {
+						System.out.println("*****Pass :Closing date Criteria are working fine*****");
+					} else {
+						Assert.fail("*****Fail :Closing date Criteria are  not working fine*****");
 					}
 				}
-
-				if (noRelinematch) {
-					System.out.println("Pass: Reline name match not found in the file content.");
-				}
-
 			}
-		}
-		return new FileList(driver);
 
+		} else {
+			System.out.println("***No Search result found for Closing Date***");
+		}
+
+		return new FileList(driver);
 	}
 
-	
-	
-	
-	
-	
 	private boolean isDateInRange(String closingdate, String fromDate, String toDate) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -619,23 +491,267 @@ public class Advance_Search_Filter extends AbstractComponent {
 		}
 	}
 
-	public void ClearSearch() {
-		if (isElementDisplayed(ClearSearch)) {
-			driver.findElement(ClearSearch).click();
+	// verify Property address working proper or not
+	public FileList AdvanceSearchAddress(String Advancesearch_Address1, String Advancesearch_Address2)
+			throws InterruptedException {
+
+		String[] Addresses = { Advancesearch_Address1, Advancesearch_Address2 };
+		for (String AddressName : Addresses) {
+			ClearAndHome();
+			AdvanceSearchButton();
+			Filelistwait(); // explicit wait
+			waitForElementToAppear(Propertyaddress);
+			driver.findElement(Propertyaddress).clear();
+			driver.findElement(Propertyaddress).sendKeys(AddressName);
+			SearchButton.click();
+
+			List<WebElement> initialFileList = driver.findElements(Filelistname);
+			waitForFileListUpdate(initialFileList);
+
+			if (!isElementDisplayed(Noresult)) {
+				List<WebElement> getAddressList = ListAddress;
+
+				boolean allAddressname = true;
+				for (int i = 0; i < getAddressList.size(); i++) {
+
+					// Re-find the elements after waiting
+					initialFileList = driver.findElements(Filelistname);
+					getAddressList = ListAddress;
+					WebElement addressElement = getAddressList.get(i);
+					WebElement fileNameElement = initialFileList.get(i);
+
+					String Address = addressElement.getText();
+					String fileName = fileNameElement.getText();
+					if (Address.contains(AddressName)) {
+						System.out.println("Expected file: " + fileName + ":" + Address);
+					} else {
+						allAddressname = false;
+						System.out.println("UnExpected file: " + fileName + ":" + Address);
+					}
+				}
+
+				if (allAddressname) {
+					System.out.println("*****Pass :All Property addresses meet the criteria.*****");
+				} else {
+					Assert.fail("****Fail :Not all addresses meet the criteria.*****");
+					
+				}
+
+			} else {
+				System.out.println("***No Search result found For property address Criteria***");
+			}
+		}
+		return new FileList(driver);
+	}
+
+	// verify property type working proper or not
+	public FileList AdvanceSearchPropertyType(String[] Property_Type1, String[] Property_Type2)
+			throws InterruptedException {
+		ClearAndHome();
+		for (String includeCriteria : Property_Type1) {
+			performSearchforPropertytype(new String[] { includeCriteria }, true);
+
+		}
+
+		return new FileList(driver);
+	}
+
+	private void verifyPropertyTypeMatch(String[] Property_Type1) {
+
+		switchToFrameAndClickMenu();
+		WebElement dropdownElement = driver.findElement(FilePropertyType);
+		Select dropdown = new Select(dropdownElement);
+		WebElement selectedOption = dropdown.getFirstSelectedOption();
+		String PropertyTypeText = selectedOption.getText();
+		boolean PropertyTypeMatch = false;
+
+		for (String property : Property_Type1) {
+			if (PropertyTypeText.equals(property)) {
+				PropertyTypeMatch = true;
+				System.out.println(
+						"****Pass: propertyType name=" + PropertyTypeText + "match found in the file content.****");
+				break;
+			}
+		}
+
+		if (!PropertyTypeMatch) {
+			System.out.println(
+					"****Fail: propertyType name=" + PropertyTypeText + "match not found in the file content.****");
 		}
 
 	}
 
-	public void Homebutton() {
-		driver.switchTo().defaultContent();
-		if (isElementDisplayed(HomeButton)) {
+	private void performSearchforPropertytype(String[] propertyTypes, boolean isIncludeCriteria) {
+		ClearAndHome();
+		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
+
+		WebElement propertyTypeDropdown = driver.findElement(Propertytype);
+		waitForWebElementToAppear(propertyTypeDropdown);
+		Select pro = new Select(propertyTypeDropdown);
+		for (String propertyType : propertyTypes) {
+
+			pro.selectByVisibleText(propertyType);
+
+			SearchButton.click();
+
+			List<WebElement> initialFileList = driver.findElements(Filelistname);
+
+			waitForFileListUpdate(initialFileList);
+
+			if (!isElementDisplayed(Noresult)) {
+
+				clickOnFirstFile();
+				verifyPropertyTypeMatch(propertyTypes);
+
+			} else {
+				System.out.println("*****Search result not found for Property Type*****");
+			}
+		}
+	}
+
+	// Verify ClientName working or not with different criteria
+	public FileList AdvanceSearchLawyername(String AdvanceSearch_LawyerName) throws InterruptedException {
+
+		ClearAndHome();
+		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
+		waitForElementToAppear(LawyerName);
+		driver.findElement(LawyerName).clear();
+		driver.findElement(LawyerName).sendKeys(AdvanceSearch_LawyerName);
+		SearchButton.click();
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+		if (!isElementDisplayed(Noresult)) {
+			boolean LawyerNameMatch = false;
+			clickOnFirstFile();
+			waitForWebElementToAppear(InsidefileFrame);
+			driver.switchTo().frame(InsidefileFrame);
+			waitForElementToAppear(FileLawyername);
+			String fileContentText = driver.findElement(FileLawyername).getText();
+			LawyerNameMatch = fileContentText.equals(AdvanceSearch_LawyerName);
+			if (LawyerNameMatch) {
+				System.out.println(
+						"****Pass: Other side Lawyername=" + fileContentText + " "+"match found in the file content.****");
+			} else {
+				Assert.fail("****Fail: Other side Lawyername=" + fileContentText
+						+ "match  not found in the file content.***");
+			}
+			driver.switchTo().defaultContent();
+		} else {
+			System.out.println("****No Search result found Other Side file Lawyer name****");
+		}
+		return new FileList(driver);
+	}
+	// Verify Otherside Filenumber working or not 
+	public FileList AdvanceSearchOthersideFilenumber(String AdvanceSearch_FileName) throws InterruptedException {
+
+		ClearAndHome();
+		AdvanceSearchButton();
+		Filelistwait(); // explicit wait
+		waitForElementToAppear(Filenumber);
+		driver.findElement(Filenumber).clear();
+		driver.findElement(Filenumber).sendKeys(AdvanceSearch_FileName);
+		SearchButton.click();
+
+		// Wait for file list update
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+		if (!isElementDisplayed(Noresult)) {
+			boolean FileNameMatch = false;
+			clickOnFirstFile();			
+			waitForWebElementToAppear(InsidefileFrame);
+			driver.switchTo().frame(InsidefileFrame);
+
+			// JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			// jsExecutor.executeScript("window.scrollBy(0, 500);");
+			waitForElementToAppear(OtherFileno);
+			String fileContentText = driver.findElement(OtherFileno).getAttribute("value");
+;
+			FileNameMatch = fileContentText.equals(AdvanceSearch_FileName);
+			if (FileNameMatch) {
+				System.out.println(
+						"****Pass: Other side Filename=" + fileContentText + "match found in the file content.****");
+			} else {
+				Assert.fail("****Fail: Other side Filename=" + fileContentText
+						+ "match  not found in the file content.****");
+			}
+			driver.switchTo().defaultContent();
+		} else {
+			System.out.println("****No Search result found Other Side file name****");
+		}
+		return new FileList(driver);
+	}
+
+	private void switchToFrameAndClickMenu() {
+		waitForElementToAppear(menu_property);
+		driver.findElement(menu_property).click();
+		driver.switchTo().frame(InsidefileFrame);
+		waitForElementToAppear(FilePropertyType);
+	}
+
+	// Method to click on the first file in the list
+	private void clickOnFirstFile() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		List<WebElement> initialFileList = driver.findElements(Filelistname);
+		waitForFileListUpdate(initialFileList);
+		if (!isElementDisplayed(Noresult)) {
+			wait.until(ExpectedConditions.elementToBeClickable(initialFileList.get(0))).click();
+		} else {
+			System.out.println("No Search result found while try to click on First file");
+		}
+	}
+
+	public void waitForFileListUpdate(List<WebElement> initialFileList) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		try {
+			if (!initialFileList.isEmpty()) {
+				ExpectedCondition<Boolean> staleCondition = ExpectedConditions.stalenessOf(initialFileList.get(0));
+				wait.until(staleCondition);
+				List<WebElement> updatedFileList = wait
+						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(Filelistname));
+
+				int updatedSize = updatedFileList.size();
+				if (updatedSize > 0) {
+					//System.out.println("File list has been updated with " + updatedSize + " elements.");
+				} else {
+					System.out.println("No search result found.");
+				}
+			} else {
+				System.out.println("No search result found.");
+			}
+		} catch (TimeoutException ex) {
+
+			// System.out.println("File list update was not detected within the specified
+			// timeout.");
+		} catch (StaleElementReferenceException ex) {
+			// Handle the stale element reference exception
+			System.out.println("Stale element reference exception occurred.");
+		}
+	}
+
+	public void ClearAndHome() {
+		if (isElementDisplayed(ClearSearch)) {
+			driver.findElement(ClearSearch).click();
+		} else {
+			driver.switchTo().defaultContent();
 			driver.findElement(HomeButton).click();
 		}
 	}
 
+	
+
 	public void AdvanceSearchButton() {
 		waitForElementToAppear(AdvanceSearchbutton);
 		driver.findElement(AdvanceSearchbutton).click();
+	}
+
+	public void Filelistwait() {
+		// Apply explicit wait for the search results to be displayed
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.presenceOfElementLocated(Filelistname));
 	}
 
 }

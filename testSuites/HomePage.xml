@@ -7,17 +7,28 @@
 	<listener class-name="project.TestComponents.Listeners"></listener>
 </listeners>
   
-  <test thread-count="5" name="Login">
+ <!-- <test thread-count="5" name="Login">
     <classes>
       <class name="loginPage.LoginPageTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>   -->
   
-  <test thread-count="5" name="CreateNewFile">
+ <!--  <test thread-count="5" name="CreateNewFile">
     <classes>
       <class name="home.CreateNewFileTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>   -->
   
-</suite> <!-- Suite -->
+  
+  <test thread-count="5" name="AdvanceSearchFilter">
+    <classes>
+      <class name="home.AdvanceSearchFilterTest"/>
+    </classes>
+  </test> 
+  
+  
+</suite> 
+
+
+
 
