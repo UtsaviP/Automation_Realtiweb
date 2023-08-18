@@ -21,6 +21,7 @@ public class LoginStepDefination extends BaseTest {
 	public AbstractComponent landingPage;
 	String AccountInitials= "AT";
 	
+	
 	@Given("Enter Website for Login")
 	public void enter_website_for_login() throws IOException 
 	{
@@ -28,21 +29,21 @@ public class LoginStepDefination extends BaseTest {
 	}
 	
 	
-	@When("^Enter Account (.+) username (.+) and password (.+) for Login")
+	@When("^Enter Account (.+) username (.+) and password (.+) for Login$")
 	public void Enter_username_and_password_for_Login(String Account,String username,String password) throws InterruptedException, IOException
 	{
 		LoginPageObject MainPageObject = landingPage.Login1(Account,username,password);
 		
 	}
 	
-	@When("^Enter province (.+)")
+	@When("^Enter province (.+)$")
 	public void Enter_province(String Provinces) throws InterruptedException, IOException
 	{
 		LoginPageObject MainPageObject = landingPage.Login1(Provinces);
 		//driver.close();
 	}
 	
-	@Then("^Verify the Login")
+	@Then("Verify the Login")
 	public void verify_the_login() 
 	{
 		LoginPageObject MainPageObject = new LoginPageObject(driver);
