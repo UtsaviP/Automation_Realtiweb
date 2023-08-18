@@ -24,13 +24,11 @@ Feature: Login to RealtiWeb
 		Given Enter Website for Login
 		When Enter Account <Account> username <username> and password <password> for Login
 		And Enter province <Provinces>
-		Then Verify the Login <status>
+		Then Verify the Login
 
     Examples: 
-      |Account    | username     | password      |  Provinces | status  |
-      |LDDTesting | Automation   | Automation    | Alberta    | success |
-    ##|LDDTesting | Automation   | Automation    | Alberta    | fail    |
+      |Account    | username     | password      |  Provinces|
+      |LDDTesting | Automation   | Automation    | Ontario   |
     ##|LDDTesting | wrongUserName| Automation    | Ontario    | fail    |
 	  ##|LDDTesting | Automation   | wrongPassword | Ontario    | fail    |
-
       

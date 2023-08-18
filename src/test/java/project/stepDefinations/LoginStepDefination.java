@@ -18,6 +18,9 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDefination extends BaseTest {
 
+	public AbstractComponent landingPage;
+	String AccountInitials= "AT";
+	
 	@Given("Enter Website for Login")
 	public void enter_website_for_login() throws IOException 
 	{
@@ -36,13 +39,17 @@ public class LoginStepDefination extends BaseTest {
 	public void Enter_province(String Provinces) throws InterruptedException, IOException
 	{
 		LoginPageObject MainPageObject = landingPage.Login1(Provinces);
+		//driver.close();
 	}
 	
-	@Then("Verify the Login fail")
-	public void verify_the_login_fail() 
+	@Then("^Verify the Login")
+	public void verify_the_login() 
 	{
-		//
+		LoginPageObject MainPageObject = new LoginPageObject(driver);
+		Assert.assertEquals(AccountInitials, MainPageObject.getAccountInitials());
+		driver.close();
 	}
+	
 	
 	
 	

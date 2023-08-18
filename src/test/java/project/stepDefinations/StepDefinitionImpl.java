@@ -73,12 +73,11 @@ public class StepDefinitionImpl extends BaseTest {
 		driver.close();
 	}
 	
-	/*
 	@Then("^\"([^\"]*)\" message is displayed$")
     public void something_message_is_displayed(String strArg1) throws Throwable {
-		Assert.assertEquals(strArg1, landingPage.getErrorMessage()); //landingPage.getErrorMessage();
+		LandingPageObject MainPageObject = new LandingPageObject(driver);
+		Assert.assertEquals(strArg1, MainPageObject.getErrorMessage()); //landingPage.getErrorMessage();
 		driver.close();
     }
-	*/
 	
 }
