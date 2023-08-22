@@ -20,7 +20,7 @@ import project.TestComponents.BaseTest;
 		String AccountInitials= "AT";
 	
 		LoginPageObject MainPageObject = landingPage.Login1(input.get("Account"), input.get("User"), input.get("Password"));
-		
+		LoginPageObject MainPageObject1 = landingPage.Login1(input.get("province"));
 		Assert.assertEquals(AccountInitials, MainPageObject.getAccountInitials());
 		
 		}

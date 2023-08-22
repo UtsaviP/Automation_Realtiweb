@@ -20,7 +20,6 @@ import org.testng.annotations.BeforeTest;
 
 import home.PageObject.FileList;
 import login.pageobject.LoginPage;
-import project.pageobject.LandingPageObject;
 import project.pageobject.LoginPageObject;
 
 public class AbstractComponent {
@@ -81,17 +80,6 @@ public class AbstractComponent {
 		driver = initializeDriver();
 		PageObject.LoginButton.click();
 		return new FileList(driver);
-	}
-
-	// AnotherTest Login Page
-	public LandingPageObject Login(String userEmail, String userPassword) throws InterruptedException, IOException {
-		LandingPageObject PageObject = new LandingPageObject(driver);
-		PageObject.userEmail.sendKeys(userEmail);
-		PageObject.userPassword.sendKeys(userPassword);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		//driver = initializeDriver();
-		PageObject.submit.click();
-		return new LandingPageObject(driver);
 	}
 
     // Login- user, pass
