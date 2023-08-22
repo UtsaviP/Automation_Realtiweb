@@ -28,9 +28,9 @@ Feature: Login to RealtiWeb
 
     Examples: 
       |Account    | username     | password      |  Provinces|
-      |LDDTesting | Automation   | Automation    | Ontario   |
-    ##|LDDTesting | wrongUserName| Automation    | Ontario    | fail    |
-	  ##|LDDTesting | Automation   | wrongPassword | Ontario    | fail    |
+      |LDDTesting | Automation   | Automation    | Ontario   |  ##pass
+    ##|LDDTesting | wrongUserName| Automation    | Ontario   |  ##fail
+	  ##|LDDTesting | Automation   | wrongPassword | Ontario   |  ##fail
       
       
       
