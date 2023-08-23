@@ -9,12 +9,8 @@
       <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="setUp"/>
-          <include name="Verify_cancel_button_working_or_not"/>
-          <include name="Verify_File_types_working_or_not"/>
+          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="Verify_Responsible_Lawyer_Working_or_Not"/>
-          <include name="Verify_File_Status_Working_or_Not"/>
         </methods>
       </class> <!-- home.AdvanceSearchFilterTest -->
     </classes>

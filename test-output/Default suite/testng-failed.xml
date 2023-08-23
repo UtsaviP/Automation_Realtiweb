@@ -6,8 +6,8 @@
       <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
+          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="Verify_different_criteria_for_advanced_search_filter" invocation-numbers="0"/>
         </methods>
       </class> <!-- home.AdvanceSearchFilterTest -->
     </classes>
