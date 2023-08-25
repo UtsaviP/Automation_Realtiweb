@@ -4,15 +4,15 @@
   <listeners>
     <listener class-name="project.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="AdvanceSearchFilter(failed)">
+  <test thread-count="5" name="CreateNewFile(failed)">
     <classes>
-      <class name="home.AdvanceSearchFilterTest">
+      <class name="home.CreateNewFileTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
+          <include name="Verify_Create_New_Purchase_File" invocation-numbers="0"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- home.AdvanceSearchFilterTest -->
+      </class> <!-- home.CreateNewFileTest -->
     </classes>
-  </test> <!-- AdvanceSearchFilter(failed) -->
+  </test> <!-- CreateNewFile(failed) -->
 </suite> <!-- Failed suite [Suite] -->

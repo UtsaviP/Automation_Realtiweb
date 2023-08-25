@@ -1,15 +1,12 @@
 package home.PageObject;
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import home.PageObject.*;
+
 import project.AbstractComponents.AbstractComponent;
 
 public class Advance_Search_Filter extends AbstractComponent {

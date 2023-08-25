@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="home.AdvanceSearchFilterTest">
+      <class name="home.CreateNewFileTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
+          <include name="Verify_Create_New_Sale_File" invocation-numbers="0"/>
+          <include name="Verify_Create_New_Purchase_File" invocation-numbers="0"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- home.AdvanceSearchFilterTest -->
+      </class> <!-- home.CreateNewFileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

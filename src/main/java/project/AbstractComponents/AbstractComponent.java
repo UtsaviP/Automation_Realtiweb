@@ -72,15 +72,19 @@ public class AbstractComponent {
 	// Login Page
 	public FileList Login(String Account, String User, String Password) throws InterruptedException, IOException {
 		LoginPage PageObject = new LoginPage(driver);
+		
 		PageObject.AccountName.sendKeys(Account);
 		PageObject.UserName.sendKeys(User);
 		PageObject.Password.sendKeys(Password);		
 		PageObject.Checked_site.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver = initializeDriver();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	driver = initializeDriver();
 		PageObject.LoginButton.click();
 		return new FileList(driver);
 	}
+	
+	
+	
 
 	// Explicit wait
 	public void waitForElementToAppear1(WebElement ele  ) {
