@@ -100,7 +100,7 @@ public class AbstractComponent {
 	
 	// Explicit wait
 	public void waitForWebElementToAppear(WebElement findBy) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(findBy));
 	}
 
@@ -125,6 +125,14 @@ public class AbstractComponent {
 	    }
 	}
 	
+	public boolean isElementDisplayedBy(WebDriver driver, By by) {
+	    try {
+	        WebElement element = driver.findElement(by);
+	        return element.isDisplayed();
+	    } catch (NoSuchElementException | StaleElementReferenceException | NullPointerException e) {
+	        return false;
+	    }
+	}
 	
 	public static boolean isElementNotPresent(WebDriver driver, By locator) {
         try {

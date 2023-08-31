@@ -26,6 +26,11 @@
     </classes>
   </test> 
   
+  <test thread-count="5" name="FileList">
+    <classes>
+      <class name="home.FileListTest"/>
+    </classes>
+  </test> 
   
 </suite> 
 

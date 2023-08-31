@@ -131,57 +131,60 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	// Verify File Types Criteria working or not
 	public FileList AdvanceSearchFileTypes() throws InterruptedException {
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
+	   // ClearAndHome();
+	    AdvanceSearchButton();
+	    Filelistwait(); // explicit wait
 
-		if (PurchaseCheckbox.isSelected()) {
-			PurchaseCheckbox.click();
-		}
-		if (SaleCheckbox.isSelected()) {
-			SaleCheckbox.click();
-		}
-		if (!MortgageCheckbox.isSelected()) {
-			MortgageCheckbox.click();
-		}
-		SearchButton.click();
+	    if (PurchaseCheckbox.isSelected()) {
+	        PurchaseCheckbox.click();
+	    }
+	    if (SaleCheckbox.isSelected()) {
+	        SaleCheckbox.click();
+	    }
+	    if (!MortgageCheckbox.isSelected()) {
+	        MortgageCheckbox.click();
+	    }
+	    SearchButton.click();
 
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
+	    List<WebElement> initialFileList = driver.findElements(Filelistname);
 
-		waitForFileListUpdate(initialFileList);
-		Thread.sleep(3000);
-		if (!isElementDisplayed(Noresult)) {
-			List<WebElement> getFileList = ListFileType;
+	    waitForFileListUpdate(initialFileList);
 
-			boolean allFilesArePurchaseOrSale = false;
-			for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
-				WebElement fileTypeElement = getFileList.get(i);
-				WebElement fileNameElement = initialFileList.get(i);
+	    if (!isElementDisplayed(Noresult)) {
+	        List<WebElement> getFileList = ListFileType; // Move this line before the loop
 
-				String filetype = fileTypeElement.getText();
-				String fileName = fileNameElement.getText();
-				System.out.println("File: " + fileName + " | Type: " + filetype);
+	        boolean allFilesArePurchaseOrSale = false;
+	        for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
+	            WebElement fileTypeElement = getFileList.get(i);
+	            waitForWebElementToAppear(fileTypeElement);
 
-				if (filetype.contains("Purchase") || filetype.contains("Sale")) {
-					System.out.println("Expected file: " + fileName + ":" + filetype);
-					allFilesArePurchaseOrSale = true;
-				} else {
-					System.out.println("Unexpected file: " + fileName + ":" + filetype);
-				}
-			}
+	            WebElement fileNameElement = initialFileList.get(i);
+	            waitForWebElementToAppear(fileNameElement);
 
-			if (allFilesArePurchaseOrSale) {
-				System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
-			} else {
-				Assert.fail("*****Fail : Other file types are also displayed.*****");
-				
-			}
-		} else {
-			System.out.println("***No Search result found for FileTypes criteria***");
-		}
-		return new FileList(driver);
+	            String filetype = fileTypeElement.getText();
+	            String fileName = fileNameElement.getText();
+
+	            if (filetype.contains("Purchase") || filetype.contains("Sale")) {
+	                System.out.println("Expected file: " + fileName + ":" + filetype);
+	                allFilesArePurchaseOrSale = true;
+	            } else {
+	                System.out.println("Unexpected file: " + fileName + ":" + filetype);
+	            }
+	        }
+
+	        if (allFilesArePurchaseOrSale) {
+	            System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
+	        } else {
+	            Assert.fail("*****Fail : Other file types are also displayed.*****");
+	        }
+	    } else {
+	        System.out.println("***No Search result found for FileTypes criteria***");
+	    }
+	    return new FileList(driver);
 	}
 
+	
+	// Verify File status  Criteria working or not
 	public FileList AdvanceSearchFileStatus() throws InterruptedException {
 		ClearAndHome();
 		AdvanceSearchButton();
@@ -198,7 +201,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 		List<WebElement> initialFileList = driver.findElements(Filelistname);
 		waitForFileListUpdate(initialFileList);
-		Thread.sleep(3000);
+		
 
 		if (!isElementDisplayed(Noresult)) {
 			List<WebElement> getFileList = ListFileStatus;

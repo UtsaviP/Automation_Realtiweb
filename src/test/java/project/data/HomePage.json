@@ -21,5 +21,11 @@
 		"Property_Type2": "Condominium (Freehold)",
 		"AdvanceSearch_LawyerName": "G. Chalmers Adams",
 		"AdvanceSearch_FileName": "715 Don mills file"
+	},
+	
+	"freeSearchData": {
+		"FreeSearch_1": "test",
+		"FreeSearch_2": "Automation"
+		
 	}
 }

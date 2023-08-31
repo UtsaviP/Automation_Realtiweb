@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>AdvanceSearchFilter</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>12/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>10/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Aug 25 13:20:24 EDT 2023</td>
+<td>Started on:</td><td>Thu Aug 31 12:20:32 EDT 2023</td>
 </tr>
-<tr><td>Total time:</td><td>613 seconds (613353 ms)</td>
+<tr><td>Total time:</td><td>644 seconds (644047 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,73 +67,174 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='home.AdvanceSearchFilterTest.Verify_Cancel_button_working_or_not()'><b>Verify_Cancel_button_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>11</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Types_Criteria_working_or_not()'><b>Verify_In_Advance_search_File_Types_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (96123878b81530ef0d05e44c4b9d94fc)] -&gt; xpath: //div[@id=&apos;ListSection&apos;]//table//tbody//td[1]/span] (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at project.AbstractComponents.AbstractComponent.waitForWebElementToAppear(AbstractComponent.java:104)
+	at home.PageObject.Advance_Search_Filter.AdvanceSearchFileTypes(Advance_Search_Filter.java:162)
+	at home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Types_Criteria_working_or_not(AdvanceSearchFilterTest.java:32)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: No node with given id found
+  (Session info: chrome=116.0.5845.140)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [96123878b81530ef0d05e44c4b9d94fc, isElementDisplayed {id=F683CE05414028617E2D3BBB8B180862_element_101}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.140, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53691}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53691/devtoo..., se:cdpVersion: 116.0.5845.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (96123878b81530ef0d05e44c4b9d94fc)] -&gt; xpath: //div[@id=&apos;ListSection&apos;]//table//tbody//td[1]/span]
+Session ID: 96123878b81530ef0d05e44c4b9d94fc
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
+	at org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:280)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 31 more
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace31903004", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace31903004'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (96123878b81530ef0d05e44c4b9d94fc)] -&gt; xpath: //div[@id=&apos;ListSection&apos;]//table//tbody//td[1]/span] (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at project.AbstractComponents.AbstractComponent.waitForWebElementToAppear(AbstractComponent.java:104)
+	at home.PageObject.Advance_Search_Filter.AdvanceSearchFileTypes(Advance_Search_Filter.java:162)
+	at home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Types_Criteria_working_or_not(AdvanceSearchFilterTest.java:32)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: No node with given id found
+  (Session info: chrome=116.0.5845.140)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [96123878b81530ef0d05e44c4b9d94fc, isElementDisplayed {id=F683CE05414028617E2D3BBB8B180862_element_101}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.140, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53691}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53691/devtoo..., se:cdpVersion: 116.0.5845.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (96123878b81530ef0d05e44c4b9d94fc)] -&gt; xpath: //div[@id=&apos;ListSection&apos;]//table//tbody//td[1]/span]
+Session ID: 96123878b81530ef0d05e44c4b9d94fc
+	at jdk.internal.reflect.GeneratedConstructorAccessor25.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
+	at org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:280)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 31 more
+</pre></div></td>
+<td>62</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Types_Criteria_working_or_not()'><b>Verify_In_Advance_search_File_Types_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Lawyer_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Lawyer_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
 <td></td>
-<td>44</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
+<td>56</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
 <tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Lawyer_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Lawyer_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>32</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Other_side_File_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Other_side_File_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>55</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Property_Type_Criteria_working_or_not()'><b>Verify_In_Advance_search_Property_Type_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>87</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Firm_Contact_Critria_working_or_not()'><b>Verify_In_Advance_search_Firm_Contact_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>55</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Responsible_Lawyer_Critria_working_or_not()'><b>Verify_In_Advance_search_Responsible_Lawyer_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>55</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Client_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Client_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>44</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Closing_date_Criteria_working_or_not()'><b>Verify_In_Advance_search_Closing_date_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
-<td></td>
-<td>22</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
-<tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Address_Criteria_working_or_not()'><b>Verify_In_Advance_search_Address_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Address_Criteria_working_or_not()'><b>Verify_In_Advance_search_Address_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
 <td></td>
 <td>33</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
 <tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Status_Critria_working_or_not()'><b>Verify_In_Advance_search_File_Status_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Firm_Contact_Critria_working_or_not()'><b>Verify_In_Advance_search_Firm_Contact_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
 <td></td>
-<td>25</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
+<td>56</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
 <tr>
-<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Reline_Criteria_working_or_not()'><b>Verify_In_Advance_search_Reline_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete], User=Automation, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}</td>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Other_side_File_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Other_side_File_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>56</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Property_Type_Criteria_working_or_not()'><b>Verify_In_Advance_search_Property_Type_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>88</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Reline_Criteria_working_or_not()'><b>Verify_In_Advance_search_Reline_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
 <td></td>
 <td>127</td>
-<td>home.AdvanceSearchFilterTest@ee86bcb</td></tr>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_File_Status_Critria_working_or_not()'><b>Verify_In_Advance_search_File_Status_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>22</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Client_name_Criteria_working_or_not()'><b>Verify_In_Advance_search_Client_name_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>44</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Closing_date_Criteria_working_or_not()'><b>Verify_In_Advance_search_Closing_date_Criteria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>22</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
+<tr>
+<td title='home.AdvanceSearchFilterTest.Verify_In_Advance_search_Responsible_Lawyer_Critria_working_or_not()'><b>Verify_In_Advance_search_Responsible_Lawyer_Critria_working_or_not</b><br>Test class: home.AdvanceSearchFilterTest<br>Parameters: [{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_[Do not Delete], Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td>
+<td></td>
+<td>56</td>
+<td>home.AdvanceSearchFilterTest@495fac5f</td></tr>
 </table><p>
 </body>
 </html>

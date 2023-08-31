@@ -107,59 +107,14 @@ public class BaseTest {
 
 		prop.load(fis);
 		driver = initializeDriver();
-		driver.get(prop.getProperty("url"));
+        driver.get(prop.getProperty("url"));
 		landingPage = new AbstractComponent(driver);
 		return landingPage; // return landingPage object so that it can be catch in test case
 	}
 	
 	
-	/* @DataProvider
-	public Object[][] getData() throws IOException {
-		List<HashMap<String, String>> data = getJsonDataToMap(
-				System.getProperty("user.dir") + "\\src\\test\\java\\project\\data\\LDDCredential.json");
-
-		return new Object[][] { { data.get(0) } };
-	}
-	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
-
-		// Read Json to string
-		String jsonContent = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-
-		// Convert String to HashMap using Jackson Databind
-		ObjectMapper mapper = new ObjectMapper();
-		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
-				new TypeReference<List<HashMap<String, String>>>() {
-				});
-		return data;
-	}
-
-*/
-	//Data Provider
-	/*@DataProvider(name = "testData")
-	public Object[][] testData() throws Exception {
-	    JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json")).getAsJsonObject();
-	    JsonObject advanceSearchData = jsonData.getAsJsonObject("advanceSearchData");
-	    JsonObject loginPageData = jsonData.getAsJsonObject("loginPageData");
-	    HashMap<String, String> testData_search = convertJsonObjectToHashMap(advanceSearchData);
-	    HashMap<String, String> testData_login = convertJsonObjectToHashMap(loginPageData);
-	    return new Object[][]{{testData_search,testData_login}};
-	}
-
-	private HashMap<String, String> convertJsonObjectToHashMap(JsonObject jsonObject) {
-	    HashMap<String, String> hashMap = new HashMap<>();
-	    for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-	        hashMap.put(entry.getKey(), entry.getValue().getAsString());
-	    }
-	    return hashMap;
-	}*/
 	
-	/*@Test(dataProvider = "testData", groups = "loginPageData")
-	public FileList launchApplicationAndLogin(HashMap<String, String> input2)
-			throws InterruptedException, IOException {
-		FileList MainPageObject = landingPage.Login(input2.get("Account"), input2.get("User"), input2.get("Password"));
-		return MainPageObject;
-	}*/
-	
+	//data provider
 	@DataProvider(name = "loginData")
 	public Object[][] loginData() throws Exception {
 	    JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json")).getAsJsonObject();
@@ -169,19 +124,28 @@ public class BaseTest {
 	    
 	    return new Object[][]{{loginDataMap}};
 	}
-
+	
+	//data provider
 	@DataProvider(name = "HomePageData")
 	public Object[][] fullTestData() throws Exception {
 	    JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json")).getAsJsonObject();
 	    JsonObject advanceSearchData = jsonData.getAsJsonObject("advanceSearchData");
 	    JsonObject loginPageData = jsonData.getAsJsonObject("loginPageData");
-	    
+	    JsonObject freeSearchData = jsonData.getAsJsonObject("freeSearchData");
 	    HashMap<String, String> loginDataMap = convertJsonObjectToHashMap(loginPageData);
 	    HashMap<String, String> advanceSearchDataMap = convertJsonObjectToHashMap(advanceSearchData);
+	    HashMap<String, String> freeSearchDataMap = convertJsonObjectToHashMap(freeSearchData);
 	    
-	    return new Object[][]{{loginDataMap, advanceSearchDataMap}};
+	    List<HashMap<String, String>> data = new ArrayList<>();
+	    data.add(loginDataMap);
+	    data.add(advanceSearchDataMap);
+	    data.add(freeSearchDataMap);
+	    
+	    return new Object[][]{{data}};
 	}
 
+
+	
 	protected HashMap<String, String> convertJsonObjectToHashMap(JsonObject jsonObject) {
         HashMap<String, String> hashMap = new HashMap<>();
         for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
@@ -190,8 +154,8 @@ public class BaseTest {
         return hashMap;
     }
 	
-	
-	
+   
+
 	@Test(dataProvider = "testData", groups = "loginData")
 	public FileList launchApplicationAndLogin(HashMap<String, String> loginData)throws InterruptedException, IOException {
 		FileList MainPageObject = landingPage.Login(loginData.get("Account"), loginData.get("User"), loginData.get("Password"));
