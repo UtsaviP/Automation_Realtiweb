@@ -21,9 +21,9 @@ public class Basic_InformationTest extends BaseTest {
 	@Test(dataProvider = "getData")
 	public void Verify_Basic_Information_Tab(HashMap<String, String> input) throws InterruptedException, IOException {
 		FileList MainPageObject = landingPage.Login(input.get("Account"), input.get("User"), input.get("Password"));
-		MainPageObject.ActiveRadio();
-		List<WebElement> FileList = MainPageObject.getFileList();
-		Basic_Information Basic_Information = MainPageObject.OpenPurchaseFile(input.get("FileName"));
+		//MainPageObject.ActiveRadio();
+		//List<WebElement> FileList = MainPageObject.getFileList();
+		//Basic_Information Basic_Information = MainPageObject.OpenPurchaseFile(input.get("FileName"));
 
 		Basic_Information BasicInfo = new Basic_Information(driver);
 		BasicInfo.ResponsibleLawyer.click();

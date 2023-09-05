@@ -9,32 +9,36 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import PurchaseFile.BasicTabObject.Basic_Information;
+import home.PageObject.Advance_Search_Filter;
 import home.PageObject.Create_New_File;
 import home.PageObject.FileList;
 import project.TestComponents.BaseTest;
 
 public class FileListTest extends BaseTest {
 
-	// String FileName = "AutomationFile_[Do not Delete]";
+	
 
-	@Test(dataProvider = "getData")
-	public void Verify_Create_New__File_Option(HashMap<String, String> input) throws InterruptedException, IOException {
-		FileList MainPageObject = landingPage.Login(input.get("Account"), input.get("User"), input.get("Password"));
+	@Test(groups = { "Regression"}, dataProvider = "HomePageData")
 
-		String Actual =MainPageObject.NewFileOption();
-		Create_New_File File = new Create_New_File(driver);
-		String expected = File.Inactive_Button.getText();
-		Assert.assertEquals(Actual, expected);
-
+	public void Verify_Archive_and_Activate_option_working_proper_or_not(HashMap<String, String> loginData) throws InterruptedException, IOException {
+		
+		launchApplicationAndLogin(loginData);
+		FileList filelist = new FileList(driver);
+		filelist.ArchiveAndActiveOption();
+		
+	
 	}
 
-	@Test(dataProvider = "getData")
-	public void Verify_Purchase_File_is_open_or_not(HashMap<String, String> input)
-			throws InterruptedException, IOException {
-		FileList MainPageObject = landingPage.Login(input.get("Account"), input.get("User"), input.get("Password"));
-		MainPageObject.ActiveRadio();
-		List<WebElement> FileList = MainPageObject.getFileList();
-		Basic_Information Basic_Information = MainPageObject.OpenPurchaseFile(input.get("FileName"));
-       
+
+	@Test(dataProvider = "HomePageData")
+	public void Verify_Free_search_Functionality_working_or_not(
+			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
+		HashMap<String, String> loginData = testData.get(0);
+		HashMap<String, String> freeSearchData = testData.get(2);
+	    launchApplicationAndLogin(loginData);
+	    FileList filelist = new FileList(driver);
+	    filelist.FreeSearch(freeSearchData.get("FreeSearch_1"),freeSearchData.get("FreeSearch_2"));
 	}
+	
+	
 }

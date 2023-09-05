@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="home.CreateNewFileTest">
+      <class name="cucumber.TestNGTestRunner">
         <methods>
-          <include name="launchApplication"/>
-          <include name="tearDown"/>
-          <include name="Verify_Create_File_button_is_disable_or_not" invocation-numbers="0"/>
+          <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="0"/>
+          <include name="tearDownClass"/>
         </methods>
-      </class> <!-- home.CreateNewFileTest -->
+      </class> <!-- cucumber.TestNGTestRunner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

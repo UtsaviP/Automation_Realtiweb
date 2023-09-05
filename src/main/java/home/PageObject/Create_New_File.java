@@ -6,14 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import io.netty.handler.timeout.TimeoutException;
 import io.netty.util.internal.ThreadLocalRandom;
 import project.AbstractComponents.AbstractComponent;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class Create_New_File extends AbstractComponent {
@@ -67,11 +62,12 @@ public class Create_New_File extends AbstractComponent {
 
 	By Create_New_File = By.xpath("//a[text()='New File']");
 	By FileNameBy = By.xpath("//tr[@name='OpeningInfo']//input[@class='input input-long']");
-	By Frame = By.xpath("//body/div[@id='root']/main[1]/div[1]/div[1]/div[1]/iframe[1]");
-	By P_TitleInsuranceTitle = By
-			.xpath("//h2[contains(text(),'Select Title Insurance Provider') and @subnodestatus=0]");
-	By S_FileConfigurationcaption = By
-			.xpath("//tr[@name='NewHomeNonTPLine'][2]/td/span[contains(text(),'New Home Sold by a Builder')]");
+//	By Frame = By.xpath("//body/div[@id='root']/main[1]/div[1]/div[1]/div[1]/iframe[1]");
+	By Frame = By.xpath("//iframe[@class='clsCompatHost']");
+	
+	
+	By P_TitleInsuranceTitle = By.xpath("//h2[contains(text(),'Select Title Insurance Provider') and @subnodestatus=0]");
+	By S_FileConfigurationcaption = By.xpath("//tr[@name='NewHomeNonTPLine'][2]/td/span[contains(text(),'New Home Sold by a Builder')]");
 	By M_MortgagorTitle = By.xpath("//span[contains(text(),'Mortgagor(s)')]");
 
 	// Verify Purchase File created Successfully or not
@@ -80,6 +76,7 @@ public class Create_New_File extends AbstractComponent {
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
 		frame();
+		Thread.sleep(3000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Purchase");
 		int int_random = ThreadLocalRandom.current().nextInt();
@@ -99,9 +96,9 @@ public class Create_New_File extends AbstractComponent {
 			DeleteFile.click();
 			DeleteButton.click();
 			waitForWebElementToAppear(PlusButton);
-			System.out.println(" Purchase File Created and deleted Successfully:PASS");
+			System.out.println(" *****Pass:Purchase File Created and deleted Successfully*****");
 		}
-		Assert.assertTrue(flag, "Purchase File not Created Successfully");
+		Assert.assertTrue(flag, "****Fail:Purchase File not Created Successfull*****y");
 		return new FileList(driver);
 	}
 
@@ -131,10 +128,10 @@ public class Create_New_File extends AbstractComponent {
 			DeleteFile.click();
 			DeleteButton.click();
 			waitForWebElementToAppear(PlusButton);
-			System.out.println(" Sale File Created and deleted Successfully:PASS");
+			System.out.println(" *****Pass:Sale File Created and deleted Successfully*****");
 
 		}
-		Assert.assertTrue(flag, "Sale File not Created Successfully");
+		Assert.assertTrue(flag, "*****Fail:Sale File not Created Successfully****");
 		return new FileList(driver);
 	}
 
@@ -144,7 +141,7 @@ public class Create_New_File extends AbstractComponent {
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
 		frame();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Mortgage");
 		int int_random = ThreadLocalRandom.current().nextInt();
@@ -164,10 +161,10 @@ public class Create_New_File extends AbstractComponent {
 			DeleteFile.click();
 			DeleteButton.click();
 			waitForWebElementToAppear(PlusButton);
-			System.out.println(" Mortgage File Created and deleted Successfully:PASS");
+			System.out.println(" *****Pass:Mortgage File Created and deleted Successfully*****");
 
 		}
-		Assert.assertTrue(flag, "Mortgage File not Created Successfully");
+		Assert.assertTrue(flag, "*****Fail:Mortgage File not Created Successfully*****");
 		return new FileList(driver);
 	}
 
@@ -179,16 +176,15 @@ public class Create_New_File extends AbstractComponent {
 		frame();
 		waitForWebElementToAppear(Inactive_Button);
 		boolean flag = false;
-		if (Inactive_Button.isEnabled())
-			;
+		if (Inactive_Button.isEnabled());
 
 		{
 			flag = true;
 			FileName.getAttribute("type").isBlank();
-			System.out.println(" Create button Disabled:PASS");
+			System.out.println(" *****Pass:Create button Disabled****");
 		}
 
-		Assert.assertTrue(flag, "Create button enabled even filename is not available");
+		Assert.assertTrue(flag, "*****Fail:Create button enabled even filename is not available*****");
 
 	}
 
@@ -201,20 +197,19 @@ public class Create_New_File extends AbstractComponent {
 		required_text.click();
 
 		boolean flag1 = false;
-		if (Active_Button.isEnabled())
-			;
+		if (Active_Button.isEnabled());
 
 		{
 			flag1 = true;
-			System.out.println(" Create button enabled:PASS");
+			System.out.println("*****Pass: Create button enabled*****");
 		}
 
-		Assert.assertTrue(flag1, "Create button Disabled even filename is available");
+		Assert.assertTrue(flag1, "*****Fail:Create button Disabled even filename is available*****");
 
 	}
 
 	// verify warning message while provide same name that already exist in database
-	public boolean existFilenameMessage(String FileName) throws InterruptedException {
+	public boolean existFilenameMessage(String Purchase_FileName) throws InterruptedException {
 		PlusButton.click();
 		waitForElementToAppear(Create_New_File);
 		driver.findElement(Create_New_File).click();
@@ -222,7 +217,7 @@ public class Create_New_File extends AbstractComponent {
 		Thread.sleep(2000);
 		Select DealType_select = new Select(DealType);
 		DealType_select.selectByVisibleText("Purchase");
-		MatterNumber.sendKeys(FileName);
+		MatterNumber.sendKeys(Purchase_FileName);
 		CreateFile_Button.click();
 		Thread.sleep(2000);
 		Alert alert = driver.switchTo().alert();
@@ -269,9 +264,9 @@ public class Create_New_File extends AbstractComponent {
 	    }
 
 	    if (isVerificationSuccessful) {
-	        System.out.println("Dropdown verification test passed.");
+	        System.out.println("*****Pass:Dropdown verification test passed.*****");
 	    } else {
-	        System.out.println("Dropdown verification test failed.");
+	        System.out.println("*****Fail:Dropdown verification test failed.*****");
 	    }
 	}
 

@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -16,7 +17,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
-
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import home.PageObject.FileList;
 import login.pageobject.LoginPage;
 
@@ -70,15 +72,19 @@ public class AbstractComponent {
 	// Login Page
 	public FileList Login(String Account, String User, String Password) throws InterruptedException, IOException {
 		LoginPage PageObject = new LoginPage(driver);
+		
 		PageObject.AccountName.sendKeys(Account);
 		PageObject.UserName.sendKeys(User);
 		PageObject.Password.sendKeys(Password);		
 		PageObject.Checked_site.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver = initializeDriver();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	driver = initializeDriver();
 		PageObject.LoginButton.click();
 		return new FileList(driver);
 	}
+	
+	
+	
 
 	// Explicit wait
 	public void waitForElementToAppear1(WebElement ele  ) {
@@ -94,7 +100,7 @@ public class AbstractComponent {
 	
 	// Explicit wait
 	public void waitForWebElementToAppear(WebElement findBy) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(findBy));
 	}
 
@@ -113,11 +119,27 @@ public class AbstractComponent {
 	// Utility method to check if an element is displayed using WebDriverWait
 	public boolean isElementDisplayed(By locator) {
 	    try {
-	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	        return element.isDisplayed();
-	    } catch (Exception e) {
+	        return driver.findElement(locator).isDisplayed();
+	    } catch (NoSuchElementException | StaleElementReferenceException e) {
 	        return false;
 	    }
 	}
+	
+	public boolean isElementDisplayedBy(WebDriver driver, By by) {
+	    try {
+	        WebElement element = driver.findElement(by);
+	        return element.isDisplayed();
+	    } catch (NoSuchElementException | StaleElementReferenceException | NullPointerException e) {
+	        return false;
+	    }
+	}
+	
+	public static boolean isElementNotPresent(WebDriver driver, By locator) {
+        try {
+            driver.findElement(locator);
+            return false; // Element is present
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return true; // Element is not present
+        }
+    }
 }

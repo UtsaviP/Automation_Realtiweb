@@ -2,18 +2,18 @@ package project.TestComponents;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.io.Reader;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Properties;
+
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,12 +22,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+
+import home.PageObject.FileList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import project.AbstractComponents.AbstractComponent;
 
@@ -71,20 +86,9 @@ public class BaseTest {
 		return driver;
 	}
 
-	// DataProvider
-	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
-
-		// Read Json to string
-		String jsonContent = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-
-		// Convert String to HashMap using Jackson Databind
-		ObjectMapper mapper = new ObjectMapper();
-		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
-				new TypeReference<List<HashMap<String, String>>>() {
-				});
-		return data;
-	}
-
+	
+	
+	
 	// Screenshot for failed test case
 	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
 		TakesScreenshot ts = (TakesScreenshot) driver;
@@ -103,23 +107,66 @@ public class BaseTest {
 
 		prop.load(fis);
 		driver = initializeDriver();
-		driver.get(prop.getProperty("url"));
+        driver.get(prop.getProperty("url"));
 		landingPage = new AbstractComponent(driver);
 		return landingPage; // return landingPage object so that it can be catch in test case
 	}
-
-	@DataProvider
-	public Object[][] getData() throws IOException {
-		List<HashMap<String, String>> data = getJsonDataToMap(
-				System.getProperty("user.dir") + "\\src\\test\\java\\project\\data\\LDDCredential.json");
-
-		return new Object[][] { { data.get(0) } };
+	
+	
+	
+	//data provider
+	@DataProvider(name = "loginData")
+	public Object[][] loginData() throws Exception {
+	    JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json")).getAsJsonObject();
+	    JsonObject loginPageData = jsonData.getAsJsonObject("loginPageData");
+	    
+	    HashMap<String, String> loginDataMap = convertJsonObjectToHashMap(loginPageData);
+	    
+	    return new Object[][]{{loginDataMap}};
+	}
+	
+	//data provider
+	@DataProvider(name = "HomePageData")
+	public Object[][] fullTestData() throws Exception {
+	    JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json")).getAsJsonObject();
+	    JsonObject advanceSearchData = jsonData.getAsJsonObject("advanceSearchData");
+	    JsonObject loginPageData = jsonData.getAsJsonObject("loginPageData");
+	    JsonObject freeSearchData = jsonData.getAsJsonObject("freeSearchData");
+	    HashMap<String, String> loginDataMap = convertJsonObjectToHashMap(loginPageData);
+	    HashMap<String, String> advanceSearchDataMap = convertJsonObjectToHashMap(advanceSearchData);
+	    HashMap<String, String> freeSearchDataMap = convertJsonObjectToHashMap(freeSearchData);
+	    
+	    List<HashMap<String, String>> data = new ArrayList<>();
+	    data.add(loginDataMap);
+	    data.add(advanceSearchDataMap);
+	    data.add(freeSearchDataMap);
+	    
+	    return new Object[][]{{data}};
 	}
 
+
+	
+	protected HashMap<String, String> convertJsonObjectToHashMap(JsonObject jsonObject) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+            hashMap.put(entry.getKey(), entry.getValue().getAsString());
+        }
+        return hashMap;
+    }
+	
+   
+
+	@Test(dataProvider = "testData", groups = "loginData")
+	public FileList launchApplicationAndLogin(HashMap<String, String> loginData)throws InterruptedException, IOException {
+		FileList MainPageObject = landingPage.Login(loginData.get("Account"), loginData.get("User"), loginData.get("Password"));
+		return MainPageObject;
+	}
+	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		driver.close();
-		driver.quit();
+	    if (driver != null) {
+	        driver.quit();
+	    }
 	}
 
 }
