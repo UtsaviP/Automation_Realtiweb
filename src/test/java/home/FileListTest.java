@@ -18,7 +18,7 @@ public class FileListTest extends BaseTest {
 
 	
 
-	@Test(dataProvider = "loginData")
+	@Test(groups = { "Regression"}, dataProvider = "HomePageData")
 
 	public void Verify_Archive_and_Activate_option_working_proper_or_not(HashMap<String, String> loginData) throws InterruptedException, IOException {
 		

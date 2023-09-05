@@ -81,13 +81,15 @@
     <version>7.5.0</version>
 </dependency>
 
-
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.6</version> <!-- Use the latest version -->
+</dependency>
   	
-  	<!--<dependency>
-  		<groupId>RealtiWeb</groupId>
-  		<artifactId>RealtiWeb</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>-->
+ 
+  	
+  	
   	
   </dependencies>  
 
@@ -104,7 +106,7 @@
         	<version>3.0.0-M7</version>
         <configuration>
           	<suiteXmlFiles>
-          	<suiteXmlFile>testSuites/LoginPage.xml</suiteXmlFile>
+          	<suiteXmlFile>testSuites/HomePage.xml</suiteXmlFile>
           	</suiteXmlFiles>
         </configuration>
     	</plugin>

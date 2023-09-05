@@ -32,6 +32,19 @@
     </classes>
   </test> 
   
+  
+     <!-- Test for 'Regression' group 
+    <test name="RegressionTests">
+        <groups>
+            <run>
+                <include name="Regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="home.FileListTest" />
+           
+        </classes>
+    </test>-->
 </suite> 
 
 
