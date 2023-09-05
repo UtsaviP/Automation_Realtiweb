@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="cucumber.TestNGTestRunner">
+      <class name="home.FileListTest">
         <methods>
-          <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0"/>
-          <include name="tearDownClass"/>
+          <include name="launchApplication"/>
+          <include name="tearDown"/>
+          <include name="Verify_Free_search_Functionality_working_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- cucumber.TestNGTestRunner -->
+      </class> <!-- home.FileListTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
