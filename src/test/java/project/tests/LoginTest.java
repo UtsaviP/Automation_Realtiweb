@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import project.TestComponents.Retry;
+import project.pageobject.HomePageObject;
 import project.pageobject.LoginPageObject;
 import project.TestComponents.BaseTest;
 	
@@ -17,11 +18,12 @@ import project.TestComponents.BaseTest;
 		@Test(dataProvider = "getData")
 		public void VerifyLogin(HashMap<String, String> input) throws InterruptedException, IOException
 		{
-		String AccountInitials= "AT";
+		String Help= "Help";
 	
 		LoginPageObject MainPageObject = landingPage.Login1(input.get("Account"), input.get("User"), input.get("Password"));
 		LoginPageObject MainPageObject1 = landingPage.Login1(input.get("province"));
-		Assert.assertEquals(AccountInitials, MainPageObject.getAccountInitials());
+		HomePageObject MainPageObject2 = new HomePageObject(driver);
+		Assert.assertEquals(Help, MainPageObject2.getHelp());
 		
 		}
 		

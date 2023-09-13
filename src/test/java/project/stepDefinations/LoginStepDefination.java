@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 import project.AbstractComponents.AbstractComponent;
 import project.TestComponents.BaseTest;
+import project.pageobject.HomePageObject;
 import project.pageobject.LoginPageObject;
 
 import io.cucumber.java.en.And;
@@ -19,8 +20,8 @@ import io.cucumber.java.en.When;
 public class LoginStepDefination extends BaseTest {
 
 	public AbstractComponent landingPage;
-	String AccountInitials= "AT";
-	
+	String Help= "Help";
+	String Login= "Log In";
 	
 	@Given("Enter Website for Login")
 	public void enter_website_for_login() throws IOException 
@@ -46,12 +47,21 @@ public class LoginStepDefination extends BaseTest {
 	@Then("Verify the Login")
 	public void verify_the_login() 
 	{
-		LoginPageObject MainPageObject = new LoginPageObject(driver);
-		Assert.assertEquals(AccountInitials, MainPageObject.getAccountInitials());
-		driver.close();
+		HomePageObject MainPageObject = new HomePageObject(driver);
+		Assert.assertEquals(Help, MainPageObject.getHelp());
+		//driver.close();
 	}
 	
-	
+	@Then("Verify the Logout")
+	public void verify_the_logout() 
+	{
+		HomePageObject MainPageObject = new HomePageObject(driver);
+		MainPageObject.getLogout();
+		
+		LoginPageObject MainPageObject1 = new LoginPageObject(driver);
+		Assert.assertEquals(Login, MainPageObject1.getVerifyLogout());
+		driver.close();
+	}
 	
 	
 	

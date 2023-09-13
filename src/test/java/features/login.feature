@@ -33,5 +33,15 @@ Feature: Login to RealtiWeb
 	  ##|LDDTesting | Automation   | wrongPassword | Ontario   |  ##fail
       
       
+  @Regression2
+ Scenario: Log out from RealtiWeb
+		Given Enter Website for Login
+		When Enter Account LDDTesting username Automation and password Automation for Login
+		And Enter province Ontario
+		And Verify the Login
+		Then Verify the Logout
+
       
+      
+
       
