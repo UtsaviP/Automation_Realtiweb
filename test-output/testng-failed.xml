@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="project.TestComponents.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="BasicSection(failed)">
     <classes>
-      <class name="home.FileListTest">
+      <class name="details_section.Contract.BasicTest">
         <methods>
           <include name="launchApplication"/>
           <include name="tearDown"/>
-          <include name="Verify_Free_search_Functionality_working_or_not" invocation-numbers="0"/>
+          <include name="setupLoginData"/>
+          <include name="Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- home.FileListTest -->
+      </class> <!-- details_section.Contract.BasicTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- BasicSection(failed) -->
+</suite> <!-- Failed suite [Suite] -->

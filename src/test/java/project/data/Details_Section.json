@@ -1,0 +1,34 @@
+{
+	"CONTRACT": {
+	
+		"Basic": {
+			"Responsible_Lawyer": "Maurizio Romanin",
+			"Firm_Contact": "Angela Ratcliffe",			
+			"Conveyancer": "John Smith",
+			"Single_Transferee" :"Utsavi A. Patel",
+			"Estate_Transferee":"Test",
+			"Corporation_Transferee":"ABC Corp.",
+			"Single_Transferor" :"Alice Horton",
+			"Estate_Transferor":"Seller Test",
+			"Corporation_Transferor":"ABC Company",
+			"MortgageBroker_Fee": 5000
+        },
+        
+		"Contract": {
+			"LawyerName": "DAVID RUSH",
+			"FirmContact": "Angela Ratcliffe"
+			
+		},
+		"Property": {
+			"FreeSearch_1": "test",
+			"FreeSearch_2": "Automation"
+		}
+	},
+	"BUYERSIDE": {
+	
+		"Individual": {
+			"Account": "LDDTesting",
+			"Purchase_FileName": "AutomationFile_[Do not Delete]"
+		}
+	}
+}

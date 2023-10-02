@@ -11,8 +11,11 @@ import home.PageObject.Advance_Search_Filter;
 import project.TestComponents.BaseTest;
 
 public class AdvanceSearchFilterTest extends BaseTest {
-
-	//@Test(dataProvider = "HomePageData")
+    
+	
+	
+	
+	@Test(dataProvider = "HomePageData")
 	public void Verify_Cancel_button_working_or_not(List<HashMap<String, String>> testData)
 			throws InterruptedException, IOException {
 		HashMap<String, String> loginData = testData.get(0);

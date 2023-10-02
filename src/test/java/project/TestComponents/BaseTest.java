@@ -14,9 +14,12 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -101,7 +104,7 @@ public class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	public AbstractComponent launchApplication() throws IOException {
 
-		Properties prop = new Properties();
+ 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\main\\java\\project\\resources\\GlobalData.properties"); // convert
 
@@ -142,8 +145,34 @@ public class BaseTest {
 	    data.add(freeSearchDataMap);
 	    
 	    return new Object[][]{{data}};
-	}
+	}        
 
+	 @DataProvider(name = "Details_Section")
+	 public Object[][] PurchaseDetailsSection() throws Exception {
+	     try {
+         JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\Details_Section.json")).getAsJsonObject();
+         JsonObject BasicTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Basic");
+         JsonObject ContractTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Contract");
+         JsonObject PropertyTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Property");
+         
+        HashMap<String, String> BasicDataMap = convertJsonObjectToHashMap(BasicTabData);
+        HashMap<String, String> ContractDataMap = convertJsonObjectToHashMap(ContractTabData);
+        HashMap<String, String> PropertyDataMap = convertJsonObjectToHashMap(PropertyTabData);
+         
+        List<HashMap<String, String>> data = new ArrayList<>();
+         data.add(BasicDataMap);
+	         data.add(ContractDataMap);
+	         data.add(PropertyDataMap);
+	         
+         return new Object[][]{{data}};
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	         // Handle the exception or rethrow it as needed.
+	         throw e;
+	     }
+	 }
+	
+	 
 
 	
 	protected HashMap<String, String> convertJsonObjectToHashMap(JsonObject jsonObject) {
@@ -163,9 +192,33 @@ public class BaseTest {
 	}
 	
 	@AfterMethod(alwaysRun = true)
-	public void tearDown() {
-	    if (driver != null) {
-	        driver.quit();
+	public void tearDown() throws InterruptedException {
+	    try {
+	        if (driver != null) {
+	            // Perform any necessary actions before logging out
+	        	driver.switchTo().defaultContent();
+	        	Thread.sleep(1000);
+	            driver.findElement(By.xpath("//span[@id='intitials']")).click();
+	            Thread.sleep(2000);
+	            driver.findElement(By.xpath("//button[text()='Log Out']")).click();
+	        }
+	    } catch (UnhandledAlertException e) {
+	        // Handle the exception (e.g., log it)
+	        System.out.println("Unhandled Alert Exception: " + e.getMessage());
+	        try {
+	            // Attempt to accept the alert if it appears
+	            Alert alert = driver.switchTo().alert();
+	            alert.accept();
+	          
+	        } catch (Exception innerException) {
+	            
+	            System.out.println("Error while handling the alert: " + innerException.getMessage());
+	        }
+	    } finally {
+	        // Ensure that the WebDriver is always quit
+	        if (driver != null) {
+	            driver.quit();
+	        }
 	    }
 	}
 

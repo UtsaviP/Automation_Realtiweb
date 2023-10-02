@@ -39,7 +39,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By ClearSearch = By.xpath("//button[@id='clearSearchBtn']");
 	By FileLawyerName = By.xpath("//tr[@title='Lawyer responsible for this file']/td[2]/span");
 	By FileFirmName = By.xpath("//tr[@xmlbase='Staff']//span[@class='input-inactive input-long']/span[1]");
-	By Filelistname = By.xpath("//div[@id='ListSection']//table//tbody//td[1]/span");
+	public By Filelistname = By.xpath("//div[@id='ListSection']//table//tbody//td[1]/span");
 	By HomepageFilelist = By.xpath("//div[@id='ListSection']");
 	By HomeButton = By.xpath("//div[@id='root']//div[1]//a[1]");
 	By ClientNameField = By.xpath("//body/div[@id='root']/main[1]//div[3]/input[@class='form-control']");
@@ -57,7 +57,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By FileLawyername = By
 			.cssSelector("tr[xmlbase='Solicitor'] span[class='input-inactive input-long'] span[attrname='Name']");
 	By Filenumber = By.xpath("//div[@class='row']//div[2]//input[1]");
-	By Noresult = By.xpath("//i[normalize-space()='- No Search Results Found -']");
+	public By Noresult = By.xpath("//i[normalize-space()='- No Search Results Found -']");
 	By OtherFileno=By.xpath("//input[@attrname='OtherSideMatterNumber']");
 			
 	@FindBy(xpath = "//label[contains(text(),'Purchase')]")
@@ -691,7 +691,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
 
 	// Method to click on the first file in the list
-	private void clickOnFirstFile() {
+	public void clickOnFirstFile() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 		List<WebElement> initialFileList = driver.findElements(Filelistname);

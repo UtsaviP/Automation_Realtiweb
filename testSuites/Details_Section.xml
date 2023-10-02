@@ -7,19 +7,14 @@
 	<listener class-name="project.TestComponents.Listeners"></listener>
 </listeners>
   
-  <test thread-count="5" name="CreateNewFile">
+  <test thread-count="5" name="BasicSection">
     <classes>
-      <class name="menubar_File.CreateNewFileTest"/>
+      <class name="details_section.Contract.BasicTest"/>
     </classes>
     
   </test> <!-- Test -->
   
-  <test thread-count="5" name="MainPageTest">
-    <classes>
-      <class name="menubar_MainPage.MainPageTest"/>
-    </classes>
-    
-  </test> <!-- Test -->
+  
   
     
   

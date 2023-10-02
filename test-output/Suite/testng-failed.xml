@@ -4,15 +4,16 @@
   <listeners>
     <listener class-name="project.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="AdvanceSearchFilter(failed)">
+  <test thread-count="5" name="BasicSection(failed)">
     <classes>
-      <class name="home.AdvanceSearchFilterTest">
+      <class name="details_section.Contract.BasicTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
           <include name="tearDown"/>
+          <include name="setupLoginData"/>
+          <include name="Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- home.AdvanceSearchFilterTest -->
+      </class> <!-- details_section.Contract.BasicTest -->
     </classes>
-  </test> <!-- AdvanceSearchFilter(failed) -->
+  </test> <!-- BasicSection(failed) -->
 </suite> <!-- Failed suite [Suite] -->
