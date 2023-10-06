@@ -1,6 +1,7 @@
 package home.PageObject;
 
 
+import java.io.IOException;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import project.AbstractComponents.AbstractComponent;
+import project.AbstractComponents.AzureDevOpsIntegration;
 
 public class FileList extends AbstractComponent {
 	
@@ -23,7 +25,6 @@ public class FileList extends AbstractComponent {
 	}
 
 	// File->FileList PageFactory
-
 	@FindBy(xpath = "(//span[contains(text(),'Create File')])[2]")
 	public WebElement CreateFile_Button;
 
@@ -44,14 +45,14 @@ public class FileList extends AbstractComponent {
 	
 	@FindBy(xpath = "//i[contains(text(),'- Starting')]")
 	public WebElement Expandsearchcaption;
-	
-	
-	
+		
 	By ThreeDotmenu = By.xpath("//tbody/tr[1]/td[7]//button");
 	By Firstfilestatus = By.xpath("//tbody/tr[1]/td[6]");
+	
+	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 
 	//***Verify Archived and Activate option working or not in File List > Three Dots menu***
-	public FileList ArchiveAndActiveOption() throws InterruptedException {
+	public FileList ArchiveAndActiveOption() throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
 	    List<WebElement> initialFileList = driver.findElements(searchobject.Filelistname);
 	    searchobject.waitForFileListUpdate(initialFileList);
@@ -77,20 +78,24 @@ public class FileList extends AbstractComponent {
 	                    Thread.sleep(2000);
 	                    status = driver.findElement(Firstfilestatus).getText();
 	                    if (status.equals("Active")) {
-	                        activeStatus = true;
+	                        activeStatus = true;                       
 	                        System.out.println("*****Pass : Status has been changed from Archived to Active.*****");
 	                    } else {
+	                    	
 	                        Assert.fail("*****Fail : Status has not been changed from Archived to Active.*****");
 	                    }
 	                }
 	            } else {
+	            	
 	                Assert.fail("*****Fail : Status has not been changed from Active to archived.*****");
 	            }
 	        }
 
 	        if (archiveStatus && activeStatus) {
+	        	 Azure.updateTestCaseStatus("12067", "Automation Pass");
 	            System.out.println("***Both test cases passed.**");
 	        } else {
+	        	 Azure.updateTestCaseStatus("12067", "Automation Fail");
 	            System.out.println("**One or both test cases failed.**");
 	        }
 	    } else {
@@ -110,7 +115,7 @@ public class FileList extends AbstractComponent {
 	  
 	
 //***Verify the free search functionality and check if the bold name exactly matches the searchable name or not***
-	public FileList FreeSearch(String FreeSearch_1, String FreeSearch_2) throws InterruptedException {
+	public FileList FreeSearch(String FreeSearch_1, String FreeSearch_2) throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
 	    String[] freesearchname = { FreeSearch_1, FreeSearch_2 };
 
@@ -134,8 +139,9 @@ public class FileList extends AbstractComponent {
 	                }
 	                
 	                if (boldText.equalsIgnoreCase(freesearch)) { // Using equalsIgnoreCase for case-insensitive comparison
-	                    System.out.println("Bold text inside file name matches search text: " + boldText + ":" + fileName);
-	                } else {
+	                
+	                    System.out.println("Pass:Bold text inside file name matches search text: " + boldText + ":" + fileName);
+	                } else {	                	
 	                    System.out.println("***** Fail: Bold text inside file name does not match search text: " + boldText + ":" + fileName);
 	                    allFilesMatchingSearch = false;
 	                    break;
@@ -143,8 +149,10 @@ public class FileList extends AbstractComponent {
 	            }
 	            
 	            if (allFilesMatchingSearch) {
+	            	Azure.updateTestCaseStatus("12066", "Automation Pass");
 	                System.out.println("***** Pass: All files match search criteria *****");
 	            } else {
+	            	Azure.updateTestCaseStatus("12066", "Automation Fail");
 	                System.out.println("***** Fail: Some files do not match search criteria *****");
 	                Assert.fail("***** Fail: Some files do not match search criteria *****");
 	            }

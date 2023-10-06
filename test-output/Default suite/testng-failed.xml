@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="details_section.Contract.BasicTest">
+      <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="setupLoginData"/>
-          <include name="Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not"/>
           <include name="tearDown"/>
-          <include name="Verify_In_BasicSection_Transferee_Different_Criteria_working_proper_or_not"/>
+          <include name="Verify_In_Advance_search_Client_name_Criteria_working_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- details_section.Contract.BasicTest -->
+      </class> <!-- home.AdvanceSearchFilterTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

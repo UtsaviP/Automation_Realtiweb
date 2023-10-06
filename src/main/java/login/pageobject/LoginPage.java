@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import project.AbstractComponents.AbstractComponent;
+import project.AbstractComponents.AzureDevOpsIntegration;
 
 public class LoginPage extends AbstractComponent {
 	WebDriver driver;
@@ -43,9 +44,10 @@ public class LoginPage extends AbstractComponent {
 	@FindBy(id = "intitials")
 	public WebElement Accountoption;
    
-
-	//Login with Correct User name, Password and Account Name
-	public String GetLoginDetails() {
+	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
+	
+	//***Login with Correct User name, Password and Account Name***
+	public String GetLoginDetails() throws InterruptedException {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation");
 		Password.sendKeys("Automation");
@@ -59,10 +61,11 @@ public class LoginPage extends AbstractComponent {
 		String Actual = driver.findElement(By.xpath("//div [@class='col-10 col']/b")).getText();
 		String arr[] = Actual.split(" ", 2);
 		String Actual1 = arr[0];
+		Accountoption.click();
+		Thread.sleep(2000);
 		return Actual1;
-
 	}
-    //Login with Wrong Password ,  Correct  User name and Account Name 
+    //***Login with Wrong Password ,  Correct  User name and Account Name***
 	public String LoginPassWrong() {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation");
@@ -76,7 +79,7 @@ public class LoginPage extends AbstractComponent {
 
 	}
 	
-    //Login with Wrong User name,  Correct Password and Account Name
+    //***Login with Wrong User name,  Correct Password and Account Name***
 	public String LoginUsernameWrong() {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation1");
@@ -89,7 +92,7 @@ public class LoginPage extends AbstractComponent {
 		return Actual;
 
 	}
-	//Login with Wrong Account Name,  Correct  User name and Password
+	//***Login with Wrong Account Name,  Correct  User name and Password***
 	public String LoginAccountnameWrong() {
 		AccountName.sendKeys("LDDTesting1");
 		UserName.sendKeys("Automation");

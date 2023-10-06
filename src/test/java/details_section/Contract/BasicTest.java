@@ -48,12 +48,9 @@ public class BasicTest extends BaseTest {
 		HashMap<String, String> BasicData = testData.get(0);
 		login(loginData);
 		Basic BasicTab = new Basic(driver);
-		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));
-			
+		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));			
  		BasicTab.ResponsibleLawyer(BasicData.get("Responsible_Lawyer"));
 		Thread.sleep(2000);
-		
-		
 
 	}
 	
@@ -61,7 +58,6 @@ public class BasicTest extends BaseTest {
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_File_Details_FirmContactAddEditDelete_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
-
 		
 		login(loginData);
 		Basic BasicTab = new Basic(driver);
@@ -79,7 +75,7 @@ public class BasicTest extends BaseTest {
 		
 		login(loginData);
 		Basic BasicTab = new Basic(driver);
-		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));		
+ 		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));		
 		BasicTab.Conveyancer();
 
 	}
@@ -126,7 +122,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-	@Test(dataProvider = "Details_Section")
+@Test(dataProvider = "Details_Section")
 	
 	public void Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -149,7 +145,7 @@ public class BasicTest extends BaseTest {
 		
 	}
 	
-  @Test(dataProvider = "Details_Section")
+ @Test(dataProvider = "Details_Section")
 	
 	public void Verify_In_BasicSection_MortgageBrokerFee_field_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {

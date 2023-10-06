@@ -1,12 +1,12 @@
 package project.AbstractComponents;
 
-import java.beans.Statement;
+
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
+
 import java.time.Duration;
 import java.util.Properties;
-
+import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -16,9 +16,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeTest;
+
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
+
+
 import home.PageObject.FileList;
 import login.pageobject.LoginPage;
 
