@@ -146,7 +146,19 @@ public class Basic extends AbstractComponent {
 
 	@FindBy(xpath = "(//td[contains(text(),'Birth Date') and @subnodestatus='0'])[last()]")
 	public WebElement BirthDatefield;
-
+	
+	@FindBy(xpath = "(//span[@attrname='XFeeName'])[1]")
+	public WebElement Transferee_field;
+	
+	@FindBy(xpath = "(//span[@attrname='XForName'])[2]")
+	public WebElement Transferor_field;
+	
+	@FindBy(xpath = "//tr[@title='Main contact information']//td[2]")
+	public WebElement ContractTab_Purchasers;
+	
+	@FindBy(xpath = "//tr[@name='VendorLine']//span[@class='input-inactive input-long']")
+	public WebElement ContractTab_Vendors;
+	
 	By LawyerListBy = By.xpath("//tr[@class='SelectRow']//td[@class='SelectRow']");
 
 	By listby = By.xpath("//tbody[@id ='lookUpTBody']/tr[@class='SelectRow']/td[@class='SelectRow']");
@@ -331,14 +343,14 @@ public class Basic extends AbstractComponent {
 		}
 	}
 
-	// verify File Configuration->File_Configuration functionality working proper or
-	// not
+	// verify File Configuration->File_Configuration functionality working proper or not
+
 
 	public void File_Configuration() throws InterruptedException, IOException {
 		switchToIframe(MiddlePortionFrame);
 
-		// select Yes in Acting for both purchaser and vendor in this transaction
-		// element
+		// select Yes in Acting for both purchaser and vendor in this transaction element
+
 		driver.findElement(By.xpath("//tbody/tr[@xcondition=\"@PSM='P' or @PSM='S'\"]/td/span[@type='radio']/input[2]"))
 				.click();
 
@@ -453,11 +465,31 @@ public class Basic extends AbstractComponent {
 			System.out.println("****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
 		}
 
-		// Assert based on the overall match flag
+		
 		Assert.assertTrue(isMatchFound_purchaser,
 				"****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
-	}
+		
+	//Verify Contract tab > Purchaser(s) field
+		switchToIframe(MiddlePortionFrame);	
+		String textInIframe = Transferee_field.getText();		
+		driver.switchTo().defaultContent();		
+		driver.findElement(By.xpath("//span[text()='Contract']")).click();		
+		switchToIframe(MiddlePortionFrame);		
+		String textInContractIframe = ContractTab_Purchasers.getText();	
+		boolean isTextMatch = textInIframe.equals(textInContractIframe);
 
+		try {
+		    assert isTextMatch : "Purchasers names matches in the Contract tab >Purchasers(s) field ";
+		    Azure.updateTestCaseStatus("12140", "Automation Pass");
+		    System.out.println("PASS: Purchasers names matches in the Contract tab >Purchasers(s) field ");
+		} catch (AssertionError e) {
+		    Azure.updateTestCaseStatus("12140", "Automation Fail");
+		    System.out.println("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field *****");
+		    Assert.fail("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field**** ");
+		}
+	}
+	
+	
 	// verify Transferor(s) functionality working proper or not
 	public void Transferor(String Single_Transferor, String Estate_Transferor, String Corporation_Transferor,
 			Map<String, String> clientNames) throws InterruptedException, IOException {
@@ -560,12 +592,29 @@ public class Basic extends AbstractComponent {
 			System.out.println("****Fail: Not All Seller Names Found in File navigation >Seller Side*****");
 		}
 
-		// Assert based on the overall match flag
 		Assert.assertTrue(isMatchFound_Seller,
 				"****Fail: Not All Seller Names Found in File navigation >Seller Side*****");
-	}
+		
+		//Verify Contract tab > Vendor(s) field
+				switchToIframe(MiddlePortionFrame);	
+				String textInIframe = Transferor_field.getText();		
+				driver.switchTo().defaultContent();		
+				driver.findElement(By.xpath("//span[text()='Contract']")).click();		
+				switchToIframe(MiddlePortionFrame);		
+				String textInContractIframe = ContractTab_Vendors.getText();	
+				boolean isTextMatch = textInIframe.equals(textInContractIframe);
 
-	
+				try {
+				    assert isTextMatch : "Vendors names matches in the Contract tab >Vendor(s) field ";
+				    Azure.updateTestCaseStatus("12143", "Automation Pass");
+				    System.out.println("PASS: Vendors names matches in the Contract tab >Vendor(s) field ");
+				} catch (AssertionError e) {
+				    Azure.updateTestCaseStatus("12143", "Automation Fail");
+				    System.out.println("****FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field *****");
+				    Assert.fail("****FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field**** ");
+				}
+			}
+				
 	// Verify Fire Insurance functionality working properly or not
 	public void FireInsurance() throws InterruptedException, IOException {
 	    boolean isTestPassed = false;

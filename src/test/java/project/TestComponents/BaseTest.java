@@ -17,6 +17,7 @@ import org.json.JSONTokener;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnhandledAlertException;
@@ -29,6 +30,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -117,7 +119,7 @@ public class BaseTest {
 		return landingPage; // return landingPage object so that it can be catch in test case
 	}
 
-	// data provider
+	// data provider for login page
 	@DataProvider(name = "loginData")
 	public Object[][] loginData() throws Exception {
 		JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json"))
@@ -129,7 +131,7 @@ public class BaseTest {
 		return new Object[][] { { loginDataMap } };
 	}
 
-	// data provider
+	// data provider for Home page
 	@DataProvider(name = "HomePageData")
 	public Object[][] fullTestData() throws Exception {
 		JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\HomePage.json"))
@@ -149,6 +151,8 @@ public class BaseTest {
 		return new Object[][] { { data } };
 	}
 
+	
+	//Data provider for Details Section
 	@DataProvider(name = "Details_Section")
 	public Object[][] PurchaseDetailsSection() throws Exception {
 		try {
@@ -184,6 +188,7 @@ public class BaseTest {
 		return hashMap;
 	}
 
+	
 	@Test(dataProvider = "testData", groups = "loginData")
 	public FileList launchApplicationAndLogin(HashMap<String, String> loginData)
 			throws InterruptedException, IOException {
@@ -192,41 +197,72 @@ public class BaseTest {
 		return MainPageObject;
 	}
 
-	@AfterMethod(alwaysRun = true)
-	public void tearDown() throws InterruptedException {
+	
+	// Fetch login data from the loginData data provider and store it	
+	// Define a login method
+//public void login(HashMap<String, String> loginData) throws InterruptedException, IOException {
+//launchApplicationAndLogin(loginData);
+	//}
+	
+	
+	public HashMap<String, String> loginData; // Class-level variable to store login data	
+	@SuppressWarnings("unchecked")
+	@BeforeClass
+	public void setupLoginData() {
+		Object[][] loginDataArray = null;
 		try {
-			if (driver != null) {
-				// Switch to the default content
-				driver.switchTo().defaultContent();
+			loginDataArray = loginData();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-				// Attempt to locate the element with initials
-				WebElement initialsElement = null;
-				try {
-					initialsElement = driver.findElement(By.xpath("//span[@id='intitials']"));
-				} catch (NoSuchElementException ignored) {
-					
-				}
-
-				if (initialsElement != null && initialsElement.isDisplayed()) {
-					// If the element is visible, click it
-					initialsElement.click();					
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("//button[text()='Log Out']")).click();
-				Alert alert = driver.switchTo().alert();
-				alert.accept();
-				}
-			}
-		} catch (TimeoutException e) {
-			
-
-			} catch (Exception innerException) {
-				System.out.println("Error while handling the alert: " + innerException.getMessage());
-			} finally {
-				// Quit the driver
-				if (driver != null) {
-					driver.quit();
-				}
-			}
+		if (loginDataArray != null && loginDataArray.length > 0) {
+			loginData = (HashMap<String, String>) loginDataArray[0][0];
 		}
 	}
+
+	
+	
+	@AfterMethod(alwaysRun = true)
+	public void tearDown() throws InterruptedException {
+	    try {
+	        if (driver != null) {
+	            // Switch to the default content
+	            driver.switchTo().defaultContent();
+
+	            // Attempt to locate the element with initials
+	            WebElement initialsElement = null;
+	            try {
+	                initialsElement = driver.findElement(By.xpath("//span[@id='intitials']"));
+	            } catch (NoSuchElementException ignored) {
+	                
+	            }
+
+	            if (initialsElement != null && initialsElement.isDisplayed()) {
+	                // If the element is visible, click it
+	                initialsElement.click();
+	                Thread.sleep(2000);
+	                driver.findElement(By.xpath("//button[text()='Log Out']")).click();
+
+	                // Check if an alert is present
+	                try {
+	                    Alert alert = driver.switchTo().alert();
+	                    alert.accept();
+	                } catch (NoAlertPresentException e) {
+	                    // No alert is present, proceed to close the browser
+	                }
+	            }
+	        }
+	    } catch (TimeoutException e) {
+	        
+	    } catch (Exception innerException) {
+	        System.out.println("Error while handling the alert: " + innerException.getMessage());
+	    } finally {
+	        // Quit the driver
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    }
+	}
+}
 

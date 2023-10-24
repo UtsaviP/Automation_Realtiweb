@@ -6,15 +6,20 @@
 <listeners>
 	<listener class-name="project.TestComponents.Listeners"></listener>
 </listeners>
-  
+
   <test thread-count="5" name="BasicSection">
     <classes>
       <class name="details_section.Contract.BasicTest"/>
     </classes>
     
-  </test> <!-- Test -->
+  </test>   
   
-  
+   <test thread-count="5" name="ContractSection">
+    <classes>
+      <class name="details_section.Contract.ContractTest"/>
+    </classes>
+    
+  </test>
   
     
   

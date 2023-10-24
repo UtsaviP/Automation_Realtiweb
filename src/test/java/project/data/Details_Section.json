@@ -15,9 +15,15 @@
         },
         
 		"Contract": {
-			"LawyerName": "DAVID RUSH",
-			"FirmContact": "Angela Ratcliffe"
-			
+			"OtherSide_Lawyer": "Patel",
+			"Closing_Date": "01/DEC/2023",
+			"Contract_Price": 900000,
+			"Broker_Deposit":2000,
+			"Lawyer_Deposit":5000,
+			"Vendor_Deposit":7000,
+			"Broker_LastName":"Patel",
+			"Broker_ContractPrice":3
+		
 		},
 		"Property": {
 			"FreeSearch_1": "test",

@@ -742,7 +742,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
    //Method to wait File list Update
 	public void waitForFileListUpdate(List<WebElement> initialFileList) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		try {
 			if (!initialFileList.isEmpty()) {

@@ -4,40 +4,17 @@
   <listeners>
     <listener class-name="project.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="Login(failed)">
+  <test thread-count="5" name="ContractSection(failed)">
     <classes>
-      <class name="loginPage.LoginPageTest">
+      <class name="details_section.Contract.ContractTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_validation_when_password_is_wrong"/>
-          <include name="Verify_validation_when_AccountName_is_wrong"/>
-          <include name="Verify_Login_Page_Working_Proper_Or_Not"/>
-          <include name="Verify_validation_when_username_is_wrong"/>
+          <include name="initializeTest"/>
+          <include name="setupLoginData"/>
           <include name="tearDown"/>
+          <include name="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- loginPage.LoginPageTest -->
+      </class> <!-- details_section.Contract.ContractTest -->
     </classes>
-  </test> <!-- Login(failed) -->
-  <test thread-count="5" name="CreateNewFile(failed)">
-    <classes>
-      <class name="home.CreateNewFileTest">
-        <methods>
-          <include name="launchApplication"/>
-          <include name="verify_warning_message_while_provide_same_name_that_already_exist_in_database" invocation-numbers="0"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- home.CreateNewFileTest -->
-    </classes>
-  </test> <!-- CreateNewFile(failed) -->
-  <test thread-count="5" name="AdvanceSearchFilter(failed)">
-    <classes>
-      <class name="home.AdvanceSearchFilterTest">
-        <methods>
-          <include name="launchApplication"/>
-          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- home.AdvanceSearchFilterTest -->
-    </classes>
-  </test> <!-- AdvanceSearchFilter(failed) -->
+  </test> <!-- ContractSection(failed) -->
 </suite> <!-- Failed suite [Suite] -->
