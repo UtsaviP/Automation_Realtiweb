@@ -20,8 +20,13 @@
     </classes>
     
   </test>
-  
+ 
+     <test thread-count="5" name="PropertySection">
+    <classes>
+      <class name="details_section.Contract.PropertyTest"/>
+    </classes>
     
+  </test>
   
   
 </suite> <!-- Suite -->

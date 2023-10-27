@@ -4,17 +4,17 @@
   <listeners>
     <listener class-name="project.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="ContractSection(failed)">
+  <test thread-count="5" name="AdvanceSearchFilter(failed)">
     <classes>
-      <class name="details_section.Contract.ContractTest">
+      <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
           <include name="initializeTest"/>
           <include name="setupLoginData"/>
+          <include name="Verify_In_Advance_search_Property_Type_Criteria_working_or_not" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not" invocation-numbers="0"/>
         </methods>
-      </class> <!-- details_section.Contract.ContractTest -->
+      </class> <!-- home.AdvanceSearchFilterTest -->
     </classes>
-  </test> <!-- ContractSection(failed) -->
+  </test> <!-- AdvanceSearchFilter(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -36,6 +36,13 @@ public class CommonFuncs extends AbstractComponent {
 	@FindBy(xpath = "//iframe[@id='dialog-body']")
 	public WebElement PopUpFrame;
 	
+
+	@FindBy(xpath = "//div[@class='me-auto']//span[contains(text(), 'Basic')]")
+	public WebElement Basic_Tab;
+	
+	
+	
+	
    //A utility method to switch to an iframe by its XPath
 	public void switchToIframe(WebElement iframeElement) {
 		driver.switchTo().defaultContent();

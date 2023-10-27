@@ -26,9 +26,11 @@
 		
 		},
 		"Property": {
-			"FreeSearch_1": "test",
-			"FreeSearch_2": "Automation"
-		}
+			"Street_Number": "715",
+			"Street_Name": "Don Mills",
+			"City":"Toronto",
+			"Postal_Code" :"M3C 1V9"
+	   }
 	},
 	"BUYERSIDE": {
 	

@@ -1,40 +1,539 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="22" passed="22" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-24T09:45:43 EDT" name="Default suite" finished-at="2023-10-24T09:46:39 EDT" duration-ms="56599">
+  <suite started-at="2023-10-27T11:09:40 EDT" name="Suite" finished-at="2023-10-27T11:30:33 EDT" duration-ms="1253489">
     <groups>
     </groups>
-    <test started-at="2023-10-24T09:45:43 EDT" name="Default test" finished-at="2023-10-24T09:46:39 EDT" duration-ms="56599">
-      <class name="details_section.Contract.ContractTest">
-        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Contract.ContractTest@f1da57d]" started-at="2023-10-24T09:45:43 EDT" name="setupLoginData" finished-at="2023-10-24T09:45:43 EDT" duration-ms="34" status="PASS">
+    <test started-at="2023-10-27T11:09:40 EDT" name="BasicSection" finished-at="2023-10-27T11:18:35 EDT" duration-ms="534978">
+      <class name="details_section.Contract.BasicTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:09:40 EDT" name="setupLoginData" finished-at="2023-10-27T11:09:40 EDT" duration-ms="36" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginData -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@f1da57d]" started-at="2023-10-24T09:45:43 EDT" name="launchApplication" finished-at="2023-10-24T09:45:46 EDT" duration-ms="2582" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:09:40 EDT" name="launchApplication" finished-at="2023-10-27T11:09:42 EDT" duration-ms="2498" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@f1da57d]" started-at="2023-10-24T09:45:46 EDT" name="initializeTest" finished-at="2023-10-24T09:45:46 EDT" duration-ms="36" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:09:42 EDT" name="initializeTest" finished-at="2023-10-27T11:09:42 EDT" duration-ms="24" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@f1da57d]" started-at="2023-10-24T09:45:46 EDT" name="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-24T09:46:37 EDT" duration-ms="51149" status="PASS">
+        <test-method signature="Verify_In_BasicSection_File_Configuration_Different_fields_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:09:42 EDT" name="Verify_In_BasicSection_File_Configuration_Different_fields_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:10:28 EDT" duration-ms="46225" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {FreeSearch_1=test, FreeSearch_2=Automation}]]]>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_File_Configuration_Different_fields_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:10:28 EDT" name="tearDown" finished-at="2023-10-27T11:10:31 EDT" duration-ms="2372" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:10:31 EDT" name="launchApplication" finished-at="2023-10-27T11:10:32 EDT" duration-ms="1462" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:10:32 EDT" name="initializeTest" finished-at="2023-10-27T11:10:32 EDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_File_Details_Conveyancer_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:10:32 EDT" name="Verify_In_BasicSection_File_Details_Conveyancer_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:11:18 EDT" duration-ms="46097" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_File_Details_Conveyancer_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:11:18 EDT" name="tearDown" finished-at="2023-10-27T11:11:21 EDT" duration-ms="2301" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:11:21 EDT" name="launchApplication" finished-at="2023-10-27T11:11:22 EDT" duration-ms="1430" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:11:22 EDT" name="initializeTest" finished-at="2023-10-27T11:11:22 EDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_File_Details_FirmContactAddEditDelete_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:11:22 EDT" name="Verify_In_BasicSection_File_Details_FirmContactAddEditDelete_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:12:09 EDT" duration-ms="47198" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_File_Details_FirmContactAddEditDelete_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:12:09 EDT" name="tearDown" finished-at="2023-10-27T11:12:12 EDT" duration-ms="2343" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:12:12 EDT" name="launchApplication" finished-at="2023-10-27T11:12:13 EDT" duration-ms="1455" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:12:13 EDT" name="initializeTest" finished-at="2023-10-27T11:12:13 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_File_Details_Responsible_Lawyer_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:12:13 EDT" name="Verify_In_BasicSection_File_Details_Responsible_Lawyer_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:13:12 EDT" duration-ms="58492" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_File_Details_Responsible_Lawyer_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:13:12 EDT" name="tearDown" finished-at="2023-10-27T11:13:14 EDT" duration-ms="2364" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:13:14 EDT" name="launchApplication" finished-at="2023-10-27T11:13:15 EDT" duration-ms="1434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:13:15 EDT" name="initializeTest" finished-at="2023-10-27T11:13:15 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:13:15 EDT" name="Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:14:15 EDT" duration-ms="59141" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:14:15 EDT" name="tearDown" finished-at="2023-10-27T11:14:17 EDT" duration-ms="2847" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:14:17 EDT" name="launchApplication" finished-at="2023-10-27T11:14:19 EDT" duration-ms="1528" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:14:19 EDT" name="initializeTest" finished-at="2023-10-27T11:14:19 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_MortgageBrokerFee_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:14:19 EDT" name="Verify_In_BasicSection_MortgageBrokerFee_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:15:07 EDT" duration-ms="48276" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_MortgageBrokerFee_field_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:15:07 EDT" name="tearDown" finished-at="2023-10-27T11:15:10 EDT" duration-ms="2305" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:15:10 EDT" name="launchApplication" finished-at="2023-10-27T11:15:11 EDT" duration-ms="1429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:15:11 EDT" name="initializeTest" finished-at="2023-10-27T11:15:11 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_Mortgage_Broker_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:15:11 EDT" name="Verify_In_BasicSection_Mortgage_Broker_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:16:11 EDT" duration-ms="59520" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_Mortgage_Broker_field_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:16:11 EDT" name="tearDown" finished-at="2023-10-27T11:16:13 EDT" duration-ms="2657" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:16:13 EDT" name="launchApplication" finished-at="2023-10-27T11:16:15 EDT" duration-ms="1517" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:16:15 EDT" name="initializeTest" finished-at="2023-10-27T11:16:15 EDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_Transferee_Different_Criteria_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:16:15 EDT" name="Verify_In_BasicSection_Transferee_Different_Criteria_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:17:21 EDT" duration-ms="66759" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_Transferee_Different_Criteria_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:17:21 EDT" name="tearDown" finished-at="2023-10-27T11:17:24 EDT" duration-ms="2308" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:17:24 EDT" name="launchApplication" finished-at="2023-10-27T11:17:25 EDT" duration-ms="1454" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:17:25 EDT" name="initializeTest" finished-at="2023-10-27T11:17:25 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:17:25 EDT" name="Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:18:32 EDT" duration-ms="67038" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.BasicTest@76884e4b]" started-at="2023-10-27T11:18:32 EDT" name="tearDown" finished-at="2023-10-27T11:18:35 EDT" duration-ms="2379" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- details_section.Contract.BasicTest -->
+    </test> <!-- BasicSection -->
+    <test started-at="2023-10-27T11:18:35 EDT" name="ContractSection" finished-at="2023-10-27T11:27:04 EDT" duration-ms="509036">
+      <class name="details_section.Contract.ContractTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:18:35 EDT" name="setupLoginData" finished-at="2023-10-27T11:18:35 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupLoginData -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:18:35 EDT" name="launchApplication" finished-at="2023-10-27T11:18:36 EDT" duration-ms="1501" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:18:36 EDT" name="initializeTest" finished-at="2023-10-27T11:18:36 EDT" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_Lawyer_field_with_Law_Society_of_Ontario_functionality(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:18:36 EDT" name="Verify_Lawyer_field_with_Law_Society_of_Ontario_functionality" data-provider="Details_Section" finished-at="2023-10-27T11:19:37 EDT" duration-ms="60086" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Lawyer_field_with_Law_Society_of_Ontario_functionality -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:19:37 EDT" name="tearDown" finished-at="2023-10-27T11:19:39 EDT" duration-ms="2734" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:19:39 EDT" name="launchApplication" finished-at="2023-10-27T11:19:41 EDT" duration-ms="1464" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:19:41 EDT" name="initializeTest" finished-at="2023-10-27T11:19:41 EDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_To_Reside_at_Property_on_Closing_field_based_on_Yes_or_No_changes(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:19:41 EDT" name="Verify_To_Reside_at_Property_on_Closing_field_based_on_Yes_or_No_changes" data-provider="Details_Section" finished-at="2023-10-27T11:20:27 EDT" duration-ms="46577" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_To_Reside_at_Property_on_Closing_field_based_on_Yes_or_No_changes -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:20:27 EDT" name="tearDown" finished-at="2023-10-27T11:20:30 EDT" duration-ms="2293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:20:30 EDT" name="launchApplication" finished-at="2023-10-27T11:20:31 EDT" duration-ms="1448" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_in_Consideration_section_Consideration_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:20:31 EDT" name="Verify_in_Consideration_section_Consideration_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:21:22 EDT" duration-ms="50682" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_Consideration_section_Consideration_field_working_proper_or_not -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:20:31 EDT" name="initializeTest" finished-at="2023-10-27T11:20:31 EDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:21:22 EDT" name="tearDown" finished-at="2023-10-27T11:21:24 EDT" duration-ms="2295" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:21:24 EDT" name="launchApplication" finished-at="2023-10-27T11:21:25 EDT" duration-ms="1415" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_in_Contract_section_Closing_date_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:21:25 EDT" name="Verify_in_Contract_section_Closing_date_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:22:13 EDT" duration-ms="47592" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_Contract_section_Closing_date_field_working_proper_or_not -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:21:25 EDT" name="initializeTest" finished-at="2023-10-27T11:21:25 EDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:22:13 EDT" name="tearDown" finished-at="2023-10-27T11:22:15 EDT" duration-ms="2274" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:22:15 EDT" name="launchApplication" finished-at="2023-10-27T11:22:17 EDT" duration-ms="1516" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:22:17 EDT" name="initializeTest" finished-at="2023-10-27T11:22:17 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_in_Contract_section_offer_conditional_date_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:22:17 EDT" name="Verify_in_Contract_section_offer_conditional_date_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:23:03 EDT" duration-ms="46509" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_Contract_section_offer_conditional_date_field_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:03 EDT" name="tearDown" finished-at="2023-10-27T11:23:06 EDT" duration-ms="2306" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:06 EDT" name="launchApplication" finished-at="2023-10-27T11:23:07 EDT" duration-ms="1433" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:07 EDT" name="initializeTest" finished-at="2023-10-27T11:23:07 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_in_Deposit_section_Deposit_field_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:07 EDT" name="Verify_in_Deposit_section_Deposit_field_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:23:54 EDT" duration-ms="47086" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_Deposit_section_Deposit_field_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:54 EDT" name="tearDown" finished-at="2023-10-27T11:23:57 EDT" duration-ms="2286" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:57 EDT" name="launchApplication" finished-at="2023-10-27T11:23:58 EDT" duration-ms="1455" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:58 EDT" name="initializeTest" finished-at="2023-10-27T11:23:58 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_in_HST_section_HST_functionality_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:23:58 EDT" name="Verify_in_HST_section_HST_functionality_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:24:49 EDT" duration-ms="50871" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_HST_section_HST_functionality_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:24:49 EDT" name="tearDown" finished-at="2023-10-27T11:24:51 EDT" duration-ms="2356" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:24:51 EDT" name="launchApplication" finished-at="2023-10-27T11:24:53 EDT" duration-ms="1402" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:24:53 EDT" name="initializeTest" finished-at="2023-10-27T11:24:53 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_in_RealEstateCommissions_section_Broker_contractPrice_functionality_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:24:53 EDT" name="Verify_in_RealEstateCommissions_section_Broker_contractPrice_functionality_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:25:45 EDT" duration-ms="52080" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_in_RealEstateCommissions_section_Broker_contractPrice_functionality_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:25:45 EDT" name="tearDown" finished-at="2023-10-27T11:25:47 EDT" duration-ms="2290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:25:47 EDT" name="launchApplication" finished-at="2023-10-27T11:25:48 EDT" duration-ms="1455" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:25:48 EDT" name="initializeTest" finished-at="2023-10-27T11:25:48 EDT" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:25:48 EDT" name="Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:27:01 EDT" duration-ms="72734" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_in_RealEstateCommissions_section_Broker_functionality_working_proper_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@f1da57d]" started-at="2023-10-24T09:46:37 EDT" name="tearDown" finished-at="2023-10-24T09:46:39 EDT" duration-ms="2753" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.ContractTest@2a640157]" started-at="2023-10-27T11:27:01 EDT" name="tearDown" finished-at="2023-10-27T11:27:04 EDT" duration-ms="2847" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- details_section.Contract.ContractTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- ContractSection -->
+    <test started-at="2023-10-27T11:27:04 EDT" name="PropertySection" finished-at="2023-10-27T11:30:33 EDT" duration-ms="209106">
+      <class name="details_section.Contract.PropertyTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:04 EDT" name="setupLoginData" finished-at="2023-10-27T11:27:04 EDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupLoginData -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:04 EDT" name="launchApplication" finished-at="2023-10-27T11:27:05 EDT" duration-ms="1402" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_In_Property_Section_Property_type_Dropdown_options(java.util.List)[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:05 EDT" name="Verify_In_Property_Section_Property_type_Dropdown_options" data-provider="Details_Section" finished-at="2023-10-27T11:27:53 EDT" duration-ms="47930" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_Property_Section_Property_type_Dropdown_options -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:05 EDT" name="initializeTest" finished-at="2023-10-27T11:27:05 EDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:53 EDT" name="tearDown" finished-at="2023-10-27T11:27:56 EDT" duration-ms="2285" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:56 EDT" name="launchApplication" finished-at="2023-10-27T11:27:57 EDT" duration-ms="1459" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:57 EDT" name="initializeTest" finished-at="2023-10-27T11:27:57 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_In_Survey_Section_Survey_options_Yes_or_No_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:27:57 EDT" name="Verify_In_Survey_Section_Survey_options_Yes_or_No_working_proper_or_not" data-provider="Details_Section" finished-at="2023-10-27T11:28:44 EDT" duration-ms="47266" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_In_Survey_Section_Survey_options_Yes_or_No_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:28:44 EDT" name="tearDown" finished-at="2023-10-27T11:28:47 EDT" duration-ms="2301" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:28:47 EDT" name="launchApplication" finished-at="2023-10-27T11:28:48 EDT" duration-ms="1461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="Verify_PostalCode_In_Property_address_Section(java.util.List)[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:28:48 EDT" name="Verify_PostalCode_In_Property_address_Section" data-provider="Details_Section" finished-at="2023-10-27T11:29:39 EDT" duration-ms="50964" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_PostalCode_In_Property_address_Section -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:28:48 EDT" name="initializeTest" finished-at="2023-10-27T11:28:48 EDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:29:39 EDT" name="tearDown" finished-at="2023-10-27T11:29:41 EDT" duration-ms="2300" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:29:41 EDT" name="launchApplication" finished-at="2023-10-27T11:29:43 EDT" duration-ms="1436" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:29:43 EDT" name="initializeTest" finished-at="2023-10-27T11:29:43 EDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_Property_address_different_fields_and_also_verify_in_Basic_tab(java.util.List)[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:29:43 EDT" name="Verify_Property_address_different_fields_and_also_verify_in_Basic_tab" data-provider="Details_Section" finished-at="2023-10-27T11:30:31 EDT" duration-ms="47971" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Property_address_different_fields_and_also_verify_in_Basic_tab -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Contract.PropertyTest@ff684e1]" started-at="2023-10-27T11:30:31 EDT" name="tearDown" finished-at="2023-10-27T11:30:33 EDT" duration-ms="2311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- details_section.Contract.PropertyTest -->
+    </test> <!-- PropertySection -->
+  </suite> <!-- Suite -->
 </testng-results>
