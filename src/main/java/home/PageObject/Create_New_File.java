@@ -106,18 +106,17 @@ public class Create_New_File extends AbstractComponent {
 	            DeleteFile.click();
 	            DeleteButton.click();
 	            waitForWebElementToAppear(PlusButton);
-	            Azure.updateTestCaseStatus("12048", "Automation Pass");
+	            Azure.updateTestCaseStatus("12048", "Automation Pass","");
 	            System.out.println(" *****Pass: Purchase File Created and deleted Successfully*****");
 	        } else {
-	            Azure.updateTestCaseStatus("12048", "Automation Fail");
+	            Azure.updateTestCaseStatus("12048", "Automation Fail","Fail: Purchase File not Created Successfully");
 	            Assert.fail("****Fail: Purchase File not Created Successfully****");
-	            System.out.println("****Fail: Purchase File not Created Successfully****");
+	            
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12048", "Automation Fail");
+	        Azure.updateTestCaseStatus("12048", "Automation Error",ex.getMessage());
 	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
-	        ex.printStackTrace();
-	        System.out.println("****Fail: Exception occurred during file creation****");
+
 	    }
 	    return new FileList(driver);
 	}
@@ -149,18 +148,16 @@ public class Create_New_File extends AbstractComponent {
 	            DeleteFile.click();
 	            DeleteButton.click();
 	            waitForWebElementToAppear(PlusButton);
-	            Azure.updateTestCaseStatus("12049", "Automation Pass");
+	            Azure.updateTestCaseStatus("12049", "Automation Pass","");
 	            System.out.println(" *****Pass: Sale File Created and deleted Successfully*****");
-	        } else {
-	            System.out.println("****Fail: Sale File not Created Successfully****");
-	            Azure.updateTestCaseStatus("12049", "Automation Fail");
+	        } else {	           
+	            Azure.updateTestCaseStatus("12049", "Automation Fail","Fail: Sale File not Created Successfully");
 	            Assert.fail("****Fail: Sale File not Created Successfully****");
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12049", "Automation Fail");
+	        Azure.updateTestCaseStatus("12049", "Automation Error",ex.getMessage());
 	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
-	        ex.printStackTrace();
-	        System.out.println("****Fail: Exception occurred during file creation****");
+	        
 	    }
 	    return new FileList(driver);
 	}
@@ -195,15 +192,13 @@ public class Create_New_File extends AbstractComponent {
 	        }
 	        
 	        if (flag) {
-	            Azure.updateTestCaseStatus("12050", "Automation Pass");
-	        } else {
-	            System.out.println("*****Fail: Mortgage File not Created Successfully*****");
-	            Azure.updateTestCaseStatus("12050", "Automation Fail");
+	            Azure.updateTestCaseStatus("12050", "Automation Pass","");
+	        } else {         
+	            Azure.updateTestCaseStatus("12050", "Automation Fail","Fail: Mortgage File not Created Successfully");
 	            Assert.fail("*****Fail: Mortgage File not Created Successfully*****");
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12050", "Automation Fail");
-	        ex.printStackTrace();
+	        Azure.updateTestCaseStatus("12050", "Automation Error",ex.getMessage());	       
 	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
 	    }
 	    return new FileList(driver);
@@ -224,18 +219,16 @@ public class Create_New_File extends AbstractComponent {
 
 			        if (fileName == null || fileName.isEmpty()) {
 			            flag = true;
-			            Azure.updateTestCaseStatus("12051", "Automation Pass");			           
+			            Azure.updateTestCaseStatus("12051", "Automation Pass","");			           
 			            System.out.println(" *****Pass: Create button Disabled****");
 			        }
 
-			        if (!flag) {
-			            System.out.println("*****Fail: Create button enabled even when the filename is available*****");
-			            Azure.updateTestCaseStatus("12051", "Automation Fail");
+			        if (!flag) {			           
+			            Azure.updateTestCaseStatus("12051", "Automation Fail","Fail: Create button enabled even when the filename is available");
 			            Assert.fail("*****Fail: Create button enabled even when the filename is available*****");
 			        }
-			    } catch (Exception ex) {
-			        ex.printStackTrace();
-			        Azure.updateTestCaseStatus("12051", "Automation Fail");
+			    } catch (Exception ex) {			       
+			        Azure.updateTestCaseStatus("12051", "Automation Error",ex.getMessage());
 			        Assert.fail("Fail",ex);
 			    }
 			    
@@ -255,19 +248,18 @@ public class Create_New_File extends AbstractComponent {
 	        boolean flag1 = false;
 	        if (Active_Button.isEnabled()) {
 	            flag1 = true;	           
-	            Azure.updateTestCaseStatus("12052", "Automation Pass");
+	            Azure.updateTestCaseStatus("12052", "Automation Pass","");
 	            System.out.println("*****Pass: Create button enabled*****");
 	        }
 
-	        if (!flag1) {
-	            System.out.println("*****Fail: Create button Disabled even filename is available*****");
-	            Azure.updateTestCaseStatus("12052", "Automation Fail");
+	        if (!flag1) {            
+	            Azure.updateTestCaseStatus("12052", "Automation Fail","Fail: Create button Disabled even filename is available");
 	            Assert.fail("*****Fail: Create button Disabled even filename is available*****");
 	        }
 	    } catch (Exception ex) {
-	    	Azure.updateTestCaseStatus("12052", "Automation Fail");
+	    	Azure.updateTestCaseStatus("12052", "Automation Error",ex.getMessage());
 	    	Assert.fail("Fail",ex);
-	        ex.printStackTrace();
+	       
 	        
 	    }
 	}
@@ -303,18 +295,16 @@ public class Create_New_File extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {
-	    	  Azure.updateTestCaseStatus("12053", "Automation Fail");
-	    	Assert.fail("Fail",e);
-	        e.printStackTrace();
+	    	  Azure.updateTestCaseStatus("12053", "Automation Error",e.getMessage());
+	    	Assert.fail("Fail",e);	       
 	        isVerificationSuccessful = false;
 	    }
 
 	    if (isVerificationSuccessful) {
-	        Azure.updateTestCaseStatus("12053", "Automation Pass");
+	        Azure.updateTestCaseStatus("12053", "Automation Pass","");
 	        System.out.println("*****Pass: Dropdown verification test passed.*****");
 	    } else {
-	        Azure.updateTestCaseStatus("12053", "Automation Fail");
-	        System.out.println("*****Fail: Dropdown verification test failed.*****");
+	        Azure.updateTestCaseStatus("12053", "Automation Fail","Fail: Dropdown verification test failed.");	       
 	        Assert.fail("*****Fail: Dropdown verification test failed.*****");
 	    }
 	}
@@ -344,19 +334,17 @@ public class Create_New_File extends AbstractComponent {
 			String alertText = alert.getText();
 			if (alertText.contains("Do you still want to create this file?")) {
 				alert.dismiss();
-				Azure.updateTestCaseStatus("12054", "Automation Pass");
+				Azure.updateTestCaseStatus("12054", "Automation Pass","");
 				System.out.println("*****Pass: Warning message displayed for duplicate file name.*****");
 			} else {
 				alert.dismiss();
-				Azure.updateTestCaseStatus("12054", "Automation Fail");
-				System.out.println("*****Fail: No warning message displayed for duplicate file name.*****");
+				Azure.updateTestCaseStatus("12054", "Automation Fail","Fail: No warning message displayed for duplicate file name.");				
 				Assert.fail("*****Fail: No warning message displayed for duplicate file name.*****");
 			}
 		} catch (NoAlertPresentException e) {
-			System.out.println("No duplicate file found.");
+			Azure.updateTestCaseStatus("12054", "Automation Error",e.getMessage());		
 			Assert.fail("Fail",e);
-			Azure.updateTestCaseStatus("12054", "Automation Fail");
-			System.out.println("*****Pass: No duplicate file found.*****");
+				
 		}
 	}
 

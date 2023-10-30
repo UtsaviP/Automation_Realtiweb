@@ -129,10 +129,9 @@ public class Property extends AbstractComponent {
 		String getAddress = BasicTab_Address.getText();
 		if (PropertyAddress.contains(expectedPropertyAddress) && PropertyAddress.equals(getAddress)) {
 			System.out.println("PASS: Property Address matches");
-			Azure.updateTestCaseStatus("12225", "Automation Pass");
-		} else {
-			System.out.println("****FAIL: Property Address does not match**** ");
-			Azure.updateTestCaseStatus("12225", "Automation Fail");
+			Azure.updateTestCaseStatus("12225", "Automation Pass","");
+		} else {			
+			Azure.updateTestCaseStatus("12225", "Automation Fail","FAIL: Property Address does not match");
 			Assert.fail();
 		}
 	}
@@ -209,27 +208,27 @@ public class Property extends AbstractComponent {
 
 	            if ((getText1.equals(getCode) || getText1.equals(getCode1)) && PostalCodeVerified.isDisplayed()) {
 	                System.out.println("PASS: Postal code working as Expected");
-	                Azure.updateTestCaseStatus("12227", "Automation Pass");
+	                Azure.updateTestCaseStatus("12227", "Automation Pass","");
 	                getTextMatched = true;
 	            } else {
-	                System.out.println("****FAIL: Postal code not working as Expected**** ");
-	                Azure.updateTestCaseStatus("12227", "Automation Fail");
+	               
+	                Azure.updateTestCaseStatus("12227", "Automation Fail","FAIL: Postal code not working as Expected");
 	                Assert.fail();
 	            }
 	        } else {
 	            if (PostalCodeVerified.isDisplayed()) {
 	                System.out.println("PASS: Postal code working as Expected");
-	                Azure.updateTestCaseStatus("12227", "Automation Pass");
+	                Azure.updateTestCaseStatus("12227", "Automation Pass","");
 	            } else {
-	                System.out.println("****FAIL: Postal code not working as Expected**** ");
-	                Azure.updateTestCaseStatus("12227", "Automation Fail");
+	              
+	                Azure.updateTestCaseStatus("12227", "Automation Fail","FAIL: Postal code not working as Expected");
 	                Assert.fail();
 	            }
 	        }
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
 	        System.out.println("****FAIL: An exception occurred while verifying Postal code****");
-	        Azure.updateTestCaseStatus("12227", "Automation Fail");
+	        Azure.updateTestCaseStatus("12227", "Automation Error",ex.getMessage());
 	        Assert.fail("****FAIL: An exception occurred while verifying Postal code****",ex);
 	    }
 	}
@@ -245,10 +244,9 @@ public class Property extends AbstractComponent {
 	    if ((propertyType.equals("Condo") && UnitNumber_field.isDisplayed() && CondominiumTitle.isDisplayed()) ||
 	        (propertyType.equals("Freehold (Fee Simple)") && !UnitNumber_field.isDisplayed() && !CondominiumTitle.isDisplayed())) {
 	        System.out.println("PASS: Property Type [Freehold & Condo] options working proper");
-	        Azure.updateTestCaseStatus("12228", "Automation Pass");
-	    } else {
-	        System.out.println("****FAIL:Property Type [Freehold & Condo] options not  working as Expected****");	        
-	        Azure.updateTestCaseStatus("12228", "Automation Fail");
+	        Azure.updateTestCaseStatus("12228", "Automation Pass","");
+	    } else {	            
+	        Azure.updateTestCaseStatus("12228", "Automation Fail","FAIL:Property Type [Freehold & Condo] options not  working as Expected");
 	        Assert.fail();
 	    }
 	}
@@ -262,10 +260,9 @@ public class Property extends AbstractComponent {
 	    driver.findElement(By.xpath("(//input[@attrname='twCommonElements'])[1]")).click();
 	    if (CondominiumTitle_freehold.isDisplayed()) {
 	        System.out.println("PASS:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected");
-	        Azure.updateTestCaseStatus("12229", "Automation Pass");
-	    } else {
-	        System.out.println("****FAIL:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected**** ");	        
-	        Azure.updateTestCaseStatus("12229", "Automation Fail");
+	        Azure.updateTestCaseStatus("12229", "Automation Pass","");
+	    } else {	             
+	        Azure.updateTestCaseStatus("12229", "Automation Fail","FAIL:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected");
 	        Assert.fail();
 	    }
 	}
@@ -298,27 +295,27 @@ public class Property extends AbstractComponent {
 	                String text1 = Surveyor_field.getAttribute("value");
 	                if (text.equals(text1)) {
 	                    System.out.println("PASS: In Survey, YES option working properly");
-	                    Azure.updateTestCaseStatus("12230", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12230", "Automation Pass","");
 	                } else {
-	                    System.out.println("FAIL: In Survey, YES option not working as expected");
+	                	 Azure.updateTestCaseStatus("12230", "Automation Fail","FAIL: In Survey, YES option not working as expected");
 	                    Assert.fail("FAIL: In Survey, YES option not working as expected");
-	                    Azure.updateTestCaseStatus("12230", "Automation Fail");
+	                   
 	                }
 	            } else {
-	                System.out.println("FAIL: No Survey names are available in Pop-up");
+	              
 	                driver.switchTo().defaultContent();
 	                driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
-	                Azure.updateTestCaseStatus("12230", "Automation Fail");
+	                Azure.updateTestCaseStatus("12230", "Automation Fail","FAIL: No Survey names are available in Pop-up");
 	                Assert.fail("FAIL: No Survey names are available in Pop-up");
 	            }
 	        } else {
 	            Surveyor_No.click();
 	            if (!Surveyor_field.isDisplayed()) {
 	                System.out.println("PASS: In Survey, No option working properly");
-	                Azure.updateTestCaseStatus("12230", "Automation Pass");
+	                Azure.updateTestCaseStatus("12230", "Automation Pass","");
 	            } else {
-	                System.out.println("FAIL: In Survey, No option not working as expected");
-	                Azure.updateTestCaseStatus("12230", "Automation Fail");
+	             
+	                Azure.updateTestCaseStatus("12230", "Automation Fail","FAIL: In Survey, No option not working as expected");
 	                Assert.fail("FAIL: In Survey, No option not working as expected");
 	            }
 	        }
@@ -329,7 +326,7 @@ public class Property extends AbstractComponent {
 
 	private void handleException(Exception e) throws IOException {
 	    System.out.println("An exception occurred: " + e.getMessage());
-	    Azure.updateTestCaseStatus("12230", "Automation Fail");
+	    Azure.updateTestCaseStatus("12230", "Automation Fail",e.getMessage());
 	    Assert.fail("Error",e);
 	}
 

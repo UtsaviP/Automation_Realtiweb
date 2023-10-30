@@ -161,15 +161,15 @@ public class Contract extends AbstractComponent {
 	        boolean RadioNo = RadioButton_NoText.isDisplayed();
 
 	        if (RadioYes && RadioNo) {
-	            Azure.updateTestCaseStatus("12141", "Automation Pass");
+	            Azure.updateTestCaseStatus("12141", "Automation Pass","");
 	            System.out.println("PASS: Both radio buttons of the ToResideAtPropertyOnClosing Field are working properly");
 	        } else {
-	            Azure.updateTestCaseStatus("12141", "Automation Fail");
+	            Azure.updateTestCaseStatus("12141", "Automation Fail","FAIL: Both radio buttons of the ToResideAtPropertyOnClosing Field are not working properly");
 	            Assert.fail("****FAIL: Both radio buttons of the ToResideAtPropertyOnClosing Field are not working properly****");
-	            System.out.println("****FAIL: Both radio buttons of the ToResideAtPropertyOnClosing Field are not working properly****");
+	            
 	        }
 	    } catch (Exception e) {	       
-	        Azure.updateTestCaseStatus("12141", "Automation Fail");
+	        Azure.updateTestCaseStatus("12141", "Automation Error",e.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
 	        Assert.fail("Fail",e);
 	    }
@@ -194,7 +194,7 @@ public class Contract extends AbstractComponent {
 			driver.switchTo().defaultContent();
 			driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
 			System.out.println("***No Lawyer Found***");
-			Azure.updateTestCaseStatus("12144", "Automation Fail");
+			Azure.updateTestCaseStatus("12144", "Automation Fail","FAIL: No Lawyer Found for that name.");
 			Assert.fail("****FAIL: No Lawyer Found for that name.****");
 		} catch (TimeoutException e) {
 
@@ -214,10 +214,10 @@ public class Contract extends AbstractComponent {
 				if (text.equals(text1)) {
 					System.out.println(
 							"PASS: Lawyer name is the same as selected in the Law Society of Ontario and in the Lawyer field.");
-					Azure.updateTestCaseStatus("12144", "Automation Pass");
+					Azure.updateTestCaseStatus("12144", "Automation Pass","");
 				} else {
-					System.out.println("****FAIL: Lawyer name does not match.****");
-					Azure.updateTestCaseStatus("12144", "Automation Fail");
+					
+					Azure.updateTestCaseStatus("12144", "Automation Fail","FAIL: Lawyer name does not match.");
 					Assert.fail("****FAIL: Lawyer name does not match.****");
 				}
 			}
@@ -238,15 +238,14 @@ public class Contract extends AbstractComponent {
 	        String Text1 = driver.findElement(By.xpath("(//input[@title='Ensure same as Closing Date'])[2]")).getText();
 	        if (Text.equals(Text1)) {
 	            System.out.println("PASS: Added Closing Date and in Statement of Adjustments>Adjustment date both are same.");
-	            Azure.updateTestCaseStatus("12145", "Automation Pass");
-	        } else {
-	            System.out.println("****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
-	            Azure.updateTestCaseStatus("12145", "Automation Fail");
+	            Azure.updateTestCaseStatus("12145", "Automation Pass","");
+	        } else {	           
+	            Azure.updateTestCaseStatus("12145", "Automation Fail","FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match");
 	            Assert.fail("****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
 	        }
 	    } catch (Exception e) {
 	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12145", "Automation Fail");
+	        Azure.updateTestCaseStatus("12145", "Automation Error",e.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
 	       Assert.fail("Fail",e);
 	    }
@@ -274,15 +273,15 @@ public class Contract extends AbstractComponent {
 
 	        if (Condition_Cleared.isDisplayed() || !Condition_Cleared.isDisplayed()) {
 	            System.out.println("PASS:Offer Conditional field working proper.");
-	            Azure.updateTestCaseStatus("12146", "Automation Pass");
+	            Azure.updateTestCaseStatus("12146", "Automation Pass","");
 	        } else {
-	            System.out.println("****FAIL:Offer Conditional field not working proper.****");
+	        	  Azure.updateTestCaseStatus("12146", "Automation Fail","FAIL:Offer Conditional field not working proper.");
 	            Assert.fail("****FAIL:Offer Conditional field not working proper.****");
-	            Azure.updateTestCaseStatus("12146", "Automation Fail");
+	          
 	        }
 	    } catch (Exception e) {
 	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12146", "Automation Fail");
+	        Azure.updateTestCaseStatus("12146", "Automation Error",e.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
 	        Assert.fail("Fail",e);
 	    }
@@ -316,14 +315,14 @@ public class Contract extends AbstractComponent {
 
 	        if (Total.equals(VisibleDeposit)) {
 	            System.out.println("PASS: Deposit functionality working properly" + "Total Deposit=" + VisibleDeposit);
-	            Azure.updateTestCaseStatus("12147", "Automation Pass");
+	            Azure.updateTestCaseStatus("12147", "Automation Pass","");
 	        } else {
-	            System.out.println("****FAIL: Deposit functionality is not working as expected****");
-	            Azure.updateTestCaseStatus("12147", "Automation Fail");
+	           
+	            Azure.updateTestCaseStatus("12147", "Automation Fail","FAIL: Deposit functionality is not working as expected");
 	            Assert.fail("****FAIL: Deposit functionality is not working as expected****");
 	        }
 	    } catch (Exception e) {	       
-	        Azure.updateTestCaseStatus("12147", "Automation Fail");
+	        Azure.updateTestCaseStatus("12147", "Automation Error",e.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
 	        Assert.fail("****FAIL: Deposit functionality is not working as expected****",e);
 	    }
@@ -352,15 +351,15 @@ public class Contract extends AbstractComponent {
 	                && ConsiderationText.equals(ConsiderationforEregText)) {
 	            System.out.println(
 	                    "PASS: Consideration$ functionality working properly" + "ConsiderationValue=" + ConsiderationText);
-	            Azure.updateTestCaseStatus("12148", "Automation Pass");
+	            Azure.updateTestCaseStatus("12148", "Automation Pass","");
 	        } else {
 	            System.out.println("****FAIL: Consideration$ functionality not working as expected****"
 	                    + "ConsiderationValue=" + ConsiderationText);
-	            Azure.updateTestCaseStatus("12148", "Automation Fail");
+	            Azure.updateTestCaseStatus("12148", "Automation Fail","FAIL: Consideration$ functionality not working as expected");
 	            Assert.fail("****FAIL: Consideration$ functionality not working as expected****");
 	        }
 	    } catch (Exception e) {	        
-	        Azure.updateTestCaseStatus("12148", "Automation Fail");
+	        Azure.updateTestCaseStatus("12148", "Automation Error",e.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
 	        Assert.fail("****FAIL: Consideration$ functionality not working as expected****",e);
 	    }
@@ -428,16 +427,14 @@ public class Contract extends AbstractComponent {
 	        // Check if both functionalities passed
 	        if (hstApplicablePass && includeInPricePass) {
 	            System.out.println("PASS: HST Section working as Expected");
-	            Azure.updateTestCaseStatus("12149", "Automation Pass");
-	        } else {
-	            System.out.println("****FAIL: HST Section not working as Expected****");
-	            Azure.updateTestCaseStatus("12149", "Automation Fail");
+	            Azure.updateTestCaseStatus("12149", "Automation Pass","");
+	        } else {	           
+	            Azure.updateTestCaseStatus("12149", "Automation Fail","FAIL: HST Section not working as Expected");
 	            Assert.fail("****FAIL: HST Section not working as Expected****");
 	        }
 	    } catch (Exception e) {
 	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12149", "Automation Fail");
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Azure.updateTestCaseStatus("12149", "Automation Error",e.getMessage());	        
 	        Assert.fail("****FAIL: HST Section not working as Expected****",e);
 	    }
 	}
@@ -463,7 +460,7 @@ public class Contract extends AbstractComponent {
 	            driver.switchTo().defaultContent();
 	            driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
 	            System.out.println("***No Matching Broker name Found***");
-	            Azure.updateTestCaseStatus("12150", "Automation Fail");
+	            Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: No Matching Broker name Found");
 	            Assert.fail("****FAIL: No Matching Broker name Found****");
 	        } catch (TimeoutException e) {
 	            waitForWebElementToAppear(Result_List);
@@ -482,21 +479,19 @@ public class Contract extends AbstractComponent {
 	                    if (text1.contains(text)) {
 	                        System.out.println("PASS: Broker name is the same as selected in the Search REALTORS® across Canada "
 	                                + "Broker Name=" + text1);
-	                        Azure.updateTestCaseStatus("12150", "Automation Pass");
-	                    } else {
-	                        System.out.println("****FAIL: Broker name does not match.****");
-	                        Azure.updateTestCaseStatus("12150", "Automation Fail");
+	                        Azure.updateTestCaseStatus("12150", "Automation Pass","");
+	                    } else {	                       
+	                        Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: Broker name does not match.");
 	                        Assert.fail("****FAIL: Broker name does not match.****");
 	                    }
-	                } else {
-	                    System.out.println("****FAIL: Broker name does not match.****");
-	                    Azure.updateTestCaseStatus("12150", "Automation Fail");
+	                } else {	                   
+	                    Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: Broker name does not match.");
 	                    Assert.fail("****FAIL: Broker name does not match.****");
 	                }
 	            }
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12150", "Automation Fail");
+	        Azure.updateTestCaseStatus("12150", "Automation Error",ex.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
 	        Assert.fail("Error",ex);
 	    }
@@ -537,9 +532,8 @@ public class Contract extends AbstractComponent {
 	        if (Commission_Amount.equals(formattedCommissionAmount) && Total_Commission.equals(formattedCommissionAmount) && Amount_Owing_To_Broker.equals(formattedCommissionAmount)) {
 	            System.out.println("PASS: Without checked HST checkbox, % of Contract Price functionality working properly");
 	            withouthstApplicablePass = true;
-	        } else {
-	            System.out.println("****FAIL: Without checked HST checkbox, % of Contract Price functionality not working properly****");
-	            Azure.updateTestCaseStatus("12151", "Automation Fail");
+	        } else {	          
+	            Azure.updateTestCaseStatus("12151", "Automation Fail","FAIL: Without checked HST checkbox, % of Contract Price functionality not working properly");
 	            Assert.fail();
 	        }
 
@@ -568,14 +562,13 @@ public class Contract extends AbstractComponent {
 	        if (formattedHstValueDouble.equals(formattedHstCalculation) && formattedCommissionAmountWithHST.equals(Total_Commission1)) {
 	            System.out.println("PASS: With checked HST checkbox, % of Contract Price functionality working properly");
 	            withhstApplicablePass = true;
-	            Azure.updateTestCaseStatus("12151", "Automation Pass");
-	        } else {
-	            System.out.println("****FAIL: With checked HST checkbox, % of Contract Price functionality not working properly****");
-	            Azure.updateTestCaseStatus("12151", "Automation Fail");
+	            Azure.updateTestCaseStatus("12151", "Automation Pass","");
+	        } else {	            
+	            Azure.updateTestCaseStatus("12151", "Automation Fail","FAIL: With checked HST checkbox, % of Contract Price functionality not working properly");
 	            Assert.fail();
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12151", "Automation Fail");
+	        Azure.updateTestCaseStatus("12151", "Automation Error",ex.getMessage());
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
 	        Assert.fail("Error",ex);
 	    }

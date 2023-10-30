@@ -124,17 +124,17 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        boolean isPopupClosed = isElementNotPresent(driver, By.id("//div[@id='adSearchContainer']"));
 
 	        if (isPopupClosed) {
-	            Azure.updateTestCaseStatus("12064", "Automation Pass");
+	            Azure.updateTestCaseStatus("12064", "Automation Pass","");
 	            System.out.println("*****Pass : Cancel button works: Pop-up is closed.*****");
 	        } else {
-	            Azure.updateTestCaseStatus("12064", "Automation Fail");
+	            Azure.updateTestCaseStatus("12064", "Automation Fail","Fail : Cancel button does not work: Pop-up is still open.");
 	            Assert.fail("*****Fail : Cancel button does not work: Pop-up is still open.*****");
 	        }
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12064", "Automation Fail");
+	        Azure.updateTestCaseStatus("12064", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing the Cancel button.*****",e);
 	        return new FileList(driver);
 	    }
@@ -184,10 +184,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 
 	            if (allFilesArePurchaseOrSale) {
-	                Azure.updateTestCaseStatus("12068", "Automation Pass");
+	                Azure.updateTestCaseStatus("12068", "Automation Pass","");
 	                System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
 	            } else {
-	                Azure.updateTestCaseStatus("12068", "Automation Fail");
+	                Azure.updateTestCaseStatus("12068", "Automation Fail","Fail : Other file types are also displayed.");
 	                Assert.fail("*****Fail : Other file types are also displayed.*****");
 	            }
 	        } else {
@@ -195,9 +195,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 
 	        return new FileList(driver);
-	    } catch (Exception e) {	       
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12068", "Automation Fail");
+	    } catch (Exception e) {	       	        
+	        Azure.updateTestCaseStatus("12068", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing File Types Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -247,11 +246,11 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 
 	            if (allFilesAreArchived) {
-	                Azure.updateTestCaseStatus("12069", "Automation Pass");
+	                Azure.updateTestCaseStatus("12069", "Automation Pass","");
 	                System.out.println("*****Pass : Only 'Archived' files are displayed.*****");
 	            } else {
 	                allFilesAreArchived = false;
-	                Azure.updateTestCaseStatus("12069", "Automation Fail");
+	                Azure.updateTestCaseStatus("12069", "Automation Fail","Fail : Other file statuses are also displayed.");
 	                Assert.fail("*****Fail : Other file statuses are also displayed.*****");
 	            }
 	        } else {
@@ -259,9 +258,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 
 	        return new FileList(driver);
-	    } catch (Exception e) {
-	       	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12069", "Automation Fail");
+	    } catch (Exception e) {	       	       
+	        Azure.updateTestCaseStatus("12069", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing File Status Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -292,10 +290,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            boolean lawyerNameMatch = fileContentText.equals(LawyerName);
 
 	            if (lawyerNameMatch) {
-	                Azure.updateTestCaseStatus("12070", "Automation Pass");
+	                Azure.updateTestCaseStatus("12070", "Automation Pass","");
 	                System.out.println("*****Pass: Lawyer name match found in the file content.*****");
 	            } else {
-	                Azure.updateTestCaseStatus("12070", "Automation Fail");
+	                Azure.updateTestCaseStatus("12070", "Automation Fail","Fail: Lawyer name match not found in the file content.");
 	                Assert.fail("****Fail: Lawyer name match not found in the file content.*****");
 	            }
 	            driver.switchTo().defaultContent();
@@ -305,8 +303,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12070", "Automation Fail");
+	       
+	        Azure.updateTestCaseStatus("12070", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing Responsible Lawyer criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -335,10 +333,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            String fileContentText = driver.findElement(FileFirmName).getText();
 	            boolean firmNameMatch = fileContentText.equals(FirmContact);
 	            if (firmNameMatch) {
-	                Azure.updateTestCaseStatus("12078", "Automation Pass");
+	                Azure.updateTestCaseStatus("12078", "Automation Pass","");
 	                System.out.println("*****Pass: Firm name match found in the file content.*****");
 	            } else {
-	                Azure.updateTestCaseStatus("12078", "Automation Fail");
+	                Azure.updateTestCaseStatus("12078", "Automation Fail","Fail: Firm name match not found in the file content.");
 	                Assert.fail("*****Fail: Firm name match not found in the file content.*****");
 	            }
 	            driver.switchTo().defaultContent();
@@ -349,7 +347,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12078", "Automation Fail");
+	        Azure.updateTestCaseStatus("12078", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing Firm Contact criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -396,10 +394,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	                }
 
 	                if (allClientname) {
-	                    Azure.updateTestCaseStatus("12071", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12071", "Automation Pass","");
 	                    System.out.println("*****Pass : Client name criteria working fine with different scenarios*****");
 	                } else {
-	                    Azure.updateTestCaseStatus("12071", "Automation Fail");
+	                    Azure.updateTestCaseStatus("12071", "Automation Fail","Fail : Client name criteria not working fine with different scenarios");
 	                    Assert.fail("*****Fail : Client name criteria not working fine with different scenarios*****");
 	                }
 	            } else {
@@ -407,9 +405,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	        return new FileList(driver);
-	    } catch (Exception e) {	        
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12071", "Automation Fail");
+	    } catch (Exception e) {	        	        
+	        Azure.updateTestCaseStatus("12071", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing ClientName criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -431,14 +428,14 @@ public class Advance_Search_Filter extends AbstractComponent {
 	                for (String reline : AdvanceSearch_Reline) {
 	                    if (fileContentText.contains(reline)) {
 	                        anyRelineMatch = true;
-	                        Azure.updateTestCaseStatus("12072", "Automation Pass");
+	                        Azure.updateTestCaseStatus("12072", "Automation Pass","");
 	                        System.out.println("******Pass: Reline[include] Criteria working fine*****");
 	                        break;
 	                    }
 	                }
 
 	                if (!anyRelineMatch) {
-	                    Azure.updateTestCaseStatus("12072", "Automation Fail");
+	                    Azure.updateTestCaseStatus("12072", "Automation Fail","Fail: Reline[include] Criteria not working fine");
 	                    Assert.fail("*****Fail: Reline[include] Criteria not working fine*****");
 	                }
 	            } else {
@@ -458,14 +455,14 @@ public class Advance_Search_Filter extends AbstractComponent {
 	                    for (String reline : AdvanceSearch_Reline) {
 	                        if (fileContentText1.contains(reline)) {
 	                            noRelinematch = false;
-	                            Azure.updateTestCaseStatus("12072", "Automation Fail");
+	                            Azure.updateTestCaseStatus("12072", "Automation Fail","Fail: Reline[Doesn't include] Criteria not working fine.");
 	                            Assert.fail("****Fail: Reline[Doesn't include] Criteria not working fine.*****");
 	                            break;
 	                        }
 	                    }
 
 	                    if (noRelinematch) {
-	                        Azure.updateTestCaseStatus("12072", "Automation Pass");
+	                        Azure.updateTestCaseStatus("12072", "Automation Pass","");
 	                        System.out.println("******Pass: Reline[Doesn't include] Criteria working fine*****");
 	                    }
 	                } else {
@@ -474,9 +471,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	        return new FileList(driver);
-	    } catch (Exception e) {	        
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12072", "Automation Fail");
+	    } catch (Exception e) {	        	       
+	        Azure.updateTestCaseStatus("12072", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Reline Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -539,10 +535,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	                }
 
 	                if (allDatesInRange) {
-	                    Azure.updateTestCaseStatus("12073", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12073", "Automation Pass","");
 	                    System.out.println("*****Pass : Closing date Criteria are working fine*****");
 	                } else {
-	                    Azure.updateTestCaseStatus("12073", "Automation Fail");
+	                    Azure.updateTestCaseStatus("12073", "Automation Fail","Fail : Closing date Criteria are not working fine");
 	                    Assert.fail("*****Fail : Closing date Criteria are not working fine*****");
 	                }
 	            }
@@ -552,8 +548,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12073", "Automation Fail");
+	       
+	        Azure.updateTestCaseStatus("12073", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail : An exception occurred while testing Closing Date Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -613,10 +609,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	                }
 
 	                if (allAddressname) {
-	                    Azure.updateTestCaseStatus("12074", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12074", "Automation Pass","");
 	                    System.out.println("*****Pass: All Property addresses meet the criteria.*****");
 	                } else {
-	                    Azure.updateTestCaseStatus("12074", "Automation Fail");
+	                    Azure.updateTestCaseStatus("12074", "Automation Fail","Fail: Not all addresses meet the criteria.");
 	                    Assert.fail("****Fail: Not all addresses meet the criteria.*****");
 	                }
 
@@ -627,7 +623,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12074", "Automation Fail");
+	        Azure.updateTestCaseStatus("12074", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Property Address criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -645,7 +641,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Property Type criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -663,20 +659,20 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        for (String property : Property_Type1) {
 	            if (PropertyTypeText.equals(property)) {
 	                PropertyTypeMatch = true;
-	                Azure.updateTestCaseStatus("12075", "Automation Pass");
+	                Azure.updateTestCaseStatus("12075", "Automation Pass","");
 	                System.out.println("****Pass: Property Type name=" + PropertyTypeText + " match found in the file content.****");
 	                break;
 	            }
 	        }
 
 	        if (!PropertyTypeMatch) {
-	            Azure.updateTestCaseStatus("12075", "Automation Fail");
+	            Azure.updateTestCaseStatus("12075", "Automation Fail","Fail: An exception occurred while verifying Property Type match.");
 	            Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****");
 	            System.out.println("****Fail: Property Type name=" + PropertyTypeText + " match not found in the file content.****");
 	        }
 	    } catch (Exception e) {	       
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****",e);
 	    }
 	}
@@ -708,8 +704,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {	        
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        
+	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while performing Property Type search.*****",e);
 	    }
 	}
@@ -736,10 +732,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            LawyerNameMatch = fileContentText.equals(AdvanceSearch_LawyerName);
 
 	            if (LawyerNameMatch) {
-	                Azure.updateTestCaseStatus("12076", "Automation Pass");
+	                Azure.updateTestCaseStatus("12076", "Automation Pass","");
 	                System.out.println("****Pass: Other side Lawyer Name = " + fileContentText + " match found in the file content.****");
 	            } else {
-	                Azure.updateTestCaseStatus("12076", "Automation Fail");
+	                Azure.updateTestCaseStatus("12076", "Automation Fail","****Fail: Other side Lawyer Name match not found in the file content");
 	                Assert.fail("****Fail: Other side Lawyer Name = " + fileContentText + " match not found in the file content.***");
 	            }
 	            driver.switchTo().defaultContent();
@@ -750,7 +746,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12076", "Automation Fail");
+	        Azure.updateTestCaseStatus("12076", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Other Side Lawyer Name criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -785,10 +781,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            FileNameMatch = fileContentText.equals(AdvanceSearch_FileName);
 
 	            if (FileNameMatch) {
-	                Azure.updateTestCaseStatus("12077", "Automation Pass");
+	                Azure.updateTestCaseStatus("12077", "Automation Pass","");
 	                System.out.println("****Pass: Other side File Name = " + fileContentText + " match found in the file content.****");
 	            } else {
-	                Azure.updateTestCaseStatus("12077", "Automation Fail");
+	                Azure.updateTestCaseStatus("12077", "Automation Fail","Fail: Other side File Name  match not found in the file content.");
 	                Assert.fail("****Fail: Other side File Name = " + fileContentText + " match not found in the file content.****");
 	            }
 	            driver.switchTo().defaultContent();
@@ -798,8 +794,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
-	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12077", "Automation Fail");
+	      
+	        Azure.updateTestCaseStatus("12077", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Other Side File Name criteria.*****",e);
 	        return new FileList(driver);
 	    }

@@ -11,7 +11,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 public class AzureDevOpsIntegration {
 
-    public void updateTestCaseStatus(String testCaseId, String status) throws IOException {
+    public void updateTestCaseStatus(String testCaseId, String status,String errorMessage) throws IOException {
         String personalAccessToken = "ogk5yeum42qdfxlulgcjhxjcizojhjxsultliuqyhjms3heuks2a";
         String organizationName = "ldd";
         String projectName = "Testing";
@@ -24,7 +24,16 @@ public class AzureDevOpsIntegration {
                     "Basic " + Base64.getEncoder().encodeToString((":" + personalAccessToken).getBytes()));
             httpPatch.setHeader(HttpHeaders.CONTENT_TYPE, "application/json-patch+json; charset=utf-8");
 
-            String requestBody = "[{ \"op\": \"add\", \"path\": \"/fields/Custom.7af23cf5-4928-40bb-9796-02e350f76840\", \"value\": \"" + status + "\" }]";
+            String requestBody = "[{ " +
+                    "\"op\": \"add\", " +
+                    "\"path\": \"/fields/Custom.7af23cf5-4928-40bb-9796-02e350f76840\", " +
+                    "\"value\": \"" + status + "\" " +
+                    "}, " +
+                    "{ " +
+                    "\"op\": \"add\", " +
+                    "\"path\": \"/fields/Custom.ReasonforFail\", " +
+                    "\"value\": \"" + errorMessage + "\" " +
+                    "}]";
             httpPatch.setEntity(new StringEntity(requestBody));
             try (CloseableHttpResponse response = httpClient.execute(httpPatch)) {
                 int statusCode = response.getStatusLine().getStatusCode();

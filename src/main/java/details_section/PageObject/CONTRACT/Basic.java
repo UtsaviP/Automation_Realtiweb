@@ -187,17 +187,17 @@ public class Basic extends AbstractComponent {
 	        boolean LawyerText = getText.equals(Responsible_Lawyer); // Define the 'LawyerText' variable
 
 	        if (LawyerText) {
-	            Azure.updateTestCaseStatus("12080", "Automation Pass");
+	            Azure.updateTestCaseStatus("12080", "Automation Pass","");
 	            Assert.assertTrue(LawyerText, "PASS: Responsible Lawyer field Working Properly");
 	            System.out.println("PASS: Responsible Lawyer field Working Properly");
 	        } else {
-	            Azure.updateTestCaseStatus("12080", "Automation Fail");
+	            Azure.updateTestCaseStatus("12080", "Automation Fail","FAIL: Responsible Lawyer field is not as expected");
 	            Assert.fail("****FAIL: Responsible Lawyer field is not as expected****");
-	            System.out.println("****FAIL: Responsible Lawyer field is not as expected****");
+	            
 	        }
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12080", "Automation Fail");
+	        Azure.updateTestCaseStatus("12080", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: An exception occurred while testing Responsible Lawyer field.*****",e);
 	    }
 	}
@@ -235,18 +235,17 @@ public class Basic extends AbstractComponent {
 	        clearPass = true;
 	        
 	        if (addPass && editPass && clearPass) {
-	            Azure.updateTestCaseStatus("12081", "Automation Pass");
+	            Azure.updateTestCaseStatus("12081", "Automation Pass","");
 	            System.out.println("*****PASS: All Firm Contact operations passed successfully*****");
 	        } else {
 	          
-	            Azure.updateTestCaseStatus("12081", "Automation Fail");
+	            Azure.updateTestCaseStatus("12081", "Automation Fail","FAIL: One or more Firm Contact operations failed");
 	            System.out.println("*****FAIL: One or more Firm Contact operations failed*****");
 	        }
 	    } catch (Exception e) {
 	        
-	        Azure.updateTestCaseStatus("12081", "Automation Fail");
-	        Assert.fail("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****",e);
-	        System.out.println("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****");
+	        Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
+	        Assert.fail("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****",e);	     
 	        e.printStackTrace();
 	    }
 	}
@@ -273,7 +272,7 @@ public class Basic extends AbstractComponent {
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS: Firm Contact field 'Add' functionality working Properly");
 		} catch (Exception e) {		
-			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			 Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
 			Assert.fail("Fail",e);
 		}
 	}
@@ -296,7 +295,7 @@ public class Basic extends AbstractComponent {
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS :Firm Contact field 'Edit' functionality working Properly");
 		} catch (Exception e) {
-			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			 Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
 			Assert.fail("Fail",e);
 		}
 	}
@@ -314,7 +313,7 @@ public class Basic extends AbstractComponent {
 						"****FAIL :Firm Contact field 'Clear' functionality not working Properly****");
 			}
 		} catch (Exception e) {
-			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			 Azure.updateTestCaseStatus("12081", "Automation Fail",e.getMessage());
 			Assert.fail("Fail",e);
 		}
 	}
@@ -335,17 +334,17 @@ public class Basic extends AbstractComponent {
 
 	            try {
 	                Assert.assertEquals(getConveyancerName.trim(), listFirstName.trim());
-	                Azure.updateTestCaseStatus("12082", "Automation Pass");
+	                Azure.updateTestCaseStatus("12082", "Automation Pass","");
 	                System.out.println("PASS: Conveyancer field functionality working Properly");
 	            } catch (AssertionError e) {
-	                Azure.updateTestCaseStatus("12082", "Automation Fail");	           
+	                Azure.updateTestCaseStatus("12082", "Automation Fail","FAIL: Conveyancer field functionality working Improperly");	           
 	               Assert.fail("*****FAIL: Conveyancer field functionality working Improperly*****",e);
 	            }
 	        } else {
 	            System.out.println("Any Conveyancer name is not available in the Pop Up");
 	        }
 	    } catch (Exception ex) {
-	    	 Azure.updateTestCaseStatus("12082", "Automation Fail");	           
+	    	 Azure.updateTestCaseStatus("12082", "Automation Error",ex.getMessage());	           
              Assert.fail("*****FAIL: Conveyancer field functionality working Improperly*****",ex);
 	    }
 	}
@@ -372,15 +371,15 @@ public class Basic extends AbstractComponent {
 	        boolean isDisplayed = anotherElement.isDisplayed();
 
 	        if (isDisplayed) {
-	            Azure.updateTestCaseStatus("12083", "Automation Pass");
+	            Azure.updateTestCaseStatus("12083", "Automation Pass","");
 	            System.out.println("PASS: In File_Configuration -> Vacant Land element is displayed.");
 	        } else {
-	            Azure.updateTestCaseStatus("12083", "Automation Fail");
+	            Azure.updateTestCaseStatus("12083", "Automation Fail","FAIL: In File_Configuration -> Vacant Land element is not displayed.");
 	            Assert.assertTrue(false, "****FAIL: In File_Configuration -> Vacant Land element is not displayed.*****");
 	        }
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
-	        Azure.updateTestCaseStatus("12083", "Automation Fail");
+	        Azure.updateTestCaseStatus("12083", "Automation Error",ex.getMessage());
 	        Assert.fail("*****FAIL: An exception occurred while testing File Configuration.*****",ex);
 	    }
 	}
@@ -469,12 +468,11 @@ public class Basic extends AbstractComponent {
 			}
 
 			if (isMatchFound_purchaser) {
-				Azure.updateTestCaseStatus("12087", "Automation Pass");
+				Azure.updateTestCaseStatus("12087", "Automation Pass","");
 				System.out.println("PASS: All Buyer Names Found in File navigation >Buyer Side");
 				
 			} else {
-				Azure.updateTestCaseStatus("12087", "Automation Fail");
-				System.out.println("****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
+				Azure.updateTestCaseStatus("12087", "Automation Fail","Fail: Not All Buyer Names Found in File navigation >Buyer Side");				
 				Assert.fail("Fail");
 			}
 
@@ -493,10 +491,10 @@ public class Basic extends AbstractComponent {
 
 			try {
 			    assert isTextMatch : "Purchasers names matches in the Contract tab >Purchasers(s) field ";
-			    Azure.updateTestCaseStatus("12140", "Automation Pass");
+			    Azure.updateTestCaseStatus("12140", "Automation Pass","");
 			    System.out.println("PASS: Purchasers names matches in the Contract tab >Purchasers(s) field ");
 			} catch (AssertionError e) {
-			    Azure.updateTestCaseStatus("12140", "Automation Fail");
+			    Azure.updateTestCaseStatus("12140", "Automation Error",e.getMessage());
 			    System.out.println("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field *****");
 			    Assert.fail("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field**** ");
 			}
@@ -599,10 +597,10 @@ public class Basic extends AbstractComponent {
 		}
 
 		if (isMatchFound_Seller) {
-			Azure.updateTestCaseStatus("12089", "Automation Pass");
+			Azure.updateTestCaseStatus("12089", "Automation Pass","");
 			System.out.println("PASS: All Seller Names Found in File navigation >Seller Side");
 		} else {
-			Azure.updateTestCaseStatus("12089", "Automation Fail");
+			Azure.updateTestCaseStatus("12089", "Automation Fail","Fail: Not All Seller Names Found in File navigation >Seller Side");
 			Assert.fail("****Fail: Not All Seller Names Found in File navigation >Seller Side*****");
 		}
 
@@ -620,11 +618,10 @@ public class Basic extends AbstractComponent {
 
 				try {
 				    assert isTextMatch : "Vendors names matches in the Contract tab >Vendor(s) field ";
-				    Azure.updateTestCaseStatus("12143", "Automation Pass");
+				    Azure.updateTestCaseStatus("12143", "Automation Pass","");
 				    System.out.println("PASS: Vendors names matches in the Contract tab >Vendor(s) field ");
 				} catch (AssertionError e) {
-				    Azure.updateTestCaseStatus("12143", "Automation Fail");
-				    System.out.println("****FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field *****");
+				    Azure.updateTestCaseStatus("12143", "Automation Fail","FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field");				   
 				    Assert.fail("****FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field**** ");
 				}
 			}
@@ -661,16 +658,14 @@ public class Basic extends AbstractComponent {
 	                if (textFireInsFileNavigation.contains(textFireInsuranceName)) {
 	                    System.out.println(
 	                            "PASS: In file navigation, Fire ins. name is the same as Fire ins. field value.");
-	                    Azure.updateTestCaseStatus("12093", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12093", "Automation Pass","");
 	                } else {
-	                    isTestPassed = false;
-	                    System.out.println(
-	                            "*****FAIL: In file navigation, Fire ins. name is not the same as Fire ins. field value.*****");
-	                    Azure.updateTestCaseStatus("12093", "Automation Fail");
+	                    isTestPassed = false;	                   
+	                    Azure.updateTestCaseStatus("12093", "Automation Fail","FAIL: In file navigation, Fire ins. name is not the same as Fire ins. field value.");
 	                }
-	            } else {
-	                System.out.println("*****FAIL: Selected Company name is not shown in Fire insurance field*****");
-	                Azure.updateTestCaseStatus("12093", "Automation Fail");
+	            } else {	               
+	                Azure.updateTestCaseStatus("12093", "Automation Fail","FAIL: Selected Company name is not shown in Fire insurance field");
+	                Assert.fail();
 	            }
 	        } else {
 	            System.out.println("***Any Name is not available in Fire Insurance List****");
@@ -678,9 +673,10 @@ public class Basic extends AbstractComponent {
 	        
 	        Assert.assertTrue(isTestPassed,
 	                "*****FAIL: Selected Company name is not shown in Fire insurance field*****");
+	        Azure.updateTestCaseStatus("12093", "Automation Fail","FAIL: Selected Company name is not shown in Fire insurance field");
 	    } catch (Exception e) {
 	        e.printStackTrace();	        
-	        Azure.updateTestCaseStatus("12093", "Automation Fail");
+	        Azure.updateTestCaseStatus("12093", "Automation Error",e.getMessage());
 	        Assert.fail("Fail",e);
 	    }
 	}
@@ -716,26 +712,28 @@ public class Basic extends AbstractComponent {
 	                if (textMortgageBroFileNavigation.contains(textMortgageBrokerName)) {
 	                    System.out.println(
 	                            "PASS: In file navigation, Mortgage Broker name is the same as Mortgage Broker field value.");
-	                    Azure.updateTestCaseStatus("12094", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12094", "Automation Pass","");
 	                } else {
 	                    isTestPassed = false;
 	                    System.out.println(
 	                            "*****FAIL: In file navigation, Mortgage Broker name is not the same as Mortgage Broker field value.*****");
-	                    Azure.updateTestCaseStatus("12094", "Automation Fail");
+	                    Azure.updateTestCaseStatus("12094", "Automation Fail","FAIL: In file navigation, Mortgage Broker name is not the same as Mortgage Broker field value.");
+	                    Assert.fail();
 	                }
-	            } else {
-	                System.out.println("*****FAIL: Selected Company name is not shown in Mortgage Broker field*****");
-	                Azure.updateTestCaseStatus("12094", "Automation Fail");
+	            } else {	               
+	                Azure.updateTestCaseStatus("12094", "Automation Fail","FAIL: Selected Company name is not shown in Mortgage Broker field");
+	                Assert.fail();
 	            }
 	        } else {
 	            System.out.println("***Any Name is not available in Mortgage Broker List****");
 	        }
-
+	        Azure.updateTestCaseStatus("12094", "Automation Fail","FAIL: Selected Company name is not shown in Mortgage Broker field");
 	        Assert.assertTrue(isTestPassed,
 	                "*****FAIL: Selected Company name is not shown in Mortgage Broker field*****");
+	        
 	    } catch (Exception e) {
 	        e.printStackTrace();	        
-	        Azure.updateTestCaseStatus("12094", "Automation Fail");
+	        Azure.updateTestCaseStatus("12094", "Automation Error",e.getMessage());
 	        Assert.fail("Fail", e);
 	    }
 	}
@@ -756,18 +754,18 @@ public class Basic extends AbstractComponent {
 	            mortgageBrokerField.sendKeys(formattedMortgageBrokerFee);
 
 	            driver.findElement(By.xpath("//a[text()='Pay from Trust']")).click();	            	         
-	            Azure.updateTestCaseStatus("12095", "Automation Pass");
+	            Azure.updateTestCaseStatus("12095", "Automation Pass","");
 	            System.out.println("PASS: Mortgage Broker Fee showing Trust Account Screen");
 	        } else {
-	        	
-	            System.out.println("***Any Name is not available in Mortgage Broker List****");	     
-	            Azure.updateTestCaseStatus("12095", "Automation Fail");
+	        		           
+	            Azure.updateTestCaseStatus("12095", "Automation Fail","Any Name is not available in Mortgage Broker List");
+	            Assert.fail();
 	        }
 	        
 	    } catch (Exception e) {
-	    	Azure.updateTestCaseStatus("12095", "Automation Fail");
+	    	Azure.updateTestCaseStatus("12095", "Automation Error",e.getMessage());
 	        Assert.fail("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");
-	        System.out.println("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");	        
+	        
 	        
 	    }
 	}

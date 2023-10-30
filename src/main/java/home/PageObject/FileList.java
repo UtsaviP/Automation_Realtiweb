@@ -65,7 +65,7 @@ public class FileList extends AbstractComponent {
 	            boolean activeStatus = false;
 
 	            if (Archive.isDisplayed()) {
-	                Archive.click();
+	               Archive.click();
 	                Thread.sleep(2000);
 	                String status = driver.findElement(Firstfilestatus).getText();
 	                if (status.equals("Archived")) {
@@ -83,23 +83,27 @@ public class FileList extends AbstractComponent {
 	                            activeStatus = true;
 	                            System.out.println("*****Pass : Status has been changed from Archived to Active.*****");
 	                        } else {
+	                        	Azure.updateTestCaseStatus("12067", "Automation Fail", "One or both test cases failed.");
 	                            Assert.fail("*****Fail : Status has not been changed from Archived to Active.*****");
+	                           
 	                        }
 	                    }
 	                } else {
+	                	Azure.updateTestCaseStatus("12067", "Automation Fail", "One or both test cases failed.");
 	                    Assert.fail("*****Fail : Status has not been changed from Active to archived.*****");
+	                    
 	                }
 	            }
 
 	            if (archiveStatus && activeStatus) {
-	                Azure.updateTestCaseStatus("12067", "Automation Pass");
+	                Azure.updateTestCaseStatus("12067", "Automation Pass","");
 	                System.out.println("***Both test cases passed.**");
 	            } else {
-	                Azure.updateTestCaseStatus("12067", "Automation Fail");
-	                System.out.println("**One or both test cases failed.**");
+	            	 Azure.updateTestCaseStatus("12067", "Automation Fail", "One or both test cases failed.");
+	            	 Assert.fail("Fail");
 	            }
 	        } catch (Exception e) {
-	        	Azure.updateTestCaseStatus("12067", "Automation Fail");
+	        	 Azure.updateTestCaseStatus("12067", "Automation Error", e.getMessage());
 	           Assert.fail("Fail",e);
 	            e.printStackTrace(); 
 	        }
@@ -110,6 +114,8 @@ public class FileList extends AbstractComponent {
 	    return new FileList(driver);
 	}
 
+	
+	
 	public void ThreeDotsmenu() {
 	    try {
 	        WebElement elementToHover = driver.findElement(ThreeDotmenu);
@@ -161,11 +167,10 @@ public class FileList extends AbstractComponent {
 	                }
 
 	                if (allFilesMatchingSearch) {
-	                    Azure.updateTestCaseStatus("12066", "Automation Pass");
+	                    Azure.updateTestCaseStatus("12066", "Automation Pass","");
 	                    System.out.println("***** Pass: All files match search criteria *****");
 	                } else {
-	                    Azure.updateTestCaseStatus("12066", "Automation Fail");
-	                    System.out.println("***** Fail: Some files do not match search criteria *****");
+	                    Azure.updateTestCaseStatus("12066", "Automation Fail","Fail: Some files do not match search criteria");	                   
 	                    Assert.fail("***** Fail: Some files do not match search criteria *****");
 	                }
 	            } else {
@@ -173,7 +178,7 @@ public class FileList extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {
-	    	 Azure.updateTestCaseStatus("12066", "Automation Fail");
+	    	 Azure.updateTestCaseStatus("12066", "Automation Fail",e.getMessage());
 	    	 Assert.fail("Fail",e);
 	         e.printStackTrace();
 	    }
