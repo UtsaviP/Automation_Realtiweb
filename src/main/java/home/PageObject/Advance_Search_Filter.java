@@ -114,322 +114,372 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();	
 	
-	//***Verify Cancel Button working proper or not***
-	public FileList CancelButton() throws InterruptedException, IOException {
-		AdvanceSearchButton();
-		waitForElementToAppear(CancelButton);
-		driver.findElement(CancelButton).click();
+	//***Verify Cancel Button working properly or not***
+	public FileList CancelButton() throws IOException {
+	    try {
+	        AdvanceSearchButton();
+	        waitForElementToAppear(CancelButton);
+	        driver.findElement(CancelButton).click();
 
-		boolean isPopupClosed = isElementNotPresent(driver, By.id("//div[@id='adSearchContainer']"));
+	        boolean isPopupClosed = isElementNotPresent(driver, By.id("//div[@id='adSearchContainer']"));
 
-		if (isPopupClosed) {
-			Azure.updateTestCaseStatus("12064", "Automation Pass");
-			System.out.println("*****Pass : Cancel button works: Pop-up is closed.*****");
-		} else {
-			Azure.updateTestCaseStatus("12064", "Automation Fail");
-			Assert.fail("*****Fail : Cancel button does not work: Pop-up is still open.*****");
-			
-		}
+	        if (isPopupClosed) {
+	            Azure.updateTestCaseStatus("12064", "Automation Pass");
+	            System.out.println("*****Pass : Cancel button works: Pop-up is closed.*****");
+	        } else {
+	            Azure.updateTestCaseStatus("12064", "Automation Fail");
+	            Assert.fail("*****Fail : Cancel button does not work: Pop-up is still open.*****");
+	        }
 
-		return new FileList(driver);
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12064", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing the Cancel button.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
 	//*** Verify File Types Criteria working or not***
-	public FileList AdvanceSearchFileTypes() throws InterruptedException, IOException {	   
-	    AdvanceSearchButton();
-	    Filelistwait(); 
+	public FileList AdvanceSearchFileTypes() throws IOException {
+	    try {
+	        AdvanceSearchButton();
+	        Filelistwait();
 
-	    if (PurchaseCheckbox.isSelected()) {
-	        PurchaseCheckbox.click();
-	    }
-	    if (SaleCheckbox.isSelected()) {
-	        SaleCheckbox.click();
-	    }
-	    if (!MortgageCheckbox.isSelected()) {
-	        MortgageCheckbox.click();
-	    }
-	    SearchButton.click();
+	        if (PurchaseCheckbox.isSelected()) {
+	            PurchaseCheckbox.click();
+	        }
+	        if (SaleCheckbox.isSelected()) {
+	            SaleCheckbox.click();
+	        }
+	        if (!MortgageCheckbox.isSelected()) {
+	            MortgageCheckbox.click();
+	        }
+	        SearchButton.click();
 
-	    List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
 
-	    waitForFileListUpdate(initialFileList);
+	        waitForFileListUpdate(initialFileList);
 
-	    if (!isElementDisplayed(Noresult)) {
-	        List<WebElement> getFileList = ListFileType; // Move this line before the loop
+	        if (!isElementDisplayed(Noresult)) {
+	            List<WebElement> getFileList = ListFileType; // Move this line before the loop
 
-	        boolean allFilesArePurchaseOrSale = false;
-	        for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
-	            WebElement fileTypeElement = getFileList.get(i);
-	            waitForWebElementToAppear(fileTypeElement);
+	            boolean allFilesArePurchaseOrSale = false;
+	            for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
+	                WebElement fileTypeElement = getFileList.get(i);
+	                waitForWebElementToAppear(fileTypeElement);
 
-	            WebElement fileNameElement = initialFileList.get(i);
-	            waitForWebElementToAppear(fileNameElement);
+	                WebElement fileNameElement = initialFileList.get(i);
+	                waitForWebElementToAppear(fileNameElement);
 
-	            String filetype = fileTypeElement.getText();
-	            String fileName = fileNameElement.getText();
+	                String fileType = fileTypeElement.getText();
+	                String fileName = fileNameElement.getText();
 
-	            if (filetype.contains("Purchase") || filetype.contains("Sale")) {
-	                System.out.println("Expected file: " + fileName + ":" + filetype);
-	                allFilesArePurchaseOrSale = true;
-	            } else {
-	                System.out.println("Unexpected file: " + fileName + ":" + filetype);
+	                if (fileType.contains("Purchase") || fileType.contains("Sale")) {
+	                    System.out.println("Expected file: " + fileName + ":" + fileType);
+	                    allFilesArePurchaseOrSale = true;
+	                } else {
+	                    System.out.println("Unexpected file: " + fileName + ":" + fileType);
+	                }
 	            }
+
+	            if (allFilesArePurchaseOrSale) {
+	                Azure.updateTestCaseStatus("12068", "Automation Pass");
+	                System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
+	            } else {
+	                Azure.updateTestCaseStatus("12068", "Automation Fail");
+	                Assert.fail("*****Fail : Other file types are also displayed.*****");
+	            }
+	        } else {
+	            System.out.println("***No search result found for FileTypes criteria***");
 	        }
 
-	        if (allFilesArePurchaseOrSale) {
-	        	Azure.updateTestCaseStatus("12068", "Automation Pass");
-	            System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
-	        } else {
-	        	Azure.updateTestCaseStatus("12068", "Automation Fail");
-	            Assert.fail("*****Fail : Other file types are also displayed.*****");
-	        }
-	    } else {
-	        System.out.println("***No Search result found for FileTypes criteria***");
+	        return new FileList(driver);
+	    } catch (Exception e) {	       
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12068", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing File Types Criteria.*****",e);
+	        return new FileList(driver);
 	    }
-	    return new FileList(driver);
 	}
+
 
 	
-	//*** Verify File status Criteria working or not***
-	public FileList AdvanceSearchFileStatus() throws InterruptedException, IOException {
-		ClearAndHome();
-		AdvanceSearchButton();
+	//*** Verify File Status Criteria working or not***
+	public FileList AdvanceSearchFileStatus() throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
 
-		Filelistwait(); 
+	        Filelistwait();
 
-		if (!ActiveCheckbox.isSelected()) {
-			ActiveCheckbox.click();
-		}
-		if (!ArchivedCheckbox.isSelected()) {
-			ArchivedCheckbox.click();
-		}
-		SearchButton.click();
+	        if (!ActiveCheckbox.isSelected()) {
+	            ActiveCheckbox.click();
+	        }
+	        if (!ArchivedCheckbox.isSelected()) {
+	            ArchivedCheckbox.click();
+	        }
+	        SearchButton.click();
 
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
-		waitForFileListUpdate(initialFileList);
-		
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-		if (!isElementDisplayed(Noresult)) {
-			List<WebElement> getFileList = ListFileStatus;
-			boolean allFilesAreArchived = false;
+	        if (!isElementDisplayed(Noresult)) {
+	            List<WebElement> getFileList = ListFileStatus;
+	            boolean allFilesAreArchived = false;
 
-			for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
+	            for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
 
-				initialFileList = driver.findElements(Filelistname);
+	                initialFileList = driver.findElements(Filelistname);
 
-				WebElement fileStatusElement = getFileList.get(i);
-				WebElement fileNameElement = initialFileList.get(i);
+	                WebElement fileStatusElement = getFileList.get(i);
+	                WebElement fileNameElement = initialFileList.get(i);
 
-				String fileStatus = fileStatusElement.getText();
-				String fileName = fileNameElement.getText();
+	                String fileStatus = fileStatusElement.getText();
+	                String fileName = fileNameElement.getText();
 
-				if (fileStatus.contains("Archived")) {
-					System.out.println("Expected file: " + fileName + ":" + fileStatus);
-					allFilesAreArchived = true;
-				} else {
+	                if (fileStatus.contains("Archived")) {
+	                    System.out.println("Expected file: " + fileName + ":" + fileStatus);
+	                    allFilesAreArchived = true;
+	                } else {
+	                    System.out.println("Unexpected file: " + fileName + ":" + fileStatus);
+	                }
+	            }
 
-					System.out.println("Unexpected file: " + fileName + ":" + fileStatus);
-				}
-			}
+	            if (allFilesAreArchived) {
+	                Azure.updateTestCaseStatus("12069", "Automation Pass");
+	                System.out.println("*****Pass : Only 'Archived' files are displayed.*****");
+	            } else {
+	                allFilesAreArchived = false;
+	                Azure.updateTestCaseStatus("12069", "Automation Fail");
+	                Assert.fail("*****Fail : Other file statuses are also displayed.*****");
+	            }
+	        } else {
+	            System.out.println("***No search result found for File Status Criteria***");
+	        }
 
-			if (allFilesAreArchived) {
-				Azure.updateTestCaseStatus("12069", "Automation Pass");
-				System.out.println("*****Pass : Only 'Archived' files are displayed.*****");
-			} else {
-				allFilesAreArchived = false;
-				Azure.updateTestCaseStatus("12069", "Automation Fail");
-				Assert.fail("*****Fail : Other file statuses are also displayed.*****");
-			}
-		} else {
-			System.out.println("***No Search result found for File Status Criteria***");
-		}
-		return new FileList(driver);
+	        return new FileList(driver);
+	    } catch (Exception e) {
+	       	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12069", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing File Status Criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
-	//***Verify Responsible Lawyer working proper or not***
-	public FileList AdvanceSearchResponsibleLawyer(String LawyerName) throws InterruptedException, IOException {
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
 
-		Select selectLawyer = new Select(SelectLawyer);
-		selectLawyer.selectByValue(LawyerName);
-		SearchButton.click();
+	//*** Verify Responsible Lawyer working properly or not***
+	public FileList AdvanceSearchResponsibleLawyer(String LawyerName) throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait();
 
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
-		waitForFileListUpdate(initialFileList);
+	        Select selectLawyer = new Select(SelectLawyer);
+	        selectLawyer.selectByValue(LawyerName);
+	        SearchButton.click();
 
-		if (!isElementDisplayed(Noresult)) {
-			clickOnFirstFile();
-			waitForWebElementToAppear(InsidefileFrame);
-			driver.switchTo().frame(InsidefileFrame);
-			waitForElementToAppear(FileLawyerName);
-			String fileContentText = driver.findElement(FileLawyerName).getText();
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-			boolean lawyerNameMatch = fileContentText.equals(LawyerName);
+	        if (!isElementDisplayed(Noresult)) {
+	            clickOnFirstFile();
+	            waitForWebElementToAppear(InsidefileFrame);
+	            driver.switchTo().frame(InsidefileFrame);
+	            waitForElementToAppear(FileLawyerName);
+	            String fileContentText = driver.findElement(FileLawyerName).getText();
 
-			if (lawyerNameMatch) {
-				Azure.updateTestCaseStatus("12070", "Automation Pass");
-				System.out.println("*****Pass: Lawyer name match found in the file content.*****");
-			} else {
-				Azure.updateTestCaseStatus("12070", "Automation Fail");
-				Assert.fail("****Fail: Lawyer name match not found in the file content.*****");
-			}
-			driver.switchTo().defaultContent();
-		} else {
-			System.out.println("*****No Search result found for Responsible Lawyer criteira*****");
-		}
-		return new FileList(driver);
+	            boolean lawyerNameMatch = fileContentText.equals(LawyerName);
+
+	            if (lawyerNameMatch) {
+	                Azure.updateTestCaseStatus("12070", "Automation Pass");
+	                System.out.println("*****Pass: Lawyer name match found in the file content.*****");
+	            } else {
+	                Azure.updateTestCaseStatus("12070", "Automation Fail");
+	                Assert.fail("****Fail: Lawyer name match not found in the file content.*****");
+	            }
+	            driver.switchTo().defaultContent();
+	        } else {
+	            System.out.println("*****No search result found for Responsible Lawyer criteria*****");
+	        }
+
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12070", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing Responsible Lawyer criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
-	//*** Verify Firm contact working proper or not***
-	public FileList AdvanceSearchFirmContact(String FirmContact) throws InterruptedException, IOException {
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
+	//*** Verify Firm Contact working properly or not***
+	public FileList AdvanceSearchFirmContact(String FirmContact) throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait();
 
-		Select selectLawyer = new Select(SelectFirmContact);
-		selectLawyer.selectByValue(FirmContact);
+	        Select selectFirmContact = new Select(SelectFirmContact);
+	        selectFirmContact.selectByValue(FirmContact);
 
-		SearchButton.click();
+	        SearchButton.click();
 
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
-		waitForFileListUpdate(initialFileList);
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-		if (!isElementDisplayed(Noresult)) {
-			clickOnFirstFile();
-			waitForWebElementToAppear(InsidefileFrame);
-			driver.switchTo().frame(InsidefileFrame);
-			waitForElementToAppear(FileFirmName);
-			String fileContentText = driver.findElement(FileFirmName).getText();
-			boolean FirmNameMatch = fileContentText.equals(FirmContact);
-			if (FirmNameMatch) {
-				Azure.updateTestCaseStatus("12078", "Automation Pass");
-				System.out.println("*****Pass: Firm name match found in the file content.*****");
-			} else {
-				Azure.updateTestCaseStatus("12078", "Automation Fail");
-				Assert.fail("*****Fail: Firm name match not found in the file content.*****");
-			}
-			driver.switchTo().defaultContent();
-		} else {
-			System.out.println("****No Search result found for Firm Contact criteria****");
-		}
-		return new FileList(driver);
+	        if (!isElementDisplayed(Noresult)) {
+	            clickOnFirstFile();
+	            waitForWebElementToAppear(InsidefileFrame);
+	            driver.switchTo().frame(InsidefileFrame);
+	            waitForElementToAppear(FileFirmName);
+	            String fileContentText = driver.findElement(FileFirmName).getText();
+	            boolean firmNameMatch = fileContentText.equals(FirmContact);
+	            if (firmNameMatch) {
+	                Azure.updateTestCaseStatus("12078", "Automation Pass");
+	                System.out.println("*****Pass: Firm name match found in the file content.*****");
+	            } else {
+	                Azure.updateTestCaseStatus("12078", "Automation Fail");
+	                Assert.fail("*****Fail: Firm name match not found in the file content.*****");
+	            }
+	            driver.switchTo().defaultContent();
+	        } else {
+	            System.out.println("****No search result found for Firm Contact criteria****");
+	        }
+
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12078", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing Firm Contact criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
+
 
 	//*** Verify ClientName working or not with different criteria***
-	public FileList AdvanceSearchClientname(String AdvanceSearch_Client1, String AdvanceSearch_Client2,
-			String AdvanceSearch_Client3) throws InterruptedException, IOException {
-		String[] clientNames = { AdvanceSearch_Client1, AdvanceSearch_Client2, AdvanceSearch_Client3 };
-		for (String clientName : clientNames) {
-			ClearAndHome();
-			AdvanceSearchButton();
-			Filelistwait(); // explicit wait
+	public FileList AdvanceSearchClientname(String AdvanceSearch_Client1, String AdvanceSearch_Client2, String AdvanceSearch_Client3) throws IOException {
+	    try {
+	        String[] clientNames = { AdvanceSearch_Client1, AdvanceSearch_Client2, AdvanceSearch_Client3 };
+	        for (String clientName : clientNames) {
+	            ClearAndHome();
+	            AdvanceSearchButton();
+	            Filelistwait();
 
-			waitForElementToAppear(ClientNameField);
-			driver.findElement(ClientNameField).clear();
-			driver.findElement(ClientNameField).sendKeys(clientName);
-			SearchButton.click();
+	            waitForElementToAppear(ClientNameField);
+	            driver.findElement(ClientNameField).clear();
+	            driver.findElement(ClientNameField).sendKeys(clientName);
+	            SearchButton.click();
 
-			List<WebElement> initialFileList = driver.findElements(Filelistname);
-			waitForFileListUpdate(initialFileList);
+	            List<WebElement> initialFileList = driver.findElements(Filelistname);
+	            waitForFileListUpdate(initialFileList);
 
-			if (!isElementDisplayed(Noresult)) {
-				List<WebElement> getFileList = ListClientName;
-				boolean allClientname = false;
+	            if (!isElementDisplayed(Noresult)) {
+	                List<WebElement> getFileList = ListClientName;
+	                boolean allClientname = false;
 
-				// Re-find the elements after waiting
-				initialFileList = driver.findElements(Filelistname);
-				getFileList = ListClientName;
+	                // Re-find the elements after waiting
+	                initialFileList = driver.findElements(Filelistname);
+	                getFileList = ListClientName;
 
-				for (int i = 0; i < getFileList.size(); i++) {
-					WebElement clientnameElement = getFileList.get(i);
-					WebElement fileNameElement = initialFileList.get(i);
+	                for (int i = 0; i < getFileList.size(); i++) {
+	                    WebElement clientnameElement = getFileList.get(i);
+	                    WebElement fileNameElement = initialFileList.get(i);
 
-					String clientname = clientnameElement.getText();
-					String fileName = fileNameElement.getText();
-					if (clientname.contains(clientName)) {
-						System.out.println("Expected file: " + fileName + ":" + clientname);
-						allClientname = true;
-					} else {
-						System.out.println("UnExpected file: " + fileName + ":" + clientname);
-					}
-				}
+	                    String clientname = clientnameElement.getText();
+	                    String fileName = fileNameElement.getText();
+	                    if (clientname.contains(clientName)) {
+	                        System.out.println("Expected file: " + fileName + ":" + clientname);
+	                        allClientname = true;
+	                    } else {
+	                        System.out.println("UnExpected file: " + fileName + ":" + clientname);
+	                    }
+	                }
 
-				if (allClientname) {
-					Azure.updateTestCaseStatus("12071", "Automation Pass");
-					System.out.println("*****Pass : Client name criteria working fine with different Scenario*****");
-				} else {
-					Azure.updateTestCaseStatus("12071", "Automation Fail");
-					Assert.fail("*****Fail : Client name criteria not working fine with different Scenario*****");
-				}
-			} else {
-				System.out.println("***No Search result found for Client name criteria***");
-			}
-		}
-		return new FileList(driver);
+	                if (allClientname) {
+	                    Azure.updateTestCaseStatus("12071", "Automation Pass");
+	                    System.out.println("*****Pass : Client name criteria working fine with different scenarios*****");
+	                } else {
+	                    Azure.updateTestCaseStatus("12071", "Automation Fail");
+	                    Assert.fail("*****Fail : Client name criteria not working fine with different scenarios*****");
+	                }
+	            } else {
+	                System.out.println("***No search result found for Client name criteria***");
+	            }
+	        }
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12071", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing ClientName criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
-	//*** Verify Reline[include & Doesn't include] Criteria working proper or not***
-	@SuppressWarnings("unlikely-arg-type")
-	public FileList AdvanceSearchReline(String[] AdvanceSearch_Reline) throws InterruptedException, IOException {
 
-		for (String isCriteria : AdvanceSearch_Reline) {
-			performSearchforReline(isCriteria, true);
+	//*** Verify Reline[include & Doesn't include] Criteria working properly or not***
+	public FileList AdvanceSearchReline(String[] AdvanceSearch_Reline) throws IOException {
+	    try {
+	        for (String isCriteria : AdvanceSearch_Reline) {
+	            performSearchforReline(isCriteria, true);
 
-			if (!isElementDisplayed(Noresult)) {
+	            if (!isElementDisplayed(Noresult)) {
 
-				clickOnFirstFile();
-				waitForElementToAppear(InsideFileName);
-				String fileContentText = driver.findElement(Reline_InsideFile).getText();
-				boolean anyRelineMatch = false;
-				for (String reline : AdvanceSearch_Reline) {
-					if (fileContentText.contains(reline)) {
-						anyRelineMatch = true;
-						Azure.updateTestCaseStatus("12072", "Automation Pass");
-						System.out.println("******Pass: Reline[include] Criteria working fine*****");
-						break;
-					}
-				}
+	                clickOnFirstFile();
+	                waitForElementToAppear(InsideFileName);
+	                String fileContentText = driver.findElement(Reline_InsideFile).getText();
+	                boolean anyRelineMatch = false;
+	                for (String reline : AdvanceSearch_Reline) {
+	                    if (fileContentText.contains(reline)) {
+	                        anyRelineMatch = true;
+	                        Azure.updateTestCaseStatus("12072", "Automation Pass");
+	                        System.out.println("******Pass: Reline[include] Criteria working fine*****");
+	                        break;
+	                    }
+	                }
 
-				if (!anyRelineMatch) {
-					Azure.updateTestCaseStatus("12072", "Automation Fail");
-					Assert.fail("*****Fail: Reline[include] Criteria not  working fine*****");
-				}
-			} else {
-				System.out.println("***No Search result found for Reline[include]***");
-			}
+	                if (!anyRelineMatch) {
+	                    Azure.updateTestCaseStatus("12072", "Automation Fail");
+	                    Assert.fail("*****Fail: Reline[include] Criteria not working fine*****");
+	                }
+	            } else {
+	                System.out.println("***No search result found for Reline[include]***");
+	            }
 
-			for (String excludeCriteria : AdvanceSearch_Reline) {
-				performSearchforReline(excludeCriteria, false);
+	            for (String excludeCriteria : AdvanceSearch_Reline) {
+	                performSearchforReline(excludeCriteria, false);
 
-				if (!isElementDisplayed(Noresult)) {
+	                if (!isElementDisplayed(Noresult)) {
 
-					boolean noRelinematch = true;
-					clickOnFirstFile();
-					waitForElementToAppear(InsideFileName);
-					String fileContentText1 = driver.findElement(Reline_InsideFile).getText();
+	                    boolean noRelinematch = true;
+	                    clickOnFirstFile();
+	                    waitForElementToAppear(InsideFileName);
+	                    String fileContentText1 = driver.findElement(Reline_InsideFile).getText();
 
-					for (String reline : AdvanceSearch_Reline) {
-						if (fileContentText1.contains(reline)) {
-							noRelinematch = false;
-							Azure.updateTestCaseStatus("12072", "Automation Fail");
-							Assert.fail("****Fail: Reline[Doesn't include] Criteria not  working fine.*****");
-							break;
-						}
-					}
+	                    for (String reline : AdvanceSearch_Reline) {
+	                        if (fileContentText1.contains(reline)) {
+	                            noRelinematch = false;
+	                            Azure.updateTestCaseStatus("12072", "Automation Fail");
+	                            Assert.fail("****Fail: Reline[Doesn't include] Criteria not working fine.*****");
+	                            break;
+	                        }
+	                    }
 
-					if (noRelinematch) {
-						Azure.updateTestCaseStatus("12072", "Automation Pass");
-						System.out.println("******Pass: Reline[Doesn't include] Criteria working fine*****");
-					}
-				} else {
-					System.out.println("***No Search result found for Reline[Doesn't include]***");
-				}
-			}
-		}
-		return new FileList(driver);
-
+	                    if (noRelinematch) {
+	                        Azure.updateTestCaseStatus("12072", "Automation Pass");
+	                        System.out.println("******Pass: Reline[Doesn't include] Criteria working fine*****");
+	                    }
+	                } else {
+	                    System.out.println("***No search result found for Reline[Doesn't include]***");
+	                }
+	            }
+	        }
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12072", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Reline Criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
 	// Method to perform Reline search in the Advance Search page
@@ -452,59 +502,66 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	}
 
-	//***Verify closing date After and before working properly or not***
-	public FileList AdvanceSearchClosingDate(String ClosingDate_After, String ClosingDate_Before)
-	        throws InterruptedException, IOException {
+	//*** Verify closing date After and Before working properly or not***
+	public FileList AdvanceSearchClosingDate(String ClosingDate_After, String ClosingDate_Before) throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait(); // explicit wait
+	        waitForElementToAppear(Closing_After);
+	        driver.findElement(Closing_After).sendKeys(ClosingDate_After);
+	        waitForElementToAppear(Closing_Before);
+	        driver.findElement(Closing_Before).sendKeys(ClosingDate_Before);
+	        SearchButton.click();
 
-	    ClearAndHome();
-	    AdvanceSearchButton();
-	    Filelistwait(); // explicit wait
-	    waitForElementToAppear(Closing_After);
-	    driver.findElement(Closing_After).sendKeys(ClosingDate_After);
-	    waitForElementToAppear(Closing_Before);
-	    driver.findElement(Closing_Before).sendKeys(ClosingDate_Before);
-	    SearchButton.click();
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-	    List<WebElement> initialFileList = driver.findElements(Filelistname);
-	    waitForFileListUpdate(initialFileList);
+	        if (!isElementDisplayed(Noresult)) {
+	            String inputValue = driver.findElement(By.xpath("//input[@id='fileSearchInput']")).getAttribute("value");
 
-	    if (!isElementDisplayed(Noresult)) {
-	        String inputValue = driver.findElement(By.xpath("//input[@id='fileSearchInput']")).getAttribute("value");
+	            Pattern pattern = Pattern.compile("from:\\((.*?)\\)\\s*to:\\((.*?)\\)");
+	            Matcher matcher = pattern.matcher(inputValue);
 
-	        Pattern pattern = Pattern.compile("from:\\((.*?)\\)\\s*to:\\((.*?)\\)");
-	        Matcher matcher = pattern.matcher(inputValue);
+	            if (matcher.find()) {
+	                String fromDate = matcher.group(1);
+	                String toDate = matcher.group(2);
 
-	        if (matcher.find()) {
-	            String fromDate = matcher.group(1);
-	            String toDate = matcher.group(2);
+	                boolean allDatesInRange = true;
 
-	            boolean allDatesInRange = true;
+	                for (WebElement file : ListClosingDate) {
+	                    String closingDate = file.getText();
 
-	            for (WebElement file : ListClosingDate) {
-	                String closingdate = file.getText();
+	                    if (!isDateInRange(closingDate, fromDate, toDate)) {
+	                        allDatesInRange = false;
+	                        break; // Break the loop on the first date that is not in range
+	                    }
+	                }
 
-	                if (!isDateInRange(closingdate, fromDate, toDate)) {
-	                    allDatesInRange = false;
-	                    break; // Break the loop on the first date that is not in range
+	                if (allDatesInRange) {
+	                    Azure.updateTestCaseStatus("12073", "Automation Pass");
+	                    System.out.println("*****Pass : Closing date Criteria are working fine*****");
+	                } else {
+	                    Azure.updateTestCaseStatus("12073", "Automation Fail");
+	                    Assert.fail("*****Fail : Closing date Criteria are not working fine*****");
 	                }
 	            }
-
-	            if (allDatesInRange) {
-	                Azure.updateTestCaseStatus("12073", "Automation Pass");
-	                System.out.println("*****Pass : Closing date Criteria are working fine*****");
-	            } else {
-	                Azure.updateTestCaseStatus("12073", "Automation Fail");
-	                Assert.fail("*****Fail : Closing date Criteria are not working fine*****");
-	            }
+	        } else {
+	            System.out.println("***No search result found for Closing Date***");
 	        }
-	    } else {
-	        System.out.println("***No Search result found for Closing Date***");
-	    }
 
-	    return new FileList(driver);
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12073", "Automation Fail");
+	        Assert.fail("*****Fail : An exception occurred while testing Closing Date Criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
 
+
+	@SuppressWarnings("unused")
 	private boolean isDateInRange(String closingdate, String fromDate, String toDate) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -517,207 +574,235 @@ public class Advance_Search_Filter extends AbstractComponent {
 		}
 	}
 
-	//*** verify Property address working proper or not***
-	public FileList AdvanceSearchAddress(String Advancesearch_Address1, String Advancesearch_Address2)
-			throws InterruptedException, IOException {
+	//*** Verify Property Address working properly or not***
+	public FileList AdvanceSearchAddress(String Advancesearch_Address1, String Advancesearch_Address2) throws IOException {
+	    try {
+	        String[] Addresses = { Advancesearch_Address1, Advancesearch_Address2 };
+	        for (String AddressName : Addresses) {
+	            ClearAndHome();
+	            AdvanceSearchButton();
+	            Filelistwait(); // explicit wait
+	            waitForElementToAppear(Propertyaddress);
+	            driver.findElement(Propertyaddress).clear();
+	            driver.findElement(Propertyaddress).sendKeys(AddressName);
+	            SearchButton.click();
 
-		String[] Addresses = { Advancesearch_Address1, Advancesearch_Address2 };
-		for (String AddressName : Addresses) {
-			ClearAndHome();
-			AdvanceSearchButton();
-			Filelistwait(); // explicit wait
-			waitForElementToAppear(Propertyaddress);
-			driver.findElement(Propertyaddress).clear();
-			driver.findElement(Propertyaddress).sendKeys(AddressName);
-			SearchButton.click();
+	            List<WebElement> initialFileList = driver.findElements(Filelistname);
+	            waitForFileListUpdate(initialFileList);
 
-			List<WebElement> initialFileList = driver.findElements(Filelistname);
-			waitForFileListUpdate(initialFileList);
+	            if (!isElementDisplayed(Noresult)) {
+	                List<WebElement> getAddressList = ListAddress;
 
-			if (!isElementDisplayed(Noresult)) {
-				List<WebElement> getAddressList = ListAddress;
+	                boolean allAddressname = true;
+	                for (int i = 0; i < getAddressList.size(); i++) {
 
-				boolean allAddressname = true;
-				for (int i = 0; i < getAddressList.size(); i++) {
+	                    // Re-find the elements after waiting
+	                    initialFileList = driver.findElements(Filelistname);
+	                    getAddressList = ListAddress;
+	                    WebElement addressElement = getAddressList.get(i);
+	                    WebElement fileNameElement = initialFileList.get(i);
 
-					// Re-find the elements after waiting
-					initialFileList = driver.findElements(Filelistname);
-					getAddressList = ListAddress;
-					WebElement addressElement = getAddressList.get(i);
-					WebElement fileNameElement = initialFileList.get(i);
+	                    String Address = addressElement.getText();
+	                    String fileName = fileNameElement.getText();
+	                    if (Address.contains(AddressName)) {
+	                        System.out.println("Expected file: " + fileName + ":" + Address);
+	                    } else {
+	                        allAddressname = false;
+	                        System.out.println("UnExpected file: " + fileName + ":" + Address);
+	                    }
+	                }
 
-					String Address = addressElement.getText();
-					String fileName = fileNameElement.getText();
-					if (Address.contains(AddressName)) {
-						System.out.println("Expected file: " + fileName + ":" + Address);
-					} else {
-						allAddressname = false;
-						System.out.println("UnExpected file: " + fileName + ":" + Address);
-					}
-				}
+	                if (allAddressname) {
+	                    Azure.updateTestCaseStatus("12074", "Automation Pass");
+	                    System.out.println("*****Pass: All Property addresses meet the criteria.*****");
+	                } else {
+	                    Azure.updateTestCaseStatus("12074", "Automation Fail");
+	                    Assert.fail("****Fail: Not all addresses meet the criteria.*****");
+	                }
 
-				if (allAddressname) {
-					Azure.updateTestCaseStatus("12074", "Automation Pass");
-					System.out.println("*****Pass :All Property addresses meet the criteria.*****");
-				} else {
-					Azure.updateTestCaseStatus("12074", "Automation Fail");
-					Assert.fail("****Fail :Not all addresses meet the criteria.*****");
-					
-				}
-
-			} else {
-				System.out.println("***No Search result found For property address Criteria***");
-			}
-		}
-		return new FileList(driver);
+	            } else {
+	                System.out.println("***No search result found for property address criteria***");
+	            }
+	        }
+	        return new FileList(driver);
+	    } catch (Exception e) {	      
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12074", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Property Address criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
-	//*** verify property type[Freehold & Condominium] working proper or not***
-	public FileList AdvanceSearchPropertyType(String[] Property_Type1, String[] Property_Type2)
-			throws InterruptedException, IOException {
-		ClearAndHome();
-		for (String includeCriteria : Property_Type1) {
-			performSearchforPropertytype(new String[] { includeCriteria }, true);
 
-		}
+	//*** Verify Property Type [Freehold & Condominium] working properly or not***
+	public FileList AdvanceSearchPropertyType(String[] Property_Type1, String[] Property_Type2) throws IOException {
+	    try {
+	        ClearAndHome();
+	        for (String includeCriteria : Property_Type1) {
+	            performSearchforPropertytype(new String[] { includeCriteria }, true);
+	        }
 
-		return new FileList(driver);
+	        return new FileList(driver);
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Property Type criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
 	private void verifyPropertyTypeMatch(String[] Property_Type1) throws IOException {
+	    try {
+	        switchToFrameAndClickMenu();
+	        WebElement dropdownElement = driver.findElement(FilePropertyType);
+	        Select dropdown = new Select(dropdownElement);
+	        WebElement selectedOption = dropdown.getFirstSelectedOption();
+	        String PropertyTypeText = selectedOption.getText();
+	        boolean PropertyTypeMatch = false;
 
-		switchToFrameAndClickMenu();
-		WebElement dropdownElement = driver.findElement(FilePropertyType);
-		Select dropdown = new Select(dropdownElement);
-		WebElement selectedOption = dropdown.getFirstSelectedOption();
-		String PropertyTypeText = selectedOption.getText();
-		boolean PropertyTypeMatch = false;
+	        for (String property : Property_Type1) {
+	            if (PropertyTypeText.equals(property)) {
+	                PropertyTypeMatch = true;
+	                Azure.updateTestCaseStatus("12075", "Automation Pass");
+	                System.out.println("****Pass: Property Type name=" + PropertyTypeText + " match found in the file content.****");
+	                break;
+	            }
+	        }
 
-		for (String property : Property_Type1) {
-			if (PropertyTypeText.equals(property)) {
-				PropertyTypeMatch = true;
-				Azure.updateTestCaseStatus("12075", "Automation Pass");
-				System.out.println(
-						"****Pass: propertyType name=" + PropertyTypeText + "match found in the file content.****");
-				break;
-			}
-		}
-
-		if (!PropertyTypeMatch) {
-			Azure.updateTestCaseStatus("12075", "Automation Fail");
-			System.out.println(
-					"****Fail: propertyType name=" + PropertyTypeText + "match not found in the file content.****");
-		}
-
+	        if (!PropertyTypeMatch) {
+	            Azure.updateTestCaseStatus("12075", "Automation Fail");
+	            Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****");
+	            System.out.println("****Fail: Property Type name=" + PropertyTypeText + " match not found in the file content.****");
+	        }
+	    } catch (Exception e) {	       
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****",e);
+	    }
 	}
 
 	private void performSearchforPropertytype(String[] propertyTypes, boolean isIncludeCriteria) throws IOException {
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait(); // explicit wait
 
-		WebElement propertyTypeDropdown = driver.findElement(Propertytype);
-		waitForWebElementToAppear(propertyTypeDropdown);
-		Select pro = new Select(propertyTypeDropdown);
-		for (String propertyType : propertyTypes) {
+	        WebElement propertyTypeDropdown = driver.findElement(Propertytype);
+	        waitForWebElementToAppear(propertyTypeDropdown);
+	        Select pro = new Select(propertyTypeDropdown);
+	        for (String propertyType : propertyTypes) {
 
-			pro.selectByVisibleText(propertyType);
+	            pro.selectByVisibleText(propertyType);
 
-			SearchButton.click();
+	            SearchButton.click();
 
-			List<WebElement> initialFileList = driver.findElements(Filelistname);
+	            List<WebElement> initialFileList = driver.findElements(Filelistname);
 
-			waitForFileListUpdate(initialFileList);
+	            waitForFileListUpdate(initialFileList);
 
-			if (!isElementDisplayed(Noresult)) {
+	            if (!isElementDisplayed(Noresult)) {
+	                clickOnFirstFile();
+	                verifyPropertyTypeMatch(propertyTypes);
+	            } else {
+	                System.out.println("*****Search result not found for Property Type*****");
+	            }
+	        }
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12075", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while performing Property Type search.*****",e);
+	    }
+	}
+	//*** Verify Other Side Info > Lawyer Name working or not***
+	public FileList AdvanceSearchLawyername(String AdvanceSearch_LawyerName) throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait(); // explicit wait
+	        waitForElementToAppear(LawyerName);
+	        driver.findElement(LawyerName).clear();
+	        driver.findElement(LawyerName).sendKeys(AdvanceSearch_LawyerName);
+	        SearchButton.click();
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-				clickOnFirstFile();
-				verifyPropertyTypeMatch(propertyTypes);
+	        if (!isElementDisplayed(Noresult)) {
+	            boolean LawyerNameMatch = false;
+	            clickOnFirstFile();
+	            waitForWebElementToAppear(InsidefileFrame);
+	            driver.switchTo().frame(InsidefileFrame);
+	            waitForElementToAppear(FileLawyername);
+	            String fileContentText = driver.findElement(FileLawyername).getText();
+	            LawyerNameMatch = fileContentText.equals(AdvanceSearch_LawyerName);
 
-			} else {
-				System.out.println("*****Search result not found for Property Type*****");
-			}
-		}
+	            if (LawyerNameMatch) {
+	                Azure.updateTestCaseStatus("12076", "Automation Pass");
+	                System.out.println("****Pass: Other side Lawyer Name = " + fileContentText + " match found in the file content.****");
+	            } else {
+	                Azure.updateTestCaseStatus("12076", "Automation Fail");
+	                Assert.fail("****Fail: Other side Lawyer Name = " + fileContentText + " match not found in the file content.***");
+	            }
+	            driver.switchTo().defaultContent();
+	        } else {
+	            System.out.println("****No Search result found for Other Side file Lawyer Name****");
+	        }
+
+	        return new FileList(driver);
+	    } catch (Exception e) {	      
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12076", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Other Side Lawyer Name criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
-	//*** Verify otherside info. > Lawyer name  working or not***
-	public FileList AdvanceSearchLawyername(String AdvanceSearch_LawyerName) throws InterruptedException, IOException {
-
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
-		waitForElementToAppear(LawyerName);
-		driver.findElement(LawyerName).clear();
-		driver.findElement(LawyerName).sendKeys(AdvanceSearch_LawyerName);
-		SearchButton.click();
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
-		waitForFileListUpdate(initialFileList);
-		if (!isElementDisplayed(Noresult)) {
-			boolean LawyerNameMatch = false;
-			clickOnFirstFile();
-			waitForWebElementToAppear(InsidefileFrame);
-			driver.switchTo().frame(InsidefileFrame);
-			waitForElementToAppear(FileLawyername);
-			String fileContentText = driver.findElement(FileLawyername).getText();
-			LawyerNameMatch = fileContentText.equals(AdvanceSearch_LawyerName);
-			if (LawyerNameMatch) {
-				Azure.updateTestCaseStatus("12076", "Automation Pass");
-				System.out.println(
-						"****Pass: Other side Lawyername=" + fileContentText + " "+"match found in the file content.****");
-			} else {
-				Azure.updateTestCaseStatus("12076", "Automation Fail");
-				Assert.fail("****Fail: Other side Lawyername=" + fileContentText
-						+ "match  not found in the file content.***");
-			}
-			driver.switchTo().defaultContent();
-		} else {
-			
-			System.out.println("****No Search result found Other Side file Lawyer name****");
-		}
-		return new FileList(driver);
-	}
 	
 	
-	//*** Verify Otherside info. >Filen no. working or not ***
-	public FileList AdvanceSearchOthersideFilenumber(String AdvanceSearch_FileName) throws InterruptedException, IOException {
+	//*** Verify Other Side Info > File Number working or not ***
+	public FileList AdvanceSearchOthersideFilenumber(String AdvanceSearch_FileName) throws IOException {
+	    try {
+	        ClearAndHome();
+	        AdvanceSearchButton();
+	        Filelistwait(); // explicit wait
+	        waitForElementToAppear(Filenumber);
+	        driver.findElement(Filenumber).clear();
+	        driver.findElement(Filenumber).sendKeys(AdvanceSearch_FileName);
+	        SearchButton.click();
 
-		ClearAndHome();
-		AdvanceSearchButton();
-		Filelistwait(); // explicit wait
-		waitForElementToAppear(Filenumber);
-		driver.findElement(Filenumber).clear();
-		driver.findElement(Filenumber).sendKeys(AdvanceSearch_FileName);
-		SearchButton.click();
+	        // Wait for file list update
+	        List<WebElement> initialFileList = driver.findElements(Filelistname);
+	        waitForFileListUpdate(initialFileList);
 
-		// Wait for file list update
-		List<WebElement> initialFileList = driver.findElements(Filelistname);
-		waitForFileListUpdate(initialFileList);
-		if (!isElementDisplayed(Noresult)) {
-			boolean FileNameMatch = false;
-			clickOnFirstFile();			
-			waitForWebElementToAppear(InsidefileFrame);
-			driver.switchTo().frame(InsidefileFrame);
+	        if (!isElementDisplayed(Noresult)) {
+	            boolean FileNameMatch = false;
+	            clickOnFirstFile();
+	            waitForWebElementToAppear(InsidefileFrame);
+	            driver.switchTo().frame(InsidefileFrame);
 
-			// JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-			// jsExecutor.executeScript("window.scrollBy(0, 500);");
-			waitForElementToAppear(OtherFileno);
-			String fileContentText = driver.findElement(OtherFileno).getAttribute("value");
-;
-			FileNameMatch = fileContentText.equals(AdvanceSearch_FileName);
-			if (FileNameMatch) {
-				Azure.updateTestCaseStatus("12077", "Automation Pass");
-				System.out.println(
-						"****Pass: Other side Filename=" + fileContentText + "match found in the file content.****");
-			} else {
-				Azure.updateTestCaseStatus("12077", "Automation Fail");
-				Assert.fail("****Fail: Other side Filename=" + fileContentText
-						+ "match  not found in the file content.****");
-			}
-			driver.switchTo().defaultContent();
-		} else {
-			System.out.println("****No Search result found Other Side file name****");
-		}
-		return new FileList(driver);
+	            waitForElementToAppear(OtherFileno);
+	            String fileContentText = driver.findElement(OtherFileno).getAttribute("value");
+
+	            FileNameMatch = fileContentText.equals(AdvanceSearch_FileName);
+
+	            if (FileNameMatch) {
+	                Azure.updateTestCaseStatus("12077", "Automation Pass");
+	                System.out.println("****Pass: Other side File Name = " + fileContentText + " match found in the file content.****");
+	            } else {
+	                Azure.updateTestCaseStatus("12077", "Automation Fail");
+	                Assert.fail("****Fail: Other side File Name = " + fileContentText + " match not found in the file content.****");
+	            }
+	            driver.switchTo().defaultContent();
+	        } else {
+	            System.out.println("****No Search result found for Other Side File Name****");
+	        }
+
+	        return new FileList(driver);
+	    } catch (Exception e) {	      
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12077", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Other Side File Name criteria.*****",e);
+	        return new FileList(driver);
+	    }
 	}
 
 	//Switch Frame

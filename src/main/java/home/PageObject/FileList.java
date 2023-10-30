@@ -50,7 +50,8 @@ public class FileList extends AbstractComponent {
 	By Firstfilestatus = By.xpath("//tbody/tr[1]/td[6]");
 	
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
-
+	
+	
 	//***Verify Archived and Activate option working or not in File List > Three Dots menu***
 	public FileList ArchiveAndActiveOption() throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
@@ -58,45 +59,49 @@ public class FileList extends AbstractComponent {
 	    searchobject.waitForFileListUpdate(initialFileList);
 
 	    if (!isElementDisplayed(searchobject.Noresult)) {
-	        ThreeDotsmenu();
-	        boolean archiveStatus = false;
-	        boolean activeStatus = false;
+	        try {
+	            ThreeDotsmenu();
+	            boolean archiveStatus = false;
+	            boolean activeStatus = false;
 
-	        if (Archive.isDisplayed()) {
-	            Archive.click();
-	            Thread.sleep(2000);
-	            String status = driver.findElement(Firstfilestatus).getText();
-	            if (status.equals("Archived")) {
-	                archiveStatus = true;
-	                System.out.println("*****Pass : Status has been changed from Active to archived.*****");
-	                
-	                // Now proceed to the second test case
-	                ThreeDotsmenu();
-	                ThreeDotsmenu();
-	                if (Activate.isDisplayed()) {
-	                    Activate.click();
-	                    Thread.sleep(2000);
-	                    status = driver.findElement(Firstfilestatus).getText();
-	                    if (status.equals("Active")) {
-	                        activeStatus = true;                       
-	                        System.out.println("*****Pass : Status has been changed from Archived to Active.*****");
-	                    } else {
-	                    	
-	                        Assert.fail("*****Fail : Status has not been changed from Archived to Active.*****");
+	            if (Archive.isDisplayed()) {
+	                Archive.click();
+	                Thread.sleep(2000);
+	                String status = driver.findElement(Firstfilestatus).getText();
+	                if (status.equals("Archived")) {
+	                    archiveStatus = true;
+	                    System.out.println("*****Pass : Status has been changed from Active to archived.*****");
+
+	                    // Now proceed to the second test case
+	                    ThreeDotsmenu();
+	                    ThreeDotsmenu();
+	                    if (Activate.isDisplayed()) {
+	                        Activate.click();
+	                        Thread.sleep(2000);
+	                        status = driver.findElement(Firstfilestatus).getText();
+	                        if (status.equals("Active")) {
+	                            activeStatus = true;
+	                            System.out.println("*****Pass : Status has been changed from Archived to Active.*****");
+	                        } else {
+	                            Assert.fail("*****Fail : Status has not been changed from Archived to Active.*****");
+	                        }
 	                    }
+	                } else {
+	                    Assert.fail("*****Fail : Status has not been changed from Active to archived.*****");
 	                }
-	            } else {
-	            	
-	                Assert.fail("*****Fail : Status has not been changed from Active to archived.*****");
 	            }
-	        }
 
-	        if (archiveStatus && activeStatus) {
-	        	 Azure.updateTestCaseStatus("12067", "Automation Pass");
-	            System.out.println("***Both test cases passed.**");
-	        } else {
-	        	 Azure.updateTestCaseStatus("12067", "Automation Fail");
-	            System.out.println("**One or both test cases failed.**");
+	            if (archiveStatus && activeStatus) {
+	                Azure.updateTestCaseStatus("12067", "Automation Pass");
+	                System.out.println("***Both test cases passed.**");
+	            } else {
+	                Azure.updateTestCaseStatus("12067", "Automation Fail");
+	                System.out.println("**One or both test cases failed.**");
+	            }
+	        } catch (Exception e) {
+	        	Azure.updateTestCaseStatus("12067", "Automation Fail");
+	           Assert.fail("Fail",e);
+	            e.printStackTrace(); 
 	        }
 	    } else {
 	        System.out.println("***No Search result found ***");
@@ -104,64 +109,77 @@ public class FileList extends AbstractComponent {
 
 	    return new FileList(driver);
 	}
-	
-	public void ThreeDotsmenu()
-	{
-		 WebElement elementToHover =driver.findElement(ThreeDotmenu);
-		 Actions actions = new Actions(driver);
-		 actions.moveToElement(elementToHover).build().perform();
-		 driver.findElement(ThreeDotmenu).click();
+
+	public void ThreeDotsmenu() {
+	    try {
+	        WebElement elementToHover = driver.findElement(ThreeDotmenu);
+	        Actions actions = new Actions(driver);
+	        actions.moveToElement(elementToHover).build().perform();
+	        driver.findElement(ThreeDotmenu).click();
+	    } catch (Exception e) {
+	        Assert.fail("Fail",e);
+	        e.printStackTrace(); 
+	    }
 	}
+
+	
+
 	  
 	
-//***Verify the free search functionality and check if the bold name exactly matches the searchable name or not***
+	//*** Verify the free search functionality and check if the bold name exactly matches the searchable name or not ***
 	public FileList FreeSearch(String FreeSearch_1, String FreeSearch_2) throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
 	    String[] freesearchname = { FreeSearch_1, FreeSearch_2 };
 
-	    for (String freesearch : freesearchname) {
-	        freeSearch.clear();
-	        freeSearch.sendKeys(freesearch);
+	    try {
+	        for (String freesearch : freesearchname) {
+	            freeSearch.clear();
+	            freeSearch.sendKeys(freesearch);
 
-	        List<WebElement> initialFileList = driver.findElements(searchobject.Filelistname);
-	        searchobject.waitForFileListUpdate(initialFileList);
+	            List<WebElement> initialFileList = driver.findElements(searchobject.Filelistname);
+	            searchobject.waitForFileListUpdate(initialFileList);
 
-	        if (!isElementDisplayed(searchobject.Noresult)) {
-	            boolean allFilesMatchingSearch = true;
-	            // Re-find the elements after waiting
-	            initialFileList = driver.findElements(By.xpath("//table[@class='table table-hover']/tbody/tr/td"));
+	            if (!isElementDisplayed(searchobject.Noresult)) {
+	                boolean allFilesMatchingSearch = true;
+	                // Re-find the elements after waiting
+	                initialFileList = driver.findElements(By.xpath("//table[@class='table table-hover']/tbody/tr/td"));
 
-	            for (WebElement fileElement : initialFileList) {
-	                String fileName = fileElement.getText();
-	                String boldText = getBoldTextFromElement(fileElement);
-	                if (boldText.isEmpty()) {
-	                    continue; 
+	                for (WebElement fileElement : initialFileList) {
+	                    String fileName = fileElement.getText();
+	                    String boldText = getBoldTextFromElement(fileElement);
+	                    if (boldText.isEmpty()) {
+	                        continue; 
+	                    }
+
+	                    if (boldText.equalsIgnoreCase(freesearch)) { // Using equalsIgnoreCase for case-insensitive comparison
+	                        System.out.println("Pass: Bold text inside file name matches search text: " + boldText + ":" + fileName);
+	                    } else {                    
+	                        System.out.println("***** Fail: Bold text inside file name does not match search text: " + boldText + ":" + fileName);
+	                        allFilesMatchingSearch = false;
+	                        break;
+	                    }
 	                }
-	                
-	                if (boldText.equalsIgnoreCase(freesearch)) { // Using equalsIgnoreCase for case-insensitive comparison
-	                
-	                    System.out.println("Pass:Bold text inside file name matches search text: " + boldText + ":" + fileName);
-	                } else {	                	
-	                    System.out.println("***** Fail: Bold text inside file name does not match search text: " + boldText + ":" + fileName);
-	                    allFilesMatchingSearch = false;
-	                    break;
+
+	                if (allFilesMatchingSearch) {
+	                    Azure.updateTestCaseStatus("12066", "Automation Pass");
+	                    System.out.println("***** Pass: All files match search criteria *****");
+	                } else {
+	                    Azure.updateTestCaseStatus("12066", "Automation Fail");
+	                    System.out.println("***** Fail: Some files do not match search criteria *****");
+	                    Assert.fail("***** Fail: Some files do not match search criteria *****");
 	                }
-	            }
-	            
-	            if (allFilesMatchingSearch) {
-	            	Azure.updateTestCaseStatus("12066", "Automation Pass");
-	                System.out.println("***** Pass: All files match search criteria *****");
 	            } else {
-	            	Azure.updateTestCaseStatus("12066", "Automation Fail");
-	                System.out.println("***** Fail: Some files do not match search criteria *****");
-	                Assert.fail("***** Fail: Some files do not match search criteria *****");
+	                System.out.println("*** No Search result found ***");
 	            }
-	        } else {
-	            System.out.println("*** No Search result found ***");
 	        }
+	    } catch (Exception e) {
+	    	 Azure.updateTestCaseStatus("12066", "Automation Fail");
+	    	 Assert.fail("Fail",e);
+	         e.printStackTrace();
 	    }
 	    return new FileList(driver);
 	}
+
 
 	public String getBoldTextFromElement(WebElement element) {
 	    String boldText = "";

@@ -171,48 +171,54 @@ public class Basic extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 
-	//***Verify File Details->Responsible Lawyer field Working Properly or not***
-	public void ResponsibleLawyer(String Responsible_Lawyer) throws InterruptedException, IOException {
-		switchToIframe(MiddlePortionFrame);
-		ResponsibleLawyer.click();
+	//*** Verify File Details -> Responsible Lawyer field Working Properly or not ***
+	public void ResponsibleLawyer(String Responsible_Lawyer) throws IOException {
+	    try {
+	        switchToIframe(MiddlePortionFrame);
+	        ResponsibleLawyer.click();
 
-		driver.switchTo().defaultContent();
-		WebElement prod = GetLawyerName(Responsible_Lawyer);
-		prod.click();
-		switchToIframe(MiddlePortionFrame);
+	        driver.switchTo().defaultContent();
+	        WebElement prod = GetLawyerName(Responsible_Lawyer);
+	        prod.click();
+	        switchToIframe(MiddlePortionFrame);
 
-		String getText = ResponsibleLawyerField.getText();
+	        String getText = ResponsibleLawyerField.getText();
 
-		boolean LawyerText = getText.equals(Responsible_Lawyer); // Define the 'LawyerText' variable
+	        boolean LawyerText = getText.equals(Responsible_Lawyer); // Define the 'LawyerText' variable
 
-		
-
-		if (LawyerText) {
-			Azure.updateTestCaseStatus("12080", "Automation Pass");
-			Assert.assertTrue(LawyerText, "PASS: Responsible Lawyer field Working Properly");
-			System.out.println("PASS: Responsible Lawyer field Working Properly");
-		} else {
-			Azure.updateTestCaseStatus("12080", "Automation Fail");
-			Assert.fail("****FAIL: Responsible Lawyer field is not as expected****");
-			System.out.println("****FAIL: Responsible Lawyer field is not as expected****");
-		}
+	        if (LawyerText) {
+	            Azure.updateTestCaseStatus("12080", "Automation Pass");
+	            Assert.assertTrue(LawyerText, "PASS: Responsible Lawyer field Working Properly");
+	            System.out.println("PASS: Responsible Lawyer field Working Properly");
+	        } else {
+	            Azure.updateTestCaseStatus("12080", "Automation Fail");
+	            Assert.fail("****FAIL: Responsible Lawyer field is not as expected****");
+	            System.out.println("****FAIL: Responsible Lawyer field is not as expected****");
+	        }
+	    } catch (Exception e) {	        
+	        e.printStackTrace();
+	        Azure.updateTestCaseStatus("12080", "Automation Fail");
+	        Assert.fail("*****Fail: An exception occurred while testing Responsible Lawyer field.*****",e);
+	    }
 	}
 
-	public List<WebElement> getLawyerList() throws InterruptedException {
-		if (list.isEmpty()) {
-			WebElement innerFrameElement = driver.findElement(By.id("dialog-body"));
-			driver.switchTo().frame(innerFrameElement);
-		}
-		return list;
+	public List<WebElement> getLawyerList() {
+	    if (list.isEmpty()) {
+	        WebElement innerFrameElement = driver.findElement(By.id("dialog-body"));
+	        driver.switchTo().frame(innerFrameElement);
+	    }
+	    return list;
 	}
 
-	public WebElement GetLawyerName(String Responsible_Lawyer) throws InterruptedException {
-		WebElement prod = getLawyerList().stream().filter(Lawyer -> Lawyer.getText().equals(Responsible_Lawyer))
-				.findFirst().orElse(null);
-		return prod;
+	public WebElement GetLawyerName(String Responsible_Lawyer) {
+	    WebElement prod = getLawyerList().stream().filter(Lawyer -> Lawyer.getText().equals(Responsible_Lawyer))
+	            .findFirst().orElse(null);
+	    return prod;
 	}
 
-	// Verify Add,Edit and Clear Functionality in File Details->Firm Contact Field
+
+	
+	//*** Verify Add,Edit and Clear Functionality in File Details->Firm Contact Field***
 	public void FirmContactAddEditClear() throws IOException {
 	    boolean addPass = false;
 	    boolean editPass = false;
@@ -227,20 +233,19 @@ public class Basic extends AbstractComponent {
 
 	        clearFirmContact();
 	        clearPass = true;
-
-	        // If all three operations pass, update the test case status to "Automation Pass"
+	        
 	        if (addPass && editPass && clearPass) {
 	            Azure.updateTestCaseStatus("12081", "Automation Pass");
 	            System.out.println("*****PASS: All Firm Contact operations passed successfully*****");
 	        } else {
-	            // If any operation fails, update the test case status to "Automation Fail"
+	          
 	            Azure.updateTestCaseStatus("12081", "Automation Fail");
 	            System.out.println("*****FAIL: One or more Firm Contact operations failed*****");
 	        }
 	    } catch (Exception e) {
-	        // Handle any exceptions and update the test case status to "Automation Fail"
+	        
 	        Azure.updateTestCaseStatus("12081", "Automation Fail");
-	        Assert.fail("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****");
+	        Assert.fail("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****",e);
 	        System.out.println("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****");
 	        e.printStackTrace();
 	    }
@@ -248,7 +253,7 @@ public class Basic extends AbstractComponent {
 
 
 	// Add
-	private void addFirmContact() {
+	private void addFirmContact() throws IOException {
 		try {
 			switchToIframe(MiddlePortionFrame);
 			selectFirmContactButton.click();
@@ -267,13 +272,14 @@ public class Basic extends AbstractComponent {
 
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS: Firm Contact field 'Add' functionality working Properly");
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {		
+			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			Assert.fail("Fail",e);
 		}
 	}
 
 	// Edit
-	private void editFirmContact() {
+	private void editFirmContact() throws IOException {
 		try {
 			editFirmContactButton.click();
 			switchToIframe(EditPopUpFrame);
@@ -290,12 +296,13 @@ public class Basic extends AbstractComponent {
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS :Firm Contact field 'Edit' functionality working Properly");
 		} catch (Exception e) {
-			e.printStackTrace();
+			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			Assert.fail("Fail",e);
 		}
 	}
 
 	// Clear
-	private void clearFirmContact() {
+	private void clearFirmContact() throws IOException {
 		try {
 			clearFirmContactButton.click();
 			if (!displayFirmContactName.isDisplayed()) {
@@ -307,190 +314,197 @@ public class Basic extends AbstractComponent {
 						"****FAIL :Firm Contact field 'Clear' functionality not working Properly****");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			 Azure.updateTestCaseStatus("12081", "Automation Fail");
+			Assert.fail("Fail",e);
 		}
 	}
 
-	// Verify File Details->Conveyancer Field working properly or not
+	
+	//**** Verify File Details -> Conveyancer Field working properly or not ****
+	public void Conveyancer() throws InterruptedException, IOException {
+	    try {
+	        switchToIframe(MiddlePortionFrame);
+	        selectConveyancerButton.click();
+	        switchToIframe(PopUpFrame);
 
-	public void Conveyancer() throws InterruptedException {
-		try {
-			switchToIframe(MiddlePortionFrame);
-			selectConveyancerButton.click();
-			switchToIframe(PopUpFrame);
-			if (ConveyancerNameList.isDisplayed()) {
-				String listFirstName = ConveyancerNameList.getText();
-				ConveyancerNameList.click();
-				switchToIframe(MiddlePortionFrame);
-				String getConveyancerName = displayConveyancerName.getText();
+	        if (ConveyancerNameList.isDisplayed()) {
+	            String listFirstName = ConveyancerNameList.getText();
+	            ConveyancerNameList.click();
+	            switchToIframe(MiddlePortionFrame);
+	            String getConveyancerName = displayConveyancerName.getText();
 
-				try {
-					Assert.assertEquals(getConveyancerName.trim(), listFirstName.trim());
-					 Azure.updateTestCaseStatus("12082", "Automation Pass");
-					System.out.println("PASS: Conveyancer field functionality working Properly");
-
-					 
-				} catch (AssertionError e) {
-					Azure.updateTestCaseStatus("12082", "Automation Fail");
-					System.out.println("*****FAIL: Conveyancer field functionality working Improperly*****");
-					System.out.println("Assertion Error Details: " + e.getMessage());
-				}
-			} else {
-				System.out.println("Any Conveyancer name is not available in Pop Up ");
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+	            try {
+	                Assert.assertEquals(getConveyancerName.trim(), listFirstName.trim());
+	                Azure.updateTestCaseStatus("12082", "Automation Pass");
+	                System.out.println("PASS: Conveyancer field functionality working Properly");
+	            } catch (AssertionError e) {
+	                Azure.updateTestCaseStatus("12082", "Automation Fail");	           
+	               Assert.fail("*****FAIL: Conveyancer field functionality working Improperly*****",e);
+	            }
+	        } else {
+	            System.out.println("Any Conveyancer name is not available in the Pop Up");
+	        }
+	    } catch (Exception ex) {
+	    	 Azure.updateTestCaseStatus("12082", "Automation Fail");	           
+             Assert.fail("*****FAIL: Conveyancer field functionality working Improperly*****",ex);
+	    }
 	}
 
-	// verify File Configuration->File_Configuration functionality working proper or not
 
-
+	// **** Verify File Configuration -> File_Configuration functionality working properly or not ****
 	public void File_Configuration() throws InterruptedException, IOException {
-		switchToIframe(MiddlePortionFrame);
+	    try {
+	        switchToIframe(MiddlePortionFrame);
 
-		// select Yes in Acting for both purchaser and vendor in this transaction element
+	        // Select 'Yes' in Acting for both purchaser and vendor in this transaction element
+	        driver.findElement(By.xpath("//tbody/tr[@xcondition=\"@PSM='P' or @PSM='S'\"]/td/span[@type='radio']/input[2]"))
+	            .click();
 
-		driver.findElement(By.xpath("//tbody/tr[@xcondition=\"@PSM='P' or @PSM='S'\"]/td/span[@type='radio']/input[2]"))
-				.click();
+	        // Select 'No' in New Home Purchased from a Builder element
+	        WebElement elementToClick = driver.findElement(By.xpath(
+	            "//span[@inputhelp='You must indicate if this is a new home purchased from/sold by a builder.']//input[@value='1']"));
+	        elementToClick.click();
 
-		// select No in New Home Purchased from a Builder element
-		WebElement elementToClick = driver.findElement(By.xpath(
-				"//span[@inputhelp='You must indicate if this is a new home purchased from/sold by a builder.']//input[@value='1']"));
-		elementToClick.click();
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Vacant Land']")));
+	        WebElement anotherElement = driver.findElement(By.xpath("//span[normalize-space()='Vacant Land']"));
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Vacant Land']")));
-		WebElement anotherElement = driver.findElement(By.xpath("//span[normalize-space()='Vacant Land']"));
+	        boolean isDisplayed = anotherElement.isDisplayed();
 
-		boolean isDisplayed = anotherElement.isDisplayed();
-
-		if (isDisplayed) {
-			Azure.updateTestCaseStatus("12083", "Automation Pass");
-			System.out.println("PASS:In File_Configuration-> Vacant Land element is displayed.");
-		} else {
-			Azure.updateTestCaseStatus("12083", "Automation Fail");
-			Assert.assertTrue(false, "****FAIL: In File_Configuration-> Vacant Land element is not displayed.*****");
-		}
+	        if (isDisplayed) {
+	            Azure.updateTestCaseStatus("12083", "Automation Pass");
+	            System.out.println("PASS: In File_Configuration -> Vacant Land element is displayed.");
+	        } else {
+	            Azure.updateTestCaseStatus("12083", "Automation Fail");
+	            Assert.assertTrue(false, "****FAIL: In File_Configuration -> Vacant Land element is not displayed.*****");
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	        Azure.updateTestCaseStatus("12083", "Automation Fail");
+	        Assert.fail("*****FAIL: An exception occurred while testing File Configuration.*****",ex);
+	    }
 	}
 
 	// verify Transferee(s) functionality working proper or not
-	public void Transferee(String Single_Transferee, String Estate_Transferee, String Corporation_Transferee,
-			Map<String, String> clientNames) throws InterruptedException, IOException {
-		switchToIframe(MiddlePortionFrame);
-		editTransferee.click();
+		public void Transferee(String Single_Transferee, String Estate_Transferee, String Corporation_Transferee,
+				Map<String, String> clientNames) throws InterruptedException, IOException {
+			switchToIframe(MiddlePortionFrame);
+			editTransferee.click();
 
-		Thread.sleep(2000);
-		switchToIframe(PopUpFrame);
+			Thread.sleep(2000);
+			switchToIframe(PopUpFrame);
 
-		for (String fieldName : new String[] { "Single_Transferee", "Estate_Transferee", "Corporation_Transferee" }) {
-			String clientName = clientNames.get(fieldName);
+			for (String fieldName : new String[] { "Single_Transferee", "Estate_Transferee", "Corporation_Transferee" }) {
+				String clientName = clientNames.get(fieldName);
 
-			// For Single_Transferee, select the appropriate value and fill the input field
-			if (clientName != null) {
-				Select GenderDropdown = new Select(genderfield);
-				if (fieldName.equalsIgnoreCase("Single_Transferee")) {
-					GenderDropdown.selectByValue("Female");
-					name_on_aggrement_field.sendKeys(clientName);
-					Thread.sleep(2000);
-					personal_info_title.click();
+				// For Single_Transferee, select the appropriate value and fill the input field
+				if (clientName != null) {
+					Select GenderDropdown = new Select(genderfield);
+					if (fieldName.equalsIgnoreCase("Single_Transferee")) {
+						GenderDropdown.selectByValue("Female");
+						name_on_aggrement_field.sendKeys(clientName);
+						Thread.sleep(2000);
+						personal_info_title.click();
 
-					add_New_Button.click();
-				} else if (fieldName.equalsIgnoreCase("Estate_Transferee")) {
+						add_New_Button.click();
+					} else if (fieldName.equalsIgnoreCase("Estate_Transferee")) {
 
-					// For Estate_Transferee, interact with the Estate checkbox and fill the input
-					// field
-					estateCheckbox.click();
-					Thread.sleep(2000);
-					name_of_Deceased_field.sendKeys(clientName);
-					personal_info_title.click();
-					add_New_Button.click();
+						// For Estate_Transferee, interact with the Estate checkbox and fill the input
+						// field
+						estateCheckbox.click();
+						Thread.sleep(2000);
+						name_of_Deceased_field.sendKeys(clientName);
+						personal_info_title.click();
+						add_New_Button.click();
 
-				} else if (fieldName.equalsIgnoreCase("Corporation_Transferee")) {
+					} else if (fieldName.equalsIgnoreCase("Corporation_Transferee")) {
 
-					// For Corporation_Transferee, select the appropriate value and fill the input
-					// field
-					Thread.sleep(2000);
+						// For Corporation_Transferee, select the appropriate value and fill the input
+						// field
+						Thread.sleep(2000);
 
-					Select GenderDropdown1 = new Select(genderfield);
-					GenderDropdown1.selectByValue("Corporation");
-					name_on_aggrement_field.sendKeys(clientName);
+						Select GenderDropdown1 = new Select(genderfield);
+						GenderDropdown1.selectByValue("Corporation");
+						name_on_aggrement_field.sendKeys(clientName);
 
-					// Check if the birthday field is displayed
-					boolean isBirthdayFieldDisplayed = BirthDatefield.isDisplayed();
-					if (isBirthdayFieldDisplayed) {
-						Assert.assertTrue(false,
-								"****Fail: BirthDate field shows even Corporation option selected*****");
-					} else {
-						System.out.println(
-								"****PASS: BirthDate field is not showing if Corporation option selected*****");
+						// Check if the birthday field is displayed
+						boolean isBirthdayFieldDisplayed = BirthDatefield.isDisplayed();
+						if (isBirthdayFieldDisplayed) {
+							Assert.assertTrue(false,
+									"****Fail: BirthDate field shows even Corporation option selected*****");
+						} else {
+							System.out.println(
+									"****PASS: BirthDate field is not showing if Corporation option selected*****");
+						}
 					}
 				}
 			}
-		}
-		// Return to the main page context if needed
-		driver.switchTo().defaultContent();
-		driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
+			// Return to the main page context if needed
+			driver.switchTo().defaultContent();
+			driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
 
-		// Verify all Transferee(s) name on File navigation > Buyer side
-		List<String> expectedNames = Arrays.asList(Single_Transferee, Estate_Transferee, Corporation_Transferee);
+			// Verify all Transferee(s) name on File navigation > Buyer side
+			List<String> expectedNames = Arrays.asList(Single_Transferee, Estate_Transferee, Corporation_Transferee);
 
-		boolean isMatchFound_purchaser = true;
+			boolean isMatchFound_purchaser = true;
 
-		for (WebElement nameElement : fileNavigationBuyerSide) {
-			String displayedName = nameElement.getText();
+			for (WebElement nameElement : fileNavigationBuyerSide) {
+				String displayedName = nameElement.getText();
 
-			boolean isNameMatch = false;
+				boolean isNameMatch = false;
 
-			for (String expectedName : expectedNames) {
-				if (displayedName.contains(expectedName)) {
-					System.out.println("Expected:" + expectedName);
-					System.out.println("Actual:" + displayedName);
-					isNameMatch = true;
+				for (String expectedName : expectedNames) {
+					if (displayedName.contains(expectedName)) {
+						System.out.println("Expected:" + expectedName);
+						System.out.println("Actual:" + displayedName);
+						isNameMatch = true;
+						break;
+					}
+				}
+
+				if (!isNameMatch) {
+					isMatchFound_purchaser = false;
 					break;
 				}
 			}
 
-			if (!isNameMatch) {
-				isMatchFound_purchaser = false;
-				break;
+			if (isMatchFound_purchaser) {
+				Azure.updateTestCaseStatus("12087", "Automation Pass");
+				System.out.println("PASS: All Buyer Names Found in File navigation >Buyer Side");
+				
+			} else {
+				Azure.updateTestCaseStatus("12087", "Automation Fail");
+				System.out.println("****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
+				Assert.fail("Fail");
+			}
+
+			
+			Assert.assertTrue(isMatchFound_purchaser,
+					"****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
+			
+		//Verify Contract tab > Purchaser(s) field
+			switchToIframe(MiddlePortionFrame);	
+			String textInIframe = Transferee_field.getText();		
+			driver.switchTo().defaultContent();		
+			driver.findElement(By.xpath("//span[text()='Contract']")).click();		
+			switchToIframe(MiddlePortionFrame);		
+			String textInContractIframe = ContractTab_Purchasers.getText();	
+			boolean isTextMatch = textInIframe.equals(textInContractIframe);
+
+			try {
+			    assert isTextMatch : "Purchasers names matches in the Contract tab >Purchasers(s) field ";
+			    Azure.updateTestCaseStatus("12140", "Automation Pass");
+			    System.out.println("PASS: Purchasers names matches in the Contract tab >Purchasers(s) field ");
+			} catch (AssertionError e) {
+			    Azure.updateTestCaseStatus("12140", "Automation Fail");
+			    System.out.println("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field *****");
+			    Assert.fail("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field**** ");
 			}
 		}
-
-		if (isMatchFound_purchaser) {
-			Azure.updateTestCaseStatus("12087", "Automation Pass");
-			System.out.println("PASS: All Buyer Names Found in File navigation >Buyer Side");
-		} else {
-			Azure.updateTestCaseStatus("12087", "Automation Fail");
-			System.out.println("****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
-		}
-
 		
-		Assert.assertTrue(isMatchFound_purchaser,
-				"****Fail: Not All Buyer Names Found in File navigation >Buyer Side*****");
-		
-	//Verify Contract tab > Purchaser(s) field
-		switchToIframe(MiddlePortionFrame);	
-		String textInIframe = Transferee_field.getText();		
-		driver.switchTo().defaultContent();		
-		driver.findElement(By.xpath("//span[text()='Contract']")).click();		
-		switchToIframe(MiddlePortionFrame);		
-		String textInContractIframe = ContractTab_Purchasers.getText();	
-		boolean isTextMatch = textInIframe.equals(textInContractIframe);
-
-		try {
-		    assert isTextMatch : "Purchasers names matches in the Contract tab >Purchasers(s) field ";
-		    Azure.updateTestCaseStatus("12140", "Automation Pass");
-		    System.out.println("PASS: Purchasers names matches in the Contract tab >Purchasers(s) field ");
-		} catch (AssertionError e) {
-		    Azure.updateTestCaseStatus("12140", "Automation Fail");
-		    System.out.println("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field *****");
-		    Assert.fail("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field**** ");
-		}
-	}
 	
 	
-	// verify Transferor(s) functionality working proper or not
+	// ****verify Transferor(s) functionality working proper or not****
 	public void Transferor(String Single_Transferor, String Estate_Transferor, String Corporation_Transferor,
 			Map<String, String> clientNames) throws InterruptedException, IOException {
 		switchToIframe(MiddlePortionFrame);
@@ -589,7 +603,7 @@ public class Basic extends AbstractComponent {
 			System.out.println("PASS: All Seller Names Found in File navigation >Seller Side");
 		} else {
 			Azure.updateTestCaseStatus("12089", "Automation Fail");
-			System.out.println("****Fail: Not All Seller Names Found in File navigation >Seller Side*****");
+			Assert.fail("****Fail: Not All Seller Names Found in File navigation >Seller Side*****");
 		}
 
 		Assert.assertTrue(isMatchFound_Seller,
@@ -615,7 +629,7 @@ public class Basic extends AbstractComponent {
 				}
 			}
 				
-	// Verify Fire Insurance functionality working properly or not
+	//**** Verify Fire Insurance functionality working properly or not****
 	public void FireInsurance() throws InterruptedException, IOException {
 	    boolean isTestPassed = false;
 
@@ -665,12 +679,13 @@ public class Basic extends AbstractComponent {
 	        Assert.assertTrue(isTestPassed,
 	                "*****FAIL: Selected Company name is not shown in Fire insurance field*****");
 	    } catch (Exception e) {
-	        e.printStackTrace();
+	        e.printStackTrace();	        
 	        Azure.updateTestCaseStatus("12093", "Automation Fail");
+	        Assert.fail("Fail",e);
 	    }
 	}
 
-	// Verify Mortgage Broker functionality working properly or not
+	//**** Verify Mortgage Broker functionality working properly or not****
 	public void MortgageBroker() throws InterruptedException, IOException {
 	    boolean isTestPassed = false;
 
@@ -719,11 +734,12 @@ public class Basic extends AbstractComponent {
 	        Assert.assertTrue(isTestPassed,
 	                "*****FAIL: Selected Company name is not shown in Mortgage Broker field*****");
 	    } catch (Exception e) {
-	        e.printStackTrace();
+	        e.printStackTrace();	        
 	        Azure.updateTestCaseStatus("12094", "Automation Fail");
+	        Assert.fail("Fail", e);
 	    }
 	}
-	// Verify Mortgage Broker -> Fee$ field and Pay from Trust functionality working properly or not
+	//**** Verify Mortgage Broker -> Fee$ field and Pay from Trust functionality working properly or not****
 	public void mortgageBrokerFee(String mortgageBrokerFee) throws InterruptedException, IOException {
 	    try {
 	        // Convert the input mortgageBrokerFee to a comma-formatted amount
@@ -749,10 +765,10 @@ public class Basic extends AbstractComponent {
 	        }
 	        
 	    } catch (Exception e) {
+	    	Azure.updateTestCaseStatus("12095", "Automation Fail");
 	        Assert.fail("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");
-	        System.out.println("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");
-	        // If the test fails
-	        Azure.updateTestCaseStatus("12095", "Automation Fail");
+	        System.out.println("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");	        
+	        
 	    }
 	}
 

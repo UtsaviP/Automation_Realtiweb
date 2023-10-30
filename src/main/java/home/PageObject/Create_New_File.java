@@ -2,6 +2,9 @@ package home.PageObject;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -15,6 +18,7 @@ import project.AbstractComponents.AzureDevOpsIntegration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 
 public class Create_New_File extends AbstractComponent {
@@ -57,7 +61,7 @@ public class Create_New_File extends AbstractComponent {
 	@FindBy(xpath = "//td[@valign='middle']/span[@class='btn btn-inactive' and text()='Create File']")
 	public WebElement Inactive_Button;
 
-	@FindBy(xpath = "(//span[@class='btn btn-primary'][normalize-space()='Create File'])[1]")
+	@FindBy(xpath = "(//span[@class='btn btn-primary'][text()='Create File'])[1]")
 	public WebElement Active_Button;
 
 	@FindBy(xpath = "//li[text()='Create New File']")
@@ -75,265 +79,287 @@ public class Create_New_File extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 	
-	//***Verify Purchase File created Successfully or not***
+	//*** Verify Purchase File created Successfully or not ***
 	public FileList CreateNewPurchaseFile() throws InterruptedException, IOException {
-		try {
-		    PlusButton.click();
-		    waitForElementToAppear(Create_New_File);
-		    driver.findElement(Create_New_File).click();
-		    frame();
-		    Thread.sleep(3000);
-		    Select DealType_select = new Select(DealType);
-		    DealType_select.selectByVisibleText("Purchase");
-		    int int_random = ThreadLocalRandom.current().nextInt();
-		    WebElement a = driver.findElement(FileNameBy);
-		    a.sendKeys("PurchaseFile_" + int_random);
-		    String GetFileName = a.getAttribute("value");
-		    required_text.click();
-		    CreateFile_Button.click();
+	    try {
+	        PlusButton.click();
+	        waitForElementToAppear(Create_New_File);
+	        driver.findElement(Create_New_File).click();
+	        frame();
+	        Thread.sleep(3000);
+	        Select DealType_select = new Select(DealType);
+	        DealType_select.selectByVisibleText("Purchase");
+	        int int_random = ThreadLocalRandom.current().nextInt();
+	        WebElement a = driver.findElement(FileNameBy);
+	        a.sendKeys("PurchaseFile_" + int_random);
+	        String GetFileName = a.getAttribute("value");
+	        required_text.click();
+	        CreateFile_Button.click();
 
-		    waitForWebElementToAppear(BoldFilename);
-		    String GetFileName1 = BoldFilename.getText();
-		    Thread.sleep(3000);
-		    boolean flag = false;
-		    if (GetFileName.equalsIgnoreCase(GetFileName1)) {
-		        flag = true;
-		        ActionMenu.click();
-		        DeleteFile.click();
-		        DeleteButton.click();
-		        waitForWebElementToAppear(PlusButton);
-		        Azure.updateTestCaseStatus("12048", "Automation Pass");
-		        System.out.println(" *****Pass: Purchase File Created and deleted Successfully*****");
-		    } else {
-		        System.out.println("****Fail: Purchase File not Created Successfully****");
-		    }
-		} catch (Exception ex) {
-		    ex.printStackTrace();
-		    System.out.println("****Fail: Exception occurred during file creation****");
-		    Azure.updateTestCaseStatus("12048", "Automation Fail");
-		}
-		return new FileList(driver);
+	        waitForWebElementToAppear(BoldFilename);
+	        String GetFileName1 = BoldFilename.getText();
+	        Thread.sleep(3000);
+	        boolean flag = false;
+	        if (GetFileName.equalsIgnoreCase(GetFileName1)) {
+	            flag = true;
+	            ActionMenu.click();
+	            DeleteFile.click();
+	            DeleteButton.click();
+	            waitForWebElementToAppear(PlusButton);
+	            Azure.updateTestCaseStatus("12048", "Automation Pass");
+	            System.out.println(" *****Pass: Purchase File Created and deleted Successfully*****");
+	        } else {
+	            Azure.updateTestCaseStatus("12048", "Automation Fail");
+	            Assert.fail("****Fail: Purchase File not Created Successfully****");
+	            System.out.println("****Fail: Purchase File not Created Successfully****");
+	        }
+	    } catch (Exception ex) {
+	        Azure.updateTestCaseStatus("12048", "Automation Fail");
+	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	        ex.printStackTrace();
+	        System.out.println("****Fail: Exception occurred during file creation****");
+	    }
+	    return new FileList(driver);
 	}
-	
-	
-	//*** Verify Sale File created Successfully or not***
+
+	//*** Verify Sale File created Successfully or not ***
 	public FileList CreateNewSaleFile() throws InterruptedException, IOException {
-		try {
-		    PlusButton.click();
-		    waitForElementToAppear(Create_New_File);
-		    driver.findElement(Create_New_File).click();
-		    frame();
-		    Thread.sleep(3000);
-		    Select DealType_select = new Select(DealType);
-		    DealType_select.selectByVisibleText("Sale");
-		    int int_random = ThreadLocalRandom.current().nextInt();
-		    WebElement a = driver.findElement(FileNameBy);
-		    a.sendKeys("SaleFile_" + int_random);
-		    String GetFileName = a.getAttribute("value");
-		    required_text.click();
-		    CreateFile_Button.click();
-		    waitForWebElementToAppear(BoldFilename);
-		    String GetFileName1 = BoldFilename.getText();
-		    Thread.sleep(3000);
-		    boolean flag = false;
-		    if (GetFileName.equalsIgnoreCase(GetFileName1)) {
-		        flag = true;
-		        waitForWebElementToAppear(ActionMenu);
-		        ActionMenu.click();
-		        DeleteFile.click();
-		        DeleteButton.click();
-		        waitForWebElementToAppear(PlusButton);
-		        Azure.updateTestCaseStatus("12049", "Automation Pass");
-		        System.out.println(" *****Pass: Sale File Created and deleted Successfully*****");
-		    } else {
-		        System.out.println("****Fail: Sale File not Created Successfully****");
-		        Azure.updateTestCaseStatus("12049", "Automation Fail");
-		    }
-		} catch (Exception ex) {
-		    ex.printStackTrace();
-		    System.out.println("****Fail: Exception occurred during file creation****");
-		    Azure.updateTestCaseStatus("12049", "Automation Fail");
-		}
-		return new FileList(driver);
+	    try {
+	        PlusButton.click();
+	        waitForElementToAppear(Create_New_File);
+	        driver.findElement(Create_New_File).click();
+	        frame();
+	        Thread.sleep(3000);
+	        Select DealType_select = new Select(DealType);
+	        DealType_select.selectByVisibleText("Sale");
+	        int int_random = ThreadLocalRandom.current().nextInt();
+	        WebElement a = driver.findElement(FileNameBy);
+	        a.sendKeys("SaleFile_" + int_random);
+	        String GetFileName = a.getAttribute("value");
+	        required_text.click();
+	        CreateFile_Button.click();
+	        waitForWebElementToAppear(BoldFilename);
+	        String GetFileName1 = BoldFilename.getText();
+	        Thread.sleep(3000);
+	        boolean flag = false;
+	        if (GetFileName.equalsIgnoreCase(GetFileName1)) {
+	            flag = true;
+	            waitForWebElementToAppear(ActionMenu);
+	            ActionMenu.click();
+	            DeleteFile.click();
+	            DeleteButton.click();
+	            waitForWebElementToAppear(PlusButton);
+	            Azure.updateTestCaseStatus("12049", "Automation Pass");
+	            System.out.println(" *****Pass: Sale File Created and deleted Successfully*****");
+	        } else {
+	            System.out.println("****Fail: Sale File not Created Successfully****");
+	            Azure.updateTestCaseStatus("12049", "Automation Fail");
+	            Assert.fail("****Fail: Sale File not Created Successfully****");
+	        }
+	    } catch (Exception ex) {
+	        Azure.updateTestCaseStatus("12049", "Automation Fail");
+	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	        ex.printStackTrace();
+	        System.out.println("****Fail: Exception occurred during file creation****");
+	    }
+	    return new FileList(driver);
 	}
+	//*** Verify Mortgage File created Successfully or not ***
+	public FileList CreateNewMortgageFile() throws InterruptedException, IOException {
+	    try {
+	        PlusButton.click();
+	        waitForElementToAppear(Create_New_File);
+	        driver.findElement(Create_New_File).click();
+	        frame();
+	        Thread.sleep(3000);
+	        Select DealType_select = new Select(DealType);
+	        DealType_select.selectByVisibleText("Mortgage");
+	        int int_random = ThreadLocalRandom.current().nextInt();
+	        WebElement a = driver.findElement(FileNameBy);
+	        a.sendKeys("MortgageFile_" + int_random);
+	        String GetFileName = a.getAttribute("value");
+	        required_text.click();
+	        CreateFile_Button.click();
+	        waitForWebElementToAppear(BoldFilename);
+	        String GetFileName1 = BoldFilename.getText();
+	        Thread.sleep(3000);
+	        boolean flag = false;
+	        if (GetFileName.equalsIgnoreCase(GetFileName1)) {
+	            flag = true;
+	            waitForWebElementToAppear(ActionMenu);
+	            ActionMenu.click();
+	            DeleteFile.click();
+	            DeleteButton.click();
+	            waitForWebElementToAppear(PlusButton);
+	            System.out.println(" *****Pass: Mortgage File Created and deleted Successfully*****");
+	        }
+	        
+	        if (flag) {
+	            Azure.updateTestCaseStatus("12050", "Automation Pass");
+	        } else {
+	            System.out.println("*****Fail: Mortgage File not Created Successfully*****");
+	            Azure.updateTestCaseStatus("12050", "Automation Fail");
+	            Assert.fail("*****Fail: Mortgage File not Created Successfully*****");
+	        }
+	    } catch (Exception ex) {
+	        Azure.updateTestCaseStatus("12050", "Automation Fail");
+	        ex.printStackTrace();
+	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	    }
+	    return new FileList(driver);
+	}
+
+	//*** Create button should be Disable if file types and File name not provided***
+			public void DisableCreateFileButton() throws IOException {
+			    try {
+			        PlusButton.click();
+			        waitForElementToAppear(Create_New_File);
+			        driver.findElement(Create_New_File).click();
+			        frame();
+			        waitForWebElementToAppear(Inactive_Button);
+			        boolean flag = false;
+
+			        WebElement fileNameElement = driver.findElement(FileNameBy);
+			        String fileName = fileNameElement.getAttribute("value");
+
+			        if (fileName == null || fileName.isEmpty()) {
+			            flag = true;
+			            Azure.updateTestCaseStatus("12051", "Automation Pass");			           
+			            System.out.println(" *****Pass: Create button Disabled****");
+			        }
+
+			        if (!flag) {
+			            System.out.println("*****Fail: Create button enabled even when the filename is available*****");
+			            Azure.updateTestCaseStatus("12051", "Automation Fail");
+			            Assert.fail("*****Fail: Create button enabled even when the filename is available*****");
+			        }
+			    } catch (Exception ex) {
+			        ex.printStackTrace();
+			        Azure.updateTestCaseStatus("12051", "Automation Fail");
+			        Assert.fail("Fail",ex);
+			    }
+			    
+			}
 	
-		//*** Verify Mortgage File created Successfully or not***
-		public FileList CreateNewMortgageFile() throws InterruptedException, IOException {
-		    try {
-		        PlusButton.click();
-		        waitForElementToAppear(Create_New_File);
-		        driver.findElement(Create_New_File).click();
-		        frame();
-		        Thread.sleep(3000);
-		        Select DealType_select = new Select(DealType);
-		        DealType_select.selectByVisibleText("Mortgage");
-		        int int_random = ThreadLocalRandom.current().nextInt();
-		        WebElement a = driver.findElement(FileNameBy);
-		        a.sendKeys("MortgageFile_" + int_random);
-		        String GetFileName = a.getAttribute("value");
-		        required_text.click();
-		        CreateFile_Button.click();
-		        waitForWebElementToAppear(BoldFilename);
-		        String GetFileName1 = BoldFilename.getText();
-		        Thread.sleep(3000);
-		        boolean flag = false;
-		        if (GetFileName.equalsIgnoreCase(GetFileName1)) {
-		            flag = true;
-		            waitForWebElementToAppear(ActionMenu);
-		            ActionMenu.click();
-		            DeleteFile.click();
-		            DeleteButton.click();
-		            waitForWebElementToAppear(PlusButton);
-		            System.out.println(" *****Pass: Mortgage File Created and deleted Successfully*****");
-		        }
-		        if (flag) {
-		            Azure.updateTestCaseStatus("12050", "Automation Pass");
-		        } else {
-		            System.out.println("*****Fail: Mortgage File not Created Successfully*****");
-		            Azure.updateTestCaseStatus("12050", "Automation Fail");
-		        }
-		    } catch (Exception ex) {
-		        ex.printStackTrace();
-		    }
-		    return new FileList(driver);
-		}
-
-
-		//*** Create button should be Disable if file types and File name not provided***
-		public void DisableCreateFileButton() {
-		    try {
-		        PlusButton.click();
-		        waitForElementToAppear(Create_New_File);
-		        driver.findElement(Create_New_File).click();
-		        frame();
-		        waitForWebElementToAppear(Inactive_Button);
-		        boolean flag = false;
-
-		        WebElement fileNameElement = driver.findElement(FileNameBy);
-		        String fileName = fileNameElement.getAttribute("value");
-
-		        if (fileName == null || fileName.isEmpty()) {
-		            flag = true;
-		            Azure.updateTestCaseStatus("12051", "Automation Pass");
-		            System.out.println(" *****Pass: Create button Disabled****");
-		        }
-
-		        if (!flag) {
-		            System.out.println("*****Fail: Create button enabled even when the filename is available*****");
-		            Azure.updateTestCaseStatus("12051", "Automation Fail");
-		        }
-		    } catch (Exception ex) {
-		        ex.printStackTrace();
-		    }
-		}
-
-		
-		//*** Create button should be Enable if file types and File name are provided***
-		public void EnableCreateFileButton() throws InterruptedException {
-		    try {
-		        Thread.sleep(2000);
-		        Select DealType_select = new Select(DealType);
-		        DealType_select.selectByVisibleText("Purchase");
-		        FileName.sendKeys("Purchase");
-		        required_text.click();
-
-		        boolean flag1 = false;
-		        if (Active_Button.isEnabled()) {
-		            flag1 = true;
-		            Azure.updateTestCaseStatus("12052", "Automation Pass");
-		            System.out.println("*****Pass: Create button enabled*****");
-		        }
-
-		        if (!flag1) {
-		            System.out.println("*****Fail: Create button Disabled even filename is available*****");
-		            Azure.updateTestCaseStatus("12052", "Automation Fail");
-		        }
-		    } catch (Exception ex) {
-		        ex.printStackTrace();
-		    }
-		}
-
 	
-		//***Fields should be reflected based on File types***
-		public void DropdownVerificationTest() throws InterruptedException, IOException {
-		    boolean isVerificationSuccessful = true;
-		    try {
-		        PlusButton.click();
-		        waitForElementToAppear(Create_New_File);
-		        driver.findElement(Create_New_File).click();
-		        frame();
-		        Thread.sleep(2000);
-		        // Create a Select object for the dropdown
-		        Select DealType_select = new Select(DealType);
+	
+	//*** Create button should be Enable if file types and File name are provided***
+	public void EnableCreateFileButton() throws InterruptedException, IOException {
+	    try {
+	        Thread.sleep(2000);
+	        Select DealType_select = new Select(DealType);
+	        DealType_select.selectByVisibleText("Purchase");
+	        FileName.sendKeys("Purchase");
+	        required_text.click();
 
-		        // Verify Purchase dropdown
-		        DealType_select.selectByVisibleText("Purchase");
-		        if (!isElementDisplayed(P_TitleInsuranceTitle)) {
-		            System.out.println("Failed to show Purchase related fields.");
-		            isVerificationSuccessful = false;
-		        }
+	        boolean flag1 = false;
+	        if (Active_Button.isEnabled()) {
+	            flag1 = true;	           
+	            Azure.updateTestCaseStatus("12052", "Automation Pass");
+	            System.out.println("*****Pass: Create button enabled*****");
+	        }
 
-		        // Verify Sale dropdown
-		        DealType_select.selectByVisibleText("Sale");
-		        if (!isElementDisplayed(S_FileConfigurationcaption)) {
-		            System.out.println("Failed to show Sale related fields.");
-		            isVerificationSuccessful = false;
-		        }
+	        if (!flag1) {
+	            System.out.println("*****Fail: Create button Disabled even filename is available*****");
+	            Azure.updateTestCaseStatus("12052", "Automation Fail");
+	            Assert.fail("*****Fail: Create button Disabled even filename is available*****");
+	        }
+	    } catch (Exception ex) {
+	    	Azure.updateTestCaseStatus("12052", "Automation Fail");
+	    	Assert.fail("Fail",ex);
+	        ex.printStackTrace();
+	        
+	    }
+	}
 
-		        // Verify Mortgage dropdown
-		        DealType_select.selectByVisibleText("Mortgage");
-		        if (!isElementDisplayed(M_MortgagorTitle)) {
-		            System.out.println("Failed to show Mortgage related fields.");
-		            isVerificationSuccessful = false;
-		        }
-		    } catch (Exception e) {
-		        e.printStackTrace();
-		        isVerificationSuccessful = false;
-		    }
 
-		    if (isVerificationSuccessful) {
-		        Azure.updateTestCaseStatus("12053", "Automation Pass");
-		        System.out.println("*****Pass: Dropdown verification test passed.*****");
-		    } else {
-		        Azure.updateTestCaseStatus("12053", "Automation Fail");
-		        System.out.println("*****Fail: Dropdown verification test failed.*****");
-		    }
+	//*** Fields should be reflected based on File types ***
+	public void DropdownVerificationTest() throws InterruptedException, IOException {
+	    boolean isVerificationSuccessful = true;
+	    try {
+	        PlusButton.click();
+	        waitForElementToAppear(Create_New_File);
+	        driver.findElement(Create_New_File).click();
+	        frame();
+	        Thread.sleep(2000);
+
+	        // Define a data structure to store file types and their corresponding fields
+	        Map<String, By> fileTypeToFields = new HashMap<>();
+	        fileTypeToFields.put("Purchase", P_TitleInsuranceTitle);
+	        fileTypeToFields.put("Sale", S_FileConfigurationcaption);
+	        fileTypeToFields.put("Mortgage", M_MortgagorTitle);
+
+	        Select DealType_select = new Select(DealType);
+
+	        for (Map.Entry<String, By> entry : fileTypeToFields.entrySet()) {
+	            String fileType = entry.getKey();
+	            By fieldElement = entry.getValue();
+	            
+	            DealType_select.selectByVisibleText(fileType);
+	            
+	            if (!isElementDisplayed(fieldElement)) {
+	                System.out.println("Failed to show " + fileType + " related fields.");
+	                isVerificationSuccessful = false;
+	            }
+	        }
+	    } catch (Exception e) {
+	    	  Azure.updateTestCaseStatus("12053", "Automation Fail");
+	    	Assert.fail("Fail",e);
+	        e.printStackTrace();
+	        isVerificationSuccessful = false;
+	    }
+
+	    if (isVerificationSuccessful) {
+	        Azure.updateTestCaseStatus("12053", "Automation Pass");
+	        System.out.println("*****Pass: Dropdown verification test passed.*****");
+	    } else {
+	        Azure.updateTestCaseStatus("12053", "Automation Fail");
+	        System.out.println("*****Fail: Dropdown verification test failed.*****");
+	        Assert.fail("*****Fail: Dropdown verification test failed.*****");
+	    }
+	}
+
+	// *** Verify warning message while providing the same name that already exists
+	// in the database ***
+	public void verifyWarningForDuplicateFileName(String Purchase_FileName) throws InterruptedException, IOException {
+		PlusButton.click();
+		waitForElementToAppear(Create_New_File);
+		driver.findElement(Create_New_File).click();
+		frame();
+		Thread.sleep(2000);
+		Select DealType_select = new Select(DealType);
+		DealType_select.selectByVisibleText("Purchase");
+
+		MatterNumber.sendKeys(Purchase_FileName);
+
+		driver.findElement(By.xpath("(//span[@class='help-note' and @subnodestatus='0' ])[1]")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		wait.until(ExpectedConditions.elementToBeClickable(CreateFile_Button));
+
+		CreateFile_Button.click();
+        Thread.sleep(2000);
+		try {
+			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+			String alertText = alert.getText();
+			if (alertText.contains("Do you still want to create this file?")) {
+				alert.dismiss();
+				Azure.updateTestCaseStatus("12054", "Automation Pass");
+				System.out.println("*****Pass: Warning message displayed for duplicate file name.*****");
+			} else {
+				alert.dismiss();
+				Azure.updateTestCaseStatus("12054", "Automation Fail");
+				System.out.println("*****Fail: No warning message displayed for duplicate file name.*****");
+				Assert.fail("*****Fail: No warning message displayed for duplicate file name.*****");
+			}
+		} catch (NoAlertPresentException e) {
+			System.out.println("No duplicate file found.");
+			Assert.fail("Fail",e);
+			Azure.updateTestCaseStatus("12054", "Automation Fail");
+			System.out.println("*****Pass: No duplicate file found.*****");
 		}
+	}
 
-		//*** Verify warning message while providing the same name that already exists in the database***
-		public boolean existFilenameMessage(String Purchase_FileName) throws InterruptedException, IOException {
-		    PlusButton.click();
-		    waitForElementToAppear(Create_New_File);
-		    driver.findElement(Create_New_File).click();
-		    frame();
-		    Thread.sleep(2000);
-		    Select DealType_select = new Select(DealType);
-		    DealType_select.selectByVisibleText("Purchase");
-		    MatterNumber.sendKeys(Purchase_FileName);
-		    driver.findElement(By.xpath("//span[@class='help-note']")).click();
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		    wait.until(ExpectedConditions.elementToBeClickable(CreateFile_Button));
-		 
-		    CreateFile_Button.click();
-		    Thread.sleep(2000);
-
-		    try {
-		        Alert alert = driver.switchTo().alert();
-		        if (alert.getText().contains("Do you still want to create this file?")) { 
-		            alert.dismiss();
-		            Azure.updateTestCaseStatus("12054", "Automation Pass");
-		            return true;
-		        } else {
-		            alert.dismiss();
-		            Azure.updateTestCaseStatus("12054", "Automation Fail");
-		            return false;
-		        }
-		    } catch (NoAlertPresentException e) {
-		        System.out.println("No duplicate file found.");
-		        Azure.updateTestCaseStatus("12054", "Automation Pass");
-		        return true;
-		    }
-		}
 
 
 	// Switch to frame

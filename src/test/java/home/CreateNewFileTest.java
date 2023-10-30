@@ -60,7 +60,7 @@ public class CreateNewFileTest extends BaseTest {
 	public void verify_warning_message_while_provide_same_name_that_already_exist_in_database(
 			HashMap<String, String> loginData) throws InterruptedException, IOException {
 		launchApplicationAndLogin();		
-		CreateFile.existFilenameMessage(loginData.get("Purchase_FileName"));
+		CreateFile.verifyWarningForDuplicateFileName(loginData.get("Purchase_FileName"));
 
 	}
 

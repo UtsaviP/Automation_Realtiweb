@@ -100,7 +100,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-@Test(dataProvider = "Details_Section")
+   @Test(dataProvider = "Details_Section")
 	
 	public void Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {

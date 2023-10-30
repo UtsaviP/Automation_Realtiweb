@@ -158,76 +158,82 @@ public class Property extends AbstractComponent {
 	}
 
 	// ***Property Address: Verify Postal code functionality ***
-	@SuppressWarnings({ "unused" })
+	@SuppressWarnings("unused")
 	public void Postal_Code(String Postal_Code) throws InterruptedException, IOException {
-	    Thread.sleep(2000);
-	    Property_Tab.click();
-	    common.switchToIframe(common.MiddlePortionFrame);
-	    StreetNumber.sendKeys("715");
-	    StreetName.click();
-	    StreetName.clear();
-	    StreetName.sendKeys("Don Mills");
-	    City_select("Toronto");
-	    common.switchToIframe(common.MiddlePortionFrame);
+	    try {
+	        Thread.sleep(2000);
+	        Property_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        StreetNumber.sendKeys("715");
+	        StreetName.click();
+	        StreetName.clear();
+	        StreetName.sendKeys("Don Mills");
+	        City_select("Toronto");
+	        common.switchToIframe(common.MiddlePortionFrame);
 
-	    PostalCode_Field.sendKeys(Postal_Code);
+	        PostalCode_Field.sendKeys(Postal_Code);
 
-	    String getCode = null; // Declare getCode outside the if-else blocks
-	    String getCode1 = null;
+	        String getCode = null; // Declare getCode outside the if-else blocks
+	        String getCode1 = null;
 
-	    driver.switchTo().defaultContent();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust the wait time as needed
-	    wait.until(ExpectedConditions.presenceOfElementLocated(PostalCode_ActivityMessage));
-	    common.switchToIframe(common.MiddlePortionFrame);
+	        driver.switchTo().defaultContent();
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust the wait time as needed
+	        wait.until(ExpectedConditions.presenceOfElementLocated(PostalCode_ActivityMessage));
+	        common.switchToIframe(common.MiddlePortionFrame);
 
-	    if (PostalCode_VerifyButton.isDisplayed()) {
-	        PostalCode_VerifyButton.click();
-	        List<WebElement> list = PostalCode_AddressList;
+	        if (PostalCode_VerifyButton.isDisplayed()) {
+	            PostalCode_VerifyButton.click();
+	            List<WebElement> list = PostalCode_AddressList;
 
-	        // Iterate through the list to find "Addresses" in any element's text
-	        boolean hasAddresses = false;
-	        for (WebElement element : list) {
-	            if (element.getText().contains("Addresses")) {
-	                hasAddresses = true;
-	               
-	                element.click();	                
-	                list.get(0).click();
-	                getCode =  Select_PostalCode.getText();
+	            // Iterate through the list to find "Addresses" in any element's text
+	            boolean hasAddresses = false;
+	            for (WebElement element : list) {
+	                if (element.getText().contains("Addresses")) {
+	                    hasAddresses = true;
+	                    
+	                    element.click();
+	                    list.get(0).click();
+	                    getCode = Select_PostalCode.getText();
+	                    Select_PostalCode.click();
+	                    break;
+	                }
+	            }
+
+	            if (!hasAddresses) {
+	                getCode1 = list.get(0).getText();
 	                Select_PostalCode.click();
-	                break;
+	            }
+
+	            boolean getTextMatched = false;
+	            String getText1 = PostalCode_Field.getAttribute("value");
+
+	            if ((getText1.equals(getCode) || getText1.equals(getCode1)) && PostalCodeVerified.isDisplayed()) {
+	                System.out.println("PASS: Postal code working as Expected");
+	                Azure.updateTestCaseStatus("12227", "Automation Pass");
+	                getTextMatched = true;
+	            } else {
+	                System.out.println("****FAIL: Postal code not working as Expected**** ");
+	                Azure.updateTestCaseStatus("12227", "Automation Fail");
+	                Assert.fail();
+	            }
+	        } else {
+	            if (PostalCodeVerified.isDisplayed()) {
+	                System.out.println("PASS: Postal code working as Expected");
+	                Azure.updateTestCaseStatus("12227", "Automation Pass");
+	            } else {
+	                System.out.println("****FAIL: Postal code not working as Expected**** ");
+	                Azure.updateTestCaseStatus("12227", "Automation Fail");
+	                Assert.fail();
 	            }
 	        }
-
-	       
-	        if (!hasAddresses) {
-	            getCode1 = list.get(0).getText();
-	            Select_PostalCode.click();
-	        }
-
-	        boolean getTextMatched = false;
-	        String getText1 = PostalCode_Field.getAttribute("value");
-
-	        if ((getText1.equals(getCode) || getText1.equals(getCode1)) && PostalCodeVerified.isDisplayed()) {
-	        	System.out.println("PASS:Postal code working as Expected");
-				Azure.updateTestCaseStatus("12227", "Automation Pass");
-	            getTextMatched = true;
-	        } else {
-	        	System.out.println("****FAIL: Postal code not working as Expected**** ");
-				Azure.updateTestCaseStatus("12227", "Automation Fail");
-				Assert.fail();
-	        }
-	    } else {
-	        if (PostalCodeVerified.isDisplayed()) {
-	        	System.out.println("PASS: Postal code working as Expected");
-				Azure.updateTestCaseStatus("12227", "Automation Pass");
-	        } else {
-	        	System.out.println("****FAIL:Postal code not working as Expected**** ");
-				Azure.updateTestCaseStatus("12227", "Automation Fail");
-				Assert.fail();
-	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	        System.out.println("****FAIL: An exception occurred while verifying Postal code****");
+	        Azure.updateTestCaseStatus("12227", "Automation Fail");
+	        Assert.fail("****FAIL: An exception occurred while verifying Postal code****",ex);
 	    }
 	}
-	
+
 	
 	
 	// ***Property Description: Verify Property Type and t/w Common Elements checkbox  functionality ***		
@@ -241,9 +247,9 @@ public class Property extends AbstractComponent {
 	        System.out.println("PASS: Property Type [Freehold & Condo] options working proper");
 	        Azure.updateTestCaseStatus("12228", "Automation Pass");
 	    } else {
-	        System.out.println("****FAIL:Property Type [Freehold & Condo] options not  working as Expected****");
-	        Assert.fail();
+	        System.out.println("****FAIL:Property Type [Freehold & Condo] options not  working as Expected****");	        
 	        Azure.updateTestCaseStatus("12228", "Automation Fail");
+	        Assert.fail();
 	    }
 	}
 
@@ -258,63 +264,75 @@ public class Property extends AbstractComponent {
 	        System.out.println("PASS:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected");
 	        Azure.updateTestCaseStatus("12229", "Automation Pass");
 	    } else {
-	        System.out.println("****FAIL:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected**** ");
-	        Assert.fail();
+	        System.out.println("****FAIL:In FreeHold Property Type ,t/w Common Elements checkbox working as Expected**** ");	        
 	        Azure.updateTestCaseStatus("12229", "Automation Fail");
+	        Assert.fail();
 	    }
 	}
 	
-	//****Survey :Verify Survey functionality using Yes/No option  working proper or not****
-	public void Survey() throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Property_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		performSurveyAction(true);
-		performSurveyAction(false);
+	
+	//****Survey: Verify Survey functionality using Yes/No option working properly or not****
+	public void Survey() throws IOException {
+	    try {
+	        Thread.sleep(2000);
+	        Property_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        performSurveyAction(true);
+	        performSurveyAction(false);
+	    } catch (InterruptedException | IOException e) {
+	        handleException(e);
+	    }
 	}
 
 	private void performSurveyAction(boolean conditionToCheck) throws IOException {
-		if (conditionToCheck) {
-			Surveyor_Yes.click();
-			Surveyor_Select.click();
-			common.switchToIframe(common.PopUpFrame);
-			List<WebElement> Surveyor_Listing = Surveyor_List;
-			if (Surveyor_Listing.size() > 0) {
-				String text = Surveyor_Listing.get(0).getText();
-				Surveyor_Listing.get(0).click();
-				common.switchToIframe(common.MiddlePortionFrame);
-				String text1 = Surveyor_field.getAttribute("value");
-				if (text.equals(text1)) {
-					System.out.println("PASS:In Survey ,YES option working properly");
-					 Azure.updateTestCaseStatus("12230", "Automation Pass");
-				} else {
-					System.out.println("FAIL :In Survey ,YES option  not working as expected");
-					Assert.fail("FAIL :In Survey ,YES option  not working as expected");
-					 Azure.updateTestCaseStatus("12230", "Automation Fail");
-				}
-			} else {
-				System.out.println("FAIL :No Survey names are available in Pop up");		
-				driver.switchTo().defaultContent();
-				driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
-				 Azure.updateTestCaseStatus("12230", "Automation Fail");
-				Assert.fail("FAIL :No Survey names are available in Pop up");
-				
-			}
-		} else {
-
-			Surveyor_No.click();
-			if (!Surveyor_field.isDisplayed()) {
-				System.out.println("PASS:In Survey ,No option working properly ");
-				 Azure.updateTestCaseStatus("12230", "Automation Pass");
-				 
-			} else {
-				System.out.println("FAIL :In Survey ,No option  not working as expected");
-				 Azure.updateTestCaseStatus("12230", "Automation Fail");
-				Assert.fail("FAIL :In Survey ,No option  not working as expected");
-				
-			}
-		}
+	    try {
+	        if (conditionToCheck) {
+	            Surveyor_Yes.click();
+	            Surveyor_Select.click();
+	            common.switchToIframe(common.PopUpFrame);
+	            List<WebElement> Surveyor_Listing = Surveyor_List;
+	            if (Surveyor_Listing.size() > 0) {
+	                String text = Surveyor_Listing.get(0).getText();
+	                Surveyor_Listing.get(0).click();
+	                common.switchToIframe(common.MiddlePortionFrame);
+	                String text1 = Surveyor_field.getAttribute("value");
+	                if (text.equals(text1)) {
+	                    System.out.println("PASS: In Survey, YES option working properly");
+	                    Azure.updateTestCaseStatus("12230", "Automation Pass");
+	                } else {
+	                    System.out.println("FAIL: In Survey, YES option not working as expected");
+	                    Assert.fail("FAIL: In Survey, YES option not working as expected");
+	                    Azure.updateTestCaseStatus("12230", "Automation Fail");
+	                }
+	            } else {
+	                System.out.println("FAIL: No Survey names are available in Pop-up");
+	                driver.switchTo().defaultContent();
+	                driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
+	                Azure.updateTestCaseStatus("12230", "Automation Fail");
+	                Assert.fail("FAIL: No Survey names are available in Pop-up");
+	            }
+	        } else {
+	            Surveyor_No.click();
+	            if (!Surveyor_field.isDisplayed()) {
+	                System.out.println("PASS: In Survey, No option working properly");
+	                Azure.updateTestCaseStatus("12230", "Automation Pass");
+	            } else {
+	                System.out.println("FAIL: In Survey, No option not working as expected");
+	                Azure.updateTestCaseStatus("12230", "Automation Fail");
+	                Assert.fail("FAIL: In Survey, No option not working as expected");
+	            }
+	        }
+	    } catch (Exception e) {
+	        handleException(e);
+	    }
 	}
+
+	private void handleException(Exception e) throws IOException {
+	    System.out.println("An exception occurred: " + e.getMessage());
+	    Azure.updateTestCaseStatus("12230", "Automation Fail");
+	    Assert.fail("Error",e);
+	}
+
 }
 
 

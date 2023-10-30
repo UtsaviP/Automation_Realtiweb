@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="details_section.Contract.PropertyTest">
+      <class name="details_section.Contract.BasicTest">
         <methods>
+          <include name="Verify_In_BasicSection_Mortgage_Broker_field_working_proper_or_not" invocation-numbers="0"/>
           <include name="launchApplication"/>
-          <include name="Verify_In_Survey_Section_Survey_options_Yes_or_No_working_proper_or_not" invocation-numbers="0"/>
           <include name="setupLoginData"/>
+          <include name="Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="initializeTest"/>
         </methods>
-      </class> <!-- details_section.Contract.PropertyTest -->
+      </class> <!-- details_section.Contract.BasicTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -145,31 +145,36 @@ public class Contract extends AbstractComponent {
 	
 	
 	
-	// ***Purchasers(s):Verify To Reside at Property on Closing field based on Yes/No changes.***
+	// ***Purchasers(s): Verify To Reside at Property on Closing field based on Yes/No changes.***
 	public void ToResideAtPropertyOnClosing_Field() throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
 
-		// Check "Yes" option
-		RadioButton_Yes.click();
-		boolean RadioYes = RadioButton_YesText.isDisplayed();
+	        // Check "Yes" option
+	        RadioButton_Yes.click();
+	        boolean RadioYes = RadioButton_YesText.isDisplayed();
 
-		// Check "No" option
-		RadioButton_No.click();
-		boolean RadioNo = RadioButton_NoText.isDisplayed();
+	        // Check "No" option
+	        RadioButton_No.click();
+	        boolean RadioNo = RadioButton_NoText.isDisplayed();
 
-		if (RadioYes && RadioNo) {
-			Azure.updateTestCaseStatus("12141", "Automation Pass");
-			System.out.println("PASS: Both radio buttons of  ofToResideAtPropertyOnClosing Field are working properly");
-		} else {
-			Azure.updateTestCaseStatus("12141", "Automation Fail");
-			Assert.fail(
-					"****FAIL: Both radio buttons of  ofToResideAtPropertyOnClosing Field are not working properly****");
-			System.out.println(
-					"****FAIL: Both radio buttons of  ofToResideAtPropertyOnClosing Field are not working properly****");
-		}
+	        if (RadioYes && RadioNo) {
+	            Azure.updateTestCaseStatus("12141", "Automation Pass");
+	            System.out.println("PASS: Both radio buttons of the ToResideAtPropertyOnClosing Field are working properly");
+	        } else {
+	            Azure.updateTestCaseStatus("12141", "Automation Fail");
+	            Assert.fail("****FAIL: Both radio buttons of the ToResideAtPropertyOnClosing Field are not working properly****");
+	            System.out.println("****FAIL: Both radio buttons of the ToResideAtPropertyOnClosing Field are not working properly****");
+	        }
+	    } catch (Exception e) {	       
+	        Azure.updateTestCaseStatus("12141", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Assert.fail("Fail",e);
+	    }
 	}
+
 
 	// ***Other Side Legal Representation: Verify Lawyer field with Law Society of Ontario functionality. ***
 	public void OtherSideLawyer(String OtherSide_Lawyer) throws InterruptedException, IOException {
@@ -219,327 +224,362 @@ public class Contract extends AbstractComponent {
 		}
 	}
 
-	// ***Verify Contract: Closing Date should be same in n Statement of Adjustments>Adjustment date***
+	// ***Verify Contract: Closing Date should be same in Statement of Adjustments>Adjustment date***
 	public void Closing_Date(String Closing_Date) throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		ClosingDate.sendKeys(Closing_Date);
-		String Text = ClosingDate.getText();
-		driver.switchTo().defaultContent();
-		driver.findElement(By.xpath("//span[text()='Statement of Adjustments']")).click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		String Text1 = driver.findElement(By.xpath("(//input[@title='Ensure same as Closing Date'])[2]")).getText();
-		if (Text.equals(Text1)) {
-			System.out
-					.println("PASS: Added Closing Date and in Statement of Adjustments>Adjustment date both are same.");
-			Azure.updateTestCaseStatus("12145", "Automation Pass");
-		} else {
-			System.out.println(
-					"****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
-			Azure.updateTestCaseStatus("12145", "Automation Fail");
-			Assert.fail(
-					"****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
-		}
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        ClosingDate.sendKeys(Closing_Date);
+	        String Text = ClosingDate.getText();
+	        driver.switchTo().defaultContent();
+	        driver.findElement(By.xpath("//span[text()='Statement of Adjustments']")).click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        String Text1 = driver.findElement(By.xpath("(//input[@title='Ensure same as Closing Date'])[2]")).getText();
+	        if (Text.equals(Text1)) {
+	            System.out.println("PASS: Added Closing Date and in Statement of Adjustments>Adjustment date both are same.");
+	            Azure.updateTestCaseStatus("12145", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
+	            Azure.updateTestCaseStatus("12145", "Automation Fail");
+	            Assert.fail("****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
+	        }
+	    } catch (Exception e) {
+	        // Handle any exceptions that may occur
+	        Azure.updateTestCaseStatus("12145", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	       Assert.fail("Fail",e);
+	    }
 	}
 
 	// ***Verify Contract: Offer Conditional field based on yes/No condition***
 	public void Offer_ConditionalField() throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		offercondition_Yes.click();
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        offercondition_Yes.click();
 
-		// Check if the condition is cleared when "Yes" is selected
-		if (Condition_Cleared.isDisplayed()) {
-			System.out.println("PASS:condition Cleared field  visible  when 'Yes' is selected");
-		}
+	        // Check if the condition is cleared when "Yes" is selected
+	        if (Condition_Cleared.isDisplayed()) {
+	            System.out.println("PASS:condition Cleared field visible when 'Yes' is selected");
+	        }
 
-		offercondition_No.click();
+	        offercondition_No.click();
 
-		// Check if the condition is not cleared when "No" is selected
-		if (!Condition_Cleared.isDisplayed()) {
-			System.out.println("PASS:condition Cleared field  disable  when 'No' is selected");
-		}
+	        // Check if the condition is not cleared when "No" is selected
+	        if (!Condition_Cleared.isDisplayed()) {
+	            System.out.println("PASS:condition Cleared field disable when 'No' is selected");
+	        }
 
-		if (Condition_Cleared.isDisplayed() || !Condition_Cleared.isDisplayed()) {
-			System.out.println("PASS:Offer Conditional field working proper.");
-			Azure.updateTestCaseStatus("12146", "Automation Pass");
-
-		} else {
-
-			System.out.println("****FAIL:Offer Conditional field not working proper.****");
-			Assert.fail("****FAIL:Offer Conditional field not working proper.****");
-			Azure.updateTestCaseStatus("12146", "Automation Fail");
-
-		}
+	        if (Condition_Cleared.isDisplayed() || !Condition_Cleared.isDisplayed()) {
+	            System.out.println("PASS:Offer Conditional field working proper.");
+	            Azure.updateTestCaseStatus("12146", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL:Offer Conditional field not working proper.****");
+	            Assert.fail("****FAIL:Offer Conditional field not working proper.****");
+	            Azure.updateTestCaseStatus("12146", "Automation Fail");
+	        }
+	    } catch (Exception e) {
+	        // Handle any exceptions that may occur
+	        Azure.updateTestCaseStatus("12146", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Assert.fail("Fail",e);
+	    }
 	}
 
 	// ***Verify Deposits: Verify Deposit functionality working properly or not***
 	public void Deposits(String Broker_Deposit, String Lawyer_Deposit, String Vendor_Deposit)
-			throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
+	        throws InterruptedException, IOException {
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
 
-		Select select = new Select(Deposits);
-		select.selectByValue("Broker");
-		DepositAmountfield.sendKeys(Broker_Deposit);
-		Totalcaption.click();
+	        Select select = new Select(Deposits);
+	        select.selectByValue("Broker");
+	        DepositAmountfield.sendKeys(Broker_Deposit);
+	        Totalcaption.click();
 
-		select.selectByVisibleText("Lawyer");
-		DepositAmountfield.sendKeys(Lawyer_Deposit);
-		Totalcaption.click();
+	        select.selectByVisibleText("Lawyer");
+	        DepositAmountfield.sendKeys(Lawyer_Deposit);
+	        Totalcaption.click();
 
-		select.selectByValue("Vendor");
-		DepositAmountfield.sendKeys(Vendor_Deposit);
-		Totalcaption.click();
+	        select.selectByValue("Vendor");
+	        DepositAmountfield.sendKeys(Vendor_Deposit);
+	        Totalcaption.click();
 
-		String VisibleDeposit = DepositTotal.getText();
-		double JsonTotalDeposit = Double.parseDouble(Broker_Deposit) + Double.parseDouble(Lawyer_Deposit)
-				+ Double.parseDouble(Vendor_Deposit);
-		String Total = CommonFuncs.formatAmountWithCommas(String.valueOf(JsonTotalDeposit));
+	        String VisibleDeposit = DepositTotal.getText();
+	        double JsonTotalDeposit = Double.parseDouble(Broker_Deposit) + Double.parseDouble(Lawyer_Deposit)
+	                + Double.parseDouble(Vendor_Deposit);
+	        String Total = CommonFuncs.formatAmountWithCommas(String.valueOf(JsonTotalDeposit));
 
-		if (Total.equals(VisibleDeposit)) {
-			System.out.println("PASS: Deposit functionality working properly" + "Total Deposit=" + VisibleDeposit);
-			Azure.updateTestCaseStatus("12147", "Automation Pass");
-
-		} else {
-			System.out.println("****FAIL: Deposit functionality is not working as an expected****");
-			Azure.updateTestCaseStatus("12147", "Automation Fail");
-			Assert.fail("****FAIL: Deposit functionality is not working as an expected****");
-		}
+	        if (Total.equals(VisibleDeposit)) {
+	            System.out.println("PASS: Deposit functionality working properly" + "Total Deposit=" + VisibleDeposit);
+	            Azure.updateTestCaseStatus("12147", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL: Deposit functionality is not working as expected****");
+	            Azure.updateTestCaseStatus("12147", "Automation Fail");
+	            Assert.fail("****FAIL: Deposit functionality is not working as expected****");
+	        }
+	    } catch (Exception e) {	       
+	        Azure.updateTestCaseStatus("12147", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Assert.fail("****FAIL: Deposit functionality is not working as expected****",e);
+	    }
 	}
 
 	// ***Verify Deposits: Verify Deposit functionality working properly or not***
-	@SuppressWarnings("unused")
 	public void Consideration(String Contract_Price) throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
 
-		ContractPrice.clear();
-		Thread.sleep(2000);
-		ContractPrice.click();
-		ContractPrice.sendKeys(Contract_Price);
-		Thread.sleep(2000);
-		Totalcaption.click();
+	        ContractPrice.clear();
+	        Thread.sleep(2000);
+	        ContractPrice.click();
+	        ContractPrice.sendKeys(Contract_Price);
+	        Thread.sleep(2000);
+	        Totalcaption.click();
 
-		@SuppressWarnings("static-access")
-		String formattedContractPrice = common.formatAmountWithCommas(String.valueOf(Contract_Price));
-		String ConsiderationText = Consideration.getAttribute("value");
-		String ConsiderationforEregText = ConsiderationforEreg.getAttribute("value");
+	        @SuppressWarnings("static-access")
+	        String formattedContractPrice = common.formatAmountWithCommas(String.valueOf(Contract_Price));
+	        String ConsiderationText = Consideration.getAttribute("value");
+	        String ConsiderationforEregText = ConsiderationforEreg.getAttribute("value");
 
-		if (formattedContractPrice.equals(ConsiderationforEregText)
-				&& ConsiderationText.equals(ConsiderationforEregText)) {
-			System.out.println(
-					"PASS: Consideration$ functionality working properly" + "ConsiderationValue=" + ConsiderationText);
-			Azure.updateTestCaseStatus("12148", "Automation Pass");
-		} else {
-			System.out.println("****FAIL: Consideration$ functionality not working as expected****"
-					+ "ConsiderationValue=" + ConsiderationText);
-			Azure.updateTestCaseStatus("12148", "Automation Fail");
-			Assert.fail("****FAIL: Consideration$ functionality not working as expected****");
-		}
+	        if (formattedContractPrice.equals(ConsiderationforEregText)
+	                && ConsiderationText.equals(ConsiderationforEregText)) {
+	            System.out.println(
+	                    "PASS: Consideration$ functionality working properly" + "ConsiderationValue=" + ConsiderationText);
+	            Azure.updateTestCaseStatus("12148", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL: Consideration$ functionality not working as expected****"
+	                    + "ConsiderationValue=" + ConsiderationText);
+	            Azure.updateTestCaseStatus("12148", "Automation Fail");
+	            Assert.fail("****FAIL: Consideration$ functionality not working as expected****");
+	        }
+	    } catch (Exception e) {	        
+	        Azure.updateTestCaseStatus("12148", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Assert.fail("****FAIL: Consideration$ functionality not working as expected****",e);
+	    }
 	}
 
 	// ***Verify HST: Verify HST functionality working properly or not***
 	@SuppressWarnings("static-access")
 	public void HST(String Contract_Price) throws InterruptedException, IOException {
-		boolean hstApplicablePass = false;
-		boolean includeInPricePass = false;
+	    try {
+	        boolean hstApplicablePass = false;
+	        boolean includeInPricePass = false;
 
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		ContractPrice.clear();
-		Thread.sleep(2000);
-		ContractPrice.click();
-		ContractPrice.sendKeys(Contract_Price);
-		Thread.sleep(2000);
-		Totalcaption.click();
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        ContractPrice.clear();
+	        Thread.sleep(2000);
+	        ContractPrice.click();
+	        ContractPrice.sendKeys(Contract_Price);
+	        Thread.sleep(2000);
+	        Totalcaption.click();
 
-		// Check if HST (GST) is applicable, select the appropriate option
-		driver.findElement(By.xpath("//input[@attrname='IsGSTApplicable'][2]")).click();
+	        // Check if HST (GST) is applicable, select the appropriate option
+	        driver.findElement(By.xpath("//input[@attrname='IsGSTApplicable'][2]")).click();
 
-		double JsonTotalAmount = Double.parseDouble(Contract_Price) * 1.13;
-		double MinusAmount = JsonTotalAmount - Double.parseDouble(Contract_Price);
-		String formattedMinusAmount = common.formatAmountWithCommas(String.valueOf(MinusAmount));
-		String hstAmountfield = HSTAmountfield.getAttribute("value");
+	        double JsonTotalAmount = Double.parseDouble(Contract_Price) * 1.13;
+	        double MinusAmount = JsonTotalAmount - Double.parseDouble(Contract_Price);
+	        String formattedMinusAmount = common.formatAmountWithCommas(String.valueOf(MinusAmount));
+	        String hstAmountfield = HSTAmountfield.getAttribute("value");
 
-		if (hstAmountfield.equals(String.valueOf(formattedMinusAmount))) {
-			System.out.println("PASS :In HST section ,HST Applicable functionality working proper ");
-			hstApplicablePass = true;
-		} else {
-			System.out.println("****FAIL: In HST section ,HST Applicable functionality not  working ass expected****");
-		}
-		// Check the "Included in Price" checkbox
-		driver.findElement(By.xpath("//input[@attrname='IsGSTinPrice']")).click();
+	        if (hstAmountfield.equals(String.valueOf(formattedMinusAmount))) {
+	            System.out.println("PASS :In HST section, HST Applicable functionality working proper");
+	            hstApplicablePass = true;
+	        } else {
+	            System.out.println("****FAIL: In HST section, HST Applicable functionality not working as expected****");
+	        }
+	        // Check the "Included in Price" checkbox
+	        driver.findElement(By.xpath("//input[@attrname='IsGSTinPrice']")).click();
 
-		// Calculate the included-in-price amount and ConsiderationText
-		double reverseHST = Double.parseDouble(Contract_Price) / 1.13;
-		String formattedreverseHST = common.formatAmountWithCommas(String.valueOf(reverseHST));
+	        // Calculate the included-in-price amount and ConsiderationText
+	        double reverseHST = Double.parseDouble(Contract_Price) / 1.13;
+	        String formattedreverseHST = common.formatAmountWithCommas(String.valueOf(reverseHST));
 
-		String considerationText = Consideration.getAttribute("value").replace(",", ""); // Remove commas
-		double considerationValue = Double.parseDouble(considerationText);
+	        String considerationText = Consideration.getAttribute("value").replace(",", ""); // Remove commas
+	        double considerationValue = Double.parseDouble(considerationText);
 
-		String formatedconsiderationValue = common.formatAmountWithCommas(String.valueOf(considerationValue));
+	        String formatedconsiderationValue = common.formatAmountWithCommas(String.valueOf(considerationValue));
 
-		// Calculate the amount (Contract Price $ - ConsiderationText)
-		double hstAmount = Double.parseDouble(Contract_Price) - considerationValue;
+	        // Calculate the amount (Contract Price $ - ConsiderationText)
+	        double hstAmount = Double.parseDouble(Contract_Price) - considerationValue;
 
-		// Format the amount with commas if needed
-		String formattedHSTAmount = common.formatAmountWithCommas(String.valueOf(hstAmount));
+	        // Format the amount with commas if needed
+	        String formattedHSTAmount = common.formatAmountWithCommas(String.valueOf(hstAmount));
 
-		String HSTAmountvalue = HSTAmountfield.getAttribute("value");
+	        String HSTAmountvalue = HSTAmountfield.getAttribute("value");
 
-		if (formattedreverseHST.equals(String.valueOf(formatedconsiderationValue))
-				&& formattedHSTAmount.equals(HSTAmountvalue)) {
-			System.out.println("PASS: In HST section ,Include In Price Checkbox functionality working proper");
-			includeInPricePass = true;
-		} else {
-			System.out.println(
-					"****FAIL:In HST section ,Include In Price Checkbox functionality  not working proper****");
-		}
+	        if (formattedreverseHST.equals(String.valueOf(formatedconsiderationValue))
+	                && formattedHSTAmount.equals(HSTAmountvalue)) {
+	            System.out.println("PASS: In HST section, Include In Price Checkbox functionality working proper");
+	            includeInPricePass = true;
+	        } else {
+	            System.out.println("****FAIL: In HST section, Include In Price Checkbox functionality not working proper****");
+	        }
 
-		// Check if both functionalities passed
-		if (hstApplicablePass && includeInPricePass) {
-			System.out.println("PASS: HST Section working as Expected");
-			Azure.updateTestCaseStatus("12149", "Automation Pass");
-		} else {
-			System.out.println("****FAIL:HST Section not  working as Expected****");
-			Azure.updateTestCaseStatus("12149", "Automation Fail");
-			Assert.fail("****FAIL:HST Section not  working as Expected****");
-		}
+	        // Check if both functionalities passed
+	        if (hstApplicablePass && includeInPricePass) {
+	            System.out.println("PASS: HST Section working as Expected");
+	            Azure.updateTestCaseStatus("12149", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL: HST Section not working as Expected****");
+	            Azure.updateTestCaseStatus("12149", "Automation Fail");
+	            Assert.fail("****FAIL: HST Section not working as Expected****");
+	        }
+	    } catch (Exception e) {
+	        // Handle any exceptions that may occur
+	        Azure.updateTestCaseStatus("12149", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	        Assert.fail("****FAIL: HST Section not working as Expected****",e);
+	    }
 	}
+
 
 	// ***Real Estate Commissions: Verify Broker field with Search REALTORS® across Canada ***
 	public void Broker(String Broker_LastName) throws InterruptedException, IOException {
-		Thread.sleep(2000);
-		Contract_Tab.click();
-		common.switchToIframe(common.MiddlePortionFrame);
-		Select_Broker.click();
-		common.switchToIframe(common.PopUpFrame);
-		Broker_Lastname.sendKeys(Broker_LastName);
-		Broker_Search.click();
+	    try {
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        Select_Broker.click();
+	        common.switchToIframe(common.PopUpFrame);
+	        Broker_Lastname.sendKeys(Broker_LastName);
+	        Broker_Search.click();
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-		try {
+	        try {
+	            wait.until(ExpectedConditions.alertIsPresent());
+	            Alert alert = driver.switchTo().alert();
+	            alert.accept();
+	            driver.switchTo().defaultContent();
+	            driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
+	            System.out.println("***No Matching Broker name Found***");
+	            Azure.updateTestCaseStatus("12150", "Automation Fail");
+	            Assert.fail("****FAIL: No Matching Broker name Found****");
+	        } catch (TimeoutException e) {
+	            waitForWebElementToAppear(Result_List);
 
-			wait.until(ExpectedConditions.alertIsPresent());
-			Alert alert = driver.switchTo().alert();
-			alert.accept();
-			driver.switchTo().defaultContent();
-			driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
-			System.out.println("***No Matching Broker name Found***");
-			Azure.updateTestCaseStatus("12150", "Automation Fail");
-			Assert.fail("****FAIL: No Matching Broker name Found****");
-		} catch (TimeoutException e) {
+	            List<WebElement> BrokerOptions = Broker_List;
 
-			waitForWebElementToAppear(Result_List);
+	            if (BrokerOptions.size() > 0) {
+	                String text = BrokerOptions.get(0).getText();
+	                if (text.toLowerCase().contains(Broker_LastName.toLowerCase())) {
+	                    BrokerOptions.get(0).click();
+	                    driver.findElement(By.xpath("//button[text()='OK' and @subnodestatus='0']")).click();
+	                    common.switchToIframe(common.MiddlePortionFrame);
 
-			List<WebElement> BrokerOptions = Broker_List;
+	                    String text1 = Broker_Field.getText();
 
-			if (BrokerOptions.size() > 0) {
-				String text = BrokerOptions.get(0).getText();
-				if (text.toLowerCase().contains(Broker_LastName.toLowerCase())) {
-					BrokerOptions.get(0).click();
-					driver.findElement(By.xpath("//button[text()='OK' and @subnodestatus='0']")).click();
-					common.switchToIframe(common.MiddlePortionFrame);
-
-					String text1 = Broker_Field.getText();
-
-					if (text1.contains(text)) {
-						System.out.println(
-								"PASS: Broker name is the same as selected  that in the Search REALTORS® across Canada "
-										+ "Broker Name=" + text1);
-						Azure.updateTestCaseStatus("12150", "Automation Pass");
-					} else {
-						System.out.println("****FAIL: Broker name does not match.****");
-						Azure.updateTestCaseStatus("12150", "Automation Fail");
-						Assert.fail("****FAIL: Broker name does not match.****");
-					}
-				} else {
-					System.out.println("****FAIL: Broker name does not match.****");
-					Azure.updateTestCaseStatus("12150", "Automation Fail");
-					Assert.fail("****FAIL: Broker name does not match.****");
-				}
-			}
-		}
+	                    if (text1.contains(text)) {
+	                        System.out.println("PASS: Broker name is the same as selected in the Search REALTORS® across Canada "
+	                                + "Broker Name=" + text1);
+	                        Azure.updateTestCaseStatus("12150", "Automation Pass");
+	                    } else {
+	                        System.out.println("****FAIL: Broker name does not match.****");
+	                        Azure.updateTestCaseStatus("12150", "Automation Fail");
+	                        Assert.fail("****FAIL: Broker name does not match.****");
+	                    }
+	                } else {
+	                    System.out.println("****FAIL: Broker name does not match.****");
+	                    Azure.updateTestCaseStatus("12150", "Automation Fail");
+	                    Assert.fail("****FAIL: Broker name does not match.****");
+	                }
+	            }
+	        }
+	    } catch (Exception ex) {
+	        Azure.updateTestCaseStatus("12150", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
+	        Assert.fail("Error",ex);
+	    }
 	}
 
-	    // ***Real Estate Commissions: Verify Broker % of Contract Price functionality
-		@SuppressWarnings({ "static-access", "unused" })
-		public void Broker_ContractPrice(String Contract_Price, String Broker_ContractPrice) throws InterruptedException, IOException {
-		    boolean withouthstApplicablePass = false;
-		    boolean withhstApplicablePass = false;
+	// ***Real Estate Commissions: Verify Broker % of Contract Price functionality
+	@SuppressWarnings({ "static-access", "unused" })
+	public void Broker_ContractPrice(String Contract_Price, String Broker_ContractPrice) throws InterruptedException, IOException {
+	    try {
+	        boolean withouthstApplicablePass = false;
+	        boolean withhstApplicablePass = false;
 
-		    Thread.sleep(2000);
-		    Contract_Tab.click();
-		    common.switchToIframe(common.MiddlePortionFrame);
-		    ContractPrice.clear();
-		    Thread.sleep(2000);
-		    ContractPrice.click();
-		    ContractPrice.sendKeys(Contract_Price);
+	        Thread.sleep(2000);
+	        Contract_Tab.click();
+	        common.switchToIframe(common.MiddlePortionFrame);
+	        ContractPrice.clear();
+	        Thread.sleep(2000);
+	        ContractPrice.click();
+	        ContractPrice.sendKeys(Contract_Price);
 
-		    Thread.sleep(2000);
-		    Contract_PriceField.click();
-		    Contract_PriceField.clear();
-		    Contract_PriceField.sendKeys(Broker_ContractPrice);
-		     //Unchecked HST checkbox
-		  		HST_checkbox.click();
-		    // Convert Contract_Price and Broker_ContractPrice to double for calculations
-		    double contractPrice = Double.parseDouble(Contract_Price);
-		    double brokerPercentage = Double.parseDouble(Broker_ContractPrice);
+	        Thread.sleep(2000);
+	        Contract_PriceField.click();
+	        Contract_PriceField.clear();
+	        Contract_PriceField.sendKeys(Broker_ContractPrice);
+	        // Unchecked HST checkbox
+	        HST_checkbox.click();
+	        // Convert Contract_Price and Broker_ContractPrice to double for calculations
+	        double contractPrice = Double.parseDouble(Contract_Price);
+	        double brokerPercentage = Double.parseDouble(Broker_ContractPrice);
 
-		    // Calculate the commission amount
-		    double totalCommissionAmount = (brokerPercentage / 100) * contractPrice;
-		    String formattedCommissionAmount = common.formatAmountWithCommas(String.valueOf(totalCommissionAmount));
-		    String Commission_Amount = Commission_Amount$.getAttribute("value");
-		    String Total_Commission = Total_Commission$.getAttribute("value");
-		    String Amount_Owing_To_Broker = Amount_Owing_To_Broker$.getAttribute("value");
+	        // Calculate the commission amount
+	        double totalCommissionAmount = (brokerPercentage / 100) * contractPrice;
+	        String formattedCommissionAmount = common.formatAmountWithCommas(String.valueOf(totalCommissionAmount));
+	        String Commission_Amount = Commission_Amount$.getAttribute("value");
+	        String Total_Commission = Total_Commission$.getAttribute("value");
+	        String Amount_Owing_To_Broker = Amount_Owing_To_Broker$.getAttribute("value");
 
-		    if (Commission_Amount.equals(formattedCommissionAmount) && Total_Commission.equals(formattedCommissionAmount) && Amount_Owing_To_Broker.equals(formattedCommissionAmount)) {
-		        System.out.println("PASS: Without checked HST checkbox, % of Contract Price functionality working properly");
-		        withouthstApplicablePass = true;
-		    } else {
-		        System.out.println("****FAIL: Without checked HST checkbox, % of Contract Price functionality not working properly****");
-		        Assert.fail();
-		    }
+	        if (Commission_Amount.equals(formattedCommissionAmount) && Total_Commission.equals(formattedCommissionAmount) && Amount_Owing_To_Broker.equals(formattedCommissionAmount)) {
+	            System.out.println("PASS: Without checked HST checkbox, % of Contract Price functionality working properly");
+	            withouthstApplicablePass = true;
+	        } else {
+	            System.out.println("****FAIL: Without checked HST checkbox, % of Contract Price functionality not working properly****");
+	            Azure.updateTestCaseStatus("12151", "Automation Fail");
+	            Assert.fail();
+	        }
 
-		    HST_checkbox.click();
+	        HST_checkbox.click();
 
-		    // Remove commas from the string before parsing it into a double
-		    String sanitizedTotalCommission = Total_Commission.replace(",", "");
+	        // Remove commas from the string before parsing it into a double
+	        String sanitizedTotalCommission = Total_Commission.replace(",", "");
 
-		    // Now you can parse the sanitized string into a double
-		    double totalCommissionDouble = Double.parseDouble(sanitizedTotalCommission);
+	        // Now you can parse the sanitized string into a double
+	        double totalCommissionDouble = Double.parseDouble(sanitizedTotalCommission);
 
-		    // Calculate the commission amount with HST
-		    double commissionAmountWithHST = totalCommissionDouble * 1.13;
-		    String formattedCommissionAmountWithHST = common.formatAmountWithCommas(String.valueOf(commissionAmountWithHST));
-		    String Total_Commission1 = Total_Commission$.getAttribute("value");
+	        // Calculate the commission amount with HST
+	        double commissionAmountWithHST = totalCommissionDouble * 1.13;
+	        String formattedCommissionAmountWithHST = common.formatAmountWithCommas(String.valueOf(commissionAmountWithHST));
+	        String Total_Commission1 = Total_Commission$.getAttribute("value");
 
-		    // Parse HST value from the web element and handle any comma separators
-		    String hstValue = HST$_field.getAttribute("value").replace(",", "");
-		    double hstValueDouble = Double.parseDouble(hstValue);
-		    String formattedHstValueDouble = common.formatAmountWithCommas(String.valueOf(hstValueDouble));
+	        // Parse HST value from the web element and handle any comma separators
+	        String hstValue = HST$_field.getAttribute("value").replace(",", "");
+	        double hstValueDouble = Double.parseDouble(hstValue);
+	        String formattedHstValueDouble = common.formatAmountWithCommas(String.valueOf(hstValueDouble));
 
-		    // Calculate the expected HST value
-		    double hstCalculation = commissionAmountWithHST - totalCommissionDouble;
-		    String formattedHstCalculation = common.formatAmountWithCommas(String.valueOf(hstCalculation));
+	        // Calculate the expected HST value
+	        double hstCalculation = commissionAmountWithHST - totalCommissionDouble;
+	        String formattedHstCalculation = common.formatAmountWithCommas(String.valueOf(hstCalculation));
 
-		    if (formattedHstValueDouble.equals(formattedHstCalculation) && formattedCommissionAmountWithHST.equals(Total_Commission1)) {
-		        System.out.println("PASS: With checked HST checkbox, % of Contract Price functionality working properly");		        
-		        withhstApplicablePass = true;
-		        Azure.updateTestCaseStatus("12151", "Automation Pass");
-		    } else {
-		        System.out.println("****FAIL: With checked HST checkbox, % of Contract Price functionality not working properly****");
-		        Azure.updateTestCaseStatus("12151", "Automation Fail");
-		        Assert.fail();
-		    }
-		}
+	        if (formattedHstValueDouble.equals(formattedHstCalculation) && formattedCommissionAmountWithHST.equals(Total_Commission1)) {
+	            System.out.println("PASS: With checked HST checkbox, % of Contract Price functionality working properly");
+	            withhstApplicablePass = true;
+	            Azure.updateTestCaseStatus("12151", "Automation Pass");
+	        } else {
+	            System.out.println("****FAIL: With checked HST checkbox, % of Contract Price functionality not working properly****");
+	            Azure.updateTestCaseStatus("12151", "Automation Fail");
+	            Assert.fail();
+	        }
+	    } catch (Exception ex) {
+	        Azure.updateTestCaseStatus("12151", "Automation Fail");
+	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
+	        Assert.fail("Error",ex);
+	    }
+	}
 
 
 }
