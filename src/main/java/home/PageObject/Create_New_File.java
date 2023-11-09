@@ -113,9 +113,10 @@ public class Create_New_File extends AbstractComponent {
 	            Assert.fail("****Fail: Purchase File not Created Successfully****");
 	            
 	        }
-	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12048", "Automation Error",ex.getMessage());
-	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	    } catch (Exception e) {
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12048", "Automation Error",exceptionTitle);
+	        Assert.fail("****Fail: Exception occurred during file creation****", e);
 
 	    }
 	    return new FileList(driver);
@@ -154,9 +155,10 @@ public class Create_New_File extends AbstractComponent {
 	            Azure.updateTestCaseStatus("12049", "Automation Fail","Fail: Sale File not Created Successfully");
 	            Assert.fail("****Fail: Sale File not Created Successfully****");
 	        }
-	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12049", "Automation Error",ex.getMessage());
-	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	    } catch (Exception e) {
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12049", "Automation Error",exceptionTitle);
+	        Assert.fail("****Fail: Exception occurred during file creation****", e);
 	        
 	    }
 	    return new FileList(driver);
@@ -197,9 +199,10 @@ public class Create_New_File extends AbstractComponent {
 	            Azure.updateTestCaseStatus("12050", "Automation Fail","Fail: Mortgage File not Created Successfully");
 	            Assert.fail("*****Fail: Mortgage File not Created Successfully*****");
 	        }
-	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12050", "Automation Error",ex.getMessage());	       
-	        Assert.fail("****Fail: Exception occurred during file creation****", ex);
+	    } catch (Exception e) {
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12050", "Automation Error",exceptionTitle);	       
+	        Assert.fail("****Fail: Exception occurred during file creation****", e);
 	    }
 	    return new FileList(driver);
 	}
@@ -227,9 +230,10 @@ public class Create_New_File extends AbstractComponent {
 			            Azure.updateTestCaseStatus("12051", "Automation Fail","Fail: Create button enabled even when the filename is available");
 			            Assert.fail("*****Fail: Create button enabled even when the filename is available*****");
 			        }
-			    } catch (Exception ex) {			       
-			        Azure.updateTestCaseStatus("12051", "Automation Error",ex.getMessage());
-			        Assert.fail("Fail",ex);
+			    } catch (Exception e) {
+			    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+			        Azure.updateTestCaseStatus("12051", "Automation Error",exceptionTitle);
+			        Assert.fail("Fail",e);
 			    }
 			    
 			}
@@ -256,9 +260,10 @@ public class Create_New_File extends AbstractComponent {
 	            Azure.updateTestCaseStatus("12052", "Automation Fail","Fail: Create button Disabled even filename is available");
 	            Assert.fail("*****Fail: Create button Disabled even filename is available*****");
 	        }
-	    } catch (Exception ex) {
-	    	Azure.updateTestCaseStatus("12052", "Automation Error",ex.getMessage());
-	    	Assert.fail("Fail",ex);
+	    } catch (Exception e) {
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	    	Azure.updateTestCaseStatus("12052", "Automation Error",exceptionTitle);
+	    	Assert.fail("Fail",e);
 	       
 	        
 	    }
@@ -295,7 +300,8 @@ public class Create_New_File extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {
-	    	  Azure.updateTestCaseStatus("12053", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	    	  Azure.updateTestCaseStatus("12053", "Automation Error",exceptionTitle);
 	    	Assert.fail("Fail",e);	       
 	        isVerificationSuccessful = false;
 	    }
@@ -342,7 +348,8 @@ public class Create_New_File extends AbstractComponent {
 				Assert.fail("*****Fail: No warning message displayed for duplicate file name.*****");
 			}
 		} catch (NoAlertPresentException e) {
-			Azure.updateTestCaseStatus("12054", "Automation Error",e.getMessage());		
+			String exceptionTitle = e.getMessage().split("\n")[0]; 
+			Azure.updateTestCaseStatus("12054", "Automation Error",exceptionTitle);		
 			Assert.fail("Fail",e);
 				
 		}

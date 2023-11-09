@@ -103,7 +103,8 @@ public class FileList extends AbstractComponent {
 	            	 Assert.fail("Fail");
 	            }
 	        } catch (Exception e) {
-	        	 Azure.updateTestCaseStatus("12067", "Automation Error", e.getMessage());
+	        	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        	 Azure.updateTestCaseStatus("12067", "Automation Error", exceptionTitle);
 	           Assert.fail("Fail",e);
 	            e.printStackTrace(); 
 	        }
@@ -178,7 +179,8 @@ public class FileList extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {
-	    	 Azure.updateTestCaseStatus("12066", "Automation Fail",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	    	 Azure.updateTestCaseStatus("12066", "Automation Fail",exceptionTitle);
 	    	 Assert.fail("Fail",e);
 	         e.printStackTrace();
 	    }

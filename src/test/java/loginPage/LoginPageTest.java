@@ -49,10 +49,7 @@ public class LoginPageTest extends BaseTest { // inherit
 	        e.printStackTrace();
 	    } 
 	    }
-	
-
-
-	
+		
 	@Test
 	public void Verify_validation_when_username_is_wrong() throws IOException {
 	    LoginPage LoginPage = new LoginPage(driver);

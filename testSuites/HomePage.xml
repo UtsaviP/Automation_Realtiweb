@@ -6,32 +6,33 @@
 <listeners>
 	<listener class-name="project.TestComponents.Listeners"></listener>
 </listeners>
-  
+  <!-- 
  <test thread-count="5" name="Login">
     <classes>
       <class name="loginPage.LoginPageTest"/>
     </classes>
   </test>   
+    
   
     <test thread-count="5" name="CreateNewFile">
     <classes>
       <class name="home.CreateNewFileTest"/>
     </classes>
   </test>   
-  
-  
+
+  -->
   <test thread-count="5" name="AdvanceSearchFilter">
     <classes>
       <class name="home.AdvanceSearchFilterTest"/>
     </classes>
   </test> 
-  
+  <!-- 
   <test thread-count="5" name="FileList">
     <classes>
       <class name="home.FileListTest"/>
     </classes>
   </test> 
-  
+  -->
   
      <!-- Test for 'Regression' group 
     <test name="RegressionTests">

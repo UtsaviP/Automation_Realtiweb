@@ -227,8 +227,8 @@ public class Property extends AbstractComponent {
 	        }
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
-	        System.out.println("****FAIL: An exception occurred while verifying Postal code****");
-	        Azure.updateTestCaseStatus("12227", "Automation Error",ex.getMessage());
+	        String exceptionTitle = ex.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12227", "Automation Error",exceptionTitle);
 	        Assert.fail("****FAIL: An exception occurred while verifying Postal code****",ex);
 	    }
 	}
@@ -325,12 +325,19 @@ public class Property extends AbstractComponent {
 	}
 
 	private void handleException(Exception e) throws IOException {
-	    System.out.println("An exception occurred: " + e.getMessage());
-	    Azure.updateTestCaseStatus("12230", "Automation Fail",e.getMessage());
+		String exceptionTitle = e.getMessage().split("\n")[0]; 
+	    Azure.updateTestCaseStatus("12230", "Automation Error",exceptionTitle);
 	    Assert.fail("Error",e);
 	}
-
 }
+
+	
+
+	
+	
+	
+	
+
 
 
 		    

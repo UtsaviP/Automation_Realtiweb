@@ -52,7 +52,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By Closing_Before = By.xpath("//body/div[@id='root']/main[1]//div[3]/div[4]/div[1]/div[1]/div[1]/input[1]");
 	By Propertyaddress = By.xpath("//div[@class='col-6 col']/input");
 	By Propertytype = By.xpath("//div[@class='mb-5 row']/div[2]/label[text()='Property Type']/following-sibling::*");
-	By menu_property = By.xpath("//span[@class='item-name' and contains(text(),'Property')]");
+	By menu_property = By.xpath("//span[@class='item-name ' and contains(text(),'Property')]");
 	By FilePropertyType = By.cssSelector("select[required='1'][requiredstatus='1'][attrname='PropertyType']");
 	By LawyerName = By.xpath("//div[@class='row']//div[1]//input[1]");
 	By FileLawyername = By
@@ -134,7 +134,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12064", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12064", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing the Cancel button.*****",e);
 	        return new FileList(driver);
 	    }
@@ -195,8 +196,9 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 
 	        return new FileList(driver);
-	    } catch (Exception e) {	       	        
-	        Azure.updateTestCaseStatus("12068", "Automation Error",e.getMessage());
+	    } catch (Exception e) {	       	    
+	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12068", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing File Types Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -258,8 +260,9 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 
 	        return new FileList(driver);
-	    } catch (Exception e) {	       	       
-	        Azure.updateTestCaseStatus("12069", "Automation Error",e.getMessage());
+	    } catch (Exception e) {	       	
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12069", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing File Status Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -303,8 +306,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
-	       
-	        Azure.updateTestCaseStatus("12070", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12070", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing Responsible Lawyer criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -347,7 +350,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12078", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12078", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing Firm Contact criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -405,8 +409,9 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	        return new FileList(driver);
-	    } catch (Exception e) {	        	        
-	        Azure.updateTestCaseStatus("12071", "Automation Error",e.getMessage());
+	    } catch (Exception e) {	   
+	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12071", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing ClientName criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -471,8 +476,9 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	        return new FileList(driver);
-	    } catch (Exception e) {	        	       
-	        Azure.updateTestCaseStatus("12072", "Automation Error",e.getMessage());
+	    } catch (Exception e) {	        	
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12072", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Reline Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -548,8 +554,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
-	       
-	        Azure.updateTestCaseStatus("12073", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12073", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail : An exception occurred while testing Closing Date Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -623,7 +629,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12074", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12074", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Property Address criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -641,7 +648,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0];
+	        Azure.updateTestCaseStatus("12075", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Property Type criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -670,11 +678,14 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****");
 	            System.out.println("****Fail: Property Type name=" + PropertyTypeText + " match not found in the file content.****");
 	        }
-	    } catch (Exception e) {	       
+	    } catch (Exception e) {
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
-	        Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****",e);
+	        
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12075", "Automation Error", exceptionTitle);
+	        Assert.fail("*****Fail: An exception occurred while verifying Property Type match.*****", e);
 	    }
+
 	}
 
 	private void performSearchforPropertytype(String[] propertyTypes, boolean isIncludeCriteria) throws IOException {
@@ -704,8 +715,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception e) {	        
-	        
-	        Azure.updateTestCaseStatus("12075", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0];
+	        Azure.updateTestCaseStatus("12075", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while performing Property Type search.*****",e);
 	    }
 	}
@@ -746,7 +757,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12076", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0];
+	        Azure.updateTestCaseStatus("12076", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Other Side Lawyer Name criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -794,8 +806,8 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	        return new FileList(driver);
 	    } catch (Exception e) {	      
-	      
-	        Azure.updateTestCaseStatus("12077", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0];
+	        Azure.updateTestCaseStatus("12077", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Other Side File Name criteria.*****",e);
 	        return new FileList(driver);
 	    }

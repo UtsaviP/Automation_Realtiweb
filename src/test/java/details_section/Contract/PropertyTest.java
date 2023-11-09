@@ -59,8 +59,7 @@ public class PropertyTest extends BaseTest {
 			PropertyTab.Survey();
 			
 		}
-	
-	
+		
 	private void launchApplicationAndLogin() throws InterruptedException, IOException {
 		launchApplicationAndLogin(loginData);
 	}

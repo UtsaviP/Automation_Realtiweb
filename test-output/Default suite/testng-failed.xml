@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="home.FileListTest">
+      <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_Archive_and_Activate_option_working_proper_or_not" invocation-numbers="0"/>
-          <include name="setupLoginData"/>
-          <include name="tearDown"/>
           <include name="initializeTest"/>
+          <include name="setupLoginData"/>
+          <include name="Verify_In_Advance_search_Property_Type_Criteria_working_or_not" invocation-numbers="0"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- home.FileListTest -->
+      </class> <!-- home.AdvanceSearchFilterTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -169,8 +169,9 @@ public class Contract extends AbstractComponent {
 	            
 	        }
 	    } catch (Exception e) {	       
-	        Azure.updateTestCaseStatus("12141", "Automation Error",e.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	    	e.printStackTrace();
+	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12141", "Automation Error",exceptionTitle);	        
 	        Assert.fail("Fail",e);
 	    }
 	}
@@ -244,9 +245,8 @@ public class Contract extends AbstractComponent {
 	            Assert.fail("****FAIL: Added Closing Date and in Statement of Adjustments>Adjustment date does not match****");
 	        }
 	    } catch (Exception e) {
-	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12145", "Automation Error",e.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12145", "Automation Error",exceptionTitle);	     
 	       Assert.fail("Fail",e);
 	    }
 	}
@@ -280,9 +280,8 @@ public class Contract extends AbstractComponent {
 	          
 	        }
 	    } catch (Exception e) {
-	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12146", "Automation Error",e.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12146", "Automation Error",exceptionTitle);	     
 	        Assert.fail("Fail",e);
 	    }
 	}
@@ -322,8 +321,9 @@ public class Contract extends AbstractComponent {
 	            Assert.fail("****FAIL: Deposit functionality is not working as expected****");
 	        }
 	    } catch (Exception e) {	       
-	        Azure.updateTestCaseStatus("12147", "Automation Error",e.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	    	e.printStackTrace();
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12147", "Automation Error",exceptionTitle);	       
 	        Assert.fail("****FAIL: Deposit functionality is not working as expected****",e);
 	    }
 	}
@@ -358,9 +358,10 @@ public class Contract extends AbstractComponent {
 	            Azure.updateTestCaseStatus("12148", "Automation Fail","FAIL: Consideration$ functionality not working as expected");
 	            Assert.fail("****FAIL: Consideration$ functionality not working as expected****");
 	        }
-	    } catch (Exception e) {	        
-	        Azure.updateTestCaseStatus("12148", "Automation Error",e.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + e.getMessage());
+	    } catch (Exception e) {	
+	    	e.printStackTrace();
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12148", "Automation Error",exceptionTitle);	        
 	        Assert.fail("****FAIL: Consideration$ functionality not working as expected****",e);
 	    }
 	}
@@ -433,8 +434,9 @@ public class Contract extends AbstractComponent {
 	            Assert.fail("****FAIL: HST Section not working as Expected****");
 	        }
 	    } catch (Exception e) {
-	        // Handle any exceptions that may occur
-	        Azure.updateTestCaseStatus("12149", "Automation Error",e.getMessage());	        
+	    	e.printStackTrace();
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12149", "Automation Error",exceptionTitle);	        
 	        Assert.fail("****FAIL: HST Section not working as Expected****",e);
 	    }
 	}
@@ -491,7 +493,9 @@ public class Contract extends AbstractComponent {
 	            }
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12150", "Automation Error",ex.getMessage());
+	    	ex.printStackTrace();
+	    	String exceptionTitle = ex.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12150", "Automation Error",exceptionTitle);
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
 	        Assert.fail("Error",ex);
 	    }
@@ -568,8 +572,9 @@ public class Contract extends AbstractComponent {
 	            Assert.fail();
 	        }
 	    } catch (Exception ex) {
-	        Azure.updateTestCaseStatus("12151", "Automation Error",ex.getMessage());
-	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
+	    	ex.printStackTrace();
+	    	String exceptionTitle = ex.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12151", "Automation Error",exceptionTitle);	      
 	        Assert.fail("Error",ex);
 	    }
 	}

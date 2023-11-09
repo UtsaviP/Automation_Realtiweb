@@ -197,7 +197,8 @@ public class Basic extends AbstractComponent {
 	        }
 	    } catch (Exception e) {	        
 	        e.printStackTrace();
-	        Azure.updateTestCaseStatus("12080", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12080", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Responsible Lawyer field.*****",e);
 	    }
 	}
@@ -243,8 +244,8 @@ public class Basic extends AbstractComponent {
 	            System.out.println("*****FAIL: One or more Firm Contact operations failed*****");
 	        }
 	    } catch (Exception e) {
-	        
-	        Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12081", "Automation Error",exceptionTitle);
 	        Assert.fail("*****FAIL: Something went wrong in FirmContactAddEditClear functionality*****",e);	     
 	        e.printStackTrace();
 	    }
@@ -272,7 +273,8 @@ public class Basic extends AbstractComponent {
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS: Firm Contact field 'Add' functionality working Properly");
 		} catch (Exception e) {		
-			 Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
+			String exceptionTitle = e.getMessage().split("\n")[0]; 
+			 Azure.updateTestCaseStatus("12081", "Automation Error",exceptionTitle);
 			Assert.fail("Fail",e);
 		}
 	}
@@ -295,7 +297,8 @@ public class Basic extends AbstractComponent {
 			Assert.assertEquals(displayedStaffName.trim(), staffMemberName.trim());
 			System.out.println("PASS :Firm Contact field 'Edit' functionality working Properly");
 		} catch (Exception e) {
-			 Azure.updateTestCaseStatus("12081", "Automation Error",e.getMessage());
+			String exceptionTitle = e.getMessage().split("\n")[0]; 
+			 Azure.updateTestCaseStatus("12081", "Automation Error",exceptionTitle);
 			Assert.fail("Fail",e);
 		}
 	}
@@ -313,7 +316,8 @@ public class Basic extends AbstractComponent {
 						"****FAIL :Firm Contact field 'Clear' functionality not working Properly****");
 			}
 		} catch (Exception e) {
-			 Azure.updateTestCaseStatus("12081", "Automation Fail",e.getMessage());
+			String exceptionTitle = e.getMessage().split("\n")[0]; 
+			 Azure.updateTestCaseStatus("12081", "Automation Fail",exceptionTitle);
 			Assert.fail("Fail",e);
 		}
 	}
@@ -344,7 +348,8 @@ public class Basic extends AbstractComponent {
 	            System.out.println("Any Conveyancer name is not available in the Pop Up");
 	        }
 	    } catch (Exception ex) {
-	    	 Azure.updateTestCaseStatus("12082", "Automation Error",ex.getMessage());	           
+	    	String exceptionTitle = ex.getMessage().split("\n")[0]; 
+	    	 Azure.updateTestCaseStatus("12082", "Automation Error",exceptionTitle);	           
              Assert.fail("*****FAIL: Conveyancer field functionality working Improperly*****",ex);
 	    }
 	}
@@ -379,7 +384,8 @@ public class Basic extends AbstractComponent {
 	        }
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
-	        Azure.updateTestCaseStatus("12083", "Automation Error",ex.getMessage());
+	        String exceptionTitle = ex.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12083", "Automation Error",exceptionTitle);
 	        Assert.fail("*****FAIL: An exception occurred while testing File Configuration.*****",ex);
 	    }
 	}
@@ -494,7 +500,8 @@ public class Basic extends AbstractComponent {
 			    Azure.updateTestCaseStatus("12140", "Automation Pass","");
 			    System.out.println("PASS: Purchasers names matches in the Contract tab >Purchasers(s) field ");
 			} catch (AssertionError e) {
-			    Azure.updateTestCaseStatus("12140", "Automation Error",e.getMessage());
+				 String exceptionTitle = e.getMessage().split("\n")[0]; 
+			    Azure.updateTestCaseStatus("12140", "Automation Error",exceptionTitle);
 			    System.out.println("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field *****");
 			    Assert.fail("****FAIL: Purchasers names does not matched in the Contract tab >Purchasers(s) field**** ");
 			}
@@ -621,7 +628,8 @@ public class Basic extends AbstractComponent {
 				    Azure.updateTestCaseStatus("12143", "Automation Pass","");
 				    System.out.println("PASS: Vendors names matches in the Contract tab >Vendor(s) field ");
 				} catch (AssertionError e) {
-				    Azure.updateTestCaseStatus("12143", "Automation Fail","FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field");				   
+					String exceptionTitle = e.getMessage().split("\n")[0]; 
+				    Azure.updateTestCaseStatus("12143", "Automation Error",exceptionTitle);				   
 				    Assert.fail("****FAIL: Vendors names does not matched in the Contract tab >Vendor(s) field**** ");
 				}
 			}
@@ -676,7 +684,8 @@ public class Basic extends AbstractComponent {
 	        Azure.updateTestCaseStatus("12093", "Automation Fail","FAIL: Selected Company name is not shown in Fire insurance field");
 	    } catch (Exception e) {
 	        e.printStackTrace();	        
-	        Azure.updateTestCaseStatus("12093", "Automation Error",e.getMessage());
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12093", "Automation Error",exceptionTitle);
 	        Assert.fail("Fail",e);
 	    }
 	}
@@ -732,8 +741,9 @@ public class Basic extends AbstractComponent {
 	                "*****FAIL: Selected Company name is not shown in Mortgage Broker field*****");
 	        
 	    } catch (Exception e) {
-	        e.printStackTrace();	        
-	        Azure.updateTestCaseStatus("12094", "Automation Error",e.getMessage());
+	        e.printStackTrace();	     
+	        String exceptionTitle = e.getMessage().split("\n")[0]; 
+	        Azure.updateTestCaseStatus("12094", "Automation Error",exceptionTitle);
 	        Assert.fail("Fail", e);
 	    }
 	}
@@ -763,7 +773,8 @@ public class Basic extends AbstractComponent {
 	        }
 	        
 	    } catch (Exception e) {
-	    	Azure.updateTestCaseStatus("12095", "Automation Error",e.getMessage());
+	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
+	    	Azure.updateTestCaseStatus("12095", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: Mortgage Broker Fee not showing Trust Account Screen*****");
 	        
 	        

@@ -9,6 +9,7 @@
       <class name="home.AdvanceSearchFilterTest">
         <methods>
           <include name="launchApplication"/>
+          <include name="Verify_In_Advance_search_File_Types_Criteria_working_or_not" invocation-numbers="0"/>
           <include name="initializeTest"/>
           <include name="setupLoginData"/>
           <include name="Verify_In_Advance_search_Property_Type_Criteria_working_or_not" invocation-numbers="0"/>

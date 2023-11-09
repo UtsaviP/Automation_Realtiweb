@@ -9,14 +9,16 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">251,554</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">80,157</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">home.FileListTest</td><td><a href="#m0">Verify_Archive_and_Activate_option_working_proper_or_not</a></td><td rowspan="1">1698679104309</td><td rowspan="1">24851</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">home.FileListTest</td><td><a href="#m1">Verify_Free_search_Functionality_working_or_not</a></td><td rowspan="1">1698679133080</td><td rowspan="1">217435</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">home.AdvanceSearchFilterTest</td><td><a href="#m0">Verify_In_Advance_search_Property_Type_Criteria_working_or_not</a></td><td rowspan="1">1699542303438</td><td rowspan="1">74065</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">home.FileListTest#Verify_Archive_and_Activate_option_working_proper_or_not</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>{Account=LDDTesting, Purchase_FileName=AutomationFile_Purchase, User=Automation, Password=Automation}</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: *****Fail : Status has not been changed from Active to archived.*****
-	at org.testng.Assert.fail(Assert.java:111)
-	at home.PageObject.FileList.ArchiveAndActiveOption(FileList.java:93)
-	at home.FileListTest.Verify_Archive_and_Activate_option_working_proper_or_not(FileListTest.java:32)
+<h2>Default test</h2><h3 id="m0">home.AdvanceSearchFilterTest#Verify_In_Advance_search_Property_Type_Criteria_working_or_not</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_Purchase, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: *****Fail: An exception occurred while verifying Property Type match.*****
+	at org.testng.Assert.fail(Assert.java:99)
+	at home.PageObject.Advance_Search_Filter.verifyPropertyTypeMatch(Advance_Search_Filter.java:677)
+	at home.PageObject.Advance_Search_Filter.performSearchforPropertytype(Advance_Search_Filter.java:703)
+	at home.PageObject.Advance_Search_Filter.AdvanceSearchPropertyType(Advance_Search_Filter.java:638)
+	at home.AdvanceSearchFilterTest.Verify_In_Advance_search_Property_Type_Criteria_working_or_not(AdvanceSearchFilterTest.java:100)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -45,7 +47,18 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class=&apos;item-name&apos; and contains(text(),&apos;Property&apos;)] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.123, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53959}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53959/devtoo..., se:cdpVersion: 119.0.6045.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8b7cf5addc8b7c08b27ca8c36c6ddcd4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at project.AbstractComponents.AbstractComponent.waitForElementToAppear(AbstractComponent.java:98)
+	at home.PageObject.Advance_Search_Filter.switchToFrameAndClickMenu(Advance_Search_Filter.java:808)
+	at home.PageObject.Advance_Search_Filter.verifyPropertyTypeMatch(Advance_Search_Filter.java:652)
+	... 31 more
 </div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">home.FileListTest#Verify_Free_search_Functionality_working_or_not</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_Purchase, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

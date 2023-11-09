@@ -12,7 +12,7 @@ import org.apache.http.util.EntityUtils;
 public class AzureDevOpsIntegration {
 
     public void updateTestCaseStatus(String testCaseId, String status,String errorMessage) throws IOException {
-        String personalAccessToken = "ogk5yeum42qdfxlulgcjhxjcizojhjxsultliuqyhjms3heuks2a";
+        String personalAccessToken = "n6lglntm5ebwf7ra3lzb6rcacmpxburtdobiemhsq7o64swc4kda";
         String organizationName = "ldd";
         String projectName = "Testing";
         String updateUrl = String.format("https://dev.azure.com/%s/%s/_apis/wit/workitems/%s?api-version=5.0",
