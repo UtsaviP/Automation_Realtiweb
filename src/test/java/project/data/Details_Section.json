@@ -34,9 +34,16 @@
 	},
 	"BUYERSIDE": {
 	
-		"Individual": {
+		"BuyerSide": {
+			"Individual_Name": "Utsavi Patel",
+			"Corporation_Name": "ABC Company",
+			"Estate_Name": "Test"
+		},
+		"SellerSide": {
 			"Account": "LDDTesting",
 			"Purchase_FileName": "AutomationFile_[Do not Delete]"
 		}
+		
+		
 	}
 }

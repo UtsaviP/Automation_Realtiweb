@@ -31,7 +31,7 @@ public class AzureDevOpsIntegration {
                     "}, " +
                     "{ " +
                     "\"op\": \"add\", " +
-                    "\"path\": \"/fields/Custom.ReasonforFail\", " +
+                    "\"path\": \"/fields/Custom.ReasonforFailing\", " +
                     "\"value\": \"" + errorMessage + "\" " +
                     "}]";
             httpPatch.setEntity(new StringEntity(requestBody));

@@ -48,10 +48,10 @@ public class Basic extends AbstractComponent {
 	@FindBy(xpath = "//tr[@class='BrowserRow']/td[@subnodestatus=0 and @class='BrowserRow']")
 	List<WebElement> mortgageBrokerList;
 
-	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Buyer Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Buyer Side')]][following::h4[contains(text(), 'Seller Side')]]//span[@class='item-name']")
-	List<WebElement> fileNavigationBuyerSide;
+	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Buyer Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Buyer Side')]][following::h4[contains(text(), 'Seller Side')]]//span[@class='item-name ']")
+	public List<WebElement> fileNavigationBuyerSide;
 
-	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Seller Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Seller Side')]][following::span[contains(text(), 'Lawyer')]]//span[@class='item-name']")
+	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Seller Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Seller Side')]][following::span[contains(text(), 'Lawyer')]]//span[@class='item-name ']")
 	List<WebElement> fileNavigationSellerSide;
 
 	@FindBy(xpath = "//tr[@title='Lawyer responsible for this file']//i[@class='fa tool-icon ldd-list']")

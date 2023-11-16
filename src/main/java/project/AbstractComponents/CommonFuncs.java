@@ -1,5 +1,6 @@
 package project.AbstractComponents;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.Duration;
 import java.util.List;
@@ -14,16 +15,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import home.PageObject.Advance_Search_Filter;
 import home.PageObject.FileList;
 
 public class CommonFuncs extends AbstractComponent {
 	WebDriver driver;
-
+	AzureDevOpsIntegration Azure;
 	public CommonFuncs(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
+		Azure = new AzureDevOpsIntegration(); // Initialize AzureDevOpsIntegration
 		PageFactory.initElements(driver, this);
 	}
 
@@ -108,7 +111,26 @@ public class CommonFuncs extends AbstractComponent {
 		}
 	}
 
-	
-	
-	
+	//Handle if..Else  and try..catch parts Exceptions	
+	public void handleException(Exception e, String errorMessage, String testCaseId) throws IOException {
+	    e.printStackTrace();
+
+	    String truncatedMessage = truncateErrorMessage(e.getMessage(), 500);
+
+	    if (errorMessage.contains("Automation Fail")) {
+	        Azure.updateTestCaseStatus(testCaseId, "Automation Fail", "Failed during Estate processing");
+	    } else {
+	        Azure.updateTestCaseStatus(testCaseId, "Automation Error", truncatedMessage);
+	    }
+
+	    Assert.fail("*****Fail: " + errorMessage + ".*****", e);
+	}
+
+	public String truncateErrorMessage(String errorMessage, int maxLength) {
+	    if (errorMessage.length() > maxLength) {
+	        return errorMessage.substring(0, maxLength);
+	    }
+	    return errorMessage;
+	}
+
 }

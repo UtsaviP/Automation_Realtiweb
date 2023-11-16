@@ -162,16 +162,18 @@ public class BaseTest {
 			JsonObject BasicTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Basic");
 			JsonObject ContractTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Contract");
 			JsonObject PropertyTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Property");
-
+			
+			JsonObject buyersideData = jsonData.getAsJsonObject("BUYERSIDE").getAsJsonObject("BuyerSide");
 			HashMap<String, String> BasicDataMap = convertJsonObjectToHashMap(BasicTabData);
 			HashMap<String, String> ContractDataMap = convertJsonObjectToHashMap(ContractTabData);
 			HashMap<String, String> PropertyDataMap = convertJsonObjectToHashMap(PropertyTabData);
-
+			
+			HashMap<String, String> buyersideDataMap = convertJsonObjectToHashMap(buyersideData);
 			List<HashMap<String, String>> data = new ArrayList<>();
 			data.add(BasicDataMap);
 			data.add(ContractDataMap);
 			data.add(PropertyDataMap);
-
+			data.add(buyersideDataMap);
 			return new Object[][] { { data } };
 		} catch (Exception e) {
 			e.printStackTrace();

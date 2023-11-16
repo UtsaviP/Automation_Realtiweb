@@ -1,94 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-09T10:05:00 EST" name="Default suite" finished-at="2023-11-09T10:06:20 EST" duration-ms="80157">
+  <suite started-at="2023-11-16T10:45:28 EST" name="Default suite" finished-at="2023-11-16T10:47:13 EST" duration-ms="104710">
     <groups>
     </groups>
-    <test started-at="2023-11-09T10:05:00 EST" name="Default test" finished-at="2023-11-09T10:06:20 EST" duration-ms="80157">
-      <class name="home.AdvanceSearchFilterTest">
-        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:home.AdvanceSearchFilterTest@72c8e7b]" started-at="2023-11-09T10:05:00 EST" name="setupLoginData" finished-at="2023-11-09T10:05:00 EST" duration-ms="41" status="PASS">
+    <test started-at="2023-11-16T10:45:28 EST" name="Default test" finished-at="2023-11-16T10:47:13 EST" duration-ms="104710">
+      <class name="details_section.Buyer_Seller_Side.Buyer_SideTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:28 EST" name="setupLoginData" finished-at="2023-11-16T10:45:28 EST" duration-ms="33" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginData -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:home.AdvanceSearchFilterTest@72c8e7b]" started-at="2023-11-09T10:05:00 EST" name="launchApplication" finished-at="2023-11-09T10:05:03 EST" duration-ms="3296" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:28 EST" name="launchApplication" finished-at="2023-11-16T10:45:31 EST" duration-ms="2353" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:home.AdvanceSearchFilterTest@72c8e7b]" started-at="2023-11-09T10:05:03 EST" name="initializeTest" finished-at="2023-11-09T10:05:03 EST" duration-ms="41" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:31 EST" name="initializeTest" finished-at="2023-11-16T10:45:31 EST" duration-ms="36" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="Verify_In_Advance_search_Property_Type_Criteria_working_or_not(java.util.List)[pri:0, instance:home.AdvanceSearchFilterTest@72c8e7b]" started-at="2023-11-09T10:05:03 EST" name="Verify_In_Advance_search_Property_Type_Criteria_working_or_not" data-provider="HomePageData" finished-at="2023-11-09T10:06:17 EST" duration-ms="74065" status="FAIL">
+        <test-method signature="Verify_Buyer_Side_all_Three_options_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:31 EST" name="Verify_Buyer_Side_all_Three_options_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-16T10:46:18 EST" duration-ms="47318" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[{Account=LDDTesting, User=Automation, Purchase_FileName=AutomationFile_Purchase, Password=Automation}, {AdvanceSearch_FileName=715 Don mills file, ClosingDate_After=Sep/29/2022, AdvanceSearch_Client1=Utsavi, AdvanceSearch_Client3=Test, Advancesearch_Address2=715 Don Mills Road, Suite 805, Toronto, Ontario M3C 1S4, AdvanceSearch_Client2=Animesh Patel, Advancesearch_Address1=M3C 1S4, AdvanceSearch_LawyerName=G. Chalmers Adams, LawyerName=DAVID RUSH, Property_Type2=Condominium (Freehold), Property_Type1=Freehold (Fee Simple), FirmContact=Angela Ratcliffe, AdvanceSearch_Reline=Robert P. Adourian, ClosingDate_Before=Oct/30/2023}, {FreeSearch_1=test, FreeSearch_2=Automation}]]]>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}, {Estate_Name=Test, Corporation_Name=ABC Company, Individual_Name=Utsavi Patel}]]]>
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[*****Fail: An exception occurred while verifying Property Type match.*****]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: *****Fail: An exception occurred while verifying Property Type match.*****
-at org.testng.Assert.fail(Assert.java:99)
-at home.PageObject.Advance_Search_Filter.verifyPropertyTypeMatch(Advance_Search_Filter.java:677)
-at home.PageObject.Advance_Search_Filter.performSearchforPropertytype(Advance_Search_Filter.java:703)
-at home.PageObject.Advance_Search_Filter.AdvanceSearchPropertyType(Advance_Search_Filter.java:638)
-at home.AdvanceSearchFilterTest.Verify_In_Advance_search_Property_Type_Criteria_working_or_not(AdvanceSearchFilterTest.java:100)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[@class='item-name' and contains(text(),'Property')] (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.123, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53959}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53959/devtoo..., se:cdpVersion: 119.0.6045.123, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8b7cf5addc8b7c08b27ca8c36c6ddcd4
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
-at project.AbstractComponents.AbstractComponent.waitForElementToAppear(AbstractComponent.java:98)
-at home.PageObject.Advance_Search_Filter.switchToFrameAndClickMenu(Advance_Search_Filter.java:808)
-at home.PageObject.Advance_Search_Filter.verifyPropertyTypeMatch(Advance_Search_Filter.java:652)
-... 31 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_In_Advance_search_Property_Type_Criteria_working_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:home.AdvanceSearchFilterTest@72c8e7b]" started-at="2023-11-09T10:06:17 EST" name="tearDown" finished-at="2023-11-09T10:06:20 EST" duration-ms="2667" status="PASS">
+        </test-method> <!-- Verify_Buyer_Side_all_Three_options_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:18 EST" name="tearDown" finished-at="2023-11-16T10:46:20 EST" duration-ms="2293" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- home.AdvanceSearchFilterTest -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:20 EST" name="launchApplication" finished-at="2023-11-16T10:46:22 EST" duration-ms="1236" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:22 EST" name="initializeTest" finished-at="2023-11-16T10:46:22 EST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTest -->
+        <test-method signature="Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:22 EST" name="Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-16T10:47:11 EST" duration-ms="49091" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}, {Estate_Name=Test, Corporation_Name=ABC Company, Individual_Name=Utsavi Patel}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:47:11 EST" name="tearDown" finished-at="2023-11-16T10:47:13 EST" duration-ms="2297" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- details_section.Buyer_Seller_Side.Buyer_SideTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
