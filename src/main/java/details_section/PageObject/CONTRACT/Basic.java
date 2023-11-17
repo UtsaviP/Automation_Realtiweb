@@ -52,7 +52,7 @@ public class Basic extends AbstractComponent {
 	public List<WebElement> fileNavigationBuyerSide;
 
 	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Seller Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Seller Side')]][following::span[contains(text(), 'Lawyer')]]//span[@class='item-name ']")
-	List<WebElement> fileNavigationSellerSide;
+	public List<WebElement> fileNavigationSellerSide;
 
 	@FindBy(xpath = "//tr[@title='Lawyer responsible for this file']//i[@class='fa tool-icon ldd-list']")
 	public WebElement ResponsibleLawyer;

@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-16T10:45:28 EST" name="Default suite" finished-at="2023-11-16T10:47:13 EST" duration-ms="104710">
+  <suite started-at="2023-11-17T10:55:51 EST" name="Default suite" finished-at="2023-11-17T10:57:36 EST" duration-ms="105218">
     <groups>
     </groups>
-    <test started-at="2023-11-16T10:45:28 EST" name="Default test" finished-at="2023-11-16T10:47:13 EST" duration-ms="104710">
-      <class name="details_section.Buyer_Seller_Side.Buyer_SideTest">
-        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:28 EST" name="setupLoginData" finished-at="2023-11-16T10:45:28 EST" duration-ms="33" status="PASS">
+    <test started-at="2023-11-17T10:55:51 EST" name="Default test" finished-at="2023-11-17T10:57:36 EST" duration-ms="105218">
+      <class name="details_section.Buyer_Seller_Side.Seller_SideTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:55:51 EST" name="setupLoginData" finished-at="2023-11-17T10:55:51 EST" duration-ms="30" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginData -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:28 EST" name="launchApplication" finished-at="2023-11-16T10:45:31 EST" duration-ms="2353" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:55:51 EST" name="launchApplication" finished-at="2023-11-17T10:55:54 EST" duration-ms="2350" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:31 EST" name="initializeTest" finished-at="2023-11-16T10:45:31 EST" duration-ms="36" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:55:54 EST" name="initializeTest" finished-at="2023-11-17T10:55:54 EST" duration-ms="34" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="Verify_Buyer_Side_all_Three_options_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:45:31 EST" name="Verify_Buyer_Side_all_Three_options_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-16T10:46:18 EST" duration-ms="47318" status="PASS">
+        <test-method signature="Verify_In_Seller_Side_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:55:54 EST" name="Verify_In_Seller_Side_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-17T10:56:44 EST" duration-ms="50908" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -29,20 +29,20 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_Buyer_Side_all_Three_options_working_proper_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:18 EST" name="tearDown" finished-at="2023-11-16T10:46:20 EST" duration-ms="2293" status="PASS">
+        </test-method> <!-- Verify_In_Seller_Side_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:56:44 EST" name="tearDown" finished-at="2023-11-17T10:56:47 EST" duration-ms="2339" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:20 EST" name="launchApplication" finished-at="2023-11-16T10:46:22 EST" duration-ms="1236" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:56:47 EST" name="launchApplication" finished-at="2023-11-17T10:56:48 EST" duration-ms="1632" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:22 EST" name="initializeTest" finished-at="2023-11-16T10:46:22 EST" duration-ms="7" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:56:48 EST" name="initializeTest" finished-at="2023-11-17T10:56:48 EST" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:46:22 EST" name="Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-16T10:47:11 EST" duration-ms="49091" status="PASS">
+        <test-method signature="Verify_Seller_Side_all_Three_options_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:56:48 EST" name="Verify_Seller_Side_all_Three_options_working_proper_or_not" data-provider="Details_Section" finished-at="2023-11-17T10:57:34 EST" duration-ms="45563" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -52,12 +52,12 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Buyer_SideTest@5b38c1ec]" started-at="2023-11-16T10:47:11 EST" name="tearDown" finished-at="2023-11-16T10:47:13 EST" duration-ms="2297" status="PASS">
+        </test-method> <!-- Verify_Seller_Side_all_Three_options_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Buyer_Seller_Side.Seller_SideTest@5b38c1ec]" started-at="2023-11-17T10:57:34 EST" name="tearDown" finished-at="2023-11-17T10:57:36 EST" duration-ms="2305" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- details_section.Buyer_Seller_Side.Buyer_SideTest -->
+      </class> <!-- details_section.Buyer_Seller_Side.Seller_SideTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

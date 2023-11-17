@@ -73,12 +73,7 @@ public class Buyer_side extends AbstractComponent {
 	@FindBy(xpath = "//span[@class='item-name ' and text()='Basic']")
 	public WebElement Basic_Tab;
 
-	@FindBy(xpath = "//div[@class='list-group-item']//div/h4[contains(text(), 'Buyer Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Buyer Side')]][following::h4[contains(text(), 'Seller Side')]]//span[@class='item-name ']")
-	public List<WebElement> fileNavigationBuyerSide;
-
-	By fileNavigationBuyerSide1 = By.xpath(
-			"//div[@class='list-group-item']//div/h4[contains(text(), 'Buyer Side')]/following::button[@role='tab'][preceding::h4[contains(text(), 'Buyer Side')]][following::h4[contains(text(), 'Seller Side')]]//span[@class='item-name ']");
-
+	
 //Test Case 12348: Verify Individual ,Estate and Corporations options working proper or not
 	public void BuyerSide_options(String Individual_Name, String Estate_Name, String Corporation_Name,
 			Map<String, String> clientNames) throws IOException {
@@ -194,11 +189,11 @@ public class Buyer_side extends AbstractComponent {
 		}
 
 		if (isMatchFound_purchaser) {
-			Azure.updateTestCaseStatus("12087", "Automation Pass", "");
+			Azure.updateTestCaseStatus("12348", "Automation Pass", "");
 			System.out.println("PASS: All Buyer Names Found in File navigation > Buyer Side");
 		} else {
 			common.handleException(new Exception("Fail: Not All Buyer Names Found in File navigation > Buyer Side"),
-					"Fail: Not All Buyer Names Found in File navigation > Buyer Side", "12087");
+					"Fail: Not All Buyer Names Found in File navigation > Buyer Side", "12348");
 		}
 	}
 
@@ -236,65 +231,87 @@ public class Buyer_side extends AbstractComponent {
 
 	// Test Case 12353 ,12354 : Verify Move Up ,Move Down and Remove options in three dots menu
 	public void BuyerSideThreeDotsMenu() throws IOException {
-		Map<String, String> clientNames = new HashMap<>();
+	    Map<String, String> clientNames = new HashMap<>();
 
-		clientNames.put("Individual_Name", "John Doe");
-		clientNames.put("Estate_Name", "Test");
-		clientNames.put("Corporation_Name", "XYZ Corporation");
+	    clientNames.put("Individual_Name", "John Doe");
+	    clientNames.put("Estate_Name", "Test");
+	    clientNames.put("Corporation_Name", "XYZ Corporation");
 
-		// Call the BuyerSide_options method 
-		BuyerSide_options("John Doe", "Test", "XYZ Corporation", clientNames);
+	    // Call the BuyerSide_options method 
+	    BuyerSide_options("John Doe", "Test", "XYZ Corporation", clientNames);
 
-		driver.switchTo().defaultContent();
-		List<WebElement> fileNavigationBuyerSide = Basic_tab.fileNavigationBuyerSide;
+	    driver.switchTo().defaultContent();
+	    List<WebElement> fileNavigationBuyerSide = Basic_tab.fileNavigationBuyerSide;
 
-		// Move Down
-		fileNavigationBuyerSide.get(0).click();
-		fileNavigationBuyerSide.get(0).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]"))
-				.click();
-		String firstBuyerName = fileNavigationBuyerSide.get(0).getText();
+	    // Move Down
+	    fileNavigationBuyerSide.get(0).click();
+	    fileNavigationBuyerSide.get(0).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]"))
+	            .click();
+	    String firstBuyerName = fileNavigationBuyerSide.get(0).getText();
 
-		Move_Down.click();
-		String secondBuyerName = fileNavigationBuyerSide.get(1).getText();
+	    Move_Down.click();
+	    String secondBuyerName = fileNavigationBuyerSide.get(1).getText();
 
-		if (firstBuyerName.equals(secondBuyerName)) {
-			Azure.updateTestCaseStatus("12353", "Automation Pass", "");
-		} else {
-			common.handleException(new Exception("Fail: Move Down options not working properly"),
-					"Fail: Move Down options not working properly", "12353");
-		}
+	    try {
+	        if (firstBuyerName.equals(secondBuyerName)) {
+	            Azure.updateTestCaseStatus("12353", "Automation Pass", "");
+	        } else {
+	            common.handleException(new Exception("Fail: Move Down options not working properly"),
+	                    "Fail: Move Down options not working properly", "12353");
+	        }
+	    } catch (Exception e) {
+	    	  common.handleException(new Exception("Fail: Move Down options not working properly"),
+	                    "Fail: Move Down options not working properly", "12353");
+	    }
 
-		// Move Up
-		fileNavigationBuyerSide.get(1).click();
-		fileNavigationBuyerSide.get(1).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[2]"))
-				.click();
-		String firstBuyerName1 = fileNavigationBuyerSide.get(0).getText();
-		Move_Up.click();
+	    // Move Up
+	    fileNavigationBuyerSide.get(1).click();
+	    fileNavigationBuyerSide.get(1).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[2]"))
+	            .click();
+	    String firstBuyerName1 = fileNavigationBuyerSide.get(0).getText();
+	    Move_Up.click();
 
-		String secondBuyerName1 = fileNavigationBuyerSide.get(1).getText();
+	    String secondBuyerName1 = fileNavigationBuyerSide.get(1).getText();
 
-		if (secondBuyerName1.equals(firstBuyerName1)) {
-			Azure.updateTestCaseStatus("12353", "Automation Pass", "");
-		} else {
-			common.handleException(new Exception("Fail: Move Up options not working properly"),
-					"Fail: Move Up options not working properly", "12353");
-		}
+	    try {
+	        if (secondBuyerName1.equals(firstBuyerName1)) {
+	            Azure.updateTestCaseStatus("12353", "Automation Pass", "");
+	        } else {
+	            common.handleException(new Exception("Fail: Move Up options not working properly"),
+	                    "Fail: Move Up options not working properly", "12353");
+	        }
+	    } catch (Exception e) {
+	    	  common.handleException(new Exception("Fail: Move Up options not working properly"),
+	                    "Fail: Move Down options not working properly", "12353");
+	    }
 
-		// Remove option
-		fileNavigationBuyerSide.get(0).click();
-		fileNavigationBuyerSide.get(0).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]"))
-				.click();
-		String firstBuyerName2 = fileNavigationBuyerSide.get(0).getText();
-		Remove.click();
-		@SuppressWarnings("unlikely-arg-type")
-		boolean deletename = !fileNavigationBuyerSide.contains(firstBuyerName2);
+	    // Remove option
+	    fileNavigationBuyerSide.get(0).click();
+	    fileNavigationBuyerSide.get(0).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]"))
+	            .click();
+	    String firstBuyerName2 = fileNavigationBuyerSide.get(0).getText();
 
-		if (deletename) {
-			Azure.updateTestCaseStatus("12354", "Automation Pass", "");
-		} else {
-			common.handleException(new Exception("Fail: Remove option in three dots menu not working properly"),
-					"Fail: Remove option in three dots menu not working properly", "12354");
-		}
+	    try {
+	        Remove.click();
+	        
+	        Thread.sleep(2000); 
+
+	       
+	        @SuppressWarnings("unlikely-arg-type")
+			boolean deletename = !fileNavigationBuyerSide.contains(firstBuyerName2);
+
+	        if (deletename) {
+	            Azure.updateTestCaseStatus("12354", "Automation Pass", "");
+	        } else {
+	            common.handleException(new Exception("Fail: Remove option in three dots menu not working properly"),
+	                    "Fail: Remove option in three dots menu not working properly", "12354");
+	        }
+	    } catch (InterruptedException e) {
+	    	  common.handleException(new Exception("Fail:Remove option in three dots menu not working properly"),
+	                    "Fail: Remove option in three dots menu not working properly", "12354");
+	    }
+	}
+
 
 		
 		// Test Case 12352: If click on the ID verification icons, it redirects to the  ID verification area at the bottom.
@@ -340,4 +357,4 @@ public class Buyer_side extends AbstractComponent {
 
 	}
 
-}
+
