@@ -285,76 +285,79 @@ public class Buyer_side extends AbstractComponent {
 	                    "Fail: Move Down options not working properly", "12353");
 	    }
 
-	    // Remove option
+		/*
+		 * // Remove option fileNavigationBuyerSide.get(0).click();
+		 * fileNavigationBuyerSide.get(0).findElement(By.
+		 * xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]")) .click(); String
+		 * firstBuyerName2 = fileNavigationBuyerSide.get(0).getText();
+		 * 
+		 * try { Remove.click();
+		 * 
+		 * Thread.sleep(2000);
+		 * 
+		 * 
+		 * @SuppressWarnings("unlikely-arg-type") boolean deletename =
+		 * !fileNavigationBuyerSide.contains(firstBuyerName2);
+		 * 
+		 * if (deletename) { Azure.updateTestCaseStatus("12354", "Automation Pass", "");
+		 * } else { common.handleException(new
+		 * Exception("Fail: Remove option in three dots menu not working properly"),
+		 * "Fail: Remove option in three dots menu not working properly", "12354"); } }
+		 * catch (InterruptedException e) { common.handleException(new
+		 * Exception("Fail:Remove option in three dots menu not working properly"),
+		 * "Fail: Remove option in three dots menu not working properly", "12354"); }
+		 * 
+		 * 
+		 */
+		
+	 // Test Case 12352: If click on the ID verification icons, it redirects to the ID verification area at the bottom.
+
 	    fileNavigationBuyerSide.get(0).click();
-	    fileNavigationBuyerSide.get(0).findElement(By.xpath("(//i[@class='fa-solid fa-ellipsis-vertical'])[1]"))
-	            .click();
-	    String firstBuyerName2 = fileNavigationBuyerSide.get(0).getText();
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
+	    // Give some time for the iframe to load
 	    try {
-	        Remove.click();
-	        
-	        Thread.sleep(2000); 
-
-	       
-	        @SuppressWarnings("unlikely-arg-type")
-			boolean deletename = !fileNavigationBuyerSide.contains(firstBuyerName2);
-
-	        if (deletename) {
-	            Azure.updateTestCaseStatus("12354", "Automation Pass", "");
-	        } else {
-	            common.handleException(new Exception("Fail: Remove option in three dots menu not working properly"),
-	                    "Fail: Remove option in three dots menu not working properly", "12354");
-	        }
+	        Thread.sleep(2000); // Adjust the sleep duration as needed
 	    } catch (InterruptedException e) {
-	    	  common.handleException(new Exception("Fail:Remove option in three dots menu not working properly"),
-	                    "Fail: Remove option in three dots menu not working properly", "12354");
+	        e.printStackTrace();
+	    }
+
+	    // Switch to iframe
+	    common.switchToIframe(common.MiddlePortionFrame);
+
+	    // After clicking IDVerification_icon, wait for dynamic content to load
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    IDVerification_icon.click();
+
+	    // Wait for dynamic content to load
+	   // wait.until(ExpectedConditions.visibilityOfElementLocated(By IDVerification_Title));
+
+	    // Get the initial scroll position
+	    Long initialScrollPosition = (Long) js.executeScript("return document.documentElement.scrollTop || document.body.scrollTop;");
+	    System.out.println("Initial Scroll position: " + initialScrollPosition);
+
+	    // Scroll to the ID verification area
+	 //   js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth' });", IDVerification_area);
+
+	    // Wait for a short duration to ensure the smooth scroll has completed
+	    try {
+	        Thread.sleep(5000); // Adjust the sleep duration as needed
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
+
+	    // Get the scroll position after scrolling
+	    Long scrollPositionAfter = (Long) js.executeScript("return document.documentElement.scrollTop || document.body.scrollTop;");
+	    System.out.println("Scroll position after: " + scrollPositionAfter);
+
+	    // Check if the scroll position has changed
+	    if (!scrollPositionAfter.equals(initialScrollPosition)) {
+	        System.out.println("Scrolling down successful.");
+	        Azure.updateTestCaseStatus("12352", "Automation Pass", "");
+	    } else {
+	        common.handleException(new Exception("Fail: Scrolling down after clicking on ID verification failed."),
+	                "Fail: Scrolling down after clicking on ID verification failed.", "12352");
 	    }
 	}
-
-
-		
-		// Test Case 12352: If click on the ID verification icons, it redirects to the  ID verification area at the bottom.
-
-//	    fileNavigationBuyerSide.get(0).click();
-//	    JavascriptExecutor js = (JavascriptExecutor) driver;
-//	    Long initialHeight = (Long) js.executeScript("return document.body.scrollHeight;");
-//	    
-//	    IDVerification_icon.click();
-//	    common.switchToIframe(common.MiddlePortionFrame);
-//	   
-//        js.executeScript("window.scrollBy(0, 500);");
-//
-//        // Wait for a short duration to ensure the scroll has completed
-//        try {
-//            Thread.sleep(2000); // Adjust the sleep duration as needed
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Check if the scroll position has changed
-//        // Wait for the document height to change, indicating scrolling
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        Long scrollPositionAfter = (Long) js.executeScript("return window.scrollY;");
-//        System.out.println("Scroll position after: " + scrollPositionAfter);
-//        wait.until((ExpectedCondition<Boolean>) driver -> {
-//            Long currentHeight = (Long) js.executeScript("return document.body.scrollHeight;");
-//            return !currentHeight.equals(initialHeight);
-//        });
-//
-//        // Now wait for the visibility of the element after scrolling
-//        wait.until(ExpectedConditions.visibilityOf(IDVerification_Title));
-//
-//        // Check if the scroll is more than 100 pixels
-//        if (scrollPositionAfter > 100) {
-//            IDVerification_Title.isDisplayed();
-//            Azure.updateTestCaseStatus("12348", "Automation Pass", "");
-//        } else {
-//        	common.handleException(new Exception("Fail: Not All Buyer Names Found in File navigation > Buyer Side"),
-//	                "Fail: Not All Buyer Names Found in File navigation > Buyer Side", "12087");
-//        }
-//  
-
-	}
-
+}
 

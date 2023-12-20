@@ -159,21 +159,34 @@ public class BaseTest {
 			JsonObject jsonData = JsonParser
 					.parseReader(new FileReader("src\\test\\java\\project\\data\\Details_Section.json"))
 					.getAsJsonObject();
+			//Contract
 			JsonObject BasicTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Basic");
 			JsonObject ContractTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Contract");
 			JsonObject PropertyTabData = jsonData.getAsJsonObject("CONTRACT").getAsJsonObject("Property");
 			
-			JsonObject buyersideData = jsonData.getAsJsonObject("BUYERSIDE").getAsJsonObject("BuyerSide");
+			//Buyer-Seller side
+			JsonObject buyersideData = jsonData.getAsJsonObject("BUYER_SELLER_SIDE").getAsJsonObject("BuyerSide");
+			JsonObject SellersideData = jsonData.getAsJsonObject("BUYER_SELLER_SIDE").getAsJsonObject("SellerSide");
+			
+			//Additional parties
+			JsonObject AdditionalPartiesData = jsonData.getAsJsonObject("ADDITIONAL_PARTIES").getAsJsonObject("RealEstateBroker_Search");
+			
 			HashMap<String, String> BasicDataMap = convertJsonObjectToHashMap(BasicTabData);
 			HashMap<String, String> ContractDataMap = convertJsonObjectToHashMap(ContractTabData);
 			HashMap<String, String> PropertyDataMap = convertJsonObjectToHashMap(PropertyTabData);
 			
 			HashMap<String, String> buyersideDataMap = convertJsonObjectToHashMap(buyersideData);
+			HashMap<String, String> SellersideDataMap = convertJsonObjectToHashMap(SellersideData);
+			
+			HashMap<String, String> AdditionalPartiesDataMap = convertJsonObjectToHashMap(AdditionalPartiesData);
+			
 			List<HashMap<String, String>> data = new ArrayList<>();
 			data.add(BasicDataMap);
 			data.add(ContractDataMap);
 			data.add(PropertyDataMap);
 			data.add(buyersideDataMap);
+			data.add(SellersideDataMap);
+			data.add(AdditionalPartiesDataMap);
 			return new Object[][] { { data } };
 		} catch (Exception e) {
 			e.printStackTrace();

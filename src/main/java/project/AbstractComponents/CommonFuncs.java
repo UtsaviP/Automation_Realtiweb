@@ -43,7 +43,8 @@ public class CommonFuncs extends AbstractComponent {
 	@FindBy(xpath = "//div[@class='me-auto']//span[contains(text(), 'Basic')]")
 	public WebElement Basic_Tab;
 	
-	
+	@FindBy(xpath = "//span[text()='Contract']")
+	public WebElement Contract_Tab;
 	
 	
    //A utility method to switch to an iframe by its XPath

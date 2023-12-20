@@ -32,7 +32,7 @@
 			"Postal_Code" :"M3C 1V9"
 	   }
 	},
-	"BUYERSIDE": {
+	"BUYER_SELLER_SIDE": {
 	
 		"BuyerSide": {
 			"Individual_Name": "Utsavi Patel",
@@ -45,5 +45,13 @@
 		}
 		
 		
+	},
+	"ADDITIONAL_PARTIES": {
+	
+		"RealEstateBroker_Search": {
+			"Search_name": "Century"
+			
+		}
 	}
+	
 }

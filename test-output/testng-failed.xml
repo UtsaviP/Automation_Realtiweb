@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="details_section.Buyer_Seller_Side.Seller_SideTest">
+      <class name="details_section.Additional_Parties.Additional_PartiesTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_In_Seller_Side_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not" invocation-numbers="0"/>
-          <include name="initializeTest"/>
+          <include name="Verify_additional_parties_Search_functionality_working_proper_or_not" invocation-numbers="0"/>
           <include name="setupLoginData"/>
+          <include name="initializeTest"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- details_section.Buyer_Seller_Side.Seller_SideTest -->
+      </class> <!-- details_section.Additional_Parties.Additional_PartiesTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
