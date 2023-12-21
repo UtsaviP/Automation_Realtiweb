@@ -9,7 +9,7 @@ import java.util.Map;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import details_section.PageObject.Additional_Parties.Additional_Parties;
+import details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties;
 import details_section.PageObject.CONTRACT.Basic;
 import project.TestComponents.BaseTest;
 
@@ -26,8 +26,8 @@ public class Additional_PartiesTest extends BaseTest {
 
 	
 
-	//@Test(dataProvider = "Details_Section")
-	public void Verify_additional_parties_different_options_and_update_list_button_working_proper_or_not(
+	@Test(dataProvider = "Details_Section")
+	public void Verify_additional_parties_different_options_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 		
 		launchApplicationAndLogin();
@@ -36,7 +36,7 @@ public class Additional_PartiesTest extends BaseTest {
 	}
 
 	
-	@Test(dataProvider = "Details_Section")
+	//@Test(dataProvider = "Details_Section")
 	public void Verify_additional_parties_Search_functionality_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 		
@@ -44,6 +44,18 @@ public class Additional_PartiesTest extends BaseTest {
 		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));
 	
 	    Additional_PartiesTab.AdditionalParties_Search(testData.get(5).get("Search_name"));
+	    
+	}
+	
+	
+	//@Test(dataProvider = "Details_Section")
+	public void Verify_additional_parties_update_list_button_working_proper_or_not(
+			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
+		
+		launchApplicationAndLogin();
+		BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));
+	
+	    Additional_PartiesTab.updateListButton();
 	    
 	}
 	

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Dec 20 16:00:01 EST 2023</td>
+<td>Started on:</td><td>Thu Dec 21 16:19:49 EST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>99 seconds (99033 ms)</td>
+<tr><td>Total time:</td><td>38 seconds (38677 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,9 +76,118 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_Search_functionality_working_proper_or_not()'><b>Verify_additional_parties_Search_functionality_working_proper_or_not</b><br>Test class: details_section.Additional_Parties.Additional_PartiesTest<br>Parameters: [{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}, {Estate_Name=Test, Corporation_Name=ABC Company, Individual_Name=Utsavi Patel}, {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete]}, {Search_name=Century}]</td>
-<td></td>
-<td>89</td>
+<td title='details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_different_options_working_proper_or_not()'><b>Verify_additional_parties_different_options_working_proper_or_not</b><br>Test class: details_section.Additional_Parties.Additional_PartiesTest<br>Parameters: [{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}, {Estate_Name=Test, Corporation_Name=ABC Company, Individual_Name=Utsavi Patel}, {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete]}, {Search_name=Century}]</td>
+<td><div><pre>java.lang.AssertionError: *****Fail: Failed during  check  Additional Parties different options.*****
+	at org.testng.Assert.fail(Assert.java:99)
+	at project.AbstractComponents.CommonFuncs.handleException(CommonFuncs.java:127)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:224)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.selectPartyAndVerify(Additional_Parties.java:143)
+	at details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_different_options_working_proper_or_not(Additional_PartiesTest.java:35)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?}
+  (Session info: chrome=120.0.6099.110): Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?
+Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a51f29be04f2f881de59f009d48b527d, switchToFrame {id=null}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.110, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56826}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56826/devtoo..., se:cdpVersion: 120.0.6099.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a51f29be04f2f881de59f009d48b527d
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:131)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:1095)
+	at project.AbstractComponents.CommonFuncs.switchToIframe(CommonFuncs.java:52)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:167)
+	... 30 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace89144801", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace89144801'><pre>java.lang.AssertionError: *****Fail: Failed during  check  Additional Parties different options.*****
+	at org.testng.Assert.fail(Assert.java:99)
+	at project.AbstractComponents.CommonFuncs.handleException(CommonFuncs.java:127)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:224)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.selectPartyAndVerify(Additional_Parties.java:143)
+	at details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_different_options_working_proper_or_not(Additional_PartiesTest.java:35)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?}
+  (Session info: chrome=120.0.6099.110): Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?
+Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a51f29be04f2f881de59f009d48b527d, switchToFrame {id=null}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.110, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56826}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56826/devtoo..., se:cdpVersion: 120.0.6099.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a51f29be04f2f881de59f009d48b527d
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:131)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:1095)
+	at project.AbstractComponents.CommonFuncs.switchToIframe(CommonFuncs.java:52)
+	at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:167)
+	... 30 more
+</pre></div></td>
+<td>35</td>
 <td>details_section.Additional_Parties.Additional_PartiesTest@338fc1d8</td></tr>
 </table><p>
 </body>

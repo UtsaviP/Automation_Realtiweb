@@ -6,7 +6,7 @@
       <class name="details_section.Additional_Parties.Additional_PartiesTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_additional_parties_Search_functionality_working_proper_or_not" invocation-numbers="0"/>
+          <include name="Verify_additional_parties_different_options_working_proper_or_not" invocation-numbers="0"/>
           <include name="setupLoginData"/>
           <include name="initializeTest"/>
           <include name="tearDown"/>

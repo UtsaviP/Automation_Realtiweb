@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-20T16:00:01 EST" name="Default suite" finished-at="2023-12-20T16:01:40 EST" duration-ms="99033">
+  <suite started-at="2023-12-21T16:19:49 EST" name="Default suite" finished-at="2023-12-21T16:20:27 EST" duration-ms="38677">
     <groups>
     </groups>
-    <test started-at="2023-12-20T16:00:01 EST" name="Default test" finished-at="2023-12-20T16:01:40 EST" duration-ms="99033">
+    <test started-at="2023-12-21T16:19:49 EST" name="Default test" finished-at="2023-12-21T16:20:27 EST" duration-ms="38677">
       <class name="details_section.Additional_Parties.Additional_PartiesTest">
-        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-20T16:00:01 EST" name="setupLoginData" finished-at="2023-12-20T16:00:01 EST" duration-ms="40" status="PASS">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-21T16:19:49 EST" name="setupLoginData" finished-at="2023-12-21T16:19:49 EST" duration-ms="32" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginData -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-20T16:00:01 EST" name="launchApplication" finished-at="2023-12-20T16:00:04 EST" duration-ms="2522" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-21T16:19:49 EST" name="launchApplication" finished-at="2023-12-21T16:19:51 EST" duration-ms="2374" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-20T16:00:04 EST" name="initializeTest" finished-at="2023-12-20T16:00:08 EST" duration-ms="3797" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-21T16:19:51 EST" name="initializeTest" finished-at="2023-12-21T16:19:51 EST" duration-ms="46" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="Verify_additional_parties_Search_functionality_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-20T16:00:08 EST" name="Verify_additional_parties_Search_functionality_working_proper_or_not" data-provider="Details_Section" finished-at="2023-12-20T16:01:37 EST" duration-ms="89631" status="PASS">
+        <test-method signature="Verify_additional_parties_different_options_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-21T16:19:51 EST" name="Verify_additional_parties_different_options_working_proper_or_not" data-provider="Details_Section" finished-at="2023-12-21T16:20:27 EST" duration-ms="35990" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -27,10 +27,72 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[*****Fail: Failed during  check  Additional Parties different options.*****]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: *****Fail: Failed during  check  Additional Parties different options.*****
+at org.testng.Assert.fail(Assert.java:99)
+at project.AbstractComponents.CommonFuncs.handleException(CommonFuncs.java:127)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:224)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.selectPartyAndVerify(Additional_Parties.java:143)
+at details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_different_options_working_proper_or_not(Additional_PartiesTest.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?}
+  (Session info: chrome=120.0.6099.110): Warning
+You already have this file open in another tab/browser.  Would you like to abandon the other file editing and continue with this screen?
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a51f29be04f2f881de59f009d48b527d, switchToFrame {id=null}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.110, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56826}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56826/devtoo..., se:cdpVersion: 120.0.6099.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a51f29be04f2f881de59f009d48b527d
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:131)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.defaultContent(RemoteWebDriver.java:1095)
+at project.AbstractComponents.CommonFuncs.switchToIframe(CommonFuncs.java:52)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:167)
+... 30 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_additional_parties_Search_functionality_working_proper_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-20T16:01:37 EST" name="tearDown" finished-at="2023-12-20T16:01:40 EST" duration-ms="2975" status="PASS">
+        </test-method> <!-- Verify_additional_parties_different_options_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@338fc1d8]" started-at="2023-12-21T16:20:27 EST" name="tearDown" finished-at="2023-12-21T16:20:27 EST" duration-ms="191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

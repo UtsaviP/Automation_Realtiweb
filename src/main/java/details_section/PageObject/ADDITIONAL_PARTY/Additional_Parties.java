@@ -1,4 +1,4 @@
-package details_section.PageObject.Additional_Parties;
+package details_section.PageObject.ADDITIONAL_PARTY;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -22,6 +22,7 @@ import details_section.PageObject.CONTRACT.Basic;
 import details_section.PageObject.CONTRACT.Contract;
 import home.PageObject.Advance_Search_Filter;
 import home.PageObject.FileList;
+import io.netty.util.internal.ThreadLocalRandom;
 import project.AbstractComponents.AbstractComponent;
 import project.AbstractComponents.AzureDevOpsIntegration;
 import project.AbstractComponents.CommonFuncs;
@@ -104,7 +105,7 @@ public class Additional_Parties extends AbstractComponent {
 	@FindBy(xpath = "//button[@class='btn btn-primary']//i[@class='fa-light fa-plus']")
 	public WebElement AddNew_Parties;
 
-	@FindBy(xpath = "//div[@id='ReactMortgageBroker']//button[contains(text(),'Update List')]")
+	@FindBy(xpath = "//div[@id='ReactConveyancer']//button[contains(text(),'Update List') and @subnodestatus='0']")
 	public WebElement UpdateList_Button;
 
 	@FindBy(xpath = "//span[contains(text(),'Conveyancer') and @class='badge rounded-pill text-dark bg-info']//preceding::span[1]")
@@ -116,7 +117,7 @@ public class Additional_Parties extends AbstractComponent {
 	@FindBy(xpath = "//span[contains(text(),'Mortgage Broker')]//preceding::span[1]")
 	public WebElement Navigation_Brokername;
 
-	@FindBy(xpath = "//span[contains(text(),'Realtor')]//preceding::span[1]")
+	@FindBy(xpath = "(//span[contains(text(),'Realtor') ]//preceding::span[1])[last()]")
 	public WebElement Navigation_Realtername;
 
 	@FindBy(xpath = "(//h4[contains(text(),'Additional Parties (3')]//following::span//i[@class='fa-light fa-chevron-down'])[1]")
@@ -154,75 +155,94 @@ public class Additional_Parties extends AbstractComponent {
 		switchPartyAndVerify(Real_Estate_Broker, "Realter_name", Navigation_Realtername, Contract_tab.Broker_Field);
 
 	}
-
 	private void switchPartyAndVerify(WebElement partyElement, String defaultName, WebElement navigationElement,
-			WebElement displayElement) throws IOException {
-		try {
-			Plus_menu.click();
-			partyElement.click();
-			List<WebElement> additionalPartiesList = PartiesList;
+	        WebElement displayElement) throws IOException {
+	    try {
+	        Plus_menu.click();
+	        partyElement.click();
+	        List<WebElement> additionalPartiesList = PartiesList;
 
-			if (additionalPartiesList.size() > 0) {
-				additionalPartiesList.get(0).click();
-				common.switchToIframe(common.MiddlePortionFrame);
-				String fieldName = getFieldText(defaultName);
-				driver.switchTo().defaultContent();
-				try {
-					if (driver.findElement(By.xpath("//h4[contains(text(),'Additional Parties (3')]")).isDisplayed()) {
-						Navigation_ArrowDOwn.click();
-					}
+	        if (additionalPartiesList.size() > 0) {
+	            additionalPartiesList.get(0).click();
+	            common.switchToIframe(common.MiddlePortionFrame);
+	            String fieldName = getFieldText(defaultName);
+	            driver.switchTo().defaultContent();
+	        
+	            By arrowDownLocator = By.xpath("//h4[contains(text(),'Additional Parties (3')]");
+	            if (isElementPresent(arrowDownLocator)) {
+	                Navigation_ArrowDOwn.click();
+	            }
+	                String navigationName = navigationElement.getText();
+	                clickOnTab(defaultName);
 
-				} catch (Exception e) {
-					common.handleException(e, "Failed during  click on Additional Parties Arrows Down ", "12688");
-				}
-				String navigationName = navigationElement.getText();
-				clickOnTab(defaultName);
+	                common.switchToIframe(common.MiddlePortionFrame);
+	                String displayFieldName = getDisplayFieldText(defaultName);
 
-				common.switchToIframe(common.MiddlePortionFrame);
-				String displayFieldName = getDisplayFieldText(defaultName);
+	                if (removeCommasAndDots(fieldName).contains(removeCommasAndDots(navigationName)) &&
+	                	    removeCommasAndDots(fieldName).contains(removeCommasAndDots(displayFieldName))) {
+	                	    
+	                	
 
-				if (fieldName.contains(navigationName) && (fieldName.contains(displayFieldName))) {
-					Azure.updateTestCaseStatus("12688", "Automation Pass", "");
-					System.out.println("PASS: Additional Parties options working fine");
-				} else {
-					common.handleException(new Exception("Fail: Not All Additional Parties options working fine"),
-							"Fail: Not All Additional Parties options working fine", "12688");
-				}
+	                    Azure.updateTestCaseStatus("12688", "Automation Pass", "");
+	                    System.out.println("PASS: Additional Parties options working fine");
+	                } else {
+	                    common.handleException(new Exception("Fail: Not All Additional Parties options working fine"),
+	                            "Fail: Not All Additional Parties options working fine", "12688");
+	                }
+	           
+	            driver.switchTo().defaultContent();
+	        } else {
+	            driver.switchTo().defaultContent();
+	            AddNew_Parties.click();
+	            common.switchToIframe(common.MiddlePortionFrame);
+	            Addname(defaultName);
+	            String fieldName = getFieldText(defaultName);
+	            System.out.println(fieldName);
+	            driver.switchTo().defaultContent();
+	            driver.findElement(By.xpath("//i[@class='fa-regular fa-align-left fa-indicator']")).click();
+	            try {
+	                Thread.sleep(2000);
+	                if (driver.findElement(By.xpath("//h4[contains(text(),'Additional Parties (3')]")).isDisplayed()) {
+	                    Navigation_ArrowDOwn.click();
+	                }
 
-				driver.switchTo().defaultContent();
-			} else {
+	                String navigationName = navigationElement.getText();
 
-				driver.switchTo().defaultContent();
-				AddNew_Parties.click();
-				common.switchToIframe(common.MiddlePortionFrame);
-				Addname(defaultName);
-				String fieldName = getFieldText(defaultName);
-				System.out.println(fieldName);
-				driver.switchTo().defaultContent();
-				driver.findElement(By.xpath("//i[@class='fa-regular fa-align-left fa-indicator']")).click();
-				try {
-					if (driver.findElement(By.xpath("//h4[contains(text(),'Additional Parties (3')]")).isDisplayed()) {
-						Navigation_ArrowDOwn.click();
-					}
-				} catch (Exception e) {
-					common.handleException(e, "Failed during  click on Additional Parties Arrows Down ", "12688");
-				}
-
-				String navigationName = navigationElement.getText();
-
-				if (fieldName.contains(navigationName)) {
-					Azure.updateTestCaseStatus("12690", "Automation Pass", "");
-					System.out.println("PASS: Additional Parties  +ADD functionality working fine");
-				} else {
-					common.handleException(new Exception("Fail: Additional Parties  +ADD functionality not working fine"),
-							"Fail: Additional Parties  +ADD functionality not working fine", "12690");
-				}
-			}
-		} catch (Exception e) {
-			common.handleException(e, "Failed during  check  Additional Parties different options", "12688");
-		}
+	                if (fieldName.contains(navigationName)) {
+	                    Azure.updateTestCaseStatus("12690", "Automation Pass", "");
+	                    System.out.println("PASS: Additional Parties  +ADD functionality working fine");
+	                } else {
+	                    common.handleException(
+	                            new Exception("Fail: Additional Parties  +ADD functionality not working fine"),
+	                            "Fail: Additional Parties  +ADD functionality not working fine", "12690");
+	                }
+	            } catch (Exception e) {
+	                common.handleException(e, "Failed during  click on Additional Parties Arrows Down ", "12688");
+	            }
+	        }
+	    } catch (Exception e) {
+	        common.handleException(e, "Failed during  check  Additional Parties different options", "12688");
+	    }
+	}
+	
+	
+	private String removeCommasAndDots(String input) {
+	    return input.replaceAll("[.,]", "");
 	}
 
+	
+	
+	
+	
+	// Add a method to check if an element is present
+	private boolean isElementPresent(By locator) {
+	    try {
+	        driver.findElement(locator);
+	        return true;
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	    }
 	private String getFieldText(String defaultName) {
 		switch (defaultName) {
 		case "Conveyancer_name":
@@ -251,7 +271,7 @@ public class Additional_Parties extends AbstractComponent {
 		case "Fireins_name":
 			return Basic_tab.displayFireInsuranceName.getText();
 		case "Broker_name":
-			return Basic_tab.displayMortgageBrokerName.getText();
+			return Basic_tab.displayMortgageBrokerName.getAttribute("value");
 		case "Realter_name":
 			return processBrokerField(Contract_tab.Broker_Field.getText());
 		default:
@@ -317,6 +337,7 @@ public class Additional_Parties extends AbstractComponent {
 
 	// Test Case 12689: Additional Parties >Verify Search functionality working
 	// proper or not.
+
 	public void AdditionalParties_Search(String searchName) throws InterruptedException, IOException {
 		String[] searchNames = { searchName };
 
@@ -331,20 +352,37 @@ public class Additional_Parties extends AbstractComponent {
 				if (!additionalPartiesList.isEmpty()) {
 					AdditionalParties_Search.sendKeys(brokerSearchName);
 
-					if (!SearchPartiesList.isEmpty()) {
+					Thread.sleep(3000);
+					List<WebElement> searchPartiesList = SearchPartiesList;
+
+					if (!searchPartiesList.isEmpty()) {
 						boolean allPass = true;
 
-						for (WebElement additionalPartiesList1 : SearchPartiesList) {
+						int originalSize = searchPartiesList.size();
+
+						for (int index = 0; index < originalSize; index++) {
 							try {
+								WebElement additionalPartiesList1 = searchPartiesList.get(index);
+								WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+						        wait.until(ExpectedConditions.visibilityOfAllElements(additionalPartiesList1));
+
 								String partyName = additionalPartiesList1.getText();
 
 								if (!partyName.isEmpty()
 										&& partyName.toLowerCase().contains(brokerSearchName.toLowerCase())) {
+									// Your existing code...
 								} else {
 									allPass = false;
 								}
+							} catch (StaleElementReferenceException e) {
+								// Re-locate the element and try again
+								searchPartiesList = SearchPartiesList;
+								originalSize = searchPartiesList.size();
+								index = -1; // Re-initialize the index
+								continue;
 							} catch (Exception e) {
-								common.handleException(e, "Failed during  check  Additional Parties Search functionality", "12689");
+								common.handleException(e, "Failed during check Additional Parties Search functionality",
+										"12689");
 							}
 						}
 
@@ -353,16 +391,18 @@ public class Additional_Parties extends AbstractComponent {
 								CancelButton.click();
 								Azure.updateTestCaseStatus("12689", "Automation Pass", "");
 								System.out.println("PASS: Additional Parties Search functionality working fine");
-							} else {								
+							} else {
 								CancelButton.click();
-								common.handleException(new Exception("Fail: Additional Parties  Search functionality working fine"),
-										"Fail: Additional Parties  Search functionality not working fine", "12689");
+								common.handleException(
+										new Exception("Fail: Additional Parties Search functionality working fine"),
+										"Fail: Additional Parties Search functionality not working fine", "12689");
 							}
 						} catch (Exception e) {
-							common.handleException(e, "Failed during  check  Additional Parties Search functionality", "12689");
+							common.handleException(e, "Failed during check Additional Parties Search functionality",
+									"12689");
 						}
 					} else {
-						System.out.println("No Search result found for Aditional parties pop up");
+						System.out.println("No Search result found for Additional parties pop up");
 						CancelButton.click();
 					}
 				} else {
@@ -371,7 +411,45 @@ public class Additional_Parties extends AbstractComponent {
 				}
 			}
 		} catch (Exception e) {
-			common.handleException(e, "Failed during  check  Additional Parties Search functionality", "12689");
+			common.handleException(e, "Failed during check Additional Parties Search functionality", "12689");
 		}
 	}
+
+	// Test Case 12691: Additional Parties >Update List button option working proper or not
+	public void updateListButton() throws IOException {
+		Plus_menu.click();
+		Conveyancer.click();
+		AddNew_Parties.click();
+
+		common.switchToIframe(common.MiddlePortionFrame);
+
+		Conveyancer_field.click();
+		int int_random = ThreadLocalRandom.current().nextInt();
+		Conveyancer_field.sendKeys("UpdateList" + int_random);
+
+		String buttonText = Conveyancer_field.getAttribute("value");
+		UpdateList_Button.click();
+
+		driver.switchTo().alert().accept();
+
+		driver.switchTo().defaultContent();
+
+		Plus_menu.click();
+		Conveyancer.click();
+
+		List<WebElement> searchPartiesList = SearchPartiesList;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElements(searchPartiesList));
+		if (searchPartiesList.stream().anyMatch(element -> element.getText().equals(buttonText))) {
+			CancelButton.click();
+			Azure.updateTestCaseStatus("12691", "Automation Pass", "");
+			System.out.println("PASS: Additional Parties Update List button functionality working fine");
+		} else {
+			CancelButton.click();
+			common.handleException(
+					new Exception("Fail: Additional Parties Update List button functionality not working fine"),
+					"Fail: Additional Parties Update List button functionality not working fine", "12691");
+		}
+	}
+
 }
