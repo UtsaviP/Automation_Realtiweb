@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="details_section.Additional_Parties.Additional_PartiesTest">
+      <class name="notes_and_pin.NotesTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="Verify_additional_parties_different_options_working_proper_or_not" invocation-numbers="0"/>
+          <include name="verify_badge_dropdown_working_or_not" invocation-numbers="0"/>
           <include name="setupLoginData"/>
-          <include name="initializeTest"/>
           <include name="tearDown"/>
+          <include name="initializeTest"/>
         </methods>
-      </class> <!-- details_section.Additional_Parties.Additional_PartiesTest -->
+      </class> <!-- notes_and_pin.NotesTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

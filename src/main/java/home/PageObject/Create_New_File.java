@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -12,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import io.netty.util.internal.ThreadLocalRandom;
+
 import project.AbstractComponents.AbstractComponent;
 import project.AbstractComponents.AzureDevOpsIntegration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -79,7 +80,7 @@ public class Create_New_File extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 	
-	//*** Verify Purchase File created Successfully or not ***
+	//Test Case 12048: Verify Purchase File created Successfully or not
 	public FileList CreateNewPurchaseFile() throws InterruptedException, IOException {
 	    try {
 	        PlusButton.click();
@@ -122,7 +123,7 @@ public class Create_New_File extends AbstractComponent {
 	    return new FileList(driver);
 	}
 
-	//*** Verify Sale File created Successfully or not ***
+	//Test Case 12049: Verify Sale File created Successfully or not
 	public FileList CreateNewSaleFile() throws InterruptedException, IOException {
 	    try {
 	        PlusButton.click();
@@ -163,7 +164,7 @@ public class Create_New_File extends AbstractComponent {
 	    }
 	    return new FileList(driver);
 	}
-	//*** Verify Mortgage File created Successfully or not ***
+	//Test Case 12050: Verify Mortgage File created Successfully or not
 	public FileList CreateNewMortgageFile() throws InterruptedException, IOException {
 	    try {
 	        PlusButton.click();
@@ -207,7 +208,7 @@ public class Create_New_File extends AbstractComponent {
 	    return new FileList(driver);
 	}
 
-	//*** Create button should be Disable if file types and File name not provided***
+	//Test Case 12051: Create button should be Disable if file types and File name not provide
 			public void DisableCreateFileButton() throws IOException {
 			    try {
 			        PlusButton.click();
@@ -240,7 +241,7 @@ public class Create_New_File extends AbstractComponent {
 	
 	
 	
-	//*** Create button should be Enable if file types and File name are provided***
+	//Test Case 12052: Create button should be Enable if file types and File name are provide
 	public void EnableCreateFileButton() throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -270,7 +271,7 @@ public class Create_New_File extends AbstractComponent {
 	}
 
 
-	//*** Fields should be reflected based on File types ***
+	//Test Case 12053: Fields should be reflect based on File types
 	public void DropdownVerificationTest() throws InterruptedException, IOException {
 	    boolean isVerificationSuccessful = true;
 	    try {
@@ -315,8 +316,7 @@ public class Create_New_File extends AbstractComponent {
 	    }
 	}
 
-	// *** Verify warning message while providing the same name that already exists
-	// in the database ***
+	// Test Case 12054: verify warning message while provide same name that already exist in database
 	public void verifyWarningForDuplicateFileName(String Purchase_FileName) throws InterruptedException, IOException {
 		PlusButton.click();
 		waitForElementToAppear(Create_New_File);

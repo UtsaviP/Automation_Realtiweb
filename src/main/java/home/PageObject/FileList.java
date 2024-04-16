@@ -52,7 +52,7 @@ public class FileList extends AbstractComponent {
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 	
 	
-	//***Verify Archived and Activate option working or not in File List > Three Dots menu***
+	//Test Case 12067: In three dots menu ,Verify archive and active option working proper or not
 	public FileList ArchiveAndActiveOption() throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
 	    List<WebElement> initialFileList = driver.findElements(searchobject.Filelistname);
@@ -133,7 +133,7 @@ public class FileList extends AbstractComponent {
 
 	  
 	
-	//*** Verify the free search functionality and check if the bold name exactly matches the searchable name or not ***
+	//Test Case 12066: Verify the free search functionality and check if the bold name exactly matches the searchable name
 	public FileList FreeSearch(String FreeSearch_1, String FreeSearch_2) throws InterruptedException, IOException {
 	    Advance_Search_Filter searchobject = new Advance_Search_Filter(driver);
 	    String[] freesearchname = { FreeSearch_1, FreeSearch_2 };

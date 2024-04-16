@@ -106,8 +106,7 @@ public class Property extends AbstractComponent {
 	// Declare CityElement1 as an instance variable in your class
 	private String CityElement1;
 
-	// ***Property Address: verify property address in different fields and also
-	// verify in Basic tab***
+	//Test Case 12225: Property Address: verify property address different fields and also verify in Basic tab
 	public void Property_Address(String Street_Number, String Street_Name, String City)
 			throws InterruptedException, IOException {
 		CityElement1 = null; // Assign a value to the instance variable
@@ -156,7 +155,7 @@ public class Property extends AbstractComponent {
 		}
 	}
 
-	// ***Property Address: Verify Postal code functionality ***
+	//Test Case 12227: Property Address: Verify Postal code functionality
 	@SuppressWarnings("unused")
 	public void Postal_Code(String Postal_Code) throws InterruptedException, IOException {
 	    try {
@@ -234,8 +233,8 @@ public class Property extends AbstractComponent {
 	}
 
 	
-	
-	// ***Property Description: Verify Property Type and t/w Common Elements checkbox  functionality ***		
+	//Test Case 12229: Property Description: Verify t/w Common Elements checkbox
+	//Test Case 12228: Property Description: Verify based on Property type fields should be display.
 	public void verifyPropertyType(String propertyType) throws InterruptedException, IOException {
 	  
 	    Select select = new Select(PropertyType);
@@ -250,7 +249,7 @@ public class Property extends AbstractComponent {
 	        Assert.fail();
 	    }
 	}
-
+   
 	public void Property_Type() throws InterruptedException, IOException {
 		  Thread.sleep(2000);
 		    Property_Tab.click();
@@ -268,7 +267,7 @@ public class Property extends AbstractComponent {
 	}
 	
 	
-	//****Survey: Verify Survey functionality using Yes/No option working properly or not****
+	//Test Case 12230: Survey: Verify survey functionality based on Yes/No selection.
 	public void Survey() throws IOException {
 	    try {
 	        Thread.sleep(2000);

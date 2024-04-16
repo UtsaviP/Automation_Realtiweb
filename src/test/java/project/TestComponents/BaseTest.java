@@ -20,6 +20,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,7 +54,7 @@ import com.google.gson.reflect.TypeToken;
 
 import home.PageObject.FileList;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.netty.handler.timeout.TimeoutException;
+
 import project.AbstractComponents.AbstractComponent;
 
 public class BaseTest {
@@ -72,16 +73,14 @@ public class BaseTest {
 		String browserName = System.getProperty("browser") != null ? System.getProperty("browser")
 				: prop.getProperty("browser");
 
-		if (browserName.contains("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-
-			WebDriverManager.chromedriver().setup();
-
-			if (browserName.contains("headless")) {
-				options.addArguments("headless");
-			}
-			options.addArguments("--remote-allow-origins=*");
-			driver = new ChromeDriver(options);
+		if (browserName.equalsIgnoreCase("chrome")) {
+			
+			
+			// Setup ChromeDriver using WebDriverManager
+			WebDriverManager.chromedriver().browserVersion("123.0.6312.106").setup(); 
+			 driver = new ChromeDriver();
+             
+				
 			driver.manage().window().setSize(new Dimension(1440, 900));// to run application in full screen
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();// firefoxdriver will be downloaded automatically
@@ -195,6 +194,30 @@ public class BaseTest {
 		}
 	}
 
+
+	
+	
+	//Data provider for Right Side Navigation inside file
+		@DataProvider(name = "Right_Side_Navigation")
+		public Object[][] RightSideNavigation1() throws Exception {
+			JsonObject jsonData = JsonParser.parseReader(new FileReader("src\\test\\java\\project\\data\\Right_Side_Navigation.json"))
+					.getAsJsonObject();
+			JsonObject notesData = jsonData.getAsJsonObject("notes");
+			
+			HashMap<String, String> notesDataMap = convertJsonObjectToHashMap(notesData);
+			
+
+			List<HashMap<String, String>> data = new ArrayList<>();
+			data.add(notesDataMap);
+			
+			return new Object[][] { { data } };
+		}
+	
+	
+	
+	
+	
+	
 	protected HashMap<String, String> convertJsonObjectToHashMap(JsonObject jsonObject) {
 		HashMap<String, String> hashMap = new HashMap<>();
 		for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {

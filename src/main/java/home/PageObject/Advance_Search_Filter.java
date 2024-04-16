@@ -45,13 +45,13 @@ public class Advance_Search_Filter extends AbstractComponent {
 	By HomeButton = By.xpath("//div[@id='root']//div[1]//a[1]");
 	By ClientNameField = By.xpath("//body/div[@id='root']/main[1]//div[3]/input[@class='form-control']");
 	By Reline_IncludeField = By.xpath("(//input[@class='form-control'])[2]");
-	By Reline_ExcludeField = By.xpath("//div[@id='adSearchContainer']/div[@class='mb-5 row']/div[2]/input[1]");
+	By Reline_ExcludeField = By.xpath("(//input[@class='form-control'])[3]");
 	By Reline_InsideFile = By.xpath("//div[@class='card-header']/div[2]/div[1]");
 	By InsideFileName = By.xpath("(//div[@class='col'])[1]/b");
-	By Closing_After = By.xpath("//body/div[@id='root']/main[1]//div[3]/div[3]/div[1]/div[1]/div[1]/input[1]");
-	By Closing_Before = By.xpath("//body/div[@id='root']/main[1]//div[3]/div[4]/div[1]/div[1]/div[1]/input[1]");
+	By Closing_After = By.xpath("(//div[@class='react-datepicker__input-container']//input)[1]");
+	By Closing_Before = By.xpath("(//div[@class='react-datepicker__input-container']//input)[last()]");
 	By Propertyaddress = By.xpath("//div[@class='col-6 col']/input");
-	By Propertytype = By.xpath("//div[@class='mb-5 row']/div[2]/label[text()='Property Type']/following-sibling::*");
+	By Propertytype = By.xpath("//div[4]//div[2]//select[1]");
 	By menu_property = By.xpath("//span[@class='item-name ' and contains(text(),'Property')]");
 	By FilePropertyType = By.cssSelector("select[required='1'][requiredstatus='1'][attrname='PropertyType']");
 	By LawyerName = By.xpath("//div[@class='row']//div[1]//input[1]");
@@ -114,7 +114,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();	
 	
-	//***Verify Cancel Button working properly or not***
+	//Test Case 12064: Verify Cancel Button working proper or not
 	public FileList CancelButton() throws IOException {
 	    try {
 	        AdvanceSearchButton();
@@ -141,7 +141,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	    }
 	}
 
-	//*** Verify File Types Criteria working or not***
+	//Test Case 12068: Verify Search with File Types Purchase and Sale
 	public FileList AdvanceSearchFileTypes() throws IOException {
 	    try {
 	        AdvanceSearchButton();
@@ -158,17 +158,18 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 	        SearchButton.click();
 
+	        waitForFileListUpdate(driver.findElements(Filelistname));
+	        
 	        List<WebElement> initialFileList = driver.findElements(Filelistname);
 
-	        waitForFileListUpdate(initialFileList);
-
+	      
 	        if (!isElementDisplayed(Noresult)) {
-	            List<WebElement> getFileList = ListFileType; // Move this line before the loop
+	            List<WebElement> getFileList = ListFileType;
 
 	            boolean allFilesArePurchaseOrSale = false;
 	            for (int i = 0; i < Math.min(getFileList.size(), initialFileList.size()); i++) {
 	                WebElement fileTypeElement = getFileList.get(i);
-	                waitForWebElementToAppear(fileTypeElement);
+	                fileTypeElement = waitForStaleElement(fileTypeElement); // Handle StaleElementReferenceException
 
 	                WebElement fileNameElement = initialFileList.get(i);
 	                waitForWebElementToAppear(fileNameElement);
@@ -185,10 +186,10 @@ public class Advance_Search_Filter extends AbstractComponent {
 	            }
 
 	            if (allFilesArePurchaseOrSale) {
-	                Azure.updateTestCaseStatus("12068", "Automation Pass","");
+	                Azure.updateTestCaseStatus("12068", "Automation Pass", "");
 	                System.out.println("*****Pass : Only 'Purchase' and 'Sale' files are displayed.*****");
 	            } else {
-	                Azure.updateTestCaseStatus("12068", "Automation Fail","Fail : Other file types are also displayed.");
+	                Azure.updateTestCaseStatus("12068", "Automation Fail", "Fail : Other file types are also displayed.");
 	                Assert.fail("*****Fail : Other file types are also displayed.*****");
 	            }
 	        } else {
@@ -196,17 +197,34 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        }
 
 	        return new FileList(driver);
-	    } catch (Exception e) {	       	    
-	    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
-	        Azure.updateTestCaseStatus("12068", "Automation Error",exceptionTitle);
-	        Assert.fail("*****Fail : An exception occurred while testing File Types Criteria.*****",e);
+	    } catch (Exception e) {
+	        String exceptionTitle = e.getMessage().split("\n")[0];
+	        Azure.updateTestCaseStatus("12068", "Automation Error", exceptionTitle);
+	        Assert.fail("*****Fail : An exception occurred while testing File Types Criteria.*****", e);
 	        return new FileList(driver);
 	    }
 	}
 
+	// Custom method to handle StaleElementReferenceException
+	private WebElement waitForStaleElement(WebElement element) {
+	    int retryAttempts = 3; // Adjust the number of retry attempts as needed
+
+	    for (int attempt = 0; attempt < retryAttempts; attempt++) {
+	        try {
+	            element.isDisplayed(); // Trigger a method to check staleness
+	            return element; // If successful, return the element
+	        } catch (StaleElementReferenceException e) {
+	            // Handle or log the exception (optional)
+	        }
+	    }
+
+	    throw new RuntimeException("Element is still stale after " + retryAttempts + " attempts.");
+	}
+
+
 
 	
-	//*** Verify File Status Criteria working or not***
+	//Test Case 12069: Verify File Status Active and Archives working or not
 	public FileList AdvanceSearchFileStatus() throws IOException {
 	    try {
 	        ClearAndHome();
@@ -269,7 +287,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
 
 
-	//*** Verify Responsible Lawyer working properly or not***
+	//Test Case 12070: Verify Responsible Lawyer working proper or not
 	public FileList AdvanceSearchResponsibleLawyer(String LawyerName) throws IOException {
 	    try {
 	        ClearAndHome();
@@ -313,7 +331,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	    }
 	}
 
-	//*** Verify Firm Contact working properly or not***
+	//Test Case 12078: Verify firm contact working or not
 	public FileList AdvanceSearchFirmContact(String FirmContact) throws IOException {
 	    try {
 	        ClearAndHome();
@@ -358,7 +376,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
 
 
-	//*** Verify ClientName working or not with different criteria***
+	//Test Case 12071: Verify Client Name Functionality with single name , multiple name and Estate name
 	public FileList AdvanceSearchClientname(String AdvanceSearch_Client1, String AdvanceSearch_Client2, String AdvanceSearch_Client3) throws IOException {
 	    try {
 	        String[] clientNames = { AdvanceSearch_Client1, AdvanceSearch_Client2, AdvanceSearch_Client3 };
@@ -418,7 +436,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
 
 
-	//*** Verify Reline[include & Doesn't include] Criteria working properly or not***
+	//Test Case 12072: verify Reline Include and Doesn't include criteria working or not
 	public FileList AdvanceSearchReline(String[] AdvanceSearch_Reline) throws IOException {
 	    try {
 	        for (String isCriteria : AdvanceSearch_Reline) {
@@ -478,7 +496,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        return new FileList(driver);
 	    } catch (Exception e) {	        	
 	    	String exceptionTitle = e.getMessage().split("\n")[0]; 
-	        Azure.updateTestCaseStatus("12072", "Automation Error",exceptionTitle);
+	    	 Azure.updateTestCaseStatus("12072", "Automation Error",exceptionTitle);
 	        Assert.fail("*****Fail: An exception occurred while testing Reline Criteria.*****",e);
 	        return new FileList(driver);
 	    }
@@ -504,7 +522,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	}
 
-	//*** Verify closing date After and Before working properly or not***
+	//Test Case 12073: verify closing date After and before working proper or not
 	public FileList AdvanceSearchClosingDate(String ClosingDate_After, String ClosingDate_Before) throws IOException {
 	    try {
 	        ClearAndHome();
@@ -576,7 +594,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 		}
 	}
 
-	//*** Verify Property Address working properly or not***
+	//Test Case 12074: verify property address working proper or not search with Full address and only Postal Code
 	public FileList AdvanceSearchAddress(String Advancesearch_Address1, String Advancesearch_Address2) throws IOException {
 	    try {
 	        String[] Addresses = { Advancesearch_Address1, Advancesearch_Address2 };
@@ -637,7 +655,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	}
 
 
-	//*** Verify Property Type [Freehold & Condominium] working properly or not***
+	//Test Case 12075: verify property type[Freehold & Condominium] working proper or not
 	public FileList AdvanceSearchPropertyType(String[] Property_Type1, String[] Property_Type2) throws IOException {
 	    try {
 	        ClearAndHome();
@@ -720,7 +738,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 	        Assert.fail("*****Fail: An exception occurred while performing Property Type search.*****",e);
 	    }
 	}
-	//*** Verify Other Side Info > Lawyer Name working or not***
+	//Test Case 12076: verify other side info. > Lawyer name working or not
 	public FileList AdvanceSearchLawyername(String AdvanceSearch_LawyerName) throws IOException {
 	    try {
 	        ClearAndHome();
@@ -766,7 +784,7 @@ public class Advance_Search_Filter extends AbstractComponent {
 
 	
 	
-	//*** Verify Other Side Info > File Number working or not ***
+	//Test Case 12077: verify other side info. > File name working or not
 	public FileList AdvanceSearchOthersideFilenumber(String AdvanceSearch_FileName) throws IOException {
 	    try {
 	        ClearAndHome();

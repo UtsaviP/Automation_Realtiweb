@@ -19,8 +19,8 @@ public class Buyer_SideTest extends BaseTest {
 		Buyer_sideTab = new Buyer_side(driver);
 	}
 
-
-	//@Test(dataProvider = "Details_Section")
+	//Test Case 12348: Verify Individual ,Estate and Corporations options working proper or not
+	@Test(dataProvider = "Details_Section")
 	public void Verify_Buyer_Side_all_Three_options_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 		
@@ -32,6 +32,8 @@ public class Buyer_SideTest extends BaseTest {
 	}
 	
 	
+	//Test Case 12353: Buyer Side >Verify Move Up ,Move Down options in three dots menu
+	//Test Case 12354: Buyer Side >Verify Remove option in three dots menu
 	@Test(dataProvider = "Details_Section")
 	public void Verify_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -48,3 +50,4 @@ public class Buyer_SideTest extends BaseTest {
 		launchApplicationAndLogin(loginData);
 	}
 }
+ 

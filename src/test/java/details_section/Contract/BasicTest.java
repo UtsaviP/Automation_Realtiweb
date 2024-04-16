@@ -27,6 +27,9 @@ public class BasicTest extends BaseTest {
 		BasicTab = new Basic(driver);
 		
 	}
+	
+	
+	//Test Case 12080: File Details -> Verify Responsible lawyer field working proper or not
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_File_Details_Responsible_Lawyer_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -37,7 +40,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-	
+	//Test Case 12081: File Details -> Verify Firm Contact with Select, Edit and Clear functionality
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_File_Details_FirmContactAddEditDelete_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -50,7 +53,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-
+    //Test Case 12082: File Details -> verify Conveyancer field functionality proper or not
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_File_Details_Conveyancer_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -62,9 +65,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-	
-	
-
+	//Test Case 12083: File Configuration->verify File Configuration functionality working proper or not
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_File_Configuration_Different_fields_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -78,6 +79,7 @@ public class BasicTest extends BaseTest {
 
 	}
 
+  //Test Case 12087: Transferee(s) ->Verify Transferee(s) with Single, Estate and Corporation names
   @Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_Transferee_Different_Criteria_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -89,7 +91,7 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-
+   //Test Case 12089: Transferor(s) ->Verify Transferor(s) with Single, Estate and Corporation names
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_BasicSection_Transferor_Different_Criteria_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {		
@@ -100,8 +102,8 @@ public class BasicTest extends BaseTest {
 
 	}
 	
-   @Test(dataProvider = "Details_Section")
-	
+ //Test Case 12093: Fire Insurance -> Verify Provider field working or not
+   @Test(dataProvider = "Details_Section")	
 	public void Verify_In_BasicSection_Fire_Insurance_Different_fields_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 	launchApplicationAndLogin();
@@ -110,7 +112,7 @@ public class BasicTest extends BaseTest {
 		
 	}
 	
-
+   //Test Case 12094: Mortgage Broker ->Verify Broker field functionality working proper or not
 	@Test(dataProvider = "Details_Section")
 	
 	public void Verify_In_BasicSection_Mortgage_Broker_field_working_proper_or_not(
@@ -121,8 +123,9 @@ public class BasicTest extends BaseTest {
 		
 	}
 	
- @Test(dataProvider = "Details_Section")
 	
+ 	//Test Case 12095: Mortgage Broker -> verify Mortgage Broker Fee checkbox in Trust statement page.	
+ @Test(dataProvider = "Details_Section")	
 	public void Verify_In_BasicSection_MortgageBrokerFee_field_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 	launchApplicationAndLogin();

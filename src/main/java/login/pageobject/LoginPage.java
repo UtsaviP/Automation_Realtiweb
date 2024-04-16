@@ -46,7 +46,7 @@ public class LoginPage extends AbstractComponent {
    
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 	
-	//***Login with Correct User name, Password and Account Name***
+	//Test Case 12055: Login with Correct User name, Password and Account Name
 	public String GetLoginDetails() throws InterruptedException {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation");
@@ -65,7 +65,7 @@ public class LoginPage extends AbstractComponent {
 		Thread.sleep(2000);
 		return Actual1;
 	}
-    //***Login with Wrong Password ,  Correct  User name and Account Name***
+    //Test Case 12057: Login with Wrong Password , Correct User name and Account Name
 	public String LoginPassWrong() {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation");
@@ -79,7 +79,7 @@ public class LoginPage extends AbstractComponent {
 
 	}
 	
-    //***Login with Wrong User name,  Correct Password and Account Name***
+    //Test Case 12056: Login with Wrong User name, Correct Password and Account Name
 	public String LoginUsernameWrong() {
 		AccountName.sendKeys("LDDTesting");
 		UserName.sendKeys("Automation1");
@@ -92,7 +92,7 @@ public class LoginPage extends AbstractComponent {
 		return Actual;
 
 	}
-	//***Login with Wrong Account Name,  Correct  User name and Password***
+	//Test Case 12058: Login with Wrong Account Name, Correct User name and Password
 	public String LoginAccountnameWrong() {
 		AccountName.sendKeys("LDDTesting1");
 		UserName.sendKeys("Automation");

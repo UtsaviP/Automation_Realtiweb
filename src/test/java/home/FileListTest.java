@@ -24,8 +24,10 @@ public class FileListTest extends BaseTest {
 		filelist = new FileList(driver);
 	}
 
+	
+	
+	//Test Case 12067: In three dots menu ,Verify archive and active option working proper or not
 	@Test(dataProvider = "loginData")
-
 	public void Verify_Archive_and_Activate_option_working_proper_or_not(HashMap<String, String> loginData)
 			throws InterruptedException, IOException {
 		launchApplicationAndLogin();
@@ -33,6 +35,7 @@ public class FileListTest extends BaseTest {
 
 	}
 
+	//Test Case 12066: Verify the free search functionality and check if the bold name exactly matches the searchable name
 	@Test(dataProvider = "HomePageData")
 	public void Verify_Free_search_Functionality_working_or_not(List<HashMap<String, String>> testData)
 			throws InterruptedException, IOException {

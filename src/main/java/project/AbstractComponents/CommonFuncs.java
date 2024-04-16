@@ -119,7 +119,7 @@ public class CommonFuncs extends AbstractComponent {
 	    String truncatedMessage = truncateErrorMessage(e.getMessage(), 500);
 
 	    if (errorMessage.contains("Automation Fail")) {
-	        Azure.updateTestCaseStatus(testCaseId, "Automation Fail", "Failed during Estate processing");
+	        Azure.updateTestCaseStatus(testCaseId, "Automation Fail", truncatedMessage);
 	    } else {
 	        Azure.updateTestCaseStatus(testCaseId, "Automation Error", truncatedMessage);
 	    }

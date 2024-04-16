@@ -20,6 +20,7 @@ public class Seller_SideTest extends BaseTest {
 	}
 
 
+	//Test Case 12393: Seller Side>Verify Individual ,Corporation and Estate options working proper or not
 	@Test(dataProvider = "Details_Section")
 	public void Verify_Seller_Side_all_Three_options_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -31,6 +32,8 @@ public class Seller_SideTest extends BaseTest {
 	}
 	
 	
+	//Test Case 12395: Seller Side>verify Move Up ,Move Down options in three dots menu
+	//Test Case 12396: Seller Side>Verify Remove option in three dots menu.
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_Seller_Side_Move_Up_Move_Down_Delete_and_ID_Verification_icon_working_proper_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {

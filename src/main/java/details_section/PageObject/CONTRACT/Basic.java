@@ -102,10 +102,10 @@ public class Basic extends AbstractComponent {
 	@FindBy(xpath = "(//tr[@xmlbase='InsuranceAgent'])[1]//span[@attrname='Company']")
 	public WebElement displayFireInsuranceName;
 
-	@FindBy(xpath = "(//span[contains(text(),'Fire Ins.')])/preceding::span[@class='item-name'][1]")
+	@FindBy(xpath = "//span[contains(text(),'Fire Ins.')]//preceding::span[1]")
 	public WebElement fireInsFileNavigation;
 
-	@FindBy(xpath = "(//span[contains(text(),'Mortgage Broker')])/preceding::span[@class='item-name'][1]")
+	@FindBy(xpath = "//span[contains(text(),'Mortgage Broker')]//preceding::span[1]")
 	public WebElement MortgageBroFileNavigation;
 
 	@FindBy(xpath = "(//tr[@xmlbase='MortgageBroker'])[1]//span[@attrname='Company']")
@@ -171,7 +171,7 @@ public class Basic extends AbstractComponent {
 
 	AzureDevOpsIntegration Azure = new AzureDevOpsIntegration();
 
-	//*** Verify File Details -> Responsible Lawyer field Working Properly or not ***
+	//Test Case 12080: File Details -> Verify Responsible lawyer field working proper or not
 	public void ResponsibleLawyer(String Responsible_Lawyer) throws IOException {
 	    try {
 	        switchToIframe(MiddlePortionFrame);
@@ -219,7 +219,7 @@ public class Basic extends AbstractComponent {
 
 
 	
-	//*** Verify Add,Edit and Clear Functionality in File Details->Firm Contact Field***
+	//Test Case 12081: File Details -> Verify Firm Contact with Select, Edit and Clear functionality
 	public void FirmContactAddEditClear() throws IOException {
 	    boolean addPass = false;
 	    boolean editPass = false;
@@ -323,7 +323,7 @@ public class Basic extends AbstractComponent {
 	}
 
 	
-	//**** Verify File Details -> Conveyancer Field working properly or not ****
+	//Test Case 12082: File Details -> verify Conveyancer field functionality proper or not
 	public void Conveyancer() throws InterruptedException, IOException {
 	    try {
 	        switchToIframe(MiddlePortionFrame);
@@ -355,7 +355,7 @@ public class Basic extends AbstractComponent {
 	}
 
 
-	// **** Verify File Configuration -> File_Configuration functionality working properly or not ****
+	// Test Case 12083: File Configuration->verify File Configuration functionality working proper or not
 	public void File_Configuration() throws InterruptedException, IOException {
 	    try {
 	        switchToIframe(MiddlePortionFrame);
@@ -390,7 +390,7 @@ public class Basic extends AbstractComponent {
 	    }
 	}
 
-	// verify Transferee(s) functionality working proper or not
+	//Test Case 12087: Transferee(s) ->Verify Transferee(s) with Single, Estate and Corporation names
 		public void Transferee(String Single_Transferee, String Estate_Transferee, String Corporation_Transferee,
 				Map<String, String> clientNames) throws InterruptedException, IOException {
 			switchToIframe(MiddlePortionFrame);
@@ -509,7 +509,7 @@ public class Basic extends AbstractComponent {
 		
 	
 	
-	// ****verify Transferor(s) functionality working proper or not****
+	// Test Case 12089: Transferor(s) ->Verify Transferor(s) with Single, Estate and Corporation names
 	public void Transferor(String Single_Transferor, String Estate_Transferor, String Corporation_Transferor,
 			Map<String, String> clientNames) throws InterruptedException, IOException {
 		switchToIframe(MiddlePortionFrame);
@@ -634,7 +634,7 @@ public class Basic extends AbstractComponent {
 				}
 			}
 				
-	//**** Verify Fire Insurance functionality working properly or not****
+	//Test Case 12093: Fire Insurance -> Verify Provider field working or not
 	public void FireInsurance() throws InterruptedException, IOException {
 	    boolean isTestPassed = false;
 
@@ -690,7 +690,7 @@ public class Basic extends AbstractComponent {
 	    }
 	}
 
-	//**** Verify Mortgage Broker functionality working properly or not****
+	//Test Case 12094: Mortgage Broker ->Verify Broker field functionality working proper or not
 	public void MortgageBroker() throws InterruptedException, IOException {
 	    boolean isTestPassed = false;
 
@@ -747,7 +747,8 @@ public class Basic extends AbstractComponent {
 	        Assert.fail("Fail", e);
 	    }
 	}
-	//**** Verify Mortgage Broker -> Fee$ field and Pay from Trust functionality working properly or not****
+	
+	//Test Case 12095: Mortgage Broker -> verify Mortgage Broker Fee checkbox in Trust statement page.
 	public void mortgageBrokerFee(String mortgageBrokerFee) throws InterruptedException, IOException {
 	    try {
 	        // Convert the input mortgageBrokerFee to a comma-formatted amount

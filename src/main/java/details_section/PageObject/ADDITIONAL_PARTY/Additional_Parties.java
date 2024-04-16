@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
@@ -22,7 +23,7 @@ import details_section.PageObject.CONTRACT.Basic;
 import details_section.PageObject.CONTRACT.Contract;
 import home.PageObject.Advance_Search_Filter;
 import home.PageObject.FileList;
-import io.netty.util.internal.ThreadLocalRandom;
+
 import project.AbstractComponents.AbstractComponent;
 import project.AbstractComponents.AzureDevOpsIntegration;
 import project.AbstractComponents.CommonFuncs;
@@ -186,8 +187,8 @@ public class Additional_Parties extends AbstractComponent {
 	                    Azure.updateTestCaseStatus("12688", "Automation Pass", "");
 	                    System.out.println("PASS: Additional Parties options working fine");
 	                } else {
-	                    common.handleException(new Exception("Fail: Not All Additional Parties options working fine"),
-	                            "Fail: Not All Additional Parties options working fine", "12688");
+	                	Azure.updateTestCaseStatus("12688", "Automation Fail","Fail: Not All Additional Parties options working fine");
+	    	            Assert.fail("****Fail: Not All Additional Parties options working fine****");
 	                }
 	           
 	            driver.switchTo().defaultContent();
@@ -212,12 +213,11 @@ public class Additional_Parties extends AbstractComponent {
 	                    Azure.updateTestCaseStatus("12690", "Automation Pass", "");
 	                    System.out.println("PASS: Additional Parties  +ADD functionality working fine");
 	                } else {
-	                    common.handleException(
-	                            new Exception("Fail: Additional Parties  +ADD functionality not working fine"),
-	                            "Fail: Additional Parties  +ADD functionality not working fine", "12690");
+	                	Azure.updateTestCaseStatus("12690", "Automation Fail","Fail: Additional Parties  +ADD functionality not working fine");
+	    	            Assert.fail("****Fail: Additional Parties  +ADD functionality not working fine****");
 	                }
 	            } catch (Exception e) {
-	                common.handleException(e, "Failed during  click on Additional Parties Arrows Down ", "12688");
+	                common.handleException(e, "Failed during  click on Additional Parties Arrows Down ", "12690");
 	            }
 	        }
 	    } catch (Exception e) {
@@ -280,23 +280,24 @@ public class Additional_Parties extends AbstractComponent {
 	}
 
 	private static String processBrokerField(String input) {
+	    // Replace special characters excluding commas
+	    String cleaned = input.replaceAll("[^a-zA-Z0-9,&]+","");
 
-		String cleaned = input.replaceAll("[^a-zA-Z0-9]+", " ");
+	    // Split the cleaned string into words
+	    String[] words = cleaned.split("\\s");
 
-		// Split the cleaned string into words
-		String[] words = cleaned.split("\\s");
+	    // List of words to ignore
+	    List<String> ignoredWords = Arrays.asList("--", "other_word_to_ignore");
 
-		// List of words to ignore
-		List<String> ignoredWords = Arrays.asList("--", "other_word_to_ignore");
+	    // Filter out ignored words
+	    List<String> filteredWords = Arrays.stream(words)
+	            .filter(word -> !ignoredWords.contains(word))
+	            .collect(Collectors.toList());
 
-		// Filter out ignored words
-		List<String> filteredWords = Arrays.stream(words).filter(word -> !ignoredWords.contains(word))
-				.collect(Collectors.toList());
+	    // Join the remaining words back into a string
+	    String result = String.join(" ", filteredWords);
 
-		// Join the remaining words back into a string
-		String result = String.join(" ", filteredWords);
-
-		return result;
+	    return result;
 	}
 
 	private void clickOnTab(String defaultName) {

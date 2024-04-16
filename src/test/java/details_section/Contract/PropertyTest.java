@@ -19,7 +19,7 @@ public class PropertyTest extends BaseTest {
 		PropertyTab = new Property(driver);
 	}
 
-
+   //Test Case 12225: Property Address: verify property address different fields and also verify in Basic tab
 	@Test(dataProvider = "Details_Section")
 	public void Verify_Property_address_different_fields_and_also_verify_in_Basic_tab(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -30,7 +30,7 @@ public class PropertyTest extends BaseTest {
 		
 	}
 	
-	
+	//Test Case 12227: Property Address: Verify Postal code functionality
 	@Test(dataProvider = "Details_Section")
 	public void Verify_PostalCode_In_Property_address_Section(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -41,6 +41,8 @@ public class PropertyTest extends BaseTest {
 	}
 	
 	
+	//Test Case 12229: Property Description: Verify t/w Common Elements checkbox
+	//Test Case 12228: Property Description: Verify based on Property type fields should be display.
 	@Test(dataProvider = "Details_Section")
 	public void Verify_In_Property_Section_Property_type_Dropdown_options(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
@@ -50,7 +52,7 @@ public class PropertyTest extends BaseTest {
 		
 	}
 	
-	
+	//Test Case 12230: Survey: Verify survey functionality based on Yes/No selection.
 	@Test(dataProvider = "Details_Section")
 		public void Verify_In_Survey_Section_Survey_options_Yes_or_No_working_proper_or_not(
 				List<HashMap<String, String>> testData) throws InterruptedException, IOException {

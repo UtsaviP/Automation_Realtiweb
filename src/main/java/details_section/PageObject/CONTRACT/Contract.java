@@ -145,7 +145,7 @@ public class Contract extends AbstractComponent {
 	
 	
 	
-	// ***Purchasers(s): Verify To Reside at Property on Closing field based on Yes/No changes.***
+	// Test Case 12141: Purchasers(s):Verify To Reside at Property on Closing field based on Yes/No changes.
 	public void ToResideAtPropertyOnClosing_Field() throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -177,8 +177,9 @@ public class Contract extends AbstractComponent {
 	}
 
 
-	// ***Other Side Legal Representation: Verify Lawyer field with Law Society of Ontario functionality. ***
+	// Test Case 12144: Other Side Legal Representation: Verify Lawyer field with Law Society of Ontario functionality.
 	public void OtherSideLawyer(String OtherSide_Lawyer) throws InterruptedException, IOException {
+		 try {
 		Thread.sleep(2000);
 		Contract_Tab.click();
 		common.switchToIframe(common.MiddlePortionFrame);
@@ -208,6 +209,9 @@ public class Contract extends AbstractComponent {
 				String text = lawyerOptions.get(0).getText();
 				lawyerOptions.get(0).click();
 				BtnAddLawyer.click();
+				Thread.sleep(2000);
+				driver.switchTo().defaultContent();
+				Contract_Tab.click();
 				common.switchToIframe(common.MiddlePortionFrame);
 
 				String text1 = Lawyerfield.getText();
@@ -223,9 +227,16 @@ public class Contract extends AbstractComponent {
 				}
 			}
 		}
+		
+		 } catch (Exception e) {	       
+		    	e.printStackTrace();
+		    	 String exceptionTitle = e.getMessage().split("\n")[0]; 
+		        Azure.updateTestCaseStatus("12144", "Automation Error",exceptionTitle);	        
+		        Assert.fail("Fail",e);
+		    }
 	}
 
-	// ***Verify Contract: Closing Date should be same in Statement of Adjustments>Adjustment date***
+	// Test Case 12145: Contract: Verify Closing Date field working proper or not
 	public void Closing_Date(String Closing_Date) throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -251,7 +262,7 @@ public class Contract extends AbstractComponent {
 	    }
 	}
 
-	// ***Verify Contract: Offer Conditional field based on yes/No condition***
+	//Test Case 12146: Contract: Verify Offer Conditional field Functionality
 	public void Offer_ConditionalField() throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -286,7 +297,7 @@ public class Contract extends AbstractComponent {
 	    }
 	}
 
-	// ***Verify Deposits: Verify Deposit functionality working properly or not***
+	// Test Case 12147: Deposits: Verify Deposits functionality
 	public void Deposits(String Broker_Deposit, String Lawyer_Deposit, String Vendor_Deposit)
 	        throws InterruptedException, IOException {
 	    try {
@@ -328,7 +339,7 @@ public class Contract extends AbstractComponent {
 	    }
 	}
 
-	// ***Verify Deposits: Verify Deposit functionality working properly or not***
+	// Test Case 12148: Consideration: Verify Consideration functionality [Contract Price $ should be shows in this fields]
 	public void Consideration(String Contract_Price) throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -366,7 +377,7 @@ public class Contract extends AbstractComponent {
 	    }
 	}
 
-	// ***Verify HST: Verify HST functionality working properly or not***
+	// Test Case 12149: HST: Verify HST functionality
 	@SuppressWarnings("static-access")
 	public void HST(String Contract_Price) throws InterruptedException, IOException {
 	    try {
@@ -442,7 +453,7 @@ public class Contract extends AbstractComponent {
 	}
 
 
-	// ***Real Estate Commissions: Verify Broker field with Search REALTORS® across Canada ***
+	// Test Case 12150: Real Estate Commissions: verify Broker field using Search REALTORS® across Canada functionality.
 	public void Broker(String Broker_LastName) throws InterruptedException, IOException {
 	    try {
 	        Thread.sleep(2000);
@@ -462,7 +473,7 @@ public class Contract extends AbstractComponent {
 	            driver.switchTo().defaultContent();
 	            driver.findElement(By.xpath("//i[@id='dialog-close']")).click();
 	            System.out.println("***No Matching Broker name Found***");
-	            Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: No Matching Broker name Found");
+	            Azure.updateTestCaseStatus("12150", "Automation Fail", "FAIL: No Matching Broker name Found");
 	            Assert.fail("****FAIL: No Matching Broker name Found****");
 	        } catch (TimeoutException e) {
 	            waitForWebElementToAppear(Result_List);
@@ -481,27 +492,28 @@ public class Contract extends AbstractComponent {
 	                    if (text1.contains(text)) {
 	                        System.out.println("PASS: Broker name is the same as selected in the Search REALTORS® across Canada "
 	                                + "Broker Name=" + text1);
-	                        Azure.updateTestCaseStatus("12150", "Automation Pass","");
-	                    } else {	                       
-	                        Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: Broker name does not match.");
+	                        Azure.updateTestCaseStatus("12150", "Automation Pass", "");
+	                    } else {
+	                        Azure.updateTestCaseStatus("12150", "Automation Fail", "FAIL: Broker name does not match.");
 	                        Assert.fail("****FAIL: Broker name does not match.****");
 	                    }
-	                } else {	                   
-	                    Azure.updateTestCaseStatus("12150", "Automation Fail","FAIL: Broker name does not match.");
+	                } else {
+	                    Azure.updateTestCaseStatus("12150", "Automation Fail", "FAIL: Broker name does not match.");
 	                    Assert.fail("****FAIL: Broker name does not match.****");
 	                }
 	            }
 	        }
 	    } catch (Exception ex) {
-	    	ex.printStackTrace();
-	    	String exceptionTitle = ex.getMessage().split("\n")[0]; 
-	        Azure.updateTestCaseStatus("12150", "Automation Error",exceptionTitle);
+	        ex.printStackTrace();
+	        String exceptionTitle = ex.getClass().getSimpleName();
+	        Azure.updateTestCaseStatus("12150", "Automation Error", exceptionTitle);
 	        System.out.println("****ERROR: An error occurred during the test execution. Details: " + ex.getMessage());
-	        Assert.fail("Error",ex);
+	        Assert.fail("Error", ex);
 	    }
 	}
 
-	// ***Real Estate Commissions: Verify Broker % of Contract Price functionality
+
+	// Test Case 12151: Real Estate Commissions: Verify % of Contract Price field.
 	@SuppressWarnings({ "static-access", "unused" })
 	public void Broker_ContractPrice(String Contract_Price, String Broker_ContractPrice) throws InterruptedException, IOException {
 	    try {
