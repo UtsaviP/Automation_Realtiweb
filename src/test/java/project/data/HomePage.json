@@ -5,7 +5,6 @@
 		"Password": "Automation",
 		"Purchase_FileName": "AutomationFile_Purchase"
 	},
-	
 	"advanceSearchData": {
 		"LawyerName": "DAVID RUSH",
 		"FirmContact": "Angela Ratcliffe",
@@ -22,10 +21,8 @@
 		"AdvanceSearch_LawyerName": "G. Chalmers Adams",
 		"AdvanceSearch_FileName": "715 Don mills file"
 	},
-	
 	"freeSearchData": {
 		"FreeSearch_1": "test",
 		"FreeSearch_2": "Automation"
-		
 	}
 }

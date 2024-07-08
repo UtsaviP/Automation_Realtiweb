@@ -21,8 +21,8 @@ public class NotesTest extends BaseTest {
 	}
 
 	//Test Case 13702: Verify Add notes functionality working or not
-	////Test Case 13705: verify Edit notes working or not
-	//@Test(dataProvider = "Right_Side_Navigation")
+	//Test Case 13705: verify Edit notes working or not
+	@Test(dataProvider = "Right_Side_Navigation")
 	public void Verify_Add_notes_functionality_working_or_not(
 			List<HashMap<String,String>> testData) throws InterruptedException, IOException {
 		
@@ -33,7 +33,7 @@ public class NotesTest extends BaseTest {
 	
 	
 	//Test Case 13706: verify Reply functionality working or not
-	//@Test(dataProvider = "Right_Side_Navigation")
+	@Test(dataProvider = "Right_Side_Navigation")
 	public void verify_Reply_note_functionality_working_or_not(
 			List<HashMap<String,String>> testData) throws InterruptedException, IOException {
 		
@@ -44,7 +44,7 @@ public class NotesTest extends BaseTest {
 	
 	
 	//Test Case 13708: verify cancel button working or not
-	//@Test(dataProvider = "Right_Side_Navigation")
+	@Test(dataProvider = "Right_Side_Navigation")
 	public void verify_cancel_button_working_or_not(
 			List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 		
@@ -56,7 +56,7 @@ public class NotesTest extends BaseTest {
 	}
 	
 	//Test Case 13707: verify remove notes fnctionality working or not	
-	//@Test(dataProvider = "Right_Side_Navigation")
+	@Test(dataProvider = "Right_Side_Navigation")
 		public void verify_remove_note_working_or_not(
 				List<HashMap<String, String>> testData) throws InterruptedException, IOException {
 			
@@ -74,7 +74,6 @@ public class NotesTest extends BaseTest {
 			
 			launchApplicationAndLogin();
 			BasicTab.PurchaseFileClick(loginData.get("Purchase_FileName"));
-
 			note.badge_dropdown(testData.get(0).get("Add_Text"));
 		    
 		}

@@ -101,6 +101,13 @@
     <version>1.7.14</version>
 </dependency>
 
+  <!-- https://mvnrepository.com/artifact/org.apache.maven.plugin-tools/maven-plugin-annotations -->
+<dependency>
+    <groupId>org.apache.maven.plugin-tools</groupId>
+    <artifactId>maven-plugin-annotations</artifactId>
+    <version>3.13.1</version>
+    <scope>provided</scope>
+</dependency>
   	
   	
   	
@@ -131,28 +138,9 @@
   
   	
   	
-  	
-  	<profile>
-  	<id>CucumberTests</id>
-  	<build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-    <plugins>
-     	<plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-        	<artifactId>maven-surefire-plugin</artifactId>
-        	<version>3.0.0-M7</version>
-        <configuration>
-          	<includes>
-          	<include>**/TestNGTestRunner.java</include>
-          	</includes>
-        </configuration>
-    	</plugin>
-  	</plugins>
-  	</pluginManagement>
-  	</build>
-  	</profile>
-  	
 </profiles>
+  	
+  	
 
 
   <build>

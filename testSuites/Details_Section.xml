@@ -3,31 +3,32 @@
 <suite name="Suite">
 
 
-<listeners>
-	<listener class-name="project.TestComponents.Listeners"></listener>
-</listeners>
+	<listeners>
+		<listener class-name="project.TestComponents.Listeners"></listener>
+	</listeners>
 
-  <test thread-count="5" name="BasicSection">
-    <classes>
-      <class name="details_section.Contract.BasicTest"/>
-    </classes>
-    
-  </test>   
-  
-   <test thread-count="5" name="ContractSection">
-    <classes>
-      <class name="details_section.Contract.ContractTest"/>
-    </classes>
-    
-  </test>
- 
-     <test thread-count="5" name="PropertySection">
-    <classes>
-      <class name="details_section.Contract.PropertyTest"/>
-    </classes>
-    
-  </test>
-  
-  
-</suite> <!-- Suite -->
+	<test thread-count="5" name="BasicSection">
+		<classes>
+			<class name="details_section.Contract.BasicTest" />
+		</classes>
+
+	</test>
+
+	<test thread-count="5" name="ContractSection">
+		<classes>
+			<class name="details_section.Contract.ContractTest" />
+		</classes>
+
+	</test>
+
+	<test thread-count="5" name="PropertySection">
+		<classes>
+			<class name="details_section.Contract.PropertyTest" />
+		</classes>
+
+	</test>
+
+
+</suite> <!--
+Suite -->
 
