@@ -2,53 +2,79 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-21T16:05:32 EDT" name="Default suite" finished-at="2024-05-21T16:09:24 EDT" duration-ms="231777">
+  <suite started-at="2024-07-09T10:03:46 EDT" name="Default suite" finished-at="2024-07-09T10:04:37 EDT" duration-ms="50421">
     <groups>
     </groups>
-    <test started-at="2024-05-21T16:05:32 EDT" name="Default test" finished-at="2024-05-21T16:09:24 EDT" duration-ms="231777">
-      <class name="notes_and_pin.Default_pinTest">
-        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:notes_and_pin.Default_pinTest@1e13529a]" started-at="2024-05-21T16:05:32 EDT" name="setupLoginData" finished-at="2024-05-21T16:05:32 EDT" duration-ms="39" status="PASS">
+    <test started-at="2024-07-09T10:03:46 EDT" name="Default test" finished-at="2024-07-09T10:04:37 EDT" duration-ms="50421">
+      <class name="details_section.Additional_Parties.Additional_PartiesTest">
+        <test-method is-config="true" signature="setupLoginData()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@3ba987b8]" started-at="2024-07-09T10:03:46 EDT" name="setupLoginData" finished-at="2024-07-09T10:03:47 EDT" duration-ms="37" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginData -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:notes_and_pin.Default_pinTest@1e13529a]" started-at="2024-05-21T16:05:32 EDT" name="launchApplication" finished-at="2024-05-21T16:09:18 EDT" duration-ms="225777" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@3ba987b8]" started-at="2024-07-09T10:03:47 EDT" name="launchApplication" finished-at="2024-07-09T10:03:50 EDT" duration-ms="2961" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method is-config="true" signature="initializeTest()[pri:0, instance:notes_and_pin.Default_pinTest@1e13529a]" started-at="2024-05-21T16:09:18 EDT" name="initializeTest" finished-at="2024-05-21T16:09:18 EDT" duration-ms="42" status="PASS">
+        <test-method is-config="true" signature="initializeTest()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@3ba987b8]" started-at="2024-07-09T10:03:50 EDT" name="initializeTest" finished-at="2024-07-09T10:03:50 EDT" duration-ms="51" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTest -->
-        <test-method signature="verify_pin_option_is_available_or_not(java.util.List)[pri:0, instance:notes_and_pin.Default_pinTest@1e13529a]" started-at="2024-05-21T16:09:18 EDT" name="verify_pin_option_is_available_or_not" data-provider="Right_Side_Navigation" finished-at="2024-05-21T16:09:24 EDT" duration-ms="5594" status="FAIL">
+        <test-method signature="Verify_additional_parties_different_options_working_proper_or_not(java.util.List)[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@3ba987b8]" started-at="2024-07-09T10:03:50 EDT" name="Verify_additional_parties_different_options_working_proper_or_not" data-provider="Details_Section" finished-at="2024-07-09T10:04:34 EDT" duration-ms="44437" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[{Reply_Text=Reply Testing in Automation, Edit_Text=This is an Automation file for testing purpose, Add_Text=I am testing a notes in Automation file}]]]>
+                <![CDATA[[{Single_Transferee=Utsavi A. Patel, Conveyancer=John Smith, Estate_Transferor=Seller Test, Single_Transferor=Alice Horton, Firm_Contact=Angela Ratcliffe, Corporation_Transferor=ABC Company, Responsible_Lawyer=Maurizio Romanin, Estate_Transferee=Test, MortgageBroker_Fee=5000, Corporation_Transferee=ABC Corp.}, {OtherSide_Lawyer=Patel, Broker_LastName=Patel, Contract_Price=900000, Vendor_Deposit=7000, Broker_ContractPrice=3, Closing_Date=01/DEC/2023, Broker_Deposit=2000, Lawyer_Deposit=5000}, {Street_Name=Don Mills, Street_Number=715, Postal_Code=M3C 1V9, City=Toronto}, {Estate_Name=Test, Corporation_Name=ABC Company, Individual_Name=Utsavi Patel}, {Account=LDDTesting, Purchase_FileName=AutomationFile_[Do not Delete]}, {Search_name=Century}]]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchWindowException">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=125.0.6422.60)
-Build info: version: '4.19.1', revision: 'abe0ee07dc'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [03a20bc694883db949dc178abd45f861, findElements {using=xpath, value=//div[@id='ListSection']//table//tbody//td[1]/span}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.60, chrome: {chromedriverVersion: 125.0.6422.60 (3ac3319bff9f..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55386}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55386/devtoo..., se:cdpVersion: 125.0.6422.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 03a20bc694883db949dc178abd45f861]]>
+              <![CDATA[*****Fail: Failed during  check  Additional Parties different options.*****]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=125.0.6422.60)
-Build info: version: '4.19.1', revision: 'abe0ee07dc'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+              <![CDATA[java.lang.AssertionError: *****Fail: Failed during  check  Additional Parties different options.*****
+at org.testng.Assert.fail(Assert.java:87)
+at project.AbstractComponents.CommonFuncs.handleException(CommonFuncs.java:127)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:224)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.selectPartyAndVerify(Additional_Parties.java:144)
+at details_section.Additional_Parties.Additional_PartiesTest.Verify_additional_parties_different_options_working_proper_or_not(Additional_PartiesTest.java:35)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"(//i[@class='fa-light fa-plus'])[3]"}
+  (Session info: chrome=126.0.6478.127)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.22.0', revision: 'c5f3146703*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.11'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [03a20bc694883db949dc178abd45f861, findElements {using=xpath, value=//div[@id='ListSection']//table//tbody//td[1]/span}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.60, chrome: {chromedriverVersion: 125.0.6422.60 (3ac3319bff9f..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55386}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55386/devtoo..., se:cdpVersion: 125.0.6422.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 03a20bc694883db949dc178abd45f861
+Command: [48f3864ea23e30eae6687e745ab41834, findElement {value=(//i[@class='fa-light fa-plus'])[3], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: C:\Users\utsavi\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56949}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56949/devtoo..., se:cdpVersion: 126.0.6478.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 48f3864ea23e30eae6687e745ab41834
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -61,52 +87,26 @@ at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.ja
 at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElements(ElementLocation.java:182)
-at org.openqa.selenium.remote.ElementLocation.findElements(ElementLocation.java:103)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:368)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:362)
-at home.PageObject.Advance_Search_Filter.clickOnFirstFile(Advance_Search_Filter.java:846)
-at details_section.PageObject.CONTRACT.Basic.PurchaseFileClick(Basic.java:815)
-at notes_and_pin.Default_pinTest.verify_pin_option_is_available_or_not(Default_pinTest.java:30)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy16.click(Unknown Source)
+at details_section.PageObject.ADDITIONAL_PARTY.Additional_Parties.switchPartyAndVerify(Additional_Parties.java:162)
+... 30 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_pin_option_is_available_or_not -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:notes_and_pin.Default_pinTest@1e13529a]" started-at="2024-05-21T16:09:24 EDT" name="tearDown" finished-at="2024-05-21T16:09:24 EDT" duration-ms="269" status="PASS">
+        </test-method> <!-- Verify_additional_parties_different_options_working_proper_or_not -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:details_section.Additional_Parties.Additional_PartiesTest@3ba987b8]" started-at="2024-07-09T10:04:34 EDT" name="tearDown" finished-at="2024-07-09T10:04:37 EDT" duration-ms="2885" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- notes_and_pin.Default_pinTest -->
+      </class> <!-- details_section.Additional_Parties.Additional_PartiesTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
