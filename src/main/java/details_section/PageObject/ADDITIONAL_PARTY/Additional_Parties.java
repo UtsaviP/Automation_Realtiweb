@@ -21,8 +21,7 @@ import org.testng.Assert;
 
 import details_section.PageObject.CONTRACT.Basic;
 import details_section.PageObject.CONTRACT.Contract;
-import home.PageObject.Advance_Search_Filter;
-import home.PageObject.FileList;
+
 
 import project.AbstractComponents.AbstractComponent;
 import project.AbstractComponents.AzureDevOpsIntegration;

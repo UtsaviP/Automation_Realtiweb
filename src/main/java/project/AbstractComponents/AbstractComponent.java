@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import java.time.Duration;
 import java.util.Properties;
-import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
